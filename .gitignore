@@ -1,0 +1,12 @@
+__pycache__/
+.idea/
+.pytest_cache/
+.vscode/
+build/
+dist/
+./.eggs/
+./.mypy_cache/
+./.nox/
+main.spec
+tool_apple_music.rar
+myenv/

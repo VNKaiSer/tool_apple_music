@@ -1,0 +1,725 @@
+2024-05-01 15:42:51,190 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 15:44:44,941 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 16:23:21,472 - Error Card: Cardnumber - 5498250003910014 - Card is support
+2024-05-01 16:23:26,642 - Die Card: Cardnumber - 4403935099289458 - Card is die
+2024-05-01 16:23:31,831 - Error Card: Cardnumber - 4403935121656922 - Card is many account add
+2024-05-01 16:23:36,952 - Error Card: Cardnumber - 4403935146705720 - Card is many account add
+2024-05-01 16:23:42,018 - Die Card: Cardnumber - 4403935148430947 - Card is die
+2024-05-01 16:23:46,108 - Error Account: Id - Matthew29812@gmx.es - Account is spam
+2024-05-01 16:24:54,016 - Error Card: Cardnumber - 4879170025642134 - Card is support
+2024-05-01 16:24:59,218 - Error Card: Cardnumber - 4985032086363490 - Card is many account add
+2024-05-01 16:42:16,053 - Error Card: Cardnumber - 4985032089344950 - Card is support
+2024-05-01 16:47:35,939 - Error: Hết thẻ
+2024-05-01 16:48:36,884 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 16:49:43,856 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 16:51:41,551 - Die Card: Cardnumber - 4403935148430947 - Card is die
+2024-05-01 16:51:48,276 - Error Card: Cardnumber - 4879170025642134 - Card is support
+2024-05-01 16:51:55,439 - Error Card: Cardnumber - 4985032086363490 - Card is many account add
+2024-05-01 16:52:02,710 - Error Card: Cardnumber - 4985032089344950 - Card is support
+2024-05-01 16:52:03,031 - Error: Hết thẻ
+2024-05-01 18:43:29,812 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 19:16:22,998 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 19:18:57,452 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 20:17:45,492 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 20:36:03,453 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 22:49:35,616 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:35,625 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:35,978 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:36,208 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:36,459 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:36,472 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:36,476 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:36,487 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-3bba9477-3d7d-4d95-83e8-1f676ede81ae\\request-b37dd856-90d3-46fb-88af-2f3466fdaf88'
+
+2024-05-01 22:49:36,510 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-3bba9477-3d7d-4d95-83e8-1f676ede81ae\\request-b611e847-3647-4ce2-92c5-46f64e885704'
+
+2024-05-01 22:49:37,524 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:37,752 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:37,846 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:49:37,864 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:50:01,494 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 22:52:45,761 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:45,776 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:47,587 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 100, in _save
+    pickle.dump(obj, out)
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:47,604 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:47,818 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-2fa4fc0a-e177-422b-8706-6c2511d82d96'
+
+2024-05-01 22:52:48,079 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:48,105 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 100, in _save
+    pickle.dump(obj, out)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:48,254 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-ecc2376e-618c-4d9a-bdf1-8708b9208ef1'
+
+2024-05-01 22:52:48,268 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-6125d1c9-0de6-44db-bad8-276261aec32c'
+
+2024-05-01 22:52:48,486 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-7692a7f5-40ed-451b-ba04-7afbb2167ffe'
+
+2024-05-01 22:52:48,505 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-fa1e7c79-56bc-4943-8a70-d9845cb38c73'
+
+2024-05-01 22:52:48,619 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 100, in _save
+    pickle.dump(obj, out)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:52:49,121 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-45c52186-9dfe-4b94-97c6-d001c31e8d39'
+
+2024-05-01 22:53:00,452 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 100, in _save
+    pickle.dump(obj, out)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 130, in response
+    self.proxy.storage.save_response(flow.request.id, response)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 117, in save_response
+    self._save(response, request_dir, 'response')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:01,082 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:01,128 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:01,209 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:02,186 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:02,477 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,058 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,064 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,079 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,124 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,148 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,155 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,242 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,488 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:03,492 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-c5f912e1-bd9b-4382-abc3-2f2d02db8507'
+
+2024-05-01 22:53:03,803 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-d8dfa8fa-1b4e-49b9-b53e-f41823349232'
+
+2024-05-01 22:53:04,147 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-50c9a89f-b108-496c-a76d-d1dd6cdafa2c'
+
+2024-05-01 22:53:04,157 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-9c877cbf-2dee-48de-af37-5c4ea754faf5'
+
+2024-05-01 22:53:04,579 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-f58299cf-e492-44e6-aa65-0288c0ea8384'
+
+2024-05-01 22:53:04,605 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-b5f58124-fd4f-4812-9284-ae2d339bd278'
+
+2024-05-01 22:53:04,665 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:04,835 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:04,957 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-277fbd24-f357-4653-857c-6d719da2490c'
+
+2024-05-01 22:53:04,963 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:05,056 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-9f491150-ae6f-4ede-a2e7-ede38d992ccd'
+
+2024-05-01 22:53:05,323 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-30f8d9ef-bcf2-48e8-b80b-3bf4cd92e26d'
+
+2024-05-01 22:53:05,330 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-fb5358e2-64ae-4098-b103-df2ed6348da2'
+
+2024-05-01 22:53:05,427 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-d2eb2d74-8df9-437a-8629-78355b35b68d'
+
+2024-05-01 22:53:05,433 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:05,677 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:05,691 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-30516abe-37e5-4019-9116-18456ee2896b'
+
+2024-05-01 22:53:05,720 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-48cd2989-1920-4d5d-90ed-941314570476'
+
+2024-05-01 22:53:05,745 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:06,317 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-3c3cd94b-4f45-4c41-be79-d6a86115a875'
+
+2024-05-01 22:53:06,388 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-fc74ebdf-c70b-486c-a671-9573d8e20119'
+
+2024-05-01 22:53:06,578 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-31059f35-d25b-46dc-93f6-0b7013aea63a'
+
+2024-05-01 22:53:06,627 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-f8e9efcd-b0f6-498d-9301-3c57d1461db1'
+
+2024-05-01 22:53:06,688 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-31b68803-174e-4d79-a06c-4865407a15f2'
+
+2024-05-01 22:53:07,247 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-3b92dde9-bbea-41ae-9a83-fc8188ecbdf6'
+
+2024-05-01 22:53:07,296 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-671a9213-ed58-4aa9-8a51-cbcb9b0280a6'
+
+2024-05-01 22:53:08,154 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-52fd8aee-db06-4c4a-893b-aa8ed5c770dd'
+
+2024-05-01 22:53:08,681 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-869b0b9c-0b43-4cfc-9cc9-b6a6d41e313f'
+
+2024-05-01 22:53:09,487 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-ff2fcfba-8a0b-4770-ba83-cbb2b38c9bd0'
+
+2024-05-01 22:53:10,096 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:10,312 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 93, in save_request
+    self._save(request, request_dir, 'request')
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 99, in _save
+    with open(os.path.join(dirname, filename), 'wb') as out:
+OSError: [Errno 28] No space left on device
+
+2024-05-01 22:53:12,815 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-f862c319-479d-4805-8b71-d178aa9ce512'
+
+2024-05-01 22:53:13,131 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-83af9700-1e61-415d-8a4d-5d7ffb8e9a1b'
+
+2024-05-01 22:53:13,579 - Error handling request
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\handler.py", line 67, in request
+    self.proxy.storage.save_request(request)
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\storage.py", line 90, in save_request
+    os.mkdir(request_dir)
+OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\.seleniumwire\\storage-59bd49c6-6bae-4e12-87ea-de6c5c0316d2\\request-52a88467-ea8e-4151-ba9c-7012a626a2ac'
+
+2024-05-01 22:53:13,830 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-01 22:57:18,712 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-02 00:22:15,791 - Error: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-02 15:08:03,786 - Error: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-02 15:08:18,174 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-02 16:04:03,625 - Error: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-02 16:56:31,094 - Error Account: Id - Adam14180@gmx.co.uk - Account is disable
