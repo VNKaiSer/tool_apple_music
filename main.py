@@ -21,6 +21,8 @@ class Tool_Exception:
     BOTH ="Thông tin thẻ bị sai"
     DIE = "This payment method can’t be used with the iTunes Store. Try again using another payment method."
     ACC_SPAM = "There was a problem when trying to add this payment method. Try again at a later time."
+    ISSUE_METHOD = "There is an issue with your payment method. Update your payment information to correct the problem and try again."
+    DEC = "Your payment method was declined. Please enter valid payment method information."
 
 class Config:
     #web
@@ -125,14 +127,15 @@ tool_exception = Tool_Exception()
 config = Config()
 def check_account_is_block(browser):
     try:
-        if_lid = browser.find_element(By.CSS_SELECTOR,"#aid-auth-widget-iFrame")
-        browser.switch_to.frame(if_lid)
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
+        print(text)
         if text == tool_exception.LOCK:
             return True
         else:
             return False    
-    except:
+    except Exception as e:
+            print(e)
             return False
 def check_account_login_invalid_password(browser):
     try:
@@ -162,7 +165,7 @@ option = {
 # Đổi instance qua popup login
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
-while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 limit 1")):
+while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 limit 1")): 
     browser = webdriver.Firefox(
         seleniumwire_options=option
     )
@@ -210,16 +213,18 @@ while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition
         #active_element.send_keys(Keys.ENTER)
         #time.sleep(3)
         # Kiểm tra trường hợp bị lock
-        
         if check_account_is_block(browser):
             logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
+            browser.close()
             continue
         
         if check_account_login_invalid_password(browser):
             logging.error("Error Account: Id - %s", str(data[0][1] +"-" +tool_exception.INVALID_PASSWORD))
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "SaiPass"}, condition=f"id = {data[0][0]}")
+            browser.close()
             continue
+        
         time.sleep(5)
         # Lần đầu đăng nhập
         try:
@@ -272,11 +277,21 @@ while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
 # Đợi cái frame cài đặt hiển thị lên 
+    
+
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
 
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
     browser.switch_to.frame(iframe_setting)
+    
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+    country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+    print(country)
+    if country != "United States":
+        db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
+        browser.close()
+        continue
     # click nút change payment 
     wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
@@ -312,11 +327,11 @@ while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition
     except Exception as e:
         print(e)
         browser.switch_to.default_content()
-        
         # run_add_card = False
         # browser.close()
         # break
     # Vào lại iframe thanh toán
+    browser.switch_to.default_content()
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
     browser.switch_to.frame(iframe_payment)
@@ -410,6 +425,18 @@ while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
                     run_add_card = False
                     browser.close()
+                case tool_exception.ISSUE_METHOD:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "die"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
+                case tool_exception.DEC:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
                 case _:
                     logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
         except NoSuchElementException as e:
