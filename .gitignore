@@ -3,7 +3,7 @@ __pycache__/
 .pytest_cache/
 .vscode/
 build/
-dist/
+# dist/
 ./.eggs/
 ./.mypy_cache/
 ./.nox/
