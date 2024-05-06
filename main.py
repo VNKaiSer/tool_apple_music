@@ -200,6 +200,12 @@ class MySQLDatabase:
             self.connection.commit()
         except Exception as e:
             print(e)
+    
+    def analysis_id_check(self):
+        query = "SELECT mail, password, ctr_ex, balance FROM mailCheck"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
             
         
     def close(self):
@@ -855,9 +861,11 @@ def run_check_delete():
             wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
             browser.find_element(By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
             db_instance.insert_mail_delete([data[0][1], data[0][2],"",country,"bin"])
+            browser.close()
         except Exception as e: # Không có thẻ 
             print(e)
             db_instance.insert_mail_delete([data[0][1], data[0][2],"",country,"none"])
+            browser.close()
             
 
 
@@ -985,7 +993,7 @@ def run_app_check():
     
 def run_app_delete():
     def run_tool():
-        run_app_delete()  # Call the main tool function
+        run_check_delete()  # Call the main tool function
         
     root.deiconify()
     def on_spin_change():
@@ -1000,7 +1008,8 @@ def run_app_delete():
                     all_thread[i-1].start()
                 else:
                     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
-        except ValueError:
+        except Exception as e:
+            print(e)
             messagebox.showerror("Error", "Nhập số tab không hợp lệ")
     # Hide the main window while running the tool
     # root.withdraw()
@@ -1110,7 +1119,33 @@ def export_success_pay():
 #     except Exception as e:
 #         print(e)
 #         messagebox.showerror("Thông báo", "Error: Xuất thất bại")
+def export_login_check_id():
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_id_check():
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '\n')
+                messagebox.showinfo("Thông báo", "Xuất thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
 
+
+def export_login_delete_id():
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_id_check():
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4] + '\n')
+                messagebox.showinfo("Thông báo", "Xuất thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
+        
 def open_error_pay():
     def selected_option(value):
         return value
@@ -1203,6 +1238,8 @@ analysis_menu.add_command(label='Xuất id thành công', command=export_success
 analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
 analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
+analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
+
 
 exit_menu = Menu(menu)
 menu.add_cascade(label='Exit', menu=exit_menu)
