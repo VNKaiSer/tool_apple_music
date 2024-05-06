@@ -3,3 +3,5 @@ selenium==4.5.0
 mysql-connector-python
 setuptools
 blinker==1.4
+pillow
+tk
