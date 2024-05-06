@@ -314,8 +314,8 @@ def run(browser):
             browser.switch_to.frame(iframe_auth)
         except Exception as e:
             logging.error("Error Tool: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
-        # continue
-            sys.exit()
+            continue
+            # sys.exit()
     
     #Nhập password
         try:   # Chọn tới vị trí con trỏ hiện tại
@@ -913,6 +913,7 @@ from PIL import Image, ImageTk
 import os
 import subprocess
 import concurrent.futures
+from utils import reg_apple_music as REG
 all_thread = []
 
 def add_id():
@@ -1267,6 +1268,8 @@ menu.add_cascade(label='Chức năng', menu=featuremenu)
 featuremenu.add_command(label='Login check', command=run_app_check)
 featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
 featuremenu.add_command(label='Login add', command=run_app)
+featuremenu.add_separator()
+featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)

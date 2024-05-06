@@ -7137,3 +7137,1504 @@ maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
 
 console.error: (new AbortError("IndexedDB: main/focus-experiments getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
 on.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715019689130	geckodriver	INFO	Listening on 127.0.0.1:61428
+1715019692218	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61429" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilem8fMf5"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715019692932	Marionette	INFO	Marionette enabled
+1715019693293	Marionette	INFO	Listening on port 61497
+WebDriver BiDi listening on ws://127.0.0.1:61429
+Read port: 61497
+1715019693688	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715019693733	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61427","sslProxy":"127.0.0.1:61427"}
+DevTools listening on ws://127.0.0.1:61429/devtools/browser/f4026ae1-6282-4228-aedf-db40abe5ccfb
+1715019699998	Marionette	INFO	Stopped listening on port 61497
+Dynamically enable window occlusion 1
+console.error: (new Error("IndexedDB: main/fingerprinting-protection-overrides list() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new Error("IndexedDB: main/partitioning-exempt-urls list() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new AbortError("IndexedDB: main/query-stripping list() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715020204179	geckodriver	INFO	Listening on 127.0.0.1:53411
+1715020207235	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53412" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile41Z0Iu"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715020207668	Marionette	INFO	Marionette enabled
+1715020207761	Marionette	INFO	Listening on port 53460
+WebDriver BiDi listening on ws://127.0.0.1:53412
+Read port: 53460
+1715020208166	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715020208244	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53410","sslProxy":"127.0.0.1:53410"}
+DevTools listening on ws://127.0.0.1:53412/devtools/browser/2119b87c-c230-49ea-bfce-72494a9d6f66
+1715020237749	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://www.google.com/xjs/_/js/k=xjs.s.en_GB.GKsYTFmIhyw.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEBIIAgAAoAAAAAQAAAAAAACAIQAACACAALwHoEIAAQQEAAwEEATw858AAAAAAAEAACBgAgAAAHABAIIAEAQAAAIAAAAKAAAAAAAAAAAAADiAAPQDAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAH4HnAcJDCAgAAAAAAAAAAAABAABMEc0D6AwKAAAAAAAAAAAAAAAAAqXTi8hAAIAE/d=1/ed=1/dg=2/rs=ACT90oG7D8NmvQe8mizUQHjrS8N1W5V0Fw/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl, line 452: Script terminated by timeout at:
+b@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.GKsYTFmIhyw.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEBIIAgAAoAAAAAQAAAAAAACAIQAACACAALwHoEIAAQQEAAwEEATw858AAAAAAAEAACBgAgAAAHABAIIAEAQAAAIAAAAKAAAAAAAAAAAAADiAAPQDAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAH4HnAcJDCAgAAAAAAAAAAAABAABMEc0D6AwKAAAAAAAAAAAAAAAAAqXTi8hAAIAE/d=1/ed=1/dg=2/rs=ACT90oG7D8NmvQe8mizUQHjrS8N1W5V0Fw/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:452:40
+
+JavaScript error: http://www.whatismyproxy.com/, line 269: TypeError: /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(...) is null
+JavaScript error: http://www.whatismyproxy.com/, line 269: TypeError: /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(...) is null
+JavaScript error: http://www.whatismyproxy.com/, line 269: TypeError: /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(...) is null
+JavaScript error: http://www.whatismyproxy.com/, line 269: TypeError: /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(...) is null
+console.error: ({})
+JavaScript error: http://www.whatismyproxy.com/, line 1: ReferenceError: GUnload is not defined
+1715020251227	Marionette	INFO	Stopped listening on port 53460
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:569:17
+
+console.error: (new AbortError("IndexedDB: main/personality-provider-models getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715020282651	geckodriver	INFO	Listening on 127.0.0.1:54616
+1715020285701	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54617" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileSQPEtY"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715020286115	Marionette	INFO	Marionette enabled
+1715020286207	Marionette	INFO	Listening on port 54664
+Read port: 54664
+WebDriver BiDi listening on ws://127.0.0.1:54617
+1715020286337	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715020286446	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54615","sslProxy":"127.0.0.1:54615"}
+DevTools listening on ws://127.0.0.1:54617/devtools/browser/29df2637-a55d-4bf2-a898-6d404ac5c4e9
+1715020316162	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+ing back to a synchronous m1715020635882	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59722" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilezdX8nk"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715020636434	Marionette	INFO	Marionette enabled
+1715020636542	Marionette	INFO	Listening on port 59773
+WebDriver BiDi listening on ws://127.0.0.1:59722
+Read port: 59773
+1715020636861	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715020636886	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59720","sslProxy":"127.0.0.1:59720"}
+DevTools listening on ws://127.0.0.1:59722/devtools/browser/9867cd85-adf2-409a-bf58-f3da47aefead
+1715020666602	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715020684720	Marionette	INFO	Stopped listening on port 59773
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/sites-classification sync interrupted by shutdown
+console.warn: services.settings: main/anti-tracking-url-decoration sync interrupted by shutdown
+console.warn: services.settings: main/public-suffix-list sync interrupted by shutdown
+console.error: (new AbortError("IndexedDB: main/pioneer-content-v1 getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715020869953	geckodriver	INFO	Listening on 127.0.0.1:62872
+1715020873033	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62873" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileP7aOXD"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715020873487	Marionette	INFO	Marionette enabled
+1715020873592	Marionette	INFO	Listening on port 62922
+WebDriver BiDi listening on ws://127.0.0.1:62873
+Read port: 62922
+1715020873985	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715020874087	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62871","sslProxy":"127.0.0.1:62871"}
+DevTools listening on ws://127.0.0.1:62873/devtools/browser/c03a5b02-0cf9-450e-b128-5833ef070358
+1715020903640	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715020920591	Marionette	INFO	Stopped listening on port 62922
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/search-config-overrides sync interrupted by shutdown
+console.warn: services.settings: main/search-config-overrides-v2 sync interrupted by shutdown
+console.warn: services.settings: main/normandy-recipes-capabilities sync interrupted by shutdown
+console.warn: services.settings: main/translations-models sync interrupted by shutdown
+console.warn: services.settings: main/cookie-banner-rules-list sync interrupted by shutdown
+console.warn: services.settings: main/sites-classification sync interrupted by shutdown
+console.error: (new AbortError("IndexedDB: main/focus-experiments getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715021016474	geckodriver	INFO	Listening on 127.0.0.1:65100
+1715021019530	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "65101" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilex44Ahg"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715021019979	Marionette	INFO	Marionette enabled
+1715021020078	Marionette	INFO	Listening on port 65148
+WebDriver BiDi listening on ws://127.0.0.1:65101
+Read port: 65148
+1715021020341	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715021020396	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:65099","sslProxy":"127.0.0.1:65099"}
+DevTools listening on ws://127.0.0.1:65101/devtools/browser/dc71ae41-ef0b-47c0-9978-504dd9514696
+1715021050120	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715021083493	Marionette	INFO	Stopped listening on port 65148
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/websites-with-shared-credential-backends sync interrupted by shutdown
+console.warn: services.settings: main/language-dictionaries sync interrupted by shutdown
+console.warn: services.settings: main/password-recipes sync interrupted by shutdown
+console.error: (new Error("IndexedDB: main/password-rules getLastModified() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715021131331	geckodriver	INFO	Listening on 127.0.0.1:58968
+1715021134378	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58969" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile4zjrfk"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715021134818	Marionette	INFO	Marionette enabled
+1715021134934	Marionette	INFO	Listening on port 59016
+WebDriver BiDi listening on ws://127.0.0.1:58969
+Read port: 59016
+1715021135271	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715021135296	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58967","sslProxy":"127.0.0.1:58967"}
+DevTools listening on ws://127.0.0.1:58969/devtools/browser/1aa2fa21-7efc-445e-819f-f377dd964681
+1715021165778	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: https://music.apple.com/static-commerce/js/index.fc3d3d10.js, line 1: ChunkLoadError: Loading chunk 5340 failed.
+(error: https://music.apple.com/static-commerce/js/billing-components-EditBillingPresentation-vue.9b597122.js)
+JavaScript error: https://music.apple.com/static-commerce/js/index.fc3d3d10.js, line 1: ChunkLoadError: Loading chunk 8711 failed.
+(error: https://music.apple.com/static-commerce/js/8711.fc939e85.js)
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715021181890	Marionette	INFO	Stopped listening on port 59016
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/websites-with-shared-credential-backends sync interrupted by shutdown
+console.warn: services.settings: main/language-dictionaries sync interrupted by shutdown
+console.warn: services.settings: main/password-recipes sync interrupted by shutdown
+console.warn: services.settings: main/password-rules sync interrupted by shutdown
+console.warn: services.settings: main/translations-identification-models sync interrupted by shutdown
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/url-classifier-skip-urls sync interrupted by shutdown
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.warn: services.settings: main/search-config-icons sync interrupted by shutdown
+console.warn: services.settings: main/search-config sync interrupted by shutdown
+console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
+console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
+console.error: (new AbortError("IndexedDB: main/ml-onnx-runtime getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715021189247	geckodriver	INFO	Listening on 127.0.0.1:59804
+1715021192297	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59805" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile1A1Nuo"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715021192727	Marionette	INFO	Marionette enabled
+1715021192847	Marionette	INFO	Listening on port 59854
+WebDriver BiDi listening on ws://127.0.0.1:59805
+Read port: 59854
+1715021193146	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715021193199	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59803","sslProxy":"127.0.0.1:59803"}
+DevTools listening on ws://127.0.0.1:59805/devtools/browser/e0d7c406-8b04-454c-b071-ded5bfb982b4
+1715021222765	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1715021547124	Marionette	INFO	Stopped listening on port 59854
+Dynamically enable window occlusion 1
+c.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: LoginRecipes: "Falling back to a synchronous m1715021545683	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64806" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileB4DJBP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715021546693	Marionette	INFO	Marionette enabled
+1715021547260	Marionette	INFO	Listening on port 64861
+WebDriver BiDi listening on ws://127.0.0.1:64806
+Read port: 64861
+1715021547704	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715021547829	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:64804","sslProxy":"127.0.0.1:64804"}
+DevTools listening on ws://127.0.0.1:64806/devtools/browser/e3577269-41ee-41c1-8b01-96ae724d3c8f
+1715021576590	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1715022273178	Marionette	INFO	Stopped listening on port 64861
+Dynamically enable window occlusion 1
+lised: {"proxyType":"manual","httpProxy":"127.0.0.1:53400","sslProxy":"127.0.0.1:53400"}
+DevTools listening on ws://127.0.0.1:53402/devtools/browser/bc8c5c87-2955-4e31-8984-156c6dbeca34
+1715021965868	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security1715022259637	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57471" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileYDcjhr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715022260117	Marionette	INFO	Marionette enabled
+1715022260237	Marionette	INFO	Listening on port 57542
+Read port: 57542
+WebDriver BiDi listening on ws://127.0.0.1:57471
+1715022260353	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715022260428	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:57469","sslProxy":"127.0.0.1:57469"}
+DevTools listening on ws://127.0.0.1:57471/devtools/browser/3f7525c7-429f-42f4-949b-b2e8a9159b96
+1715022290248	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+Exiting due to channel error.
+Exiting due to channel error.
+15022447694	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60036" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileYvdME2"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715022448191	Marionette	INFO	Marionette enabled
+1715022448280	Marionette	INFO	Listening on port 60083
+WebDriver BiDi listening on ws://127.0.0.1:60036
+Read port: 60083
+1715022448573	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715022448657	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60034","sslProxy":"127.0.0.1:60034"}
+DevTools listening on ws://127.0.0.1:60036/devtools/browser/55d5ce80-d391-4bbc-a655-9d3deb2c2578
+1715022479071	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+Exiting due to channel error.
+1715022498468	geckodriver	INFO	Listening on 127.0.0.1:60728
+1715022501530	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60729" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilevc0B8V"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715022501973	Marionette	INFO	Marionette enabled
+1715022502078	Marionette	INFO	Listening on port 60777
+WebDriver BiDi listening on ws://127.0.0.1:60729
+Read port: 60777
+1715022502330	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715022502436	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60727","sslProxy":"127.0.0.1:60727"}
+DevTools listening on ws://127.0.0.1:60729/devtools/browser/9a00af7b-ce34-4b8a-96db-ced356ece889
+1715022532151	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715022878997	Marionette	INFO	Stopped listening on port 60777
+Dynamically enable window occlusion 1
+2626508	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62492","sslProxy":"127.0.0.1:62492"}
+DevTools listening on ws://127.0.0.1:62494/devtools/browser/c08d7e22-472d-4d22-aef0-3e2d3959bbca
+1715022656057	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+ir/n<@https://music.apple.com/assets/index-d0fe371b.js:4:42657
+ir@https://music.apple.com/assets/index-d0fe371b.js:4:42638
+get subscriptionStatus@https://music.apple.com/assets/index-d0fe371b.js:9:216881
+addMetricsFields@https://music.apple.com/assets/index-d0fe371b.js:9:609818
+addMetricsFields/<@https://music.apple.com/assets/index-d0fe371b.js:4:66143
+addMetricsFields@https://music.apple.com/assets/index-d0fe371b.js:4:66083
+process@https://music.apple.com/assets/index-d0fe371b.js:4:69825
+processEvent@https://music.apple.com/assets/index-d0fe371b.js:4:77580
+recordCustomEvent@https://music.apple.com/assets/index-d0fe371b.js:4:77633
+exit@https://music.apple.com/assets/index-d0fe371b.js:4:77201
+onVisibilityChange@https://music.apple.com/assets/index-d0fe371b.js:4:77441
+
+1715022877750	Marionette	INFO	Stopped listening on port 62545
+Dynamically enable window occlusion 1
+em addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 105: Script terminated by timeout at:
+yw/<@https://music.apple.com/assets/index-d0fe371b.js:105:10184
+i@https://music.apple.com/assets/index-d0fe371b.js:105:9648
+
+1715022876549	Marionette	INFO	Stopped listening on port 63630
+Dynamically enable window occlusion 1
+1715022887804	geckodriver	INFO	Listening on 127.0.0.1:49966
+1715022891173	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49967" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileyJDKc7"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715022891790	Marionette	INFO	Marionette enabled
+1715022892013	Marionette	INFO	Listening on port 50084
+WebDriver BiDi listening on ws://127.0.0.1:49967
+Read port: 50084
+1715022892294	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715022892347	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:49965","sslProxy":"127.0.0.1:49965"}
+DevTools listening on ws://127.0.0.1:49967/devtools/browser/72f3d8b5-a78c-4671-8ea8-bbbf802a8114
+1715022921814	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+ror SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Exiting due to channel error.
+15023144332	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56233" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileVYnmZb"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023144775	Marionette	INFO	Marionette enabled
+1715023144863	Marionette	INFO	Listening on port 56287
+WebDriver BiDi listening on ws://127.0.0.1:56233
+Read port: 56287
+1715023145152	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023145235	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:56231","sslProxy":"127.0.0.1:56231"}
+DevTools listening on ws://127.0.0.1:56233/devtools/browser/259f02c3-d9fc-4dd0-bb36-99b4a363e53b
+1715023174817	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+5023232766	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:57478","sslProxy":"127.0.0.1:57478"}
+DevTools listening on ws://127.0.0.1:57480/devtools/browser/8a520193-9595-44c1-82b3-6698cca689aa
+1715023262634	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Exiting due to channel error.
+15023325450	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58845" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilejpM142"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023326132	Marionette	INFO	Marionette enabled
+1715023326233	Marionette	INFO	Listening on port 58895
+WebDriver BiDi listening on ws://127.0.0.1:58845
+Read port: 58895
+1715023326492	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023326558	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58843","sslProxy":"127.0.0.1:58843"}
+DevTools listening on ws://127.0.0.1:58845/devtools/browser/cf53252b-2f2e-4e39-8fd9-761ff004bab1
+JavaScript warning: https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js, line 2: Script terminated by timeout at:
+W@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:2:8033
+@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:2:8071
+
+JavaScript error: https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-1ec6e574.js, line 12: TypeError: s is undefined
+JavaScript error: https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-1ec6e574.js, line 12: TypeError: s is undefined
+JavaScript error: https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-1ec6e574.js, line 12: TypeError: s is undefined
+JavaScript error: https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-1ec6e574.js, line 12: TypeError: s is undefined
+JavaScript error: https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-1ec6e574.js, line 12: TypeError: s is undefined
+JavaScript error: , line 0: TypeError: error loading dynamically imported module: https://music.apple.com/assets/index-d009e70a.js
+JavaScript error: resource://devtools/client/jsonview/Sniffer.sys.mjs, line 53: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIChannel.contentType]
+1715023343189	Marionette	INFO	Stopped listening on port 58895
+Dynamically enable window occlusion 1
+1715023359299	geckodriver	INFO	Listening on 127.0.0.1:59368
+1715023362351	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59369" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileNJreTM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023362803	Marionette	INFO	Marionette enabled
+1715023362901	Marionette	INFO	Listening on port 59415
+WebDriver BiDi listening on ws://127.0.0.1:59369
+Read port: 59415
+1715023363175	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023363224	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59367","sslProxy":"127.0.0.1:59367"}
+DevTools listening on ws://127.0.0.1:59369/devtools/browser/21b3741c-3bd8-4b56-9a42-2f0c416b6deb
+1715023392894	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Listening on 127.0.0.1:60961
+1715023466664	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60962" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileKwKmRT"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023467138	Marionette	INFO	Marionette enabled
+1715023467245	Marionette	INFO	Listening on port 61018
+WebDriver BiDi listening on ws://127.0.0.1:60962
+Read port: 61018
+1715023467717	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023468038	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60960","sslProxy":"127.0.0.1:60960"}
+DevTools listening on ws://127.0.0.1:60962/devtools/browser/58b7e47c-a3a5-412d-8aa2-b7fca04cc7f7
+1715023497432	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Listening on 127.0.0.1:61971
+1715023535885	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61972" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileaL6Imm"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023536607	Marionette	INFO	Marionette enabled
+1715023536706	Marionette	INFO	Listening on port 62033
+WebDriver BiDi listening on ws://127.0.0.1:61972
+Read port: 62033
+1715023537351	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023537413	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61970","sslProxy":"127.0.0.1:61970"}
+DevTools listening on ws://127.0.0.1:61972/devtools/browser/fc92d736-9b12-48d3-9e48-8bc42081b8d2
+1715023566631	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+KUh"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023744550	Marionette	INFO	Marionette enabled
+1715023744657	Marionette	INFO	Listening on port 65223
+WebDriver BiDi listening on ws://127.0.0.1:65168
+Read port: 65223
+1715023744932	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023745016	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:65166","sslProxy":"127.0.0.1:65166"}
+DevTools listening on ws://127.0.0.1:65168/devtools/browser/077c5179-7030-4d02-bb10-93a1ad371e0f
+JavaScript error: resource://devtools/client/jsonview/Sniffer.sys.mjs, line 50: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIChannel.contentType]
+1715023751662	Marionette	INFO	Stopped listening on port 65223
+Dynamically enable window occlusion 1
+1715023783436	geckodriver	INFO	Listening on 127.0.0.1:50417
+1715023786496	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50418" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileDGmwMc"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023786930	Marionette	INFO	Marionette enabled
+1715023787728	Marionette	INFO	Listening on port 50465
+WebDriver BiDi listening on ws://127.0.0.1:50418
+Read port: 50465
+1715023788031	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023788106	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:50416","sslProxy":"127.0.0.1:50416"}
+DevTools listening on ws://127.0.0.1:50418/devtools/browser/1b2ffbc7-6a6c-4ba4-bd45-11c0e1de4520
+1715023817070	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Listening on 127.0.0.1:51553
+1715023864672	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51554" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileYuX7Kl"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023865156	Marionette	INFO	Marionette enabled
+1715023865266	Marionette	INFO	Listening on port 51613
+Read port: 51613
+WebDriver BiDi listening on ws://127.0.0.1:51554
+1715023865401	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023865460	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:51552","sslProxy":"127.0.0.1:51552"}
+DevTools listening on ws://127.0.0.1:51554/devtools/browser/261769f4-c88d-4882-b963-20656c4cbe46
+1715023895184	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Exiting due to channel error.
+15023965811	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52989" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileHhyzIQ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023966425	Marionette	INFO	Marionette enabled
+1715023966543	Marionette	INFO	Listening on port 53043
+WebDriver BiDi listening on ws://127.0.0.1:52989
+Read port: 53043
+1715023966921	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023967074	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:52987","sslProxy":"127.0.0.1:52987"}
+Exiting due to channel error.
+1715023975224	geckodriver	INFO	Listening on 127.0.0.1:53168
+1715023978254	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53169" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilelVQclJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715023978935	Marionette	INFO	Marionette enabled
+1715023979040	Marionette	INFO	Listening on port 53221
+WebDriver BiDi listening on ws://127.0.0.1:53169
+Read port: 53221
+1715023979289	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715023979364	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:53167","sslProxy":"127.0.0.1:53167"}
+DevTools listening on ws://127.0.0.1:53169/devtools/browser/aaa13c18-ac7d-4ca2-9446-78d86f0e407e
+1715024009260	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+NFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55093" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileeGQ3nT"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715024114793	Marionette	INFO	Marionette enabled
+1715024114884	Marionette	INFO	Listening on port 55139
+WebDriver BiDi listening on ws://127.0.0.1:55093
+Read port: 55139
+1715024115214	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715024115337	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55091","sslProxy":"127.0.0.1:55091"}
+DevTools listening on ws://127.0.0.1:55093/devtools/browser/1b8fccd5-8c5c-47f4-acc5-6e198e856fe3
+1715024144845	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+Exiting due to channel error.
+Listening on 127.0.0.1:58829
+1715024387182	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58830" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileB20B28"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715024387652	Marionette	INFO	Marionette enabled
+1715024387792	Marionette	INFO	Listening on port 58878
+Read port: 58878
+WebDriver BiDi listening on ws://127.0.0.1:58830
+1715024387957	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715024388035	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58828","sslProxy":"127.0.0.1:58828"}
+Exiting due to channel error.
+1715024403427	geckodriver	INFO	Listening on 127.0.0.1:59157
+1715024406485	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59158" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileaxJDEj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715024406906	Marionette	INFO	Marionette enabled
+1715024406995	Marionette	INFO	Listening on port 63443
+Read port: 63443
+WebDriver BiDi listening on ws://127.0.0.1:59158
+1715024407122	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715024407203	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59156","sslProxy":"127.0.0.1:59156"}
+DevTools listening on ws://127.0.0.1:59158/devtools/browser/9c867980-005a-4688-a79f-3e12edf76edc
+1715024437302	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+rn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715024726543	Marionette	INFO	Stopped listening on port 65029
+Dynamically enable window occlusion 1
+4661121	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:50769","sslProxy":"127.0.0.1:50769"}
+DevTools listening on ws://127.0.0.1:50771/devtools/browser/7f085b55-cd4e-4e29-bed8-ee04a91cee11
+1715024690884	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous m1715024725073	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58917" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozpro171502472521console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715024725646	Marionette	INFO	Marionette enabled
+1715024725742	Marionette	INFO	Listening on port 58973
+WebDriver BiDi listening on ws://127.0.0.1:58917
+Read port: 58973
+1715024726085	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715024726148	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58915","sslProxy":"127.0.0.1:58915"}
+DevTools listening on ws://127.0.0.1:58917/devtools/browser/bffde664-f698-4ad9-9514-369dd0d40900
+1715024755774	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/musickit-components.esm.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/commerce/authenticate?product=music&isModal=true&locale=en-US&iso2code=us&modalMode=overlay&shouldPopModal=true&devToken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzE0NjY2MTgyLCJleHAiOjE3MjE5MjM3ODIsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.4DaIKGfzkhSpwi1_x2b89PKrt0AlaG_2-xqFU4rPjJnd8x8fUvgdCN-iHCp6vTp_3JoMtPp7hcxUbUGv7QpNYw&authType=web&authDisplayType=inline&useRelativeIframeSrc=true. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/translations-89980bd9.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/assets/index-d009e70a.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-8402e25d.js. Code 2152398920.
+SourceActor threw an exception: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+Stack: onResponse@resource://devtools/shared/DevToolsUtils.js:612:16
+onStopRequest@resource://gre/modules/NetUtil.sys.mjs:124:18
+Line: 612, column: 16
+console.error: (new Error("Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.", "resource://devtools/shared/DevToolsUtils.js", 612))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 612: Error: Failed to fetch https://music.apple.com/includes/js-cdn/musickit/v3/components/musickit-components/p-bd745b16.js. Code 2152398920.
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:321:10
+
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.warn: "Listener for event 'frame' did not return a promise."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.error: "buildList failed: " ({})
+ronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715024962068	geckodriver	INFO	Listening on 127.0.0.1:62184
+1715024965119	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62185" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilewKszxW"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715024965582	Marionette	INFO	Marionette enabled
+1715024965706	Marionette	INFO	Listening on port 62232
+WebDriver BiDi listening on ws://127.0.0.1:62185
+Read port: 62232
+1715024965987	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715024966043	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62182","sslProxy":"127.0.0.1:62182"}
+DevTools listening on ws://127.0.0.1:62185/devtools/browser/be920ae8-1b10-4f9d-9b10-974a9b108b77
+1715024995603	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025076995	geckodriver	INFO	Listening on 127.0.0.1:51322
+1715025080069	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51323" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileFAUsXt"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025080521	Marionette	INFO	Marionette enabled
+1715025080641	Marionette	INFO	Listening on port 51370
+WebDriver BiDi listening on ws://127.0.0.1:51323
+Read port: 51370
+1715025080978	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025081042	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:51321","sslProxy":"127.0.0.1:51321"}
+DevTools listening on ws://127.0.0.1:51323/devtools/browser/563d58a2-5250-4ae1-9dff-f861a9ebf7f0
+1715025110618	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025166940	geckodriver	INFO	Listening on 127.0.0.1:52698
+1715025170021	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52699" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile7YtBdM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025170512	Marionette	INFO	Marionette enabled
+1715025170617	Marionette	INFO	Listening on port 52755
+Read port: 52755
+WebDriver BiDi listening on ws://127.0.0.1:52699
+1715025170818	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025170956	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:52697","sslProxy":"127.0.0.1:52697"}
+DevTools listening on ws://127.0.0.1:52699/devtools/browser/7ffbcfd3-1035-41e3-8e6b-c26e4e2a0729
+1715025201279	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025289456	geckodriver	INFO	Listening on 127.0.0.1:54536
+1715025292521	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54537" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileR3SBHp"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025293015	Marionette	INFO	Marionette enabled
+1715025293109	Marionette	INFO	Listening on port 54589
+WebDriver BiDi listening on ws://127.0.0.1:54537
+Read port: 54589
+1715025293402	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025293470	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54535","sslProxy":"127.0.0.1:54535"}
+DevTools listening on ws://127.0.0.1:54537/devtools/browser/bbaa7461-936d-4aae-86c6-2068c713e6bd
+1715025323314	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025388697	Marionette	INFO	Stopped listening on port 54589
+Dynamically enable window occlusion 1
+rt" "55670" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileS77TCJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025367618	Marionette	INFO	Marionette enabled
+1715025367731	Marionette	INFO	Listening on port 55730
+Read port: 55730
+WebDriver BiDi listening on ws://127.0.0.1:55670
+1715025367866	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025367927	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55668","sslProxy":"127.0.0.1:55668"}
+DevTools listening on ws://127.0.0.1:55670/devtools/browser/b97f4c88-767b-4e7b-809e-1229e94c1b97
+1715025397946	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025448515	geckodriver	INFO	Listening on 127.0.0.1:56935
+1715025451577	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56936" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileRcuO19"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025452010	Marionette	INFO	Marionette enabled
+1715025452103	Marionette	INFO	Listening on port 56989
+WebDriver BiDi listening on ws://127.0.0.1:56936
+Read port: 56989
+1715025452394	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025452446	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:56934","sslProxy":"127.0.0.1:56934"}
+DevTools listening on ws://127.0.0.1:56936/devtools/browser/8d5ccef2-6966-48cb-94ff-cb2c9714a0b4
+1715025482044	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715025516607	geckodriver	INFO	Listening on 127.0.0.1:57921
+1715025519668	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57922" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile3OAkNr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025520161	Marionette	INFO	Marionette enabled
+1715025520254	Marionette	INFO	Listening on port 57979
+WebDriver BiDi listening on ws://127.0.0.1:57922
+Read port: 57979
+1715025520488	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025520585	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:57920","sslProxy":"127.0.0.1:57920"}
+DevTools listening on ws://127.0.0.1:57922/devtools/browser/f4cf8135-beb1-425c-9e17-637552a72a71
+1715025525890	Marionette	INFO	Stopped listening on port 57979
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.error: services.settings: 
+  main/fingerprinting-protection-overrides Signature failed  TypeError: NetworkError: Network request failed
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
