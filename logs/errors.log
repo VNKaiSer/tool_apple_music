@@ -4013,3 +4013,1331 @@ OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISE
 2024-05-06 13:13:34,334 - Error Account: Id -  MaeganPfeifer@hotmail.com This Apple ID has been locked for security reasons.
 2024-05-06 13:15:18,151 - Error Account: Id -  Harley31150@gmx.fr This Apple ID has been locked for security reasons.
 2024-05-06 13:15:55,770 - Error Account: Id -  Hendricks2821orcs@gmail.com This Apple ID has been locked for security reasons.
+2024-05-06 15:11:28,031 - Error Account: Id - Henry52473@gmx.hk-2FA
+2024-05-06 15:11:37,255 - 127.0.0.1:62327: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,296 - 127.0.0.1:62291: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,312 - 127.0.0.1:62294: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,387 - 127.0.0.1:62292: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,432 - 127.0.0.1:62289: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,492 - 127.0.0.1:62285: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,511 - 127.0.0.1:62284: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,511 - 127.0.0.1:62295: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,553 - 127.0.0.1:62273: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,673 - 127.0.0.1:62290: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,718 - 127.0.0.1:62326: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,732 - 127.0.0.1:62279: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,789 - 127.0.0.1:62286: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,810 - 127.0.0.1:62283: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,871 - 127.0.0.1:62268: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,883 - 127.0.0.1:62280: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,900 - 127.0.0.1:62272: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,970 - 127.0.0.1:62274: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,991 - 127.0.0.1:62287: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:37,998 - 127.0.0.1:62271: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:38,077 - 127.0.0.1:62270: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:38,136 - 127.0.0.1:62267: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:38,280 - 127.0.0.1:62276: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:38,295 - 127.0.0.1:62278: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:38,330 - 127.0.0.1:62277: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:39,365 - 127.0.0.1:62288: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:39,612 - 127.0.0.1:62275: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:11:40,063 - 127.0.0.1:62281: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 196, in peek
+    return self.o._sock.recv(length, socket.MSG_PEEK)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 254, in handle_upstream_connect
+    return layer()
+           ^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 103, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 278, in __call__
+    self._establish_tls_with_client_and_server()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 368, in _establish_tls_with_client_and_server
+    self._establish_tls_with_client()
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 381, in _establish_tls_with_client
+    self.client_conn.convert_to_tls(
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\connections.py", line 140, in convert_to_tls
+    client_hello = tls.ClientHello.from_file(self.rfile)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 473, in from_file
+    raw_client_hello = get_client_hello(client_conn)[4:]  # exclude handshake header.
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tls.py", line 406, in get_client_hello
+    record_header = rfile.peek(offset + 5)[offset:]
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_apple_music-REG\myenv\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 198, in peek
+    raise exceptions.TcpException(repr(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)
+
+2024-05-06 15:15:27,883 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:30:24,465 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:31:05,524 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:39:30,201 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:39:48,928 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:36,790 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:36,933 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:37,057 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:37,150 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:37,631 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-06 15:44:55,263 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy

@@ -212,6 +212,25 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
+
+    def start_tool(self):
+        query = "UPDATE operator SET run = 'Y'"
+        self.cursor.execute(query)
+        self.connection.commit()
+    
+    def close_tool(self):
+        query = "UPDATE operator SET run = 'N'"
+        self.cursor.execute(query)
+        self.connection.commit()
+        
+    def check_operator_run(self):
+        query = "SELECT run FROM operator"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        if result[0][0] == 'Y':
+            return True
+        else:
+            return False
         
     def close(self):
         self.connection.close()
@@ -261,6 +280,8 @@ db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 def run():
     while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 and isRunning = 'N' limit 1")): 
+        if db_instance.check_operator_run() == False:
+            break
         db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
         time.sleep(2)
         browser = webdriver.Firefox(
@@ -565,6 +586,8 @@ def run():
 
 def run_check():
     while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="loginCheck = 'Y' and isRunningLoginCheck = 'N' limit 1")): 
+        if db_instance.check_operator_run() == False:
+            break
         db_instance.update_data(table_name="mail", set_values={"isRunningLoginCheck": "Y"}, condition="id = %s" % data[0][0])
         time.sleep(2)
         browser = webdriver.Firefox(
@@ -705,6 +728,8 @@ def run_check_delete():
     while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="loginDelete = 'Y' and isRunningLoginDelete = 'N' limit 1")): 
         db_instance.update_data(table_name="mail", set_values={"isRunningLoginDelete": "Y"}, condition="id = %s" % data[0][0])
         time.sleep(2)
+        if db_instance.check_operator_run() == False:
+            break
         browser = webdriver.Firefox(
             seleniumwire_options=option
         )
@@ -931,12 +956,13 @@ def run_app():
             value = int(value)
             for i in range(1, value + 1):
                 time.sleep(1)
+                threading.Thread(target=run_tool).start()
                 # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                if len(all_thread) < value or not all_thread[i-1].is_alive():
-                    all_thread.append(threading.Thread(target=run_tool))
-                    all_thread[i-1].start()
-                else:
-                    messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
+                # if len(all_thread) < value or not all_thread[i-1].is_alive():
+                #     all_thread.append(threading.Thread(target=run_tool))
+                #     all_thread[i-1].start()
+                # else:
+                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
         except ValueError:
             messagebox.showerror("Error", "Nhập số tab không hợp lệ")
     # Hide the main window while running the tool
@@ -967,19 +993,20 @@ def run_app_check():
         root.deiconify()
     def on_spin_change():
         value = spinbox.get()
+        
         try:
             value = int(value)
             for i in range(1, value + 1):
                 time.sleep(1)
+                threading.Thread(target=run_tool).start()
                 # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                if len(all_thread) < value or not all_thread[i-1].is_alive():
-                    all_thread.append(threading.Thread(target=run_tool))
-                    all_thread[i-1].start()
-                else:
-                    messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
+                # if len(all_thread) < value or not all_thread[i-1].is_alive():
+                #     all_thread.append(threading.Thread(target=run_tool))
+                #     all_thread[i-1].start()
+                # else:
+                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
         except ValueError:
             messagebox.showerror("Error", "Nhập số tab không hợp lệ")
-    # Hide the main window while running the tool
     # root.withdraw()
     image_label.place_forget()
     analysis_frame.place_forget()
@@ -1007,12 +1034,13 @@ def run_app_delete():
             value = int(value)
             for i in range(1, value + 1):
                 time.sleep(1)
+                threading.Thread(target=run_tool).start()
                 # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                if len(all_thread) < value or not all_thread[i-1].is_alive():
-                    all_thread.append(threading.Thread(target=run_tool))
-                    all_thread[i-1].start()
-                else:
-                    messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
+                # if len(all_thread) < value or not all_thread[i-1].is_alive():
+                #     all_thread.append(threading.Thread(target=run_tool))
+                #     all_thread[i-1].start()
+                # else:
+                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
         except Exception as e:
             print(e)
             messagebox.showerror("Error", "Nhập số tab không hợp lệ")
@@ -1150,7 +1178,15 @@ def export_login_delete_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
-        
+
+
+def open_tool():
+    db_instance.start_tool()
+    messagebox.showinfo("Thông báo", "Mở tool thành công hãy thực hiện chức năng")
+
+def close_tool():
+    db_instance.close_tool()
+    messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
 def open_error_pay():
     def selected_option(value):
         return value
@@ -1246,6 +1282,10 @@ analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 
+setting_menu = Menu(menu)
+menu.add_cascade(label='Cài đặt', menu=setting_menu)
+setting_menu.add_command(label='Mở tool', command=open_tool)
+setting_menu.add_command(label='Dừng tool', command=close_tool)
 
 exit_menu = Menu(menu)
 menu.add_cascade(label='Exit', menu=exit_menu)
