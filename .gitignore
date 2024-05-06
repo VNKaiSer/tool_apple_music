@@ -9,4 +9,4 @@ build/
 ./.nox/
 main.spec
 tool_apple_music.rar
-myenv/
+# myenv/
