@@ -206,7 +206,12 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
-            
+
+    def analysis_id_delete(self):
+        query = "SELECT mail, pass, ex , ct, have_card FROM mailDelete"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
         
     def close(self):
         self.connection.close()
@@ -1125,7 +1130,7 @@ def export_login_check_id():
         if file_path:
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_id_check():
-                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '\n')
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + str(data[3]) + '\n')
                 messagebox.showinfo("Thông báo", "Xuất thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
@@ -1138,7 +1143,7 @@ def export_login_delete_id():
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
             with open(file_path, 'w') as file:
-                for data in db_instance.analysis_id_check():
+                for data in db_instance.analysis_id_delete():
                     file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3] + '|' + data[4] + '\n')
                 messagebox.showinfo("Thông báo", "Xuất thành công")
                 subprocess.Popen(['notepad.exe', file_path])
@@ -1239,6 +1244,7 @@ analysis_menu.add_command(label='Xuất id không thành công', command=open_an
 analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
+analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 
 
 exit_menu = Menu(menu)
