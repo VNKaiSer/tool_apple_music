@@ -912,6 +912,7 @@ import threading
 from PIL import Image, ImageTk
 import os
 import subprocess
+import concurrent.futures
 all_thread = []
 
 def add_id():
@@ -946,26 +947,17 @@ def clear_frame(frame):
         widget.destroy()
 def run_app():
     def run_tool():
-        browser = webdriver.Firefox(
-            seleniumwire_options=option
-        )
+        browser = webdriver.Firefox(seleniumwire_options=option)
         run(browser)  # Call the main tool function
+        # root.deiconify()  # After the tool finishes execution, show the main window again
 
-        # After the tool finishes execution, show the main window again
-        root.deiconify()
     def on_spin_change():
         value = spinbox.get()
         try:
             value = int(value)
-            for i in range(1, value + 1):
-                time.sleep(1)
-                threading.Thread(target=run_tool).start()
-                # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                # if len(all_thread) < value or not all_thread[i-1].is_alive():
-                #     all_thread.append(threading.Thread(target=run_tool))
-                #     all_thread[i-1].start()
-                # else:
-                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
+            with concurrent.futures.ThreadPoolExecutor(max_workers=value) as executor:
+                for _ in range(value):
+                    executor.submit(run_tool)
         except ValueError:
             messagebox.showerror("Error", "Nhập số tab không hợp lệ")
     # Hide the main window while running the tool

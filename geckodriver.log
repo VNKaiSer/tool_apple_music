@@ -7065,3 +7065,75 @@ console.warn: services.settings: main/search-config sync interrupted by shutdown
 console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
 console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
 console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1714989836787	geckodriver	INFO	Listening on 127.0.0.1:60299
+1714989839846	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60300" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileBP60yS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714989840982	Marionette	INFO	Marionette enabled
+1714989841082	Marionette	INFO	Listening on port 60403
+WebDriver BiDi listening on ws://127.0.0.1:60300
+Read port: 60403
+1714989841630	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714989841660	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60298","sslProxy":"127.0.0.1:60298"}
+DevTools listening on ws://127.0.0.1:60300/devtools/browser/7bfe6c56-3fdc-4a9e-9ea5-a8c96ebdf394
+1714989871008	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1714989872569	Marionette	INFO	Stopped listening on port 60403
+Dynamically enable window occlusion 1
+console.error: (new Error("Polling for changes failed: NetworkError: Network request failed.", "resource://services-settings/remote-settings.sys.mjs", 324))
+1714989878528	geckodriver	INFO	Listening on 127.0.0.1:61298
+1714989881562	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61299" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilea0nqqj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714989882177	Marionette	INFO	Marionette enabled
+1714989882301	Marionette	INFO	Listening on port 61390
+WebDriver BiDi listening on ws://127.0.0.1:61299
+Read port: 61390
+1714989882657	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714989882685	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61297","sslProxy":"127.0.0.1:61297"}
+DevTools listening on ws://127.0.0.1:61299/devtools/browser/e000fc0f-f5cc-40f0-b9a1-1b784e3dc116
+1714989912278	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.error: (new Error("Polling for changes failed: NetworkError: Network request failed.", "resource://services-settings/remote-settings.sys.mjs", 324))
+1714989915819	Marionette	INFO	Stopped listening on port 61390
+Dynamically enable window occlusion 1
+erver
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714989900233	Marionette	INFO	Marionette enabled
+1714989900367	Marionette	INFO	Listening on port 61838
+WebDriver BiDi listening on ws://127.0.0.1:61750
+Read port: 61838
+1714989900681	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714989900713	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61748","sslProxy":"127.0.0.1:61748"}
+DevTools listening on ws://127.0.0.1:61750/devtools/browser/0027a88c-f9eb-481c-bc1f-bb489bdf9cad
+1714989914190	Marionette	INFO	Stopped listening on port 61838
+Dynamically enable window occlusion 1
+1714992303087	geckodriver	INFO	Listening on 127.0.0.1:64190
+1714992306524	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64193" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileEOrh0P"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714992309989	Marionette	INFO	Marionette enabled
+1714992313218	Marionette	INFO	Listening on port 64361
+Read port: 64362
+WebDriver BiDi listening on ws://127.0.0.1:64192
+Read port: 64362
+1714992319785	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714992320651	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:64189","sslProxy":"127.0.0.1:64189"}
+DevTools listening on ws://127.0.0.1:64192/devtools/browser/7eb07b23-311e-474d-938f-f278b2b5bae1
+1714992340805	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1714992371813	Marionette	INFO	Stopped listening on port 64361
+Dynamically enable window occlusion 1
+console.error: ser1714992372809	Marionette	INFO	Stopped listening on port 64362
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.error: (new AbortError("IndexedDB: main/focus-experiments getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+on.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
