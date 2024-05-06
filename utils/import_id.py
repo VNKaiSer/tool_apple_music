@@ -17,8 +17,8 @@ def process_data(data):
         if line:
             db_intance.insert_apple_music_id(line)
 
-directory_path = './id'
-text_data_list = read_txt_files_from_directory(directory_path)
-for text_data in text_data_list:
-    process_data(text_data)
+# directory_path = './id'
+# text_data_list = read_txt_files_from_directory(directory_path)
+# for text_data in text_data_list:
+#     process_data(text_data)
     

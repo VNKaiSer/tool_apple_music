@@ -3938,3 +3938,74 @@ OSError: [WinError 112] There is not enough space on the disk: 'C:\\Users\\KAISE
 2024-05-03 17:09:57,367 - Error Card: Id - Elliott66304@gmx.hk - Card DEC
 2024-05-03 17:11:21,457 - Error Card: Cardnumber - 5295800085472062 - Card is support
 2024-05-03 17:11:21,855 - Error: Hết thẻ
+2024-05-05 11:34:14,222 - Error Account: Id -  Hendricks2821orcs@gmail.com This Apple ID has been locked for security reasons.
+2024-05-05 11:35:26,222 - Die Card: Cardnumber - 5498250002831401 - Card is die
+2024-05-05 11:35:31,253 - Error Card: Cardnumber - 5498250000504240 - Card is many account add
+2024-05-05 11:35:36,355 - Die Card: Cardnumber - 5498250002831401 - Card is die
+2024-05-05 11:36:51,387 - Error Card: Cardnumber - 5498250003910014 - Card is support
+2024-05-05 11:36:56,431 - Die Card: Cardnumber - 4403935099289458 - Card is die
+2024-05-05 11:37:01,614 - Error Card: Cardnumber - 4403935121656922 - Card is many account add
+2024-05-05 11:37:06,711 - Error Card: Cardnumber - 4403935146705720 - Card is many account add
+2024-05-05 11:37:11,910 - Die Card: Cardnumber - 4403935148430947 - Card is die
+2024-05-05 11:37:15,992 - Error Account: Id - Finley04948@gmx.es - Account is spam
+2024-05-05 11:38:12,909 - Error Card: Cardnumber - 4985032086363490 - Card is many account add
+2024-05-05 11:38:18,481 - Error Card: Cardnumber - 4985032089344950 - Card is support
+2024-05-05 11:38:23,613 - Die Card: Cardnumber - 4403934820366107 - Card is die
+2024-05-05 11:38:28,706 - Error Card: Cardnumber - 4403934821184541 - Card is many account add
+2024-05-05 11:38:33,802 - Error Card: Cardnumber - 4403934841336519 - Card is many account add
+2024-05-05 11:38:37,952 - Error Account: Id - Freddie02057@gmx.fr - Account is spam
+2024-05-05 11:39:45,064 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 11:39:52,328 - Error Card: Cardnumber - 4403934908222982 - Card is many account add
+2024-05-05 11:39:57,669 - Die Card: Cardnumber - 4403934915629658 - Card is die
+2024-05-05 11:40:02,922 - Error Card: Cardnumber - 4403934936209167 - Card is many account add
+2024-05-05 11:40:08,080 - Error Card: Cardnumber - 4403934952393366 - Card is many account add
+2024-05-05 11:40:13,262 - Error Card: Cardnumber - 4403935003007947 - Card is many account add
+2024-05-05 11:40:17,425 - Error Account: Id - Freddie39341@gmx.ph - Account is spam
+2024-05-05 11:58:28,090 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 11:59:25,108 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 12:00:34,896 - Error Account: Id -  Harley31150@gmx.fr This Apple ID has been locked for security reasons.
+2024-05-05 12:01:32,933 - Error Account: Id - Harley97384@gmx.ie-2FA
+2024-05-05 12:04:47,433 - Error Account: Id - Henry52473@gmx.hk-2FA
+2024-05-05 12:16:46,829 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 13:02:50,229 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 13:04:49,490 - Error Card: Cardnumber - 4403935033721533 - Card is many account add
+2024-05-05 13:04:55,398 - Error Card: Cardnumber - 4403935081275382 - Card is many account add
+2024-05-05 13:05:01,403 - Error Card: Cardnumber - 4403935084016668 - Card is many account add
+2024-05-05 13:05:07,005 - Die Card: Cardnumber - 4403935090302086 - Card is die
+2024-05-05 13:05:12,666 - Error Card: Cardnumber - 4403935091209926 - Card is many account add
+2024-05-05 13:05:17,155 - Error Account: Id - Edward94073@gmx.es - Account is spam
+2024-05-05 13:06:31,047 - Error Card: Id - Ezra16160@gmx.it - Card Die
+2024-05-05 13:06:36,519 - Die Card: Cardnumber - 4403935099289458 - Card is die
+2024-05-05 13:06:42,209 - Error Card: Cardnumber - 4403935121656922 - Card is many account add
+2024-05-05 13:06:47,826 - Error Card: Cardnumber - 4403935146705720 - Card is many account add
+2024-05-05 13:06:53,134 - Die Card: Cardnumber - 4403935148430947 - Card is die
+2024-05-05 13:06:57,572 - Error Account: Id - Ezra16160@gmx.it - Account is spam
+2024-05-05 13:07:49,851 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 13:09:04,494 - Error Account: Id - Ibrahim15377@gmx.es-2FA
+2024-05-05 13:10:24,429 - Error Card: Cardnumber - 4985032086363490 - Card is many account add
+2024-05-05 13:10:31,648 - Error Card: Id - Aaron15828@gmx.fr - Card DEC
+2024-05-05 13:10:38,941 - Error Card: Lỗi không xác định - Payment Method Declined
+2024-05-05 13:13:52,949 - Error Card: Cardnumber - 5163570096636562 - Card is support
+2024-05-05 13:14:00,170 - Error Card: Id - Aaron19796@gmx.hk - Card DEC
+2024-05-05 13:14:05,735 - Error Card: Cardnumber - 5264120006448456 - Card is many account add
+2024-05-05 13:14:11,289 - Error Card: Cardnumber - 5265341000278975 - Card is support
+2024-05-05 13:14:17,055 - Error Card: Cardnumber - 5295800004286205 - Card is many account add
+2024-05-05 13:14:21,856 - Error Account: Id - Aaron19796@gmx.hk - Account is spam
+2024-05-05 13:15:31,284 - Error Card: Cardnumber - 5295800073652071 - Card is support
+2024-05-05 13:15:37,052 - Error Card: Cardnumber - 5295800085472062 - Card is support
+2024-05-05 13:15:43,194 - Error Card: Cardnumber - 5469930091644329 - Card is support
+2024-05-05 13:15:49,269 - Error Card: Cardnumber - 5469930094036499 - Card is support
+2024-05-05 13:15:55,093 - Error Card: Cardnumber - 5475198107097450 - Card is support
+2024-05-05 13:16:00,053 - Error Account: Id - Aaron15828@gmx.fr - Account is spam
+2024-05-05 13:36:49,364 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 13:41:30,543 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 14:07:07,431 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 15:22:34,117 - Error Account: Id - Aaron67879@gmx.it - Account is disable
+2024-05-05 15:23:16,731 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 15:23:23,116 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 15:23:25,596 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 18:12:28,706 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 18:12:36,636 - Die Card: Cardnumber - 5498250002831401 - Card is die
+2024-05-05 23:10:40,219 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 23:17:20,831 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-05 23:22:11,089 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
