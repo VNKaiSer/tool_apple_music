@@ -278,15 +278,15 @@ option = {
 # Đổi instance qua popup login
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
-def run():
+def run(browser):
     while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 and isRunning = 'N' limit 1")): 
         if db_instance.check_operator_run() == False:
             break
         db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
         time.sleep(2)
-        browser = webdriver.Firefox(
-            seleniumwire_options=option
-        )
+        # browser = webdriver.Firefox(
+        #     seleniumwire_options=option
+        # )
         wait = WebDriverWait(browser, 20)
 
         if(data[0] is None): # Trường hợp hết mail
@@ -946,7 +946,10 @@ def clear_frame(frame):
         widget.destroy()
 def run_app():
     def run_tool():
-        run()  # Call the main tool function
+        browser = webdriver.Firefox(
+            seleniumwire_options=option
+        )
+        run(browser)  # Call the main tool function
 
         # After the tool finishes execution, show the main window again
         root.deiconify()

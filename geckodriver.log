@@ -7002,3 +7002,66 @@ console.warn: services.settings: main/search-config-icons sync interrupted by sh
 console.warn: services.settings: main/search-config sync interrupted by shutdown
 console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
 console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
+1714985268716	geckodriver	INFO	Listening on 127.0.0.1:61410
+1714985271759	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61411" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile7ECpD0"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714985272309	Marionette	INFO	Marionette enabled
+1714985272467	Marionette	INFO	Listening on port 61463
+Read port: 61463
+WebDriver BiDi listening on ws://127.0.0.1:61411
+1714985272666	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714985272730	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61409","sslProxy":"127.0.0.1:61409"}
+DevTools listening on ws://127.0.0.1:61411/devtools/browser/5e1ae185-1407-4cdc-a1a2-5bbeda78b99d
+1714985302402	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: , line 0: TypeError: [jet/action-handlers/flow-action] FlowAction on ListenNow canonicalURL check failed [jet/action-handlers/flow-action] FlowAction destination rejected: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: [jet/action-handlers/flow-action] FlowAction on ListenNow canonicalURL check failed [jet/action-handlers/flow-action] FlowAction destination rejected: NetworkError when attempting to fetch resource.
+1714985355878	Marionette	INFO	Stopped listening on port 61463
+Dynamically enable window occlusion 1
+1714986131163	geckodriver	INFO	Listening on 127.0.0.1:55703
+1714986134211	mozrunner::runner	INFO	Running command: "C:\\P1714986135166	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55721" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileM7sI4d"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1714986135865	Marionette	INFO	Marionette enabled
+1714986136185	Marionette	INFO	Listening on port 55786
+WebDriver BiDi listening on ws://127.0.0.1:55721
+Read port: 55786
+1714986137167	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1714986137220	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","DevTools listening on ws://127.0.0.1:55704/devtools/browser/DevTools listening on ws://127.0.0.1:51714986164702	addons.xpi	ERROR	System addon update list erro1714986165979	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'httpJavaScript error: resource://devtools/client/fronts/inspector.js, line 148: Error: The target doesn't support creating highlighters by types or BoxModelHighlighter is unknown
+console.warn: "Listener for event 'frame' did not return a promise."
+JavaScript warning: chrome://global/content/aboutNetError.mjs, line 1001: Script terminated by timeout at:
+initPageCertError@chrome://global/content/aboutNetError.mjs:1001:52
+initPage@chrome://global/content/aboutNetError.mjs:352:7
+@chrome://global/content/aboutNetError.mjs:1566:1
+
+JavaScript error: , line 0: uncaught exception: undefined
+console.warn: "Error while destroying front:" "accessibility" (new Error("Connection closed, pending request to server0.conn0.windowGlobal8589934593/accessibilityActor12, type getSimulator failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:299:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19\ninitialize@resource://devtools/client/fronts/accessibility.js:520:39\n", "resource://devtools/shared/protocol/Front.js", 105))
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 105: Error: Connection closed, pending request to server0.conn0.windowGlobal8589934593/accessibilityActor12, type getSimulator failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:299:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19
+initialize@resource://devtools/client/fronts/accessibility.js:520:39
+
+console.warn: "Listener for event 'frame' did not return a promise."
+JavaScript error: chrome://browser/content/preferences/moreFromMozilla.js, line 83: TypeError: Region.home is null
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1714986215031	Marionette	INFO	Stopped listening on port 55760
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.warn: services.settings: main/devtools-compatibility-browsers sync interrupted by shutdown
+console.warn: services.settings: main/search-config-icons sync interrupted by shutdown
+console.warn: services.settings: main/search-config sync interrupted by shutdown
+console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
+console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
