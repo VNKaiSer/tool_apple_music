@@ -8638,3 +8638,20 @@ console.warn: services.settings: main/query-stripping sync interrupted by shutdo
 console.error: services.settings: 
   main/fingerprinting-protection-overrides Signature failed  TypeError: NetworkError: Network request failed
 console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1715025530475	geckodriver	INFO	Listening on 127.0.0.1:58141
+1715025533504	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58142" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilevqcsTL"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715025534380	Marionette	INFO	Marionette enabled
+1715025534491	Marionette	INFO	Listening on port 58197
+Read port: 58197
+WebDriver BiDi listening on ws://127.0.0.1:58142
+1715025534610	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715025534677	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58140","sslProxy":"127.0.0.1:58140"}
+DevTools listening on ws://127.0.0.1:58142/devtools/browser/cc3911d2-fb3c-4be9-b3b4-d73758ab0169
+1715025564494	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
