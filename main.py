@@ -1354,7 +1354,25 @@ def apple_id_done(browser, data):
     print(data)
     #OTP xong
     time.sleep(1000)
-       
+
+def process_login(browser, data):
+    browser.switch_to.default_content()
+    wait = WebDriverWait(browser, 10)
+    try:
+        iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_auth)
+        
+        # sys.exit()
+
+    #Nhập password
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="password_text_field"]')))
+        inputPassword = browser.find_element(By.XPATH, '//*[@id="password_text_field"]')
+        inputPassword.send_keys(data['password'])
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="sign-in"]')))
+        browser.find_element(By.XPATH, '//*[@id="sign-in"]').click()
+    except Exception as e:
+        print(e)
+    
 def add_payment(browser, data):
     wait = WebDriverWait(browser, 10)
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
@@ -1615,6 +1633,7 @@ def reg_apple_music():
         print('Đã login')
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
+        process_login(browser, data)
         browser.quit()
         return 
     otp = "  " + getOTP(data["account"])
@@ -1730,4 +1749,5 @@ reg_apple_music()
 # time.sleep(40)
 # add_payment(browser,{'first_name': 'Jveuw', 'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Evnea', 'date_of_birth': '08221974', 'address1': '8 Village Circle', 'address2': '', 'city': 'Randolph', 'state': 'VT', 'postalCode': '05060'} )
 # reg_apple_music()
+# process_login(browser, {'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123'})
 

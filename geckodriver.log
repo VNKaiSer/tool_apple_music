@@ -11590,3 +11590,93 @@ console.warn: services.settings: main/translations-models sync interrupted by sh
 console.warn: services.settings: main/cookie-banner-rules-list sync interrupted by shutdown
 console.warn: services.settings: main/sites-classification sync interrupted by shutdown
 console.error: (new AbortError("IndexedDB: main/focus-experiments getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715429398964	geckodriver	INFO	Listening on 127.0.0.1:62714
+1715429402041	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62715" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilerTEUSe"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715429402662	Marionette	INFO	Marionette enabled
+1715429402841	Marionette	INFO	Listening on port 62767
+Read port: 62767
+WebDriver BiDi listening on ws://127.0.0.1:62715
+1715429403136	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715429403186	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62711","sslProxy":"127.0.0.1:62711"}
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1715429416762	geckodriver	INFO	Listening on 127.0.0.1:62964
+1715429419826	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62965" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileGQGHkS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715429420338	Marionette	INFO	Marionette enabled
+1715429420421	Marionette	INFO	Listening on port 63015
+WebDriver BiDi listening on ws://127.0.0.1:62965
+Read port: 63015
+1715429420658	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715429420687	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62963","sslProxy":"127.0.0.1:62963"}
+DevTools listening on ws://127.0.0.1:62965/devtools/browser/af51bf68-7827-4447-9a00-5959ea73f0d7
+1715429450365	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715429463191	Marionette	INFO	Stopped listening on port 63015
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/url-classifier-skip-urls sync interrupted by shutdown
+console.error: (new AbortError("IndexedDB: main/nimbus-web-experiments getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715429492288	geckodriver	INFO	Listening on 127.0.0.1:63963
+1715429495365	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63964" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileUwvgTu"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715429495773	Marionette	INFO	Marionette enabled
+1715429495858	Marionette	INFO	Listening on port 64011
+Read port: 64011
+WebDriver BiDi listening on ws://127.0.0.1:63964
+1715429495959	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715429496027	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:63962","sslProxy":"127.0.0.1:63962"}
+DevTools listening on ws://127.0.0.1:63964/devtools/browser/6eeb493c-02d3-43d8-8117-def607c73deb
+1715429525427	Marionette	INFO	Stopped listening on port 64011
+Dynamically enable window occlusion 1
+1715429538893	geckodriver	INFO	Listening on 127.0.0.1:64672
+1715429541934	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64673" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileeJqp1i"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715429542356	Marionette	INFO	Marionette enabled
+1715429542442	Marionette	INFO	Listening on port 64721
+WebDriver BiDi listening on ws://127.0.0.1:64673
+Read port: 64721
+1715429543042	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715429543104	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:64671","sslProxy":"127.0.0.1:64671"}
+DevTools listening on ws://127.0.0.1:64673/devtools/browser/1b9cf388-d1b0-4949-972f-8f043741ff8b
+1715429572495	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js, line 1: Script terminated by timeout at:
+o.metricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:5946
+o.processMetricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:6220
+metricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14178
+x@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:2073
+h.prototype.initializeData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:8535
+instance@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14102
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14910
+
+1715429601231	Marionette	INFO	Stopped listening on port 64721
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
