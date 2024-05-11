@@ -243,6 +243,11 @@ class MySQLDatabase:
         query = "INSERT INTO mail_reg_apple_music_wait(mail) VALUES (%s)"
         self.cursor.execute(query, (mail_wait,))
         self.connection.commit()
+    
+    def insert_mail_reg_apple_music(self, mail):
+        query = "INSERT INTO mail_reg_apple_music_wait(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
+        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5]))
+        self.connection.commit()
         
     def close(self):
         self.connection.close()
@@ -1291,7 +1296,8 @@ def generate_random_email():
                 # if response.json()['message'] == 200:
                 if response.status_code == 200:
                     response_data = response.json()
-                    return response_data['gmail'], 'rent' 
+                    return response_data['gmail'], 'rent'
+                time.sleep(20) 
                 
     
 def random_address():
@@ -1352,6 +1358,23 @@ def apple_id_done(browser, data):
     otp = getOTP(data['account'])
     active_element.send_keys(otp)
     print(data)
+    browser.switch_to.default_content()
+    frame_acp_appleid = browser.find_element(By.ID, "aid-auth-widget-iFrame")
+    browser.switch_to.frame(frame_acp_appleid)
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="TextField-1715446350547-0"]')))
+    browser.find_element(By.XPATH, '//*[@id="TextField-1715446350547-0"]').send_keys(data['ccv'])
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="button-1715446350548-0"]')))
+    browser.find_element(By.XPATH, '//*[@id="button-1715446350548-0"]').click()
+    # Nếu không được thì nhấn 1 lần nữa 
+    time.sleep(3)
+    try: 
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="button-1715446350548-0"]')))
+        browser.find_element(By.XPATH, '//*[@id="button-1715446350548-0"]').click()
+    except Exception as e:
+        print(e) # Không còn nút đó 
+    
+    db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv']])
+    # Lưuvào db 
     #OTP xong
     time.sleep(1000)
 
@@ -1534,6 +1557,9 @@ def add_payment(browser, data):
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             if data['type'] == 'wait':
                 db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
+            data['card_number'] = card.get_card_number()
+            data['month_exp'] = data_card[0][2]
+            data['year_exp'] = data_card[0][3]
             data['ccv'] = card.get_card_ccv()
             break
     # Tiến hành hoàn thành
@@ -1637,6 +1663,7 @@ def reg_apple_music():
             sys.exit(0)
         browser.quit()
         return 
+    otp = getOTP(data["account"])
     time.sleep(5)
     otp = getOTP(data["account"])
     active_element = browser.switch_to.active_element
