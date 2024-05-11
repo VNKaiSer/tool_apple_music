@@ -17,6 +17,8 @@ class MySQLDatabase:
 
     def insert_credit_card_data(self, credit_card_data):
         card_number, expiration_month, expiration_year, cvv = credit_card_data.strip().split('|')
+        if len(expiration_year) < 4:
+            expiration_year = '20' + expiration_year
         query = "INSERT INTO pay (card_number, day, year, ccv) VALUES (%s, %s, %s, %s)"
         self.cursor.execute(query, (card_number, expiration_month, expiration_year, cvv))
         self.connection.commit()

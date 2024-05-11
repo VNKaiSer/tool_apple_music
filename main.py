@@ -231,7 +231,14 @@ class MySQLDatabase:
             return True
         else:
             return False
-        
+    def get_mail_wait(self):
+        query = "SELECT * FROM mail_reg_apple_music_wait WHERE `status` = 'Y'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        if result:
+            return result
+        else:
+            return None
     def close(self):
         self.connection.close()
         
@@ -1267,15 +1274,20 @@ def random_data():
     return frist_name, last_name, date_of_birth,password
 
 def generate_random_email():
-    thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
-    response = requests.get(thue_mail_url)
-    print(response.status_code)
-    # if response.json()['message'] == 200:
-    if response.status_code == 200:
-        response_data = response.json()
-        return response_data['gmail'] 
-    else: 
-        return None
+    while True:
+        mail_wait = db_instance.get_mail_wait()
+        if mail_wait is not None:
+            return mail_wait
+        else:
+            while True:
+                thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
+                response = requests.get(thue_mail_url)
+                print(response.status_code)
+                # if response.json()['message'] == 200:
+                if response.status_code == 200:
+                    response_data = response.json()
+                    return response_data['gmail'] 
+                
     
 def random_address():
     json_file = './assets/data/addresses.json'  
@@ -1333,10 +1345,8 @@ def apple_id_done(browser, data):
     time.sleep(3)
     active_element = browser.switch_to.active_element
     otp = getOTP(data['account'])
-    time.sleep(25)
-    otp = getOTP(data['account'])
     active_element.send_keys(otp)
-    
+    print(data)
     #OTP xong
     time.sleep(100)
        
@@ -1498,6 +1508,9 @@ def add_payment(browser, data):
 
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             run_add_card = False
+            data.append({
+                "ccv" : card.get_card_ccv()
+            })
             apple_id_done(browser, data)
             break
     
@@ -1586,15 +1599,10 @@ def reg_apple_music():
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
         print(e)
-        print('TK đã được login')
-    otp = "  " + getOTP(data["account"])
-    time.sleep(25) # Đợi 10s để lấy OTP
+        return 
     otp = "  " + getOTP(data["account"])
     active_element = browser.switch_to.active_element
-    for i in otp:
-        print(i)
-        active_element.send_keys(i)
-        time.sleep(0.5)
+    active_element.send_keys(otp)
     
     time.sleep(5)
     browser.get("https://music.apple.com/us/account/settings")
@@ -1611,9 +1619,6 @@ def reg_apple_music():
     
     add_payment(browser, data)
     
-    time.sleep(3)
-    
-    apple_id_done(browser, data)
     
     
     
