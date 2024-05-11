@@ -1669,7 +1669,7 @@ def reg_apple_music():
     otp = getOTP(data["account"])
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
-    time.sleep(5)
+    time.sleep(8)
     browser.get("https://music.apple.com/us/account/settings")
     WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
