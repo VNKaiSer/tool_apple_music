@@ -1612,6 +1612,8 @@ def reg_apple_music():
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
         print('Đã login')
+        if data['type'] == 'wait':
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition="mail = %s" % data['account'])
         browser.quit()
         return 
     otp = "  " + getOTP(data["account"])
