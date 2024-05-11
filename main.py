@@ -1517,7 +1517,7 @@ def add_payment(browser, data):
             run_add_card = False
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             if data['type'] == 'wait':
-                db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = {data['account']}")
+                db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             data.append({
                 "ccv" : card.get_card_ccv()
             })
@@ -1613,7 +1613,7 @@ def reg_apple_music():
     except Exception as e:
         print('Đã login')
         if data['type'] == 'wait':
-            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition="mail = %s" % data['account'])
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['id']}'")
         browser.quit()
         return 
     otp = "  " + getOTP(data["account"])
