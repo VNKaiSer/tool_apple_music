@@ -1365,6 +1365,7 @@ def apple_id_done(browser, data):
     active_element.send_keys(Keys.ENTER)
     # Nếu không được thì nhấn 1 lần nữa 
     time.sleep(3)
+    time.sleep(1000)
     try: 
        active_element.send_keys(data['ccv'])
        active_element.send_keys(Keys.ENTER)
@@ -1374,7 +1375,7 @@ def apple_id_done(browser, data):
     db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv']])
     # Lưuvào db 
     #OTP xong
-    time.sleep(1000)
+    browser.quit()
 
 def process_login(browser, data):
     browser.switch_to.default_content()
@@ -1602,7 +1603,7 @@ def reg_apple_music():
     )
     
     browser.get('https://music.apple.com/us/login')
-    wait = WebDriverWait(browser, 20)
+    wait = WebDriverWait(browser, 10)
     # vào web 
     try:
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
@@ -1668,10 +1669,8 @@ def reg_apple_music():
     otp = getOTP(data["account"])
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
-    
-    time.sleep(8)
+    time.sleep(5)
     browser.get("https://music.apple.com/us/account/settings")
-    time.sleep(3)
     WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
     browser.switch_to.frame(iframe_hello)
