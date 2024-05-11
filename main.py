@@ -1279,8 +1279,8 @@ def random_data():
     return frist_name, last_name, date_of_birth,password
 
 def generate_random_email():
-    while True:
         mail_wait = db_instance.get_mail_wait()
+        print(mail_wait)
         if mail_wait is not None:
             return mail_wait[0][1], 'wait'
         else:
@@ -1353,7 +1353,7 @@ def apple_id_done(browser, data):
     active_element.send_keys(otp)
     print(data)
     #OTP xong
-    time.sleep(100)
+    time.sleep(1000)
        
 def add_payment(browser, data):
     wait = WebDriverWait(browser, 10)
@@ -1369,7 +1369,7 @@ def add_payment(browser, data):
     # click nút change payment 
     wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-    time.sleep(10)
+    time.sleep(5)
     browser.switch_to.default_content()
     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
     iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
@@ -1418,7 +1418,7 @@ def add_payment(browser, data):
             logging.error("Error: %s", str("Hết thẻ"))
             browser.close()
             sys.exit()
-            pass  # hoặc thực hiện các hành động khác tương ứng
+         
         
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
@@ -1453,10 +1453,10 @@ def add_payment(browser, data):
         
             match add_payment_result.text:
                 case tool_exception.DISSABLE:
-                    logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
+                    # logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
                     run_add_card = False # Dừng vì account bị disable
-                    browser.close()
+                    browser.quit()
                 case tool_exception.MANY:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
@@ -1468,16 +1468,19 @@ def add_payment(browser, data):
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
                 case tool_exception.SUPPORT:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
                 case tool_exception.ACC_SPAM:
                     logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
@@ -1518,9 +1521,7 @@ def add_payment(browser, data):
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             if data['type'] == 'wait':
                 db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
-            data.append({
-                "ccv" : card.get_card_ccv()
-            })
+            data['ccv'] = card.get_card_ccv()
             apple_id_done(browser, data)
             break
     
@@ -1539,7 +1540,7 @@ def reg_apple_music():
         # "account": "leblancmylie373@gmail.com",
         "password": "Zxcv123123",
         "last_name": last_name,
-        "date_of_birth": generate_random_date_of_birth(),
+        "date_of_birth": date_of_birth,
         "address1": address1,
         "address2": address2,
         "city": city,
@@ -1620,18 +1621,18 @@ def reg_apple_music():
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
     
-    time.sleep(5)
+    time.sleep(3)
     browser.get("https://music.apple.com/us/account/settings")
-    time.sleep(5)
+    time.sleep(3)
     WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
     browser.switch_to.frame(iframe_hello)
     WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
-    time.sleep(5)
+    time.sleep(3)
     browser.switch_to.default_content()
     browser.get("https://music.apple.com/us/account/settings")
-    time.sleep(5)
+    time.sleep(3)
     
     add_payment(browser, data)
     
