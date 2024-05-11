@@ -1290,13 +1290,14 @@ def random_address():
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
 def getOTP(gmail):
-    thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
-    response = requests.get(thue_mail_url)
-    print(response.json())
-    if response.status_code == 200:
-        return response.json()['otp']
-    else:
-        return None
+    while True:
+        thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
+        response = requests.get(thue_mail_url)
+        resp = response.json()
+        if resp['status'] == 'PENDING':
+            time.sleep(5)
+        if resp['status'] == 'SUCCESS':
+            return resp['otp']
 def click_first_login(browser):
     
     browser.get("https://music.apple.com/us/account/settings")
@@ -1508,8 +1509,8 @@ def reg_apple_music():
     try:
         data = {
         "first_name": first_name,
-        # "account": generate_random_email(),
-        "account": "leblancmylie373@gmail.com",
+        "account": generate_random_email(),
+        # "account": "leblancmylie373@gmail.com",
         "password": "Zxcv123123",
         "last_name": last_name,
         "date_of_birth": generate_random_date_of_birth(),
