@@ -245,7 +245,7 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
-        query = "INSERT INTO mail_reg_apple_music_wait(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO mail_reg_apple_music_id(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5]))
         self.connection.commit()
         
@@ -1349,31 +1349,25 @@ def apple_id_done(browser, data):
     browser.switch_to.active_element.send_keys(Keys.ENTER)
     browser.switch_to.default_content()
     browser.switch_to.frame(iframe_login)
-    
     wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
     browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
     browser.switch_to.active_element.send_keys(Keys.ENTER)
-    time.sleep(5)
-    active_element = browser.switch_to.active_element
-    otp = getOTP(data['account'])
-    active_element.send_keys(otp)
-    print(data)
+    time.sleep(60)
+    
     browser.switch_to.default_content()
-    frame_acp_appleid = browser.find_element(By.ID, "aid-auth-widget-iFrame")
-    browser.switch_to.frame(frame_acp_appleid)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="TextField-1715446350547-0"]')))
-    browser.find_element(By.XPATH, '//*[@id="TextField-1715446350547-0"]').send_keys(data['ccv'])
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="button-1715446350548-0"]')))
-    browser.find_element(By.XPATH, '//*[@id="button-1715446350548-0"]').click()
+    active_element = browser.switch_to.active_element
+    active_element.send_keys(Keys.TAB)
+    active_element.send_keys(data['ccv'])
+    active_element.send_keys(Keys.ENTER)
     # Nếu không được thì nhấn 1 lần nữa 
     time.sleep(3)
     try: 
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="button-1715446350548-0"]')))
-        browser.find_element(By.XPATH, '//*[@id="button-1715446350548-0"]').click()
+       active_element.send_keys(data['ccv'])
+       active_element.send_keys(Keys.ENTER)
     except Exception as e:
         print(e) # Không còn nút đó 
     
-    db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv']])
+    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv']])
     # Lưuvào db 
     #OTP xong
     time.sleep(1000)
@@ -1770,7 +1764,7 @@ def reg_apple_music():
 # )
 
 # browser.get('https://music.apple.com/us/account/settings')
-
+# apple_id_done(browser,{'first_name': 'Nsysf', 'account': 'tandatvo91@gmail.com', 'type': 'rent', 'password': 'Zxcv123123', 'last_name': 'Zaesa', 'date_of_birth': '07051969', 'address1': '2034 Fairfax Road', 'address2': '', 'city': 'Annapolis', 'state': 'MD', 'postalCode': '21401', 'card_number': '4403938038007684', 'month_exp': '10', 'year_exp': '2024', 'ccv': '187'})
 
 reg_apple_music()
 # click_first_login(browser)
