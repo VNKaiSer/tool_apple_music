@@ -1662,6 +1662,7 @@ def reg_apple_music():
         except Exception as e:
             print(e)
             browser.quit()
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             sys.exit(0)
         browser.quit()
         return 
