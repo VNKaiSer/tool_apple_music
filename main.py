@@ -245,7 +245,7 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
-        query = "INSERT INTO mail_reg_apple_music_id(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5]))
         self.connection.commit()
         
