@@ -1360,7 +1360,7 @@ def apple_id_done(browser, data):
     otp = getOTP(data["account"])
     # time.sleep(5)
     active_element.send_keys(otp)
-    time.sleep(3)
+    time.sleep(8)
     active_element.send_keys(Keys.TAB)
     active_element.send_keys(data['ccv'])
     active_element.send_keys(Keys.ENTER)
