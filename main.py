@@ -1370,6 +1370,10 @@ def process_login(browser, data):
         inputPassword.send_keys(data['password'])
         wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="sign-in"]')))
         browser.find_element(By.XPATH, '//*[@id="sign-in"]').click()
+        time.sleep(5)
+        browser.switch_to.default_content()
+        browser.get("https://music.apple.com/us/account/settings")
+        add_payment(browser, data)
     except Exception as e:
         print(e)
     

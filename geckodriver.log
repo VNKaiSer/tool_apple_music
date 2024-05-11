@@ -11680,3 +11680,16 @@ _adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
 maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
 
 console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1715429622997	geckodriver	INFO	Listening on 127.0.0.1:49428
+1715429626079	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49429" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilese7TcZ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715429626456	Marionette	INFO	Marionette enabled
+1715429626541	Marionette	INFO	Listening on port 49477
+WebDriver BiDi listening on ws://127.0.0.1:49429
+Read port: 49477
+1715429626781	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715429626856	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:49427","sslProxy":"127.0.0.1:49427"}
+DevTools listening on ws://127.0.0.1:49429/devtools/browser/0b82eb8a-4fa4-4448-9347-e53e0e67bca9
+1715429656507	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
