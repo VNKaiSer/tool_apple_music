@@ -1282,7 +1282,7 @@ def generate_random_email():
     while True:
         mail_wait = db_instance.get_mail_wait()
         if mail_wait is not None:
-            return mail_wait[1]
+            return mail_wait[0][1], 'wait'
         else:
             while True:
                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
@@ -1291,7 +1291,7 @@ def generate_random_email():
                 # if response.json()['message'] == 200:
                 if response.status_code == 200:
                     response_data = response.json()
-                    return response_data['gmail'] 
+                    return response_data['gmail'], 'rent' 
                 
     
 def random_address():
@@ -1516,6 +1516,8 @@ def add_payment(browser, data):
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             run_add_card = False
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
+            if data['type'] == 'wait':
+                db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = {data['account']}")
             data.append({
                 "ccv" : card.get_card_ccv()
             })
@@ -1527,10 +1529,13 @@ def reg_apple_music():
     first_name, last_name, date_of_birth, password = random_data()
     data = None
     address1, address2, city, state, postalCode = random_address()
+    type_mail = None
     try:
+        mail, type_mail = generate_random_email()
         data = {
         "first_name": first_name,
-        "account": generate_random_email(),
+        "account": mail,
+        "type": type_mail,
         # "account": "leblancmylie373@gmail.com",
         "password": "Zxcv123123",
         "last_name": last_name,
