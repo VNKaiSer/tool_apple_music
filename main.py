@@ -1563,7 +1563,7 @@ def reg_apple_music():
     )
     
     browser.get('https://music.apple.com/us/login')
-    wait = WebDriverWait(browser, 30)
+    wait = WebDriverWait(browser, 20)
     # vào web 
     try:
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
@@ -1611,7 +1611,8 @@ def reg_apple_music():
         WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
-        print(e)
+        print('Đã login')
+        browser.quit()
         return 
     otp = "  " + getOTP(data["account"])
     active_element = browser.switch_to.active_element
