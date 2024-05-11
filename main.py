@@ -1356,16 +1356,17 @@ def apple_id_done(browser, data):
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
     otp = getOTP(data["account"])
-    time.sleep(5)
+    time.sleep(10)
     otp = getOTP(data["account"])
-    time.sleep(5)
+    # time.sleep(5)
     active_element.send_keys(otp)
+    time.sleep(3)
     active_element.send_keys(Keys.TAB)
     active_element.send_keys(data['ccv'])
     active_element.send_keys(Keys.ENTER)
     # Nếu không được thì nhấn 1 lần nữa 
     time.sleep(3)
-    time.sleep(1000)
+    
     try: 
        active_element.send_keys(data['ccv'])
        active_element.send_keys(Keys.ENTER)
