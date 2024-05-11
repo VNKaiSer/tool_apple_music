@@ -11693,3 +11693,11 @@ Read port: 49477
 1715429626856	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:49427","sslProxy":"127.0.0.1:49427"}
 DevTools listening on ws://127.0.0.1:49429/devtools/browser/0b82eb8a-4fa4-4448-9347-e53e0e67bca9
 1715429656507	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 9: Script terminated by timeout at:
+oz@https://music.apple.com/assets/index-d0fe371b.js:9:17004
+dispatch@https://music.apple.com/assets/index-d0fe371b.js:9:17587
+dispatch@https://music.apple.com/assets/index-d0fe371b.js:9:19784
+
+1715431778305	Marionette	INFO	Stopped listening on port 49477
+Dynamically enable window occlusion 1

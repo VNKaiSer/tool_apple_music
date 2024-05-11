@@ -1347,7 +1347,7 @@ def apple_id_done(browser, data):
     wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
     browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
     browser.switch_to.active_element.send_keys(Keys.ENTER)
-    time.sleep(3)
+    time.sleep(5)
     active_element = browser.switch_to.active_element
     otp = getOTP(data['account'])
     active_element.send_keys(otp)
@@ -1535,8 +1535,9 @@ def add_payment(browser, data):
             if data['type'] == 'wait':
                 db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             data['ccv'] = card.get_card_ccv()
-            apple_id_done(browser, data)
             break
+    # Tiến hành hoàn thành
+    apple_id_done(browser, data)
     
 
 def reg_apple_music():
@@ -1635,9 +1636,9 @@ def reg_apple_music():
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
     
-    time.sleep(5)
+    time.sleep(8)
     browser.get("https://music.apple.com/us/account/settings")
-    # time.sleep(3)
+    time.sleep(3)
     WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
     browser.switch_to.frame(iframe_hello)
