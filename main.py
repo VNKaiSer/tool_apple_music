@@ -374,7 +374,7 @@ def run(browser):
                 click_on_setting = True
             # time.sleep(10)
             # browser.switch_to.default_content()
-            # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
+            # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
             # iframe_hello = browser.find_element(By.XPATH,'//*[@id="ck-container"]').find_element(By.TAG_NAME, 'iframe')
             # # src_value = iframe_hello.get_attribute("src")
             # browser.switch_to.frame(iframe_hello)
@@ -404,10 +404,10 @@ def run(browser):
         if click_on_setting:
     # time.sleep(5)
         # time.sleep(5)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
             iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
             browser.switch_to.frame(iframe_hello)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(5)
             browser.switch_to.default_content()
@@ -438,7 +438,7 @@ def run(browser):
         browser.switch_to.frame(iframe_payment)
     # Kiểm tra đã add thẻ 
     
-        wait_child = WebDriverWait(browser, 5)
+        wait_child = WebDriverWait(browser, 10)
         try: 
             wait_child.until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
             browser.find_element(By.CLASS_NAME, 'payment-method-module-card').click()
@@ -680,7 +680,7 @@ def run_check():
                 click_on_setting = True
             # time.sleep(10)
             # browser.switch_to.default_content()
-            # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
+            # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
             # iframe_hello = browser.find_element(By.XPATH,'//*[@id="ck-container"]').find_element(By.TAG_NAME, 'iframe')
             # # src_value = iframe_hello.get_attribute("src")
             # browser.switch_to.frame(iframe_hello)
@@ -710,10 +710,10 @@ def run_check():
         if click_on_setting:
     # time.sleep(5)
         # time.sleep(5)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
             iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
             browser.switch_to.frame(iframe_hello)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(5)
             browser.switch_to.default_content()
@@ -820,7 +820,7 @@ def run_check_delete():
                 click_on_setting = True
             # time.sleep(10)
             # browser.switch_to.default_content()
-            # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
+            # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
             # iframe_hello = browser.find_element(By.XPATH,'//*[@id="ck-container"]').find_element(By.TAG_NAME, 'iframe')
             # # src_value = iframe_hello.get_attribute("src")
             # browser.switch_to.frame(iframe_hello)
@@ -850,10 +850,10 @@ def run_check_delete():
         if click_on_setting:
     # time.sleep(5)
         # time.sleep(5)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
             iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
             browser.switch_to.frame(iframe_hello)
-            WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(5)
             browser.switch_to.default_content()
@@ -880,7 +880,7 @@ def run_check_delete():
         browser.switch_to.frame(iframe_payment)
     # Kiểm tra đã add thẻ 
     
-        wait_child = WebDriverWait(browser, 5)
+        wait_child = WebDriverWait(browser, 10)
         try: 
             wait_child.until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
             browser.find_element(By.CLASS_NAME, 'payment-method-module-card').click()
@@ -1319,10 +1319,10 @@ def click_first_login(browser):
     
     browser.get("https://music.apple.com/us/account/settings")
     time.sleep(5)
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
     iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
     browser.switch_to.frame(iframe_hello)
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button').click()
     time.sleep(5)
     browser.switch_to.default_content()
@@ -1593,7 +1593,7 @@ def reg_apple_music():
         # Nhấn nút login
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
         # time.sleep(10)
-        # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e:
@@ -1603,46 +1603,52 @@ def reg_apple_music():
     # Kiểm tra login 
     try: 
         browser.switch_to.default_content()
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
         iframe_register = browser.find_element(By.XPATH, "/html/body/div/div[5]/iframe")
         browser.switch_to.frame(iframe_register)
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
         browser.find_element(By.ID, "acAccountPassword").send_keys(data["password"])
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "firstName")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "firstName")))
         browser.find_element(By.ID, "firstName").send_keys(data["first_name"])
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "lastName")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "lastName")))
         browser.find_element(By.ID, "lastName").send_keys(data["last_name"])
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "birthday")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "birthday")))
         birth = browser.find_element(By.ID, "birthday")
         print(birth.tag_name)
         for i in data["date_of_birth"]:
             time.sleep(0.2)
             birth.send_keys(i)
-        # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
+        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
         
         inputs = browser.find_elements(By.TAG_NAME, "input")
         # print(inputs[inputs.__len__()-1].get_attribute("id"))
         inputs[inputs.__len__()-1].click()   
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
         print('Đã login')
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
-        process_login(browser, data)
+        try: 
+            process_login(browser, data)
+        except Exception as e:
+            print(e)
+            browser.quit()
+            sys.exit(0)
         browser.quit()
         return 
-    otp = "  " + getOTP(data["account"])
+    time.sleep(5)
+    otp = getOTP(data["account"])
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
     
     time.sleep(8)
     browser.get("https://music.apple.com/us/account/settings")
     time.sleep(3)
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
     browser.switch_to.frame(iframe_hello)
-    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
     time.sleep(3)
     browser.switch_to.default_content()
