@@ -1353,9 +1353,13 @@ def apple_id_done(browser, data):
     browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
     browser.switch_to.active_element.send_keys(Keys.ENTER)
     time.sleep(5)
-    
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
+    otp = getOTP(data["account"])
+    time.sleep(5)
+    otp = getOTP(data["account"])
+    time.sleep(5)
+    active_element.send_keys(otp)
     active_element.send_keys(Keys.TAB)
     active_element.send_keys(data['ccv'])
     active_element.send_keys(Keys.ENTER)
