@@ -5341,3 +5341,5 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-05-06 15:44:37,150 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
 2024-05-06 15:44:37,631 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
 2024-05-06 15:44:55,263 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-10 01:50:47,840 - Error Card: Cardnumber - 5498250003910014 - Card is many account add
+2024-05-10 01:50:58,999 - Error Card: Cardnumber - 5425430182748892 - Card is many account add

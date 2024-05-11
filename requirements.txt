@@ -5,3 +5,5 @@ setuptools
 blinker==1.4
 pillow
 tk
+requests==2.31.0
+pip install random-address

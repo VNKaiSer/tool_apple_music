@@ -913,7 +913,7 @@ from PIL import Image, ImageTk
 import os
 import subprocess
 import concurrent.futures
-from utils import reg_apple_music as REG
+# from utils import reg_apple_music as REG
 all_thread = []
 
 def add_id():
@@ -1201,7 +1201,7 @@ def open_error_pay():
         except Exception as e:
             print(e)
             messagebox.showerror("Thất bị", "Vui lòng kiểm tra lại đường dẫn hoặc không đủ quyền" )
-            
+        
     frame_app.place_forget()
     clear_frame(analysis_frame)
     # Ẩn hình ảnh
@@ -1223,73 +1223,488 @@ def open_error_pay():
     
     submit_btn = Button(analysis_frame, text="Xuất", command=export_error_data_pay)
     submit_btn.pack(pady=10)
+#===================================GUI END FUCITON======================================
+import random
+import string
+import datetime
+import time
+import requests
+import json
+import random
+from seleniumwire import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.select import Select
+
+def generate_random_password(length):
+    characters = string.ascii_letters + string.digits
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+def generate_name(length):
+    random_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
+    letter = random_string.capitalize()
     
-root = Tk()
-root.title("Tool apple music")
-root.withdraw()  # Ẩn cửa sổ chính ban đầu
+    return letter
 
-# Lấy kích thước màn hình
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
+def generate_random_date_of_birth():
+    day = str(random.randint(1, 28)).zfill(2)  
+    month = str(random.randint(1, 12)).zfill(2)
+    year = str(random.randint(1904, datetime.datetime.now().year - 18))  
+    
+    date_of_birth = month + day + year
+    print(date_of_birth)
+    return date_of_birth
 
-# Đặt cửa sổ vào giữa màn hình
-app_width = 400
-app_height = 300
-x = (screen_width - app_width) // 2
-y = (screen_height - app_height) // 2
-root.geometry(f"{app_width}x{app_height}+{x}+{y}")
+def random_data():
+    password = generate_random_password(8)
+    frist_name = generate_name(5)
+    last_name = generate_name(5)
+    date_of_birth = generate_random_date_of_birth()
+    return frist_name, last_name, date_of_birth,password
 
-# Ẩn cửa sổ chính ban đầu
-root.withdraw()
-frame_app = Frame(root, bg="white", width=root.winfo_width())
-analysis_frame = Frame(root, bg="white", width=root.winfo_width())
-# Hiển thị hình ảnh
-image_path = "./assets/images/main-background.png"
-image = Image.open(image_path)
-photo = ImageTk.PhotoImage(image)
-image_label = Label(root, image=photo)
-image_label.place(relx=0.5, rely=0.5, anchor="center")
+def generate_random_email():
+    thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
+    response = requests.get(thue_mail_url)
+    print(response.status_code)
+    # if response.json()['message'] == 200:
+    if response.status_code == 200:
+        response_data = response.json()
+        return response_data['gmail'] 
+    else: 
+        return None
+    
+def random_address():
+    json_file = './assets/data/addresses.json'  
+    with open(json_file, 'r') as f:
+        data = json.load(f)
 
-# Hiển thị cửa sổ chính
-root.deiconify()
+    # Lấy danh sách các địa chỉ từ khóa 'addresses'
+    addresses = data.get('addresses', [])
 
-# Tạo menu
-menu = Menu(root)
-root.config(menu=menu)
+    # Chọn ngẫu nhiên một địa chỉ từ danh sách
+    random_address = random.choice(addresses)
+    return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
-add_data_menu = Menu(menu)
-menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
-add_data_menu.add_command(label='Thêm id', command=add_id)
-add_data_menu.add_command(label='Thêm thẻ', command=add_card)
-add_data_menu.add_separator()
+def getOTP(gmail):
+    thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
+    response = requests.get(thue_mail_url)
+    print(response.json())
+    if response.status_code == 200:
+        return response.json()['otp']
+    else:
+        return None
+def click_first_login(browser):
+    
+    browser.get("https://music.apple.com/us/account/settings")
+    time.sleep(5)
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+    iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
+    browser.switch_to.frame(iframe_hello)
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
+    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button').click()
+    time.sleep(5)
+    browser.switch_to.default_content()
+    browser.get("https://music.apple.com/us/account/settings")
+    
+def apple_id_done(browser, data):
+    # browser = webdriver.Firefox(seleniumwire_options=option)
+    browser.get("https://appleid.apple.com/sign-in")
+    
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+    iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+    browser.switch_to.frame(iframe_login)
+    
+    wait = WebDriverWait(browser, 10)
+    wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
+    browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
+    
+    browser.switch_to.active_element.send_keys(Keys.ENTER)
+    browser.switch_to.default_content()
+    browser.switch_to.frame(iframe_login)
+    
+    wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
+    browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
+    browser.switch_to.active_element.send_keys(Keys.ENTER)
+    time.sleep(3)
+    active_element = browser.switch_to.active_element
+    otp = getOTP(data['account'])
+    time.sleep(25)
+    otp = getOTP(data['account'])
+    active_element.send_keys(otp)
+    
+    #OTP xong
+    time.sleep(100)
+       
+def add_payment(browser, data):
+    wait = WebDriverWait(browser, 10)
+    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+    iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+    browser.switch_to.frame(iframe_setting)
 
-featuremenu = Menu(menu)
-menu.add_cascade(label='Chức năng', menu=featuremenu)
-featuremenu.add_command(label='Login check', command=run_app_check)
-featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
-featuremenu.add_command(label='Login add', command=run_app)
-featuremenu.add_separator()
-featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
+    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+    country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+    print(country)
+    if country != "United States":
+        print("Not US") 
+    # click nút change payment 
+    wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+    time.sleep(10)
+    browser.switch_to.default_content()
+    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
+    iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
+    browser.switch_to.frame(iframe_payment)
+    # Nhấn nút add payment
+    wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
+    browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+    browser.switch_to.default_content()
+    iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
+    browser.switch_to.frame(iframe_add_payment)
+    
+    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineFirst")))
+    address_1 = browser.find_element(By.ID, "addressOfficialLineFirst")
+    for i in data["address1"]:
+        address_1.send_keys(i)
+        time.sleep(0.06)
+    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineSecond")))
+    address_2 = browser.find_element(By.ID, "addressOfficialLineSecond")
+    for i in data["address2"]:
+        address_2.send_keys(i)
+        time.sleep(0.06)
+    
+    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialCity")))
+    city_element = browser.find_element(By.ID, "addressOfficialCity")
+    for i in data["city"]:
+        city_element.send_keys(i)
+        time.sleep(0.06)
+    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
+    select = Select(browser.find_element(By.ID, "addressOfficialStateProvince"))
+    select.select_by_value(data["state"])
+    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialPostalCode")))
+    post_code = browser.find_element(By.ID, "addressOfficialPostalCode")
+    for i in data["postalCode"]:
+        post_code.send_keys(i)
+        time.sleep(0.06)
+    
+    
+    run_add_card = True
+    while run_add_card:
+        data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
+        try:
+            if data_card[0] is None:
+                logging.error("Error: %s", str("Hết thẻ"))
+                sys.exit() # Dừng chương trình
+        except IndexError:
+            logging.error("Error: %s", str("Hết thẻ"))
+            browser.close()
+            sys.exit()
+            pass  # hoặc thực hiện các hành động khác tương ứng
+        
+        card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
+        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
+        card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
+        card_number_element.clear()
+        for i in card.get_card_number():
+            card_number_element.send_keys(i)
+            time.sleep(0.1)
+    # browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]').send_keys("")
 
-analysis_menu = Menu(menu)
-menu.add_cascade(label='Thống kê', menu=analysis_menu)
-analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
-analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
-analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
-analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
-analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
-analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')))
+        card_expiration_element = browser.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')
+        card_expiration_element.clear()
+        for i in card.get_card_expiration():
+            card_expiration_element.send_keys(i)
+            time.sleep(0.1)
+    # browser.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]').send_keys("")
 
-setting_menu = Menu(menu)
-menu.add_cascade(label='Cài đặt', menu=setting_menu)
-setting_menu.add_command(label='Mở tool', command=open_tool)
-setting_menu.add_command(label='Dừng tool', command=close_tool)
+        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditVerificationNumber"]')))
+        card_ccv_element = browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]')
+        card_ccv_element.clear()
+        for i in card.get_card_ccv():
+            card_ccv_element.send_keys(i)
+            time.sleep(0.1)
+    # browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]').send_keys("658")
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
 
-exit_menu = Menu(menu)
-menu.add_cascade(label='Exit', menu=exit_menu)
-exit_menu.add_command(label='Exit', command=close_app)
+    # Kiểm tra các trường hợp lỗi của thẻ 
+        try:
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
+            add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
+        
+            match add_payment_result.text:
+                case tool_exception.DISSABLE:
+                    logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
+                    # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
+                    run_add_card = False # Dừng vì account bị disable
+                    browser.close()
+                case tool_exception.MANY:
+                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                case tool_exception.INVALID_CARD:
+                # Thông tin thẻ sai
+                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                case tool_exception.SUPPORT:
+                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                case tool_exception.DIE:
+                    logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                case tool_exception.ACC_SPAM:
+                    logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
+                    # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
+                    run_add_card = False
+                    browser.close()
+                case tool_exception.ISSUE_METHOD:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
+                case tool_exception.DEC:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
+                case tool_exception.DECLINED:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                    # db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
+                case _:
+                    logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
+        except NoSuchElementException as e:
+            logging.error("Error Card: Thông tin thẻ không hợp lệ - %s")
+            db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+            continue
+        # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+        # browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
 
-mainloop()
+        except Exception as e: # Không có thông báo. => Add thẻ thành công
+            run_add_card = False
+            apple_id_done(browser, data)
+            break
+    
+
+def reg_apple_music():
+    first_name, last_name, date_of_birth, password = random_data()
+    data = None
+    address1, address2, city, state, postalCode = random_address()
+    try:
+        data = {
+        "first_name": first_name,
+        # "account": generate_random_email(),
+        "account": "leblancmylie373@gmail.com",
+        "password": "Zxcv123123",
+        "last_name": last_name,
+        "date_of_birth": generate_random_date_of_birth(),
+        "address1": address1,
+        "address2": address2,
+        "city": city,
+        "state": state,
+        "postalCode": postalCode
+        }
+        print(data)
+    except:
+        print("error")
+    
+    option = {
+        'proxy':  
+            {
+                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
+            }
+    
+    }
+    
+    browser = webdriver.Firefox(
+        seleniumwire_options=option
+    )
+    
+    browser.get('https://music.apple.com/us/login')
+    wait = WebDriverWait(browser, 30)
+    # vào web 
+    try:
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
+        iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
+        browser.switch_to.frame(iframe)
+        
+        #Nhập account name
+        wait.until(EC.visibility_of_element_located((By.ID, "accountName")))
+        inputAccount = browser.find_element(By.ID, "accountName")
+        inputAccount.send_keys(data["account"])
+        
+        # Nhấn nút login
+        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
+        # time.sleep(10)
+        # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+        # browser.switch_to.frame(iframe_auth)
+    except Exception as e:
+        print(e)
+    time.sleep(10)
+
+    # Kiểm tra login 
+    try: 
+        browser.switch_to.default_content()
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
+        iframe_register = browser.find_element(By.XPATH, "/html/body/div/div[5]/iframe")
+        browser.switch_to.frame(iframe_register)
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
+        browser.find_element(By.ID, "acAccountPassword").send_keys(data["password"])
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "firstName")))
+        browser.find_element(By.ID, "firstName").send_keys(data["first_name"])
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "lastName")))
+        browser.find_element(By.ID, "lastName").send_keys(data["last_name"])
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.ID, "birthday")))
+        birth = browser.find_element(By.ID, "birthday")
+        print(birth.tag_name)
+        for i in data["date_of_birth"]:
+            time.sleep(0.2)
+            birth.send_keys(i)
+        # WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
+        
+        inputs = browser.find_elements(By.TAG_NAME, "input")
+        # print(inputs[inputs.__len__()-1].get_attribute("id"))
+        inputs[inputs.__len__()-1].click()   
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
+        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
+    except Exception as e:
+        print(e)
+        print('TK đã được login')
+    otp = "  " + getOTP(data["account"])
+    time.sleep(25) # Đợi 10s để lấy OTP
+    otp = "  " + getOTP(data["account"])
+    active_element = browser.switch_to.active_element
+    for i in otp:
+        print(i)
+        active_element.send_keys(i)
+        time.sleep(0.5)
+    
+    time.sleep(5)
+    browser.get("https://music.apple.com/us/account/settings")
+    time.sleep(5)
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+    iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
+    browser.switch_to.frame(iframe_hello)
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
+    time.sleep(5)
+    browser.switch_to.default_content()
+    browser.get("https://music.apple.com/us/account/settings")
+    time.sleep(5)
+    
+    add_payment(browser, data)
+    
+    time.sleep(3)
+    
+    apple_id_done(browser, data)
+    
+    
+    
+    
+    
+#===================================GUI=========================================
+# root = Tk()
+# root.title("Tool apple music")
+# root.withdraw()  # Ẩn cửa sổ chính ban đầu
+
+# # Lấy kích thước màn hình
+# screen_width = root.winfo_screenwidth()
+# screen_height = root.winfo_screenheight()
+
+# # Đặt cửa sổ vào giữa màn hình
+# app_width = 400
+# app_height = 300
+# x = (screen_width - app_width) // 2
+# y = (screen_height - app_height) // 2
+# root.geometry(f"{app_width}x{app_height}+{x}+{y}")
+
+# # Ẩn cửa sổ chính ban đầu
+# root.withdraw()
+# frame_app = Frame(root, bg="white", width=root.winfo_width())
+# analysis_frame = Frame(root, bg="white", width=root.winfo_width())
+# # Hiển thị hình ảnh
+# image_path = "./assets/images/main-background.png"
+# image = Image.open(image_path)
+# photo = ImageTk.PhotoImage(image)
+# image_label = Label(root, image=photo)
+# image_label.place(relx=0.5, rely=0.5, anchor="center")
+
+# # Hiển thị cửa sổ chính
+# root.deiconify()
+
+# # Tạo menu
+# menu = Menu(root)
+# root.config(menu=menu)
+
+# add_data_menu = Menu(menu)
+# menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
+# add_data_menu.add_command(label='Thêm id', command=add_id)
+# add_data_menu.add_command(label='Thêm thẻ', command=add_card)
+# add_data_menu.add_separator()
+
+# featuremenu = Menu(menu)
+# menu.add_cascade(label='Chức năng', menu=featuremenu)
+# featuremenu.add_command(label='Login check', command=run_app_check)
+# featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
+# featuremenu.add_command(label='Login add', command=run_app)
+# featuremenu.add_separator()
+# featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
+
+# analysis_menu = Menu(menu)
+# menu.add_cascade(label='Thống kê', menu=analysis_menu)
+# analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
+# analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
+# analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
+# analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
+# analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
+# analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+
+# setting_menu = Menu(menu)
+# menu.add_cascade(label='Cài đặt', menu=setting_menu)
+# setting_menu.add_command(label='Mở tool', command=open_tool)
+# setting_menu.add_command(label='Dừng tool', command=close_tool)
+
+# exit_menu = Menu(menu)
+# menu.add_cascade(label='Exit', menu=exit_menu)
+# exit_menu.add_command(label='Exit', command=close_app)
+
+# mainloop()
+
+# option = {
+#         'proxy':  
+#             {
+#                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
+#             }
+    
+#     }
+    
+# browser = webdriver.Firefox(
+#     seleniumwire_options=option
+# )
+
+# browser.get('https://music.apple.com/us/account/settings')
 
 
+reg_apple_music()
+# click_first_login(browser)
+# add_payment(browser,{'first_name': 'Clvof', 'account': 'leblancmylie373@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Pnrme', 'date_of_birth': '08151999', 'address1': '12245 West 71st Place', 'address2': '', 'city': 'Arvada', 'state': 'CO', 'postalCode': '80004'} )
+# time.sleep(40)
+# add_payment(browser,{'first_name': 'Jveuw', 'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Evnea', 'date_of_birth': '08221974', 'address1': '8 Village Circle', 'address2': '', 'city': 'Randolph', 'state': 'VT', 'postalCode': '05060'} )
+# reg_apple_music()
 
