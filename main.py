@@ -1357,19 +1357,10 @@ def apple_id_done(browser, data):
 
 def process_login(browser, data):
     browser.switch_to.default_content()
-    wait = WebDriverWait(browser, 10)
     try:
-        iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
-        browser.switch_to.frame(iframe_auth)
-        
-        # sys.exit()
-
-    #Nhập password
-        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="password_text_field"]')))
-        inputPassword = browser.find_element(By.XPATH, '//*[@id="password_text_field"]')
-        inputPassword.send_keys(data['password'])
-        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="sign-in"]')))
-        browser.find_element(By.XPATH, '//*[@id="sign-in"]').click()
+        active_element = browser.switch_to.active_element
+        active_element.send_keys(data['password'])
+        active_element.send_keys(Keys.ENTER)
         time.sleep(5)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
