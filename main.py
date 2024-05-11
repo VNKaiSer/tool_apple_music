@@ -1613,7 +1613,7 @@ def reg_apple_music():
     except Exception as e:
         print('Đã login')
         if data['type'] == 'wait':
-            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['id']}'")
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         browser.quit()
         return 
     otp = "  " + getOTP(data["account"])
