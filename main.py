@@ -1584,7 +1584,7 @@ def reg_apple_music():
         # browser.switch_to.frame(iframe_auth)
     except Exception as e:
         print(e)
-    time.sleep(10)
+    time.sleep(5) # Đợi 5s
 
     # Kiểm tra login 
     try: 
@@ -1621,9 +1621,9 @@ def reg_apple_music():
     active_element = browser.switch_to.active_element
     active_element.send_keys(otp)
     
-    time.sleep(3)
+    time.sleep(5)
     browser.get("https://music.apple.com/us/account/settings")
-    time.sleep(3)
+    # time.sleep(3)
     WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
     iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
     browser.switch_to.frame(iframe_hello)
@@ -1632,7 +1632,7 @@ def reg_apple_music():
     time.sleep(3)
     browser.switch_to.default_content()
     browser.get("https://music.apple.com/us/account/settings")
-    time.sleep(3)
+    # time.sleep(3)
     
     add_payment(browser, data)
     
