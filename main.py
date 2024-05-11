@@ -239,6 +239,11 @@ class MySQLDatabase:
             return result
         else:
             return None
+    def insert_mail_wait(self, mail_wait):
+        query = "INSERT INTO mail_reg_apple_music_wait(mail) VALUES (%s)"
+        self.cursor.execute(query, (mail_wait,))
+        self.connection.commit()
+        
     def close(self):
         self.connection.close()
         
@@ -1277,7 +1282,7 @@ def generate_random_email():
     while True:
         mail_wait = db_instance.get_mail_wait()
         if mail_wait is not None:
-            return mail_wait
+            return mail_wait[1]
         else:
             while True:
                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
@@ -1477,8 +1482,10 @@ def add_payment(browser, data):
                     logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
+                    db_instance.insert_mail_wait(mail_wait=data['account'])
                     run_add_card = False
-                    browser.close()
+                    browser.quit()
+                    # continue
                 case tool_exception.ISSUE_METHOD:
                     logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
@@ -1508,6 +1515,7 @@ def add_payment(browser, data):
 
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             run_add_card = False
+            db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             data.append({
                 "ccv" : card.get_card_ccv()
             })
