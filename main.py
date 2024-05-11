@@ -245,7 +245,7 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
-        query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, cvv) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv) VALUES (%s, %s, %s, %s, %s, %s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5]))
         self.connection.commit()
         
@@ -1352,7 +1352,7 @@ def apple_id_done(browser, data):
     wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
     browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
     browser.switch_to.active_element.send_keys(Keys.ENTER)
-    time.sleep(60)
+    time.sleep(5)
     
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
@@ -1618,6 +1618,7 @@ def reg_apple_music():
         # browser.switch_to.frame(iframe_auth)
     except Exception as e:
         print(e)
+        
     time.sleep(5) # Đợi 5s
 
     # Kiểm tra login 
@@ -1647,6 +1648,7 @@ def reg_apple_music():
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
         print('Đã login')
+        print(e)
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         try: 
