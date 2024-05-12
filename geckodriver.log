@@ -12323,3 +12323,92 @@ DevTools listening on ws://127.0.0.1:53782/devtools/browser/4bbd1700-3b68-41e0-b
 1715506559096	Marionette	INFO	Stopped listening on port 53854
 Dynamically enable window occlusion 1
 console.error: (new AbortError("IndexedDB: main/search-config-v2 getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715509043234	geckodriver	INFO	Listening on 127.0.0.1:58743
+1715509046261	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58744" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilerYrTEW"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509046776	Marionette	INFO	Marionette enabled
+1715509046882	Marionette	INFO	Listening on port 58794
+WebDriver BiDi listening on ws://127.0.0.1:58744
+Read port: 58794
+1715509047201	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509047276	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58742","sslProxy":"127.0.0.1:58742"}
+DevTools listening on ws://127.0.0.1:58744/devtools/browser/0c7c9f5b-30fc-4150-a422-4fbf42cc7125
+1715509076990	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715509099895	Marionette	INFO	Stopped listening on port 58794
+Dynamically enable window occlusion 1
+profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile3vL73D"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509057966	Marionette	INFO	Marionette enabled
+1715509058115	Marionette	INFO	Listening on port 58967
+Read port: 58967
+WebDriver BiDi listening on ws://127.0.0.1:58916
+1715509058462	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509058623	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58913","sslProxy":"127.0.0.1:58913"}
+DevTools listening on ws://127.0.0.1:58916/devtools/browser/a9fdadbd-307d-4206-8cde-e477e2a0990f
+1715509088010	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715509111944	Marionette	INFO	Stopped listening on port 58967
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59689" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileyaF1ns"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509109531	Marionette	INFO	Marionette enabled
+1715509109699	Marionette	INFO	Listening on port 59763
+WebDriver BiDi listening on ws://127.0.0.1:59689
+Read port: 59763
+1715509110038	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509110099	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59687","sslProxy":"127.0.0.1:59687"}
+DevTools listening on ws://127.0.0.1:59689/devtools/browser/c5f04000-7afa-4562-9139-f8420e51f131
+1715509139664	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715509162197	Marionette	INFO	Stopped listening on port 59763
+Dynamically enable window occlusion 1
+profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile2grxJw"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509121497	Marionette	INFO	Marionette enabled
+1715509121622	Marionette	INFO	Listening on port 59953
+WebDriver BiDi listening on ws://127.0.0.1:59901
+Read port: 59953
+1715509121982	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509122072	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59899","sslProxy":"127.0.0.1:59899"}
+DevTools listening on ws://127.0.0.1:59901/devtools/browser/2997886f-9614-407d-82d2-e9b3c3358790
+1715509151544	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js, line 181: Script terminated by timeout at:
+tokenize@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:181:5848
+ast@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:181:7194
+parse@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:181:6190
+u@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:188:2241
+dispatch@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:503:39789
+add/v.handle@https://appleid.cdn-apple.com/appleauth/static/jsj/1406341834/widget/auth/app.js:503:37780
+
+1715509168385	Marionette	INFO	Stopped listening on port 59951715509170710	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60680" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileImUX7c"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509171140	Marionette	INFO	Marionette enabled
+1715509171286	Marionette	INFO	Listening on port 60728
+WebDriver BiDi listening on ws://127.0.0.1:60680
+Read port: 60728
+1715509171601	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509171661	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:60678","sslProxy":"127.0.0.1:60678"}
+DevTools listening on ws://127.0.0.1:60680/devtools/browser/f81c7f20-4d8f-4022-8da9-9edbc19cce29
+1715509370683	geckodriver	INFO	Listening on 127.0.0.1:64045
+1715509373745	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64046" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilegSBZVG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715509374158	Marionette	INFO	Marionette enabled
+1715509374252	Marionette	INFO	Listening on port 64093
+WebDriver BiDi listening on ws://127.0.0.1:64046
+Read port: 64093
+1715509374562	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715509374634	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:64044","sslProxy":"127.0.0.1:64044"}
+DevTools listening on ws://127.0.0.1:64046/devtools/browser/4409f51e-1add-408d-af45-c8456c561cb9
+1715509404216	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715509427655	Marionette	INFO	Stopped listening on port 64093
+Dynamically enable window occlusion 1

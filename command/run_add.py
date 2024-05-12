@@ -346,3 +346,6 @@ def run():
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_number()}, condition=f"id = {data[0][0]}")
             run_add_card = False
             browser.quit()
+
+
+run()
