@@ -11,4 +11,4 @@ main.spec
 tool_apple_music.rar
 geckodriver.log
 myenv/
-log/
+logs/
