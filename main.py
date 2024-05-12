@@ -1691,72 +1691,72 @@ def reg_apple_music():
     
     
 #===================================GUI=========================================
-# root = Tk()
-# root.title("Tool apple music")
-# root.withdraw()  # Ẩn cửa sổ chính ban đầu
+root = Tk()
+root.title("Tool apple music")
+root.withdraw()  # Ẩn cửa sổ chính ban đầu
 
-# # Lấy kích thước màn hình
-# screen_width = root.winfo_screenwidth()
-# screen_height = root.winfo_screenheight()
+# Lấy kích thước màn hình
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
 
-# # Đặt cửa sổ vào giữa màn hình
-# app_width = 400
-# app_height = 300
-# x = (screen_width - app_width) // 2
-# y = (screen_height - app_height) // 2
-# root.geometry(f"{app_width}x{app_height}+{x}+{y}")
+# Đặt cửa sổ vào giữa màn hình
+app_width = 400
+app_height = 300
+x = (screen_width - app_width) // 2
+y = (screen_height - app_height) // 2
+root.geometry(f"{app_width}x{app_height}+{x}+{y}")
 
-# # Ẩn cửa sổ chính ban đầu
-# root.withdraw()
-# frame_app = Frame(root, bg="white", width=root.winfo_width())
-# analysis_frame = Frame(root, bg="white", width=root.winfo_width())
-# # Hiển thị hình ảnh
-# image_path = "./assets/images/main-background.png"
-# image = Image.open(image_path)
-# photo = ImageTk.PhotoImage(image)
-# image_label = Label(root, image=photo)
-# image_label.place(relx=0.5, rely=0.5, anchor="center")
+# Ẩn cửa sổ chính ban đầu
+root.withdraw()
+frame_app = Frame(root, bg="white", width=root.winfo_width())
+analysis_frame = Frame(root, bg="white", width=root.winfo_width())
+# Hiển thị hình ảnh
+image_path = "./assets/images/main-background.png"
+image = Image.open(image_path)
+photo = ImageTk.PhotoImage(image)
+image_label = Label(root, image=photo)
+image_label.place(relx=0.5, rely=0.5, anchor="center")
 
-# # Hiển thị cửa sổ chính
-# root.deiconify()
+# Hiển thị cửa sổ chính
+root.deiconify()
 
-# # Tạo menu
-# menu = Menu(root)
-# root.config(menu=menu)
+# Tạo menu
+menu = Menu(root)
+root.config(menu=menu)
 
-# add_data_menu = Menu(menu)
-# menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
-# add_data_menu.add_command(label='Thêm id', command=add_id)
-# add_data_menu.add_command(label='Thêm thẻ', command=add_card)
-# add_data_menu.add_separator()
+add_data_menu = Menu(menu)
+menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
+add_data_menu.add_command(label='Thêm id', command=add_id)
+add_data_menu.add_command(label='Thêm thẻ', command=add_card)
+add_data_menu.add_separator()
 
-# featuremenu = Menu(menu)
-# menu.add_cascade(label='Chức năng', menu=featuremenu)
-# featuremenu.add_command(label='Login check', command=run_app_check)
-# featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
-# featuremenu.add_command(label='Login add', command=run_app)
-# featuremenu.add_separator()
-# featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
+featuremenu = Menu(menu)
+menu.add_cascade(label='Chức năng', menu=featuremenu)
+featuremenu.add_command(label='Login check', command=run_app_check)
+featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
+featuremenu.add_command(label='Login add', command=run_app)
+featuremenu.add_separator()
+featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
 
-# analysis_menu = Menu(menu)
-# menu.add_cascade(label='Thống kê', menu=analysis_menu)
-# analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
-# analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
-# analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
-# analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
-# analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
-# analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+analysis_menu = Menu(menu)
+menu.add_cascade(label='Thống kê', menu=analysis_menu)
+analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
+analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
+analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
+analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
+analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
+analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 
-# setting_menu = Menu(menu)
-# menu.add_cascade(label='Cài đặt', menu=setting_menu)
-# setting_menu.add_command(label='Mở tool', command=open_tool)
-# setting_menu.add_command(label='Dừng tool', command=close_tool)
+setting_menu = Menu(menu)
+menu.add_cascade(label='Cài đặt', menu=setting_menu)
+setting_menu.add_command(label='Mở tool', command=open_tool)
+setting_menu.add_command(label='Dừng tool', command=close_tool)
 
-# exit_menu = Menu(menu)
-# menu.add_cascade(label='Exit', menu=exit_menu)
-# exit_menu.add_command(label='Exit', command=close_app)
+exit_menu = Menu(menu)
+menu.add_cascade(label='Exit', menu=exit_menu)
+exit_menu.add_command(label='Exit', command=close_app)
 
-# mainloop()
+mainloop()
 
 # option = {
 #         'proxy':  
@@ -1773,7 +1773,7 @@ def reg_apple_music():
 # browser.get('https://music.apple.com/us/account/settings')
 # apple_id_done(browser,{'first_name': 'Nsysf', 'account': 'tandatvo91@gmail.com', 'type': 'rent', 'password': 'Zxcv123123', 'last_name': 'Zaesa', 'date_of_birth': '07051969', 'address1': '2034 Fairfax Road', 'address2': '', 'city': 'Annapolis', 'state': 'MD', 'postalCode': '21401', 'card_number': '4403938038007684', 'month_exp': '10', 'year_exp': '2024', 'ccv': '187'})
 
-reg_apple_music()
+# reg_apple_music()
 # click_first_login(browser)
 # add_payment(browser,{'first_name': 'Clvof', 'account': 'leblancmylie373@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Pnrme', 'date_of_birth': '08151999', 'address1': '12245 West 71st Place', 'address2': '', 'city': 'Arvada', 'state': 'CO', 'postalCode': '80004'} )
 # time.sleep(40)
