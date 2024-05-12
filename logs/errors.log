@@ -5343,3 +5343,8 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-05-06 15:44:55,263 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
 2024-05-10 01:50:47,840 - Error Card: Cardnumber - 5498250003910014 - Card is many account add
 2024-05-10 01:50:58,999 - Error Card: Cardnumber - 5425430182748892 - Card is many account add
+2024-05-12 16:44:44,684 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-12 16:44:56,523 - Error Tool: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
+2024-05-12 17:08:52,571 - Error Account: Id - CeliaPhilip328@gmail.com-Your Apple ID or password was incorrect.
+2024-05-12 17:09:40,399 - Error Account: Id - CeliaBWilliams8@gmail.com-Your Apple ID or password was incorrect.
+2024-05-12 17:09:54,795 - Error Account: Id - CeliaTamia20@gmail.com-Your Apple ID or password was incorrect.
