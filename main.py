@@ -308,7 +308,7 @@ def run(browser):
 
         if(data[0] is None): # Trường hợp hết mail
             logging.error("Error Account: %s", str("Hết account khả dụng trong database"))
-            browser.close()
+            browser.quit()
             break
     
         browser.get(config.WEB_URL)
@@ -351,13 +351,13 @@ def run(browser):
             if check_account_is_block(browser):
                 logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
                 db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
-                browser.close()
+                browser.quit()
                 continue
         
             if check_account_login_invalid_password(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-" +tool_exception.INVALID_PASSWORD))
                 db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "SaiPass"}, condition=f"id = {data[0][0]}")
-                browser.close()
+                browser.quit()
                 continue
         
             time.sleep(5)
@@ -365,7 +365,7 @@ def run(browser):
             if check_account_has_otp(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-"+"2FA"))
                 db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "2FA"}, condition=f"id = {data[0][0]}")
-                browser.close()
+                browser.quit()
                 continue
         # Lần đầu đăng nhập
             try:
@@ -400,7 +400,8 @@ def run(browser):
         
         except Exception as e:
             logging.error("Error: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
-            browser.close()
+            db_instance.update_data(table_name="mail", set_values={"status": 1}, condition=f"id = {data[0][0]}")
+            browser.quit()
             continue
         browser.switch_to.default_content()
     # Đoạn này là đăng nhập đã thành công
@@ -431,7 +432,7 @@ def run(browser):
         print(country)
         if country != "United States":
             db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
-            browser.close()
+            browser.quit()
             continue
     # click nút change payment 
         wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
@@ -469,7 +470,7 @@ def run(browser):
             print(e)
             browser.switch_to.default_content()
         # run_add_card = False
-        # browser.close()
+        # browser.quit()
         # break
     # Vào lại iframe thanh toán
         browser.switch_to.default_content()
@@ -492,7 +493,7 @@ def run(browser):
                     sys.exit() # Dừng cjương trình
             except IndexError:
                 logging.error("Error: %s", str("Hết thẻ"))
-                browser.close()
+                browser.quit()
                 sys.exit()
                 pass  # hoặc thực hiện các hành động khác tương ứng
            
@@ -532,7 +533,7 @@ def run(browser):
                         logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
                         db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
                         run_add_card = False # Dừng vì account bị disable
-                        browser.close()
+                        browser.quit()
                     case tool_exception.MANY:
                         logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
@@ -565,7 +566,7 @@ def run(browser):
                         db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
                         run_add_card = False
-                        browser.close()
+                        browser.quit()
                     case tool_exception.ISSUE_METHOD:
                         logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
@@ -599,7 +600,7 @@ def run(browser):
                 db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
                 db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_number()}, condition=f"id = {data[0][0]}")
                 run_add_card = False
-                browser.close()
+                browser.quit()
 
 def run_check():
     while(data := db_instance.fetch_data(table_name="mail", columns=["*"], condition="loginCheck = 'Y' and isRunningLoginCheck = 'N' limit 1")): 
@@ -614,7 +615,7 @@ def run_check():
 
         if(data[0] is None): # Trường hợp hết mail
             logging.error("Error Account: %s", str("Hết account khả dụng trong database"))
-            browser.close()
+            browser.quit()
             break
     
         browser.get(config.WEB_URL)
@@ -636,9 +637,10 @@ def run_check():
             iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
             browser.switch_to.frame(iframe_auth)
         except Exception as e:
+            db_instance.update_data(table_name="mail", set_values={"isRunningLoginCheck": "N"}, condition="id = %s" % data[0][0])
             logging.error("Error Tool: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
-        # continue
-            sys.exit()
+            continue
+            
     
     #Nhập password
         try:   # Chọn tới vị trí con trỏ hiện tại
@@ -657,13 +659,13 @@ def run_check():
             if check_account_is_block(browser):
                 logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
                 db_instance.insert_mail_check([data[0][1], data[0][2],"UnLock",0])
-                browser.close()
+                browser.quit()
                 continue
         
             if check_account_login_invalid_password(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-" +tool_exception.INVALID_PASSWORD))
                 db_instance.insert_mail_check([data[0][1], data[0][2],"sai pass",0])
-                browser.close()
+                browser.quit()
                 continue
         
             time.sleep(5)
@@ -671,7 +673,7 @@ def run_check():
             if check_account_has_otp(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-"+"2FA"))
                 db_instance.insert_mail_check([data[0][1], data[0][2],"2FA",0])
-                browser.close()
+                browser.quit()
                 continue
         # Lần đầu đăng nhập
             try:
@@ -706,7 +708,8 @@ def run_check():
         
         except Exception as e:
             logging.error("Error: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
-            browser.close()
+            db_instance.update_data(table_name="mail", set_values={"isRunningLoginCheck": "N"}, condition="id = %s" % data[0][0])
+            browser.quit()
             continue
         browser.switch_to.default_content()
     # Đoạn này là đăng nhập đã thành công
@@ -738,7 +741,7 @@ def run_check():
         balance = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[3]/div/ul/li').text
         
         db_instance.insert_mail_check([data[0][1], data[0][2],country,float(balance.replace("$",""))])
-        browser.close()
+        browser.quit()
         
 
 def run_check_delete():
@@ -754,7 +757,7 @@ def run_check_delete():
 
         if(data[0] is None): # Trường hợp hết mail
             logging.error("Error Account: %s", str("Hết account khả dụng trong database"))
-            browser.close()
+            browser.quit()
             break
     
         browser.get(config.WEB_URL)
@@ -797,13 +800,13 @@ def run_check_delete():
             if check_account_is_block(browser):
                 logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
                 db_instance.insert_mail_delete([data[0][1], data[0][2], "UnLock", "","none"])
-                browser.close()
+                browser.quit()
                 continue
         
             if check_account_login_invalid_password(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-" +tool_exception.INVALID_PASSWORD))
                 db_instance.insert_mail_delete([data[0][1], data[0][2], "sai pass", "","none"])
-                browser.close()
+                browser.quit()
                 continue
         
             time.sleep(5)
@@ -811,7 +814,7 @@ def run_check_delete():
             if check_account_has_otp(browser):
                 logging.error("Error Account: Id - %s", str(data[0][1] +"-"+"2FA"))
                 db_instance.insert_mail_delete([data[0][1], data[0][2], "2FA", "","none"])
-                browser.close()
+                browser.quit()
                 continue
         # Lần đầu đăng nhập
             try:
@@ -846,7 +849,8 @@ def run_check_delete():
         
         except Exception as e:
             logging.error("Error: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
-            browser.close()
+            db_instance.update_data(table_name="mail", set_values={"isRunningLoginDelete": "N"}, condition="id = %s" % data[0][0])
+            browser.quit()
             continue
         browser.switch_to.default_content()
     # Đoạn này là đăng nhập đã thành công
@@ -908,11 +912,11 @@ def run_check_delete():
             wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
             browser.find_element(By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
             db_instance.insert_mail_delete([data[0][1], data[0][2],"",country,"bin"])
-            browser.close()
+            browser.quit()
         except Exception as e: # Không có thẻ 
             print(e)
             db_instance.insert_mail_delete([data[0][1], data[0][2],"",country,"none"])
-            browser.close()
+            browser.quit()
             
 
 
@@ -1452,7 +1456,7 @@ def add_payment(browser, data):
                 sys.exit() # Dừng chương trình
         except IndexError:
             logging.error("Error: %s", str("Hết thẻ"))
-            browser.close()
+            browser.quit()
             sys.exit()
          
         
