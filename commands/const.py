@@ -176,8 +176,17 @@ class MySQLDatabase:
         return result
     
     def insert_mail_reg_apple_music_not_add(self, mail):
+        date_string = mail[2]
+
+    # Chia chuỗi thành các phần để lấy ngày, tháng và năm
+        day = date_string[0:2]
+        month = date_string[2:4]
+        year = date_string[4:]
+
+    # Tạo chuỗi mới với định dạng ngày/tháng/năm
+        formatted_date = f"{day}{month}{year}"
         query = "INSERT INTO reg_apple_music_id(mail, password, day) VALUES (%s, %s, %s)"
-        self.cursor.execute(query, (mail[0], mail[1], mail[2]))
+        self.cursor.execute(query, (mail[0], mail[1], formatted_date))
         self.connection.commit()
     
     def insert_mail_check(self, mail_check):
@@ -250,8 +259,15 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
+        date_string = mail[6]
+
+    # Chia chuỗi thành các phần để lấy ngày, tháng và năm
+        day = date_string[0:2]
+        month = date_string[2:4]
+        year = date_string[4:]
+        formatted_date = f"{day}{month}{year}"
         query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv, day) VALUES (%s, %s, %s, %s, %s, %s,%s)"
-        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],mail[6]))
+        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],formatted_date))
         self.connection.commit()
         
     def close(self):

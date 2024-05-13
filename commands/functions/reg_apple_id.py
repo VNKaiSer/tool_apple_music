@@ -131,16 +131,8 @@ def apple_id_done(browser, data):
     except Exception as e:
         print(e) # Không còn nút đó 
     # Chuỗi ngày tháng năm ban đầu
-    date_string = data['date_of_birth']
-
-    # Chia chuỗi thành các phần để lấy ngày, tháng và năm
-    day = date_string[0:2]
-    month = date_string[2:4]
-    year = date_string[4:]
-
-    # Tạo chuỗi mới với định dạng ngày/tháng/năm
-    formatted_date = f"{day}{month}{year}"
-    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv'],formatted_date])
+    
+    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
     # Lưuvào db 
     #OTP xong
     browser.quit()
