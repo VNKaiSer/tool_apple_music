@@ -432,7 +432,7 @@ def reg_apple_music(add, apple):
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         try: 
-            process_login(browser, data, add)
+            process_login(browser, data, add, apple)
         except Exception as e:
             print(e)
             browser.quit()
