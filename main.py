@@ -624,20 +624,40 @@ def open_error_pay():
     
     submit_btn = Button(analysis_frame, text="Xuất", command=export_error_data_pay)
     submit_btn.pack(pady=10)
-from command import reg_apple_id
+
 def reg_apple_music():
+    def run(choice):
+        while True:
+            if choice == 0:
+                os.system("python ./commands/reg_music.py")
+            elif choice == 1:
+                os.system("python ./commands/reg_music_add.py")
+            else:
+                os.system("python ./commands/reg_music_add_apple.py") 
+    root.deiconify() 
     def on_click_reg_apple_music():
-        value = selected_value.get()
-        if value == "Tạo":
-            reg_apple_id.reg_apple_music(False, False)
+        num_tabs = int(spinbox.get())
+        selected_function = selected_value.get()
+        # Thực hiện các hành động cần thiết với số tab và chức năng đã chọn
+        for i in range(num_tabs):
+                threading.Thread(target=run(options.index(selected_function))).start()
+                time.sleep(10)
     frame_app.place_forget()
     clear_frame(analysis_frame)
     # Ẩn hình ảnh
     image_label.place_forget()
-    
+
     # Tạo một Frame với chiều rộng bằng với root
     analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
-    label = Label(analysis_frame, text="Chọn lỗi muốn xuất:", font=("Arial", 20), bg="white")
+
+    label_title = Label(analysis_frame, text="Nhập số tab:", font=("Arial", 20), bg="white")
+    label_title.pack(pady=10)
+
+    # Tạo một Spinbox để nhập số tab
+    spinbox = Spinbox(analysis_frame, from_=1, to=20, font=("Arial", 16))
+    spinbox.pack(pady=10)
+
+    label = Label(analysis_frame, text="Chọn tính năng:", font=("Arial", 20), bg="white")
     label.pack(pady=5)
     options = ["Tạo", "Tạo-add", "Tạo-add-apple"]
 
@@ -646,9 +666,9 @@ def reg_apple_music():
     selected_value.set(options[0])  # Đặt giá trị mặc định
 
     # Tạo OptionMenu
-    option_menu = OptionMenu(analysis_frame, selected_value, *options,)
+    option_menu = OptionMenu(analysis_frame, selected_value, *options)
     option_menu.pack(pady=7)
-    
+
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
 #===================================GUI END FUCITON======================================
