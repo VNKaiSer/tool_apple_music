@@ -175,6 +175,11 @@ class MySQLDatabase:
         print(result)
         return result
     
+    def insert_mail_reg_apple_music_not_add(self, mail):
+        query = "INSERT INTO reg_apple_music_id_not_add(mail, password, day) VALUES (%s, %s, %s)"
+        self.cursor.execute(query, (mail[0], mail[1], mail[2]))
+        self.connection.commit()
+    
     def insert_mail_check(self, mail_check):
         try:
             mail = mail_check[0]
@@ -245,8 +250,8 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
-        query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv) VALUES (%s, %s, %s, %s, %s, %s)"
-        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5]))
+        query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv, day) VALUES (%s, %s, %s, %s, %s, %s,%s)"
+        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],mail[6]))
         self.connection.commit()
         
     def close(self):

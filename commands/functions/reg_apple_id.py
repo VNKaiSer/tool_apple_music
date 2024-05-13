@@ -130,8 +130,17 @@ def apple_id_done(browser, data):
        active_element.send_keys(Keys.ENTER)
     except Exception as e:
         print(e) # Không còn nút đó 
-    
-    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv']])
+    # Chuỗi ngày tháng năm ban đầu
+    date_string = data['date_of_birth']
+
+    # Chia chuỗi thành các phần để lấy ngày, tháng và năm
+    day = date_string[0:2]
+    month = date_string[2:4]
+    year = date_string[4:]
+
+    # Tạo chuỗi mới với định dạng ngày/tháng/năm
+    formatted_date = f"{day}{month}{year}"
+    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv'],formatted_date])
     # Lưuvào db 
     #OTP xong
     browser.quit()
@@ -323,6 +332,8 @@ def add_payment(browser, data, apple):
     # Tiến hành hoàn thành
     if apple == True:
         apple_id_done(browser, data)
+    
+    db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
     browser.quit()
 
 def reg_apple_music(add, apple):
@@ -444,5 +455,5 @@ def reg_apple_music(add, apple):
     
     if add == True:
         add_payment(browser, data, apple)
-
+    db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
     browser.quit()
