@@ -145,7 +145,7 @@ def apple_id_done(browser, data):
     #OTP xong
     browser.quit()
 
-def process_login(browser, data):
+def process_login(browser, data, add, apple):
     browser.switch_to.default_content()
     try:
         active_element = browser.switch_to.active_element
@@ -154,7 +154,10 @@ def process_login(browser, data):
         time.sleep(5)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
-        add_payment(browser, data)
+        if add == True:
+            add_payment(browser, data, apple)
+        db_instance.insert_mail_reg_apple_music_not_add([data['account'], "Zxcv123123",data['date_of_birth']])
+        browser.quit()
     except Exception as e:
         print(e)
     
@@ -392,8 +395,9 @@ def reg_apple_music(add, apple):
         # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
-    except Exception as e:
-        print(e)
+    except Exception as e: # Trang apple load chậm
+        db_instance.insert_mail_wait(data["account"])
+        browser.quit()
         
     time.sleep(5) # Đợi 5s
 
@@ -428,7 +432,7 @@ def reg_apple_music(add, apple):
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         try: 
-            process_login(browser, data)
+            process_login(browser, data, add)
         except Exception as e:
             print(e)
             browser.quit()
@@ -436,24 +440,29 @@ def reg_apple_music(add, apple):
             sys.exit(0)
         browser.quit()
         return 
-    otp = getOTP(data["account"])
-    time.sleep(5)
-    otp = getOTP(data["account"])
-    active_element = browser.switch_to.active_element
-    active_element.send_keys(otp)
-    time.sleep(8)
-    browser.get("https://music.apple.com/us/account/settings")
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
-    iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
-    browser.switch_to.frame(iframe_hello)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
-    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
-    time.sleep(3)
-    browser.switch_to.default_content()
-    browser.get("https://music.apple.com/us/account/settings")
-    # time.sleep(3)
     
-    if add == True:
-        add_payment(browser, data, apple)
-    db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
-    browser.quit()
+    try:
+        otp = getOTP(data["account"])
+        time.sleep(5)
+        otp = getOTP(data["account"])
+        active_element = browser.switch_to.active_element
+        active_element.send_keys(otp)
+        time.sleep(8)
+        browser.get("https://music.apple.com/us/account/settings")
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
+        browser.switch_to.frame(iframe_hello)
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
+        time.sleep(3)
+        browser.switch_to.default_content()
+        browser.get("https://music.apple.com/us/account/settings")
+        # time.sleep(3)
+        
+        if add == True:
+            add_payment(browser, data, apple)
+        db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
+        browser.quit()
+    except Exception as e:
+        db_instance.insert_mail_wait(data["account"])
+        browser.quit()
