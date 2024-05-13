@@ -250,7 +250,7 @@ class MySQLDatabase:
         self.connection.commit()
     
     def insert_mail_reg_apple_music_not_add(self, mail):
-        query = "INSERT INTO reg_apple_music_id_not_add(mail, password, day) VALUES (%s, %s, %s)"
+        query = "INSERT INTO reg_apple_music_id(mail, password, day) VALUES (%s, %s, %s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2]))
         self.connection.commit()
         
