@@ -638,15 +638,13 @@ def open_error_pay():
 def reg_apple_music():
     def run(choice):
         time.sleep(10)
-        while True:
-            if choice == 0:
-                subprocess.Popen(["python", "./commands/reg_music.py"])
-            elif choice == 1:
-                subprocess.Popen(["python", "./commands/reg_music_add.py"])
-            else:
-                subprocess.Popen(["python", "./commands/reg_music_add_apple.py"]) 
-            # Thời gian chờ giữa các lần thực thi lệnh
-            time.sleep(5)
+        # while True:
+        if choice == 0:
+            subprocess.Popen(["python", "./commands/reg_music.py"])
+        elif choice == 1:
+            subprocess.Popen(["python", "./commands/reg_music_add.py"])
+        else:
+            subprocess.Popen(["python", "./commands/reg_music_add_apple.py"]) 
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
