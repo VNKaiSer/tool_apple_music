@@ -345,11 +345,10 @@ def reg_apple_music(add, apple):
     try:
         mail, type_mail = generate_random_email()
         if type_mail == 'wait':
-            mail = mail[0]
-            password = mail[1]
+            mail = mail[1]
+            password = mail[2]
         
         print(mail, password)  
-        time.sleep(1000)
         data = {
         "first_name": first_name,
         "account": mail,
