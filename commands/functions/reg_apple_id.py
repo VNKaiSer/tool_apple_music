@@ -14,12 +14,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
 
-def generate_random_password(length):
-    characters = string.ascii_letters 
-    digit = string.digits
-    password_first = 'A'.join(random.choice(characters) for _ in range(length))
-    password = password_first + (random.choice(digit) for _ in range(length))+'0'
-    return password
+def generate_random_password():
+    characters = string.ascii_letters.replace('l', '').replace('I', '')
+    digits = string.digits
+    
+    password_characters = [random.choice(characters) for _ in range(6)]
+    password_digits = [random.choice(digits) for _ in range(3)]
+    
+    password_list = password_characters + password_digits
+
+    password_list.append('0')
+    
+
+    random.shuffle(password_list)
+    
+    password = ''.join(password_list)
+    
+    return 'A' + password + '@'
 
 def generate_name(length):
     random_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
@@ -37,7 +48,7 @@ def generate_random_date_of_birth():
     return date_of_birth
 
 def random_data():
-    password = generate_random_password(5)
+    password = generate_random_password()
     frist_name = generate_name(5)
     last_name = generate_name(5)
     date_of_birth = generate_random_date_of_birth()
