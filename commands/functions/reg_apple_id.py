@@ -359,7 +359,7 @@ def reg_apple_music(add, apple):
         "first_name": first_name,
         "account": mail,
         "type": type_mail,
-        # "account": "leblancmylie373@gmail.com",
+        "account": "leblancmylie373@gmail.com",
         "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,

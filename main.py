@@ -634,6 +634,7 @@ def open_error_pay():
     submit_btn = Button(analysis_frame, text="Xuất", command=export_error_data_pay)
     submit_btn.pack(pady=10)
 
+
 def reg_apple_music():
     def run(choice):
         while True:
@@ -643,27 +644,25 @@ def reg_apple_music():
                 os.system("python ./commands/reg_music_add.py")
             else:
                 os.system("python ./commands/reg_music_add_apple.py") 
-    root.deiconify() 
+            time.sleep(10)  # Thời gian chờ giữa các lần thực thi lệnh
+
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
         selected_function = selected_value.get()
-        # Thực hiện các hành động cần thiết với số tab và chức năng đã chọn
         for i in range(num_tabs):
-            # time.sleep(10)
-            threading.Thread(target=run(options.index(selected_function))).start()
+            threading.Thread(target=run, args=(options.index(selected_function),)).start()
                 
+    root.deiconify()
+    
     frame_app.place_forget()
     clear_frame(analysis_frame)
-    # Ẩn hình ảnh
     image_label.place_forget()
 
-    # Tạo một Frame với chiều rộng bằng với root
     analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
 
     label_title = Label(analysis_frame, text="Nhập số tab:", font=("Arial", 20), bg="white")
     label_title.pack(pady=10)
 
-    # Tạo một Spinbox để nhập số tab
     spinbox = Spinbox(analysis_frame, from_=1, to=20, font=("Arial", 16))
     spinbox.pack(pady=10)
 
@@ -671,17 +670,18 @@ def reg_apple_music():
     label.pack(pady=5)
     options = ["Tạo", "Tạo-add", "Tạo-add-apple"]
 
-    # Biến để lưu trữ giá trị được chọn
     selected_value = StringVar(analysis_frame)
-    selected_value.set(options[0])  # Đặt giá trị mặc định
+    selected_value.set(options[0])
 
-    # Tạo OptionMenu
     option_menu = OptionMenu(analysis_frame, selected_value, *options)
     option_menu.pack(pady=7)
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
 
+def clear_frame(frame):
+    for widget in frame.winfo_children():
+        widget.destroy()
 def handle_proxy():
     global USE_PROXY
     if USE_PROXY == True:
