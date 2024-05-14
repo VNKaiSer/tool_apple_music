@@ -375,7 +375,7 @@ def reg_apple_music(add, apple):
         'port': 9999
     
     }
-    service = Service(executable_path='./driver/geckodriver')
+    
     global USE_PROXY
     if USE_PROXY == True:
         browser = webdriver.Firefox(
@@ -407,6 +407,7 @@ def reg_apple_music(add, apple):
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e: # Trang apple load chậm
+        print("1")
         db_instance.insert_mail_wait(data["account"], data["password"])
         browser.quit()
         
@@ -419,6 +420,7 @@ def reg_apple_music(add, apple):
         iframe_register = browser.find_element(By.XPATH, "/html/body/div/div[5]/iframe")
         browser.switch_to.frame(iframe_register)
         WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
+        
         browser.find_element(By.ID, "acAccountPassword").send_keys(data["password"])
         WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "firstName")))
         browser.find_element(By.ID, "firstName").send_keys(data["first_name"])
@@ -475,5 +477,6 @@ def reg_apple_music(add, apple):
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
         browser.quit()
     except Exception as e:
+        print(2)
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
