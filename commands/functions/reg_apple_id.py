@@ -343,11 +343,12 @@ def reg_apple_music(add, apple):
     data = None
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
+    print(password)
     try:
         mail, type_mail = generate_random_email()
         if type_mail == 'wait':
-            mail = mail[1]
             password = mail[2]
+            mail = mail[1]   
         
         
         data = {
@@ -364,6 +365,8 @@ def reg_apple_music(add, apple):
         "postalCode": postalCode
         }
         print(data)
+        
+        time.sleep(10000)
     except:
         print("error")
     
