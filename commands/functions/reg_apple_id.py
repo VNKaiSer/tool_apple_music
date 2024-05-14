@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.firefox.service import Service
 from faker import Faker
 fake = Faker()
 
@@ -348,7 +349,7 @@ def reg_apple_music(add, apple):
             mail = mail[1]
             password = mail[2]
         
-        print(mail, password)  
+        
         data = {
         "first_name": first_name,
         "account": mail,
@@ -370,13 +371,21 @@ def reg_apple_music(add, apple):
         'proxy':  
             {
                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
-            }
+            },
+        'port': 9999
     
     }
-    
-    browser = webdriver.Firefox(
-        seleniumwire_options=option
-    )
+    service = Service(executable_path='./driver/geckodriver')
+    global USE_PROXY
+    if USE_PROXY == True:
+        browser = webdriver.Firefox(
+            seleniumwire_options=option
+            
+        )
+    else: 
+        browser = webdriver.Firefox(
+            
+        )
     
     browser.get('https://music.apple.com/us/login')
     wait = WebDriverWait(browser, 10)

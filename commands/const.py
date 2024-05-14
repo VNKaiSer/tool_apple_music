@@ -318,5 +318,5 @@ option = {
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 #State
-USE_PROXY = False
+USE_PROXY = True
 RUN_APP = True

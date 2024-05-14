@@ -637,6 +637,7 @@ def open_error_pay():
 
 def reg_apple_music():
     def run(choice):
+        time.sleep(10)
         while True:
             if choice == 0:
                 os.system("python ./commands/reg_music.py")
@@ -644,7 +645,7 @@ def reg_apple_music():
                 os.system("python ./commands/reg_music_add.py")
             else:
                 os.system("python ./commands/reg_music_add_apple.py") 
-            time.sleep(10)  # Thời gian chờ giữa các lần thực thi lệnh
+              # Thời gian chờ giữa các lần thực thi lệnh
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
