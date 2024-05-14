@@ -13,22 +13,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
+from faker import Faker
+fake = Faker()
 
 def generate_random_password():
-    characters = string.ascii_letters.replace('l', '').replace('I', '')
-    digits = string.digits
-    
-    password_characters = [random.choice(characters) for _ in range(6)]
-    password_digits = [random.choice(digits) for _ in range(3)]
-    
-    password_list = password_characters + password_digits
-
-    password_list.append('0')
-    
-
-    random.shuffle(password_list)
-    
-    password = ''.join(password_list)
+    password = fake.password(digits=3,length=10,special_chars=False, upper_case=True, lower_case=True)
     
     return 'A' + password + '@'
 
@@ -359,7 +348,7 @@ def reg_apple_music(add, apple):
         "first_name": first_name,
         "account": mail,
         "type": type_mail,
-        "account": "leblancmylie373@gmail.com",
+        # "account": "leblancmylie373@gmail.com",
         "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
