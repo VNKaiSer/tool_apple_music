@@ -330,9 +330,9 @@ def add_payment(browser, data, apple):
     # Tiến hành hoàn thành
     if apple == True:
         apple_id_done(browser, data)
-    
-    db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
-    browser.quit()
+    else:
+        db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
+        browser.quit()
 
 def reg_apple_music(add, apple):
     global RUN_APP
@@ -476,8 +476,9 @@ def reg_apple_music(add, apple):
         
         if add == True:
             add_payment(browser, data, apple)
-        db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
-        browser.quit()
+        else:
+            db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
+            browser.quit()
     except Exception as e:
         print(2)
         db_instance.insert_mail_wait(data["account"], data["password"]) 
