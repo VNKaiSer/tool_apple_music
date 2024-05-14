@@ -47,7 +47,7 @@ def generate_random_email():
         mail_wait = db_instance.get_mail_wait()
         print(mail_wait)
         if mail_wait is not None:
-            return mail_wait[0][1], 'wait'
+            return mail_wait[0],'wait'
         else:
             while True:
                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
@@ -285,7 +285,7 @@ def add_payment(browser, data, apple):
                     # logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
-                    db_instance.insert_mail_wait(mail_wait=data['account'])
+                    db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'])
                     run_add_card = False
                     browser.quit()
                     # continue
@@ -336,7 +336,7 @@ def add_payment(browser, data, apple):
 def reg_apple_music(add, apple):
     global RUN_APP
     if RUN_APP == False:
-        return
+        return 
     
     first_name, last_name, date_of_birth, password = random_data()
     data = None
@@ -344,11 +344,16 @@ def reg_apple_music(add, apple):
     type_mail = None
     try:
         mail, type_mail = generate_random_email()
+        if type_mail == 'wait':
+            mail = mail[0]
+            password = mail[1]
+        
+        print(mail, password)  
+        time.sleep(1000)
         data = {
         "first_name": first_name,
         "account": mail,
         "type": type_mail,
-        # "account": "leblancmylie373@gmail.com",
         "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
@@ -394,7 +399,7 @@ def reg_apple_music(add, apple):
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e: # Trang apple load chậm
-        db_instance.insert_mail_wait(data["account"])
+        db_instance.insert_mail_wait(data["account"], data["password"])
         browser.quit()
         
     time.sleep(5) # Đợi 5s
@@ -462,5 +467,5 @@ def reg_apple_music(add, apple):
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
         browser.quit()
     except Exception as e:
-        db_instance.insert_mail_wait(data["account"])
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()

@@ -8,7 +8,7 @@ import time
 import logging
 import sys
 import mysql.connector
-
+from concurrent.futures import ThreadPoolExecutor
 from commands.const import *
 
 # Class
@@ -649,8 +649,10 @@ def reg_apple_music():
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
         selected_function = selected_value.get()
-        for i in range(num_tabs):
-            threading.Thread(target=run, args=(options.index(selected_function),)).start()
+        
+        with ThreadPoolExecutor(max_workers=num_tabs) as executor:
+            for i in range(num_tabs):
+                executor.submit(run, options.index(selected_function))
                 
     root.deiconify()
     

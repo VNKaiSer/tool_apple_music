@@ -254,9 +254,9 @@ class MySQLDatabase:
             return result
         else:
             return None
-    def insert_mail_wait(self, mail_wait):
-        query = "INSERT INTO mail_reg_apple_music_wait(mail) VALUES (%s)"
-        self.cursor.execute(query, (mail_wait,))
+    def insert_mail_wait(self, mail_wait, password):
+        query = "INSERT INTO mail_reg_apple_music_wait(mail,password) VALUES (%s, %s)"
+        self.cursor.execute(query, (mail_wait, password))
         self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
