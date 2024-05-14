@@ -366,7 +366,6 @@ def reg_apple_music(add, apple):
         }
         print(data)
         
-        time.sleep(10000)
     except:
         print("error")
     
