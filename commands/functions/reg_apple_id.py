@@ -15,8 +15,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.select import Select
 
 def generate_random_password(length):
-    characters = string.ascii_letters + string.digits
-    password = 'A'.join(random.choice(characters) for _ in range(length)) + '@'
+    characters = string.ascii_letters 
+    digit = string.digits
+    password_first = 'A'.join(random.choice(characters) for _ in range(length))
+    password = password_first + (random.choice(digit) for _ in range(length))+'0'
     return password
 
 def generate_name(length):
