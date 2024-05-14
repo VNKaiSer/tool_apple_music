@@ -37,7 +37,7 @@ def generate_random_date_of_birth():
     return date_of_birth
 
 def random_data():
-    password = generate_random_password(8)
+    password = generate_random_password(5)
     frist_name = generate_name(5)
     last_name = generate_name(5)
     date_of_birth = generate_random_date_of_birth()
