@@ -37,6 +37,7 @@ class Config:
     DB_USER = "kaiser"
     DB_PASSWORD = "r!8R%OMm@=H{cVH6LZpqV]nye1G"
     DB_NAME = "apple_music"
+
     
     
 class Account:
@@ -265,7 +266,7 @@ class MySQLDatabase:
         day = date_string[0:2]
         month = date_string[2:4]
         year = date_string[4:]
-        formatted_date = f"{day}{month}{year}"
+        formatted_date = f"{day}_{month}_{year}"
         query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv, day) VALUES (%s, %s, %s, %s, %s, %s,%s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],formatted_date))
         self.connection.commit()
@@ -316,3 +317,6 @@ option = {
 # Đổi instance qua popup login
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
+#State
+USE_PROXY = False
+RUN_APP = True

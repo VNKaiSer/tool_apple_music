@@ -41,14 +41,20 @@ option = {
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 def run():
+    global RUN_APP
     data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 and isRunning = 'N' limit 1") 
-    if db_instance.check_operator_run() == False:
+    if RUN_APP == False:
         return
     db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
     time.sleep(2)
-    browser = webdriver.Firefox(
-        seleniumwire_options=option
-    )
+    if USE_PROXY == True:
+        browser = webdriver.Firefox(
+        seleniumwire_options=  option
+        )
+        print("Dùng proxy")
+    else:
+        browser = webdriver.Firefox()
+        print("Không dùng proxy")
     wait = WebDriverWait(browser, 20)
 
     if(data[0] is None): # Trường hợp hết mail
@@ -347,5 +353,5 @@ def run():
             run_add_card = False
             browser.quit()
 
-
+time.sleep(10)
 run()

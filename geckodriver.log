@@ -12412,3 +12412,418 @@ DevTools listening on ws://127.0.0.1:64046/devtools/browser/4409f51e-1add-408d-a
 1715509404216	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
 1715509427655	Marionette	INFO	Stopped listening on port 64093
 Dynamically enable window occlusion 1
+1715676281098	geckodriver	INFO	Listening on 127.0.0.1:55843
+1715676284112	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55844" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileKNIto9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715676284598	Marionette	INFO	Marionette enabled
+1715676284684	Marionette	INFO	Listening on port 55895
+WebDriver BiDi listening on ws://127.0.0.1:55844
+Read port: 55895
+1715676285030	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715676285112	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55842","sslProxy":"127.0.0.1:55842"}
+DevTools listening on ws://127.0.0.1:55844/devtools/browser/5d804740-199a-4b87-bd84-a2b1fb6c202c
+1715676314621	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715676324770	Marionette	INFO	Stopped listening on port 55895
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/websites-with-shared-credential-backends sync interrupted by shutdown
+console.warn: services.settings: main/language-dictionaries sync interrupted by shutdown
+console.warn: services.settings: main/password-recipes sync interrupted by shutdown
+console.warn: services.settings: main/password-rules sync interrupted by shutdown
+console.warn: services.settings: main/translations-identification-models sync interrupted by shutdown
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/url-classifier-skip-urls sync interrupted by shutdown
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.error: (new AbortError("IndexedDB: main/ml-inference-options getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715676369495	geckodriver	INFO	Listening on 127.0.0.1:57005
+1715676372549	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57006" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileYpyJxA"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715676372976	Marionette	INFO	Marionette enabled
+1715676373062	Marionette	INFO	Listening on port 57057
+WebDriver BiDi listening on ws://127.0.0.1:57006
+Read port: 57057
+1715676373366	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715676373475	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:57004","sslProxy":"127.0.0.1:57004"}
+DevTools listening on ws://127.0.0.1:57006/devtools/browser/fe78bc0c-d8d1-4f34-a954-daaf95ea75f5
+1715676403085	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715676426690	Marionette	INFO	Stopped listening on port 57057
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Dynamically enable window occlusion 1
+console.error: (new AbortError("IndexedDB: main/cookie-banner-rules-list list() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:569:17
+
+console.error: (new Error("IndexedDB: main/sites-classification getLastModified() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715676441847	geckodriver	INFO	Listening on 127.0.0.1:58929
+1715676444904	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58930" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileo44T5F"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715676445311	Marionette	INFO	Marionette enabled
+1715676445397	Marionette	INFO	Listening on port 59004
+Read port: 59004
+WebDriver BiDi listening on ws://127.0.0.1:58930
+1715676445515	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715676445576	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58928","sslProxy":"127.0.0.1:58928"}
+DevTools listening on ws://127.0.0.1:58930/devtools/browser/78eeb54d-53c5-4105-a8f9-ca35b2ce72ef
+1715676475366	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715676490816	Marionette	INFO	Stopped listening on port 59004
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/doh-providers sync interrupted by shutdown
+console.error: (new Error("IndexedDB: main/ms-language-packs getLastModified() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715676774967	geckodriver	INFO	Listening on 127.0.0.1:63724
+1715676778051	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63725" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileZfBT9E"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715676778543	Marionette	INFO	Marionette enabled
+1715676778636	Marionette	INFO	Listening on port 63778
+Read port: 63778
+WebDriver BiDi listening on ws://127.0.0.1:63725
+1715676778757	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715676778779	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:63723","sslProxy":"127.0.0.1:63723"}
+DevTools listening on ws://127.0.0.1:63725/devtools/browser/1715676784546	mozrunner::runner	INFO	R1715676808585	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/<@https://music.apple.com/assets/index-d0fe371b.js:4:43641
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43631
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715676851750	Marionette	INFO	Stopped listening on port 63778
+Dynamically enable window occlusion 1
+vaScript warning: https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgBIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADAAQJfv4XAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuCAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oFRV4jHSAA3GLyiSQeaa1C54imYYA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:gU6kfd;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl, line 454: Script terminated by timeout at:
+b@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgBIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADAAQJfv4XAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuCAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oFRV4jHSAA3GLyiSQeaa1C54imYYA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:gU6kfd;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:454:40
+
+1715676825626	Marionette	INFO	Stopped listening on port 63891
+JavaScript warning: https://www.whatismyip.com/app-d91345047a0188cce931.js, line 1: Script terminated by timeout at:
+3215/t/t.scrollListener@https://www.whatismyip.com/app-d91345047a0188cce931.js:1:1664
+
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/language-dictionaries sync interrupted by shutdown
+console.warn: services.settings: main/password-recipes sync interrupted by shutdown
+console.warn: services.settings: main/password-rules sync interrupted by shutdown
+console.warn: services.settings: main/translations-identification-models sync interrupted by shutdown
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/url-classifier-skip-urls sync interrupted by shutdown
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.warn: services.settings: main/search-config-icons sync interrupted by shutdown
+console.warn: services.settings: main/search-config sync interrupted by shutdown
+console.warn: services.settings: main/translations-models sync interrupted by shutdown
+console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
+console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
+console.warn: services.settings: security-state/cert-revocations sync interrupted by shutdown
+console.warn: services.settings: security-state/intermediates sync interrupted by shutdown
+console.warn: services.settings: security-state/onecrl sync interrupted by shutdown
+1715676831709	geckodriver	INFO	Listening on 127.0.0.1:64625
+1715676834608	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64626" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileOZ5V4H"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715676835161	Marionette	INFO	Marionette enabled
+1715676835296	Marionette	INFO	Listening on port 64680
+WebDriver BiDi listening on ws://127.0.0.1:64626
+Read port: 64680
+1715676835580	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715676835661	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:64622","sslProxy":"127.0.0.1:64622"}
+DevTools listening on ws://127.0.0.1:64626/devtools/browser/3842fee9-23da-484d-b37b-69e552a6c742
+1715676865250	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADAAQJfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oGglGApO0m7jiuSo8w9LzPc7Ksj8w/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:gU6kfd;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl, line 454: Script terminated by timeout at:
+b@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADAAQJfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oGglGApO0m7jiuSo8w9LzPc7Ksj8w/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:gU6kfd;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:454:40
+
+1715676883403	Marionette	INFO	Stopped listening on port 64680
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+JavaScript warning: https://www.whatismyip.com/app-d91345047a0188cce931.js, line 1: Script terminated by timeout at:
+3215/t/t.scrollListener@https://www.whatismyip.com/app-d91345047a0188cce931.js:1:1664
+
+Dynamically enable window occlusion 1
+1715677232310	geckodriver	INFO	Listening on 127.0.0.1:55096
+1715677235368	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55097" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileQWHkic"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677235831	Marionette	INFO	Marionette enabled
+1715677235932	Marionette	INFO	Listening on port 55145
+WebDriver BiDi listening on ws://127.0.0.1:55097
+Read port: 55145
+1715677236231	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677236302	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55095","sslProxy":"127.0.0.1:55095"}
+DevTools listening on ws://127.0.0.1:55097/devtools/browser/2c3ee1ef-5c1f-47f1-b1cf-59ebc493d3ed
+1715677252666	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADQAQBfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oE5flyReIyqm63957dDQv7c4YJDxA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:S1715677279711	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715677313052	Marionette	INFO	Stopped listening on port 55345
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Dynamically enable window occlusion 1
+!!! error running onStopped callback: TypeError: callback is not a function
+:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl, line 441: Script terminated by timeout at:
+_.tk@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADQAQBfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oE5flyReIyqm63957dDQv7c4YJDxA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:441:174
+_.wk@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADQAQBfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oE5flyReIyqm63957dDQv7c4YJDxA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:446:1035
+Xxa@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADQAQBfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oE5flyReIyqm63957dDQv7c4YJDxA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:458:347
+b@https://www.google.com/xjs/_/js/k=xjs.s.en_GB.VbKyLX-kHcQ.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgAIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAADQAQBfv4TAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAmxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oE5flyReIyqm63957dDQv7c4YJDxA/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:454:49
+
+1715677265891	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715677272238	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript warning: https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531, line 32: Script terminated by timeout at:
+kR@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:32:31882
+IR.prototype.F@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:32:45726
+yQ.prototype.render@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:32:7966
+wv.prototype.g@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:32:47573
+GJ.prototype.start/<@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:24:235249
+ax@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:24:122239
+cx/this.next@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:24:122538
+b@https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202405090101/pubads_impl.js?cb=31083531:24:122789
+
+1715677284508	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://fundingchoicesmessages.google.com/i/5376056?ers=3, line 100: Script terminated by timeout at:
+_.ae@/_/mss/boq-content-ads-contributor/_/js/k=boq-content-ads-contributor.ContributorServingResponseClientJs.en_US.QcdmSAeKbz4.es5.O/am=BgM/d=1/rs=AJlcJMwUR2MxJSUgznOROU2j-qbMKKLESQ/m=kernel_loader,loader_js_executable:100:770
+_.ig@/_/mss/boq-content-ads-contributor/_/js/k=boq-content-ads-contributor.ContributorServingResponseClientJs.en_US.QcdmSAeKbz4.es5.O/am=BgM/d=1/rs=AJlcJMwUR2MxJSUgznOROU2j-qbMKKLESQ/m=kernel_loader,loader_js_executable:144:108
+gh@/_/mss/boq-content-ads-contributor/_/js/k=boq-content-ads-contributor.ContributorServingResponseClientJs.en_US.QcdmSAeKbz4.es5.O/am=BgM/d=1/rs=AJlcJMwUR2MxJSUgznOROU2j-qbMKKLESQ/m=kernel_loader,loader_js_executable:157:160
+Vg.prototype.R@/_/mss/boq-content-ads-contributor/_/js/k=boq-content-ads-contributor.ContributorServingResponseClientJs.en_US.QcdmSAeKbz4.es5.O/am=BgM/d=1/rs=AJlcJMwUR2MxJSUgznOROU2j-qbMKKLESQ/m=kernel_loader,loader_js_executable:156:108
+Vg.prototype.da@/_/mss/boq-content-ads-contributor/_/js/k=boq-content-ads-contributor.ContributorServingResponseClientJs.en_US.QcdmSAeKbz4.es5.O/am=BgM/d=1/rs=AJlcJMwUR2MxJSUgznOROU2j-qbMKKLESQ/m=kernel_loader,loader_js_executable:156:74
+
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715677313382	Marionette	INFO	Stopped listening on port 55145
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Dynamically enable window occlusion 1
+!!! error running onStopped callback: TypeError: callback is not a function
+1715677318216	geckodriver	INFO	Listening on 127.0.0.1:56461
+1715677321268	mozrunner::runner	INFO	Running command: "C:\\P1715677322289	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56481" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileZwXjV3"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677324052	Marionette	INFO	Marionette enabled
+1715677324431	Marionette	INFO	Listening on port 56557
+WebDriver BiDi listening on ws://127.0.0.1:56481
+Read port: 56557
+1715677324972	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677325064	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","DevTools listening on ws://127.0.0.1:56462/devtools/browser/DevTools listening on ws://127.0.0.1:51715677351897	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://music.apple.com/assets/index-d0fe371b.js, line 4: Script terminated by timeout at:
+iL/t<@https://music.apple.com/assets/index-d0fe371b.js:4:43502
+iL@https://music.apple.com/assets/index-d0fe371b.js:4:43504
+rL@https://music.apple.com/assets/index-d0fe371b.js:4:43841
+log@https://music.apple.com/assets/index-d0fe371b.js:4:43998
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:43186
+callAll@https://music.apple.com/assets/index-d0fe371b.js:4:43109
+debug@https://music.apple.com/assets/index-d0fe371b.js:4:42920
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14729
+
+1715677373562	Marionette	INFO	Stopped listening on port 56520
+Dynamically enable window occlusion 1
+Exiting due to channel error.
+Exiting due to channel error.
+XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1715677364574	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+1715677373167	Marionette	INFO	Stopped listening on port 56557
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=G-4T6GFV4RYJ&l=dataLayer&cx=c, line 190: Script terminated by timeout at:
+z@https://www.googletagmanager.com/gtag/js?id=G-4T6GFV4RYJ&l=dataLayer&cx=c:190:158
+$z@https://www.googletagmanager.com/gtag/js?id=G-4T6GFV4RYJ&l=dataLayer&cx=c:548:134
+aA/<@https://www.googletagmanager.com/gtag/js?id=G-4T6GFV4RYJ&l=dataLayer&cx=c:548:111
+
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/translations-identification-models sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/url-classifier-skip-urls sync interrupted by shutdown
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.warn: services.settings: main/search-config-icons sync interrupted by shutdown
+console.warn: services.settings: main/search-config sync interrupted by shutdown
+console.warn: services.settings: main/translations-models sync interrupted by shutdown
+console.warn: services.settings: main/search-telemetry-v2 sync interrupted by shutdown
+console.warn: services.settings: main/search-config-v2 sync interrupted by shutdown
+1715677377559	geckodriver	INFO	Listening on 127.0.0.1:58189
+1715677380626	mozrunner::runner	INFO	Running command: "C:\\P1715677380937	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58199" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileLa033H"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677381684	Marionette	INFO	Marionette enabled
+1715677381913	Marionette	INFO	Listening on port 58370
+WebDriver BiDi listening on ws://127.0.0.1:58199
+Read port: 58370
+1715677382499	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677382583	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","DevTools listening on ws://127.0.0.1:58190/devtools/browser/DevTools listening on ws://127.0.0.1:51715677411286	addons.xpi	ERROR	System addon update list erro1715677411748	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'httpconsole.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715677460517	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+1715677466364	Marionette	INFO	Stopped listening on port 58359
+Dynamically enable window occlusion 1
+1:6220
+metricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14780
+x@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:2073
+l.prototype.toJSON@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:7705
+l.prototype.sampledIn@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:8079
+l.prototype.initializeData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:7412
+instance@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14569
+fromTimingEntry@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14715
+recordLoadURLEvents@https://music.apple.com/assets/index-d0fe371b.js:105:14482
+setupLoadUrlEventObserver@https://music.apple.com/assets/index-d0fe371b.js:105:15261
+
+1715677418566	Marionette	INFO	Stopped listening on port 58370
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  Message: StorageError: Storage error: Error: IndexedDB: main/normandy-recipes-capabilities list() IndexedDB:  execute() The application is shutting down
+  Stack:
+    StorageError@resource://services-settings/RemoteSettingsClient.sys.mjs:153:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:928:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+observe@resource://gre/modules/AsyncShutdown.sys.mjs:569:17
+
+console.warn: services.settings: main/partitioning-exempt-urls sync interrupted by shutdown
+console.error: (new Error("IndexedDB: main/translations-wasm getLastModified() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715677589697	geckodriver	INFO	Listening on 127.0.0.1:61958
+1715677592761	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61959" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilegvcVFT"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677593187	Marionette	INFO	Marionette enabled
+1715677593276	Marionette	INFO	Listening on port 62008
+WebDriver BiDi listening on ws://127.0.0.1:61959
+Read port: 62008
+1715677593552	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677593631	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61957","sslProxy":"127.0.0.1:61957"}
+DevTools listening on ws://127.0.0.1:61959/devtools/browser/18cd9ad4-514c-48c3-bc33-5c3ebc8baf06
+1715677623422	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://music.apple.com."
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+ettings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677607560	Marionette	INFO	Marionette enabled
+1715677607693	Marionette	INFO	Listening on port 62228
+WebDriver BiDi listening on ws://127.0.0.1:62175
+Read port: 62228
+1715677608111	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677608142	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62173","sslProxy":"127.0.0.1:62173"}
+DevTools listening on ws://127.0.0.1:62175/devtools/browser/51c65fcc-69b9-4fa5-b170-de97abd2af3e
+1715677631308	Marionette	INFO	Stopped listening on port 62228
+Dynamically enable window occlusion 1
+1715677635863	geckodriver	INFO	Listening on 127.0.0.1:62651
+1715677638917	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62652" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileXxKAMu"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715677639406	Marionette	INFO	Marionette enabled
+1715677639571	Marionette	INFO	Listening on port 62708
+WebDriver BiDi listening on ws://127.0.0.1:62652
+Read port: 62708
+1715677640261	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715677640346	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:62650","sslProxy":"127.0.0.1:62650"}
+Exiting due to channel error.
+1715678011483	geckodriver	INFO	Listening on 127.0.0.1:63347
+1715678014561	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63348" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilerAPqnb"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715678015019	Marionette	INFO	Marionette enabled
+1715678015113	Marionette	INFO	Listening on port 63398
+WebDriver BiDi listening on ws://127.0.0.1:63348
+Read port: 63398
+1715678015373	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715678015489	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:63346","sslProxy":"127.0.0.1:63346"}
+DevTools listening on ws://127.0.0.1:63348/devtools/browser/904425e3-ccfe-4944-8c98-b0ca298d2e2c
+JavaScript warning: https://www.google.com/xjs/_/js/k=xjs.s.vi.6VzQs-8aaN4.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgBIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAAHAAQBfv5zAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAGxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oHJ12ksaFPyITfSh6rvLz7D9X7YWw/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl, line 454: Script terminated by timeout at:
+b@https://www.google.com/xjs/_/js/k=xjs.s.vi.6VzQs-8aaN4.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQEggCAAAgBIAABAAAAAAAAAABAEAAAEAEID3AFQIIACBAAAHAAQBfv5zAAAAAEAAAAAgYAIAAADgAgACAYAgAAAQAAAAoAAAAAAAAAAAAAAAwAEEoB8AAAAAAAAAAAAAAAAGxA8ACAAAQuAAIQAABAAAAJAHgOcBw0EKCwAAAAAAAAAAAAAAAUwQzAHpDwgAAgAAAAAAAAAAAAAApKQTl4cAAAk/d=1/ed=1/dg=2/rs=ACT90oHJ12ksaFPyITfSh6rvLz7D9X7YWw/ee=ALeJib:B8gLwd;AfeaP:TkrAjf;Afksuc:wMx0R;BMxAGc:E5bFse;BgS6mb:fidj5d;BjwMce:cXX2Wb;CxXAWb:YyRLvc;DM55c:imLrKe;DULqB:RKfG5c;Dkk6ge:wJqrrd;DpcR3d:zL72xf;EABSZ:MXZt9d;ESrPQc:mNTJvc;EVNhjf:pw70Gc;EmZ2Bf:zr1jrb;EnlcNd:WeHg4;Erl4fe:FloWmf,FloWmf;F9mqte:UoRcbe;Fmv9Nc:O1Tzwc;G0KhTb:LIaoZ;G6wU6e:hezEbd;GleZL:J1A7Od;HMDDWe:G8QUdb;HqeXPd:cmbnH;IBADCc:RYquRb;IoGlCf:b5lhvb;IsdWVc:qzxzOb;JXS8fb:Qj0suc;JbMT3:M25sS;JsbNhc:Xd8iUd;KOxcK:OZqGte;KQzWid:ZMKkN;KcokUb:KiuZBf;KpRAue:Tia57b;LBgRLc:SdcwHb,XVMNvd;LEikZe:byfTOb,lsjVmc;LsNahb:ucGLNb;Me32dd:MEeYgc;NPKaK:SdcwHb;NSEoX:lazG7b;Np8Qkd:Dpx6qc;Nyt6ic:jn2sGd;OgagBe:cNTe0;Oj465e:KG2eXe,KG2eXe;OohIYe:mpEAQb;Pjplud:EEDORb,PoEs9b;PqHfGe:im2cZe;Q1Ow7b:x5CSu;Q6C5kf:pfdZCe;QGR0gd:Mlhmy;R2kc8b:ALJqWb;R4IIIb:QWfeKf;R9Ulx:CR7Ufe;RDNBlf:zPRCJb;SLtqO:Kh1xYe;SMDL4c:fTfGO,fTfGO;SNUn3:ZwDk9d,x8cHvb;ShpF6e:N0pvGc;TxfV6d:YORN0b;U96pRd:FsR04;UDrY1c:eps46d;UVmjEd:EesRsb;UyG7Kb:wQd0G;V2HTTe:RolTY;VGRfx:VFqbr;VN6jIc:ddQyuf;VOcgDe:YquhTb;VsAqSb:PGf2Re;VxQ32b:k0XsBb;WCEKNd:I46Hvd;WDGyFe:jcVOxd;Wfmdue:g3MJlb;XUezZ:sa7lqb;YV5bee:IvPZ6d;YkQtAf:rx8ur;ZMvdv:PHFPjb;ZWEUA:afR4Cf;Zen4yb:jMF88c;a56pNe:JEfCwb;aAJE9c:WHW6Ef;aCJ9tf:qKftvc;aZ61od:arTwJ;af0EJf:ghinId;bDXwRe:UsyOtc;bFZ6gf:RsDQqe;bcPXSc:gSZLJb;cEt90b:ws9Tlc;cFTWae:gT8qnd;coJ8e:KvoW8;dIoSBb:ZgGg9b;dLlj2:Qqt3Gf;daB6be:lMxGPd;dtl0hd:lLQWFe;eBAeSb:Ck63tb;eBZ5Nd:VruDBd;eHDfl:ofjVkb;eO3lse:nFClrf;fWLTFc:TVBJbf;g8nkx:U4MzKc;gaub4:TN6bMe;gtVSi:ekUOYd;h3MYod:cEt90b;hK67qb:QWEO5b;heHB1:sFczq;hjRo6e:F62sG;hsLsYc:Vl118;iFQyKf:QIhFr,vfuNJf;imqimf:jKGL2e;io8t5d:sgY6Zb;jY0zg:Q6tNgc;k2Qxcb:XY51pe;kCQyJ:ueyPK;kMFpHd:OTA3Ae;kbAm9d:MkHyGd;lkq0A:JyBE3e;nAFL3:NTMZac,s39S4;oGtAuc:sOXFj;oSUNyd:fTfGO,fTfGO;oUlnpc:RagDlc;okUaUd:wItadb;p2tIDb:tp1Cx;pKJiXd:VCenhc;pNsl2d:j9Yuyc;pXdRYb:JKoKVe;pj82le:mg5CW;qGV2uc:HHi04c;qZx2Fc:j0xrE;qaS3gd:yiLg6e;qavrXe:zQzcXe;qddgKe:d7YSfd,x4FYXe;rQSrae:C6D5Fc;sP4Vbe:VwDzFe;sTsDMc:kHVSUb;tH4IIe:Ymry6;tosKvd:ZCqP3;trZL0b:qY8PFe;uY49fb:COQbmf;uknmt:GkPrzb;uuQkY:u2V3ud;vGrMZ:lPJJ0c;vfVwPd:lcrkwe;w3bZCb:ZPGaIb;w4rSdf:XKiZ9;w9w86d:dt4g2b;wQlYve:aLUfP;wR5FRb:O1Gjze,TtcOte;wV5Pjc:L8KGxe;whEZac:F4AmNb;xBbsrc:NEW1Qc;xbe2wc:wbTLEd;yGxLoc:FmAr0c;yxTchf:KUM7Z;z97YGf:oug9te;zOsCQe:Ko78Df;zaIgPb:Qtpxbd/m=attn,cdos,gwc,hsm,jsa,mb4ZUb,d,csi,cEt90b,SNUn3,qddgKe,sTsDMc,dtl0hd,eHDfl:454:40
+
+JavaScript error: https://whatismyipaddress.com/wp-content/plugins/svg-support/js/min/svgs-inline-min.js?ver=1.0.0, line 1: ReferenceError: frontSanitizationEnabled is not defined
+JavaScript error: https://whatismyipaddress.com/wp-content/plugins/svg-support/js/min/svgs-inline-min.js?ver=1.0.0, line 1: ReferenceError: frontSanitizationEnabled is not defined
+JavaScript error: https://whatismyipaddress.com/wp-content/plugins/svg-support/js/min/svgs-inline-min.js?ver=1.0.0, line 1: ReferenceError: frontSanitizationEnabled is not defined
+1715678045048	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c, line 273: Script terminated by timeout at:
+Zf/<@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:273:104
+z@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:202:203
+Zf@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:273:23
+$f@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:273:172
+ag@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:273:383
+TF.prototype.flush@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:658:261
+aa.flush@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:680:794
+uG/<@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:685:201
+aa.Ok/<@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:632:126
+aa.Ok/c/<@https://www.googletagmanager.com/gtag/js?id=G-DHL4YQEJFS&l=dataLayer&cx=c:631:420
+
+JavaScript warning: https://music.apple.com/static-commerce/js/chunk-index-vendors.cef30d57.js, line 1: Script terminated by timeout at:
+get@https://music.apple.com/static-commerce/js/chunk-index-vendors.cef30d57.js:1:27991
+wi@https://music.apple.com/static-commerce/js/chunk-index-vendors.cef30d57.js:3:11200
+get@https://music.apple.com/static-commerce/js/chunk-index-vendors.cef30d57.js:3:11465
+created@https://music.apple.com/static-commerce/js/create-v2-views-CreateAccount-vue.ce1879e3.js:1:5323
+
+1715678048658	Marionette	INFO	Stopped listening on port 63398
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  main/devtools-compatibility-browsers Signature failed  TypeError: NetworkError: Network request failed
+console.error: services.settings: 
+  Message: NetworkError: Network error: TypeError: NetworkError: Network request failed
+  Stack:
+    APIError@resource://services-settings/RemoteSettingsClient.sys.mjs:107:1
+NetworkError@resource://services-settings/RemoteSettingsClient.sys.mjs:111:5
+_adjustedError@resource://services-settings/RemoteSettingsClient.sys.mjs:911:14
+maybeSync@resource://services-settings/RemoteSettingsClient.sys.mjs:816:38
+
+console.error: (new AbortError("IndexedDB: main/normandy-recipes getLastModified() IndexedDB:  execute() A request was aborted, for example through a call to IDBTransaction.abort.", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1715678150551	geckodriver	INFO	Listening on 127.0.0.1:49328
+1715678153626	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49329" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileoT3aGm"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715678154085	Marionette	INFO	Marionette enabled
+1715678154175	Marionette	INFO	Listening on port 49386
+WebDriver BiDi listening on ws://127.0.0.1:49329
+Read port: 49386
+1715678154497	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715678154579	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:49327","sslProxy":"127.0.0.1:49327"}
+DevTools listening on ws://127.0.0.1:49329/devtools/browser/3421ba1f-e3ec-464c-a4ff-97acd7f13aa4
+JavaScript warning: https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js, line 2: Script terminated by timeout at:
+pe@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:2:4549
+N@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:2:4813
+o.prototype.value@https://music.apple.com/assets/mt-event-queue.esm-44c965a7.js:3:209
+o.value@https://music.apple.com/assets/mt-event-queue.esm-44c965a7.js:1:3433
+ie@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:4500
+ue@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:5020
+Ye@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:4979
+x@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:2073
+o.processMetricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:6093
+metricsData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14178
+x@https://music.apple.com/assets/mt-client-logger-core.esm-b9212dc6.js:1:2073
+h.prototype.initializeData@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:8535
+instance@https://music.apple.com/assets/mt-perfkit.esm-cdc62ef3.js:1:14102
+recordWebVital/<@https://music.apple.com/assets/index-d0fe371b.js:105:14910
+
+1715678172666	Marionette	INFO	Stopped listening on port 49386
+Dynamically enable window occlusion 1
+1715678176410	geckodriver	INFO	Listening on 127.0.0.1:49799
+1715678179469	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49800" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile4ckF8J"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1715678179997	Marionette	INFO	Marionette enabled
+1715678180086	Marionette	INFO	Listening on port 49854
+WebDriver BiDi listening on ws://127.0.0.1:49800
+Read port: 49854
+1715678180431	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1715678180486	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:49798","sslProxy":"127.0.0.1:49798"}

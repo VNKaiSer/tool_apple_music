@@ -16,7 +16,7 @@ from selenium.webdriver.support.select import Select
 
 def generate_random_password(length):
     characters = string.ascii_letters + string.digits
-    password = ''.join(random.choice(characters) for _ in range(length))
+    password = 'A'.join(random.choice(characters) for _ in range(length)) + '@'
     return password
 
 def generate_name(length):
@@ -108,7 +108,7 @@ def apple_id_done(browser, data):
     browser.switch_to.default_content()
     browser.switch_to.frame(iframe_login)
     wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
-    browser.find_element(By.ID, "password_text_field").send_keys("Zxcv123123")
+    browser.find_element(By.ID, "password_text_field").send_keys(data['password'])
     browser.switch_to.active_element.send_keys(Keys.ENTER)
     time.sleep(5)
     browser.switch_to.default_content()
@@ -132,7 +132,7 @@ def apple_id_done(browser, data):
         print(e) # Không còn nút đó 
     # Chuỗi ngày tháng năm ban đầu
     
-    db_instance.insert_mail_reg_apple_music([data['account'], "Zxcv123123", data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
+    db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
     # Lưuvào db 
     #OTP xong
     browser.quit()
@@ -148,7 +148,7 @@ def process_login(browser, data, add, apple):
         browser.get("https://music.apple.com/us/account/settings")
         if add == True:
             add_payment(browser, data, apple)
-        db_instance.insert_mail_reg_apple_music_not_add([data['account'], "Zxcv123123",data['date_of_birth']])
+        db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'],data['date_of_birth']])
         browser.quit()
     except Exception as e:
         print(e)
@@ -332,6 +332,10 @@ def add_payment(browser, data, apple):
     browser.quit()
 
 def reg_apple_music(add, apple):
+    global RUN_APP
+    if RUN_APP == False:
+        return
+    
     first_name, last_name, date_of_birth, password = random_data()
     data = None
     address1, address2, city, state, postalCode = random_address()
@@ -343,7 +347,7 @@ def reg_apple_music(add, apple):
         "account": mail,
         "type": type_mail,
         # "account": "leblancmylie373@gmail.com",
-        "password": "Zxcv123123",
+        "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
         "address1": address1,

@@ -9,6 +9,8 @@ import logging
 import sys
 import mysql.connector
 
+from commands.const import *
+
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -25,18 +27,19 @@ class Tool_Exception:
     DEC = "Your payment method was declined. Please enter valid payment method information."
     DECLINED = "Payment Method Declined"
 
-class Config:
-    #web
-    WEB_URL = "https://music.apple.com/us/login"
-    # proxy config 
-    PROXY_URL = {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}
+# class Config:
+#     #web
+#     WEB_URL = "https://music.apple.com/us/login"
+#     # proxy config 
+#     PROXY_URL = {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}
     
-    #  config 
-    DB_HOST = "159.65.2.46"
-    DB_PORT = 3306
-    DB_USER = "kaiser"
-    DB_PASSWORD = "r!8R%OMm@=H{cVH6LZpqV]nye1G"
-    DB_NAME = "apple_music"
+#     #  config 
+#     DB_HOST = "159.65.2.46"
+#     DB_PORT = 3306
+#     DB_USER = "kaiser"
+#     DB_PASSWORD = "r!8R%OMm@=H{cVH6LZpqV]nye1G"
+#     DB_NAME = "apple_music"
+#     USE_PROXY = True
     
     
 class Account:
@@ -350,7 +353,8 @@ def clear_frame(frame):
 def run_app():
     def run_tool():
         while True:
-            os.system("python ./command/run_add.py")
+            time.sleep(10)
+            os.system("py ./commands/run_add.py")
     root.deiconify()
     def on_spin_change():
         value = spinbox.get()
@@ -384,7 +388,7 @@ def run_app():
 def run_app_check():
     def run_tool():
         while True: # Call the main tool function
-            os.system('py ./command/run_check.py') 
+            os.system('py ./commands/run_check.py') 
         # After the tool finishes execution, show the main window again
     root.deiconify()
     def on_spin_change():
@@ -422,7 +426,7 @@ def run_app_check():
 def run_app_delete():
     def run_tool():
         while True:
-            os.system('py ./command/run_delete.py')  # Call the main tool function
+            os.system('py ./commands/run_delete.py')  # Call the main tool function
         
     root.deiconify()
     def on_spin_change():
@@ -577,13 +581,18 @@ def export_login_delete_id():
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
 
 
-def open_tool():
-    db_instance.start_tool()
-    messagebox.showinfo("Thông báo", "Mở tool thành công hãy thực hiện chức năng")
+def handle_onpen_tool():
+    global RUN_APP
+    if RUN_APP == False:
+        RUN_APP = True
+        messagebox.showinfo("Thông báo", "Mở tool thành công hãy thực hiện chức năng")
+    else: 
+        RUN_APP = False
+        messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
 
 def close_tool():
     db_instance.close_tool()
-    messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
+    
 def open_error_pay():
     def selected_option(value):
         return value
@@ -640,8 +649,9 @@ def reg_apple_music():
         selected_function = selected_value.get()
         # Thực hiện các hành động cần thiết với số tab và chức năng đã chọn
         for i in range(num_tabs):
-                threading.Thread(target=run(options.index(selected_function))).start()
-                time.sleep(10)
+            # time.sleep(10)
+            threading.Thread(target=run(options.index(selected_function))).start()
+                
     frame_app.place_forget()
     clear_frame(analysis_frame)
     # Ẩn hình ảnh
@@ -671,6 +681,16 @@ def reg_apple_music():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
+
+def handle_proxy():
+    global USE_PROXY
+    if USE_PROXY == True:
+        USE_PROXY = False
+        messagebox.showinfo("Thông báo", "Mở proxy thành công")
+    else:
+        USE_PROXY = True
+        messagebox.showinfo("Thông báo", "Tắt proxy thành công")
+
 #===================================GUI END FUCITON======================================
   
 #===================================GUI=========================================
@@ -732,8 +752,9 @@ analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=expor
 
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
-setting_menu.add_command(label='Mở tool', command=open_tool)
-setting_menu.add_command(label='Dừng tool', command=close_tool)
+setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
+setting_menu.add_separator()
+setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
 
 exit_menu = Menu(menu)
 menu.add_cascade(label='Exit', menu=exit_menu)

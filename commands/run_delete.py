@@ -1,13 +1,19 @@
 from const import *
 def run_check_delete():
+    global RUN_APP
     data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="loginDelete = 'Y' and isRunningLoginDelete = 'N' limit 1")
     db_instance.update_data(table_name="mail", set_values={"isRunningLoginDelete": "Y"}, condition="id = %s" % data[0][0])
     time.sleep(2)
-    if db_instance.check_operator_run() == False:
+    if RUN_APP == False:
         return
-    browser = webdriver.Firefox(
-        seleniumwire_options=option
-    )
+    if USE_PROXY == True:
+        browser = webdriver.Firefox(
+        seleniumwire_options=  option
+        )
+        print("Dùng proxy")
+    else:
+        browser = webdriver.Firefox()
+        print("Không dùng proxy")
     wait = WebDriverWait(browser, 20)
 
     if(data[0] is None): # Trường hợp hết mail
@@ -173,4 +179,5 @@ def run_check_delete():
         db_instance.insert_mail_delete([data[0][1], data[0][2],"",country,"none"])
         browser.quit()
 
+time.sleep(10)
 run_check_delete()
