@@ -640,12 +640,13 @@ def reg_apple_music():
         time.sleep(10)
         while True:
             if choice == 0:
-                os.system("python ./commands/reg_music.py")
+                subprocess.Popen(["python", "./commands/reg_music.py"])
             elif choice == 1:
-                os.system("python ./commands/reg_music_add.py")
+                subprocess.Popen(["python", "./commands/reg_music_add.py"])
             else:
-                os.system("python ./commands/reg_music_add_apple.py") 
-              # Thời gian chờ giữa các lần thực thi lệnh
+                subprocess.Popen(["python", "./commands/reg_music_add_apple.py"]) 
+            # Thời gian chờ giữa các lần thực thi lệnh
+            time.sleep(5)
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
@@ -654,9 +655,8 @@ def reg_apple_music():
         with ThreadPoolExecutor(max_workers=num_tabs) as executor:
             for i in range(num_tabs):
                 executor.submit(run, options.index(selected_function))
-                
-    root.deiconify()
     
+    root.deiconify()
     frame_app.place_forget()
     clear_frame(analysis_frame)
     image_label.place_forget()
