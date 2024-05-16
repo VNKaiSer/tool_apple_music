@@ -117,7 +117,7 @@ def apple_id_done(browser, data):
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
     otp = getOTP(data["account"])
-    time.sleep(10)
+    time.sleep(20)
     otp = getOTP(data["account"])
     # time.sleep(5)
     active_element.send_keys(otp)
@@ -149,12 +149,21 @@ def process_login(browser, data, add, apple):
         time.sleep(5)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
+        # Trường hợp lần đầu đăng kí 
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
+        browser.switch_to.frame(iframe_hello)
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
+        time.sleep(3)
+        browser.switch_to.default_content()
+        browser.get("https://music.apple.com/us/account/settings")
         if add == True:
             add_payment(browser, data, apple)
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'],data['date_of_birth']])
         browser.quit()
     except Exception as e:
-        print(e)
+        db_instance.insert_mail_wait(data['account'], data['password'])
     
 def add_payment(browser, data, apple):
     wait = WebDriverWait(browser, 10)
@@ -364,7 +373,9 @@ def reg_apple_music(add, apple):
         "state": state,
         "postalCode": postalCode
         }
-        print(data)
+        # Ngăn mail wait chạy nhiều tab
+        if type_mail == 'wait':
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", condition=f"mail = '{mail}'", set_values={"status": "N"})
         
     except:
         print("error")
@@ -443,7 +454,6 @@ def reg_apple_music(add, apple):
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except Exception as e:
         print('Đã login')
-        print(e)
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         try: 
@@ -453,12 +463,13 @@ def reg_apple_music(add, apple):
             browser.quit()
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             sys.exit(0)
+        db_instance.insert_mail_wait(data["account"], data["password"]) # Đoạn 
         browser.quit()
         return 
     
     try:
         otp = getOTP(data["account"])
-        time.sleep(5)
+        time.sleep(20)
         otp = getOTP(data["account"])
         active_element = browser.switch_to.active_element
         active_element.send_keys(otp)

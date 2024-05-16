@@ -580,15 +580,26 @@ def export_login_delete_id():
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
 
-
+import json
 def handle_onpen_tool():
-    global RUN_APP
-    if RUN_APP == False:
-        RUN_APP = True
-        messagebox.showinfo("Thông báo", "Mở tool thành công hãy thực hiện chức năng")
-    else: 
-        RUN_APP = False
-        messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
+    with open('./config/tool-config.json', 'r+') as f:
+        data = json.load(f)
+        RUN_APP = data['RUN']
+        
+        if RUN_APP == False:
+            RUN_APP = True
+            data['RUN'] = RUN_APP
+            f.seek(0)  # Đặt con trỏ tệp về đầu
+            f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+            f.truncate()  # Xóa nội dung còn lại nếu có
+            messagebox.showinfo("Thông báo", "Mở tool thành công hãy thực hiện chức năng")
+        else: 
+            RUN_APP = False
+            data['RUN'] = RUN_APP
+            f.seek(0)  # Đặt con trỏ tệp về đầu
+            f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+            f.truncate()  # Xóa nội dung còn lại nếu có
+            messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
 
 def close_tool():
     db_instance.close_tool()
@@ -637,14 +648,13 @@ def open_error_pay():
 
 def reg_apple_music():
     def run(choice):
-        time.sleep(10)
         # while True:
         if choice == 0:
-            subprocess.Popen(["python", "./commands/reg_music.py"])
+            os.system(["python", "./commands/reg_music.py"])
         elif choice == 1:
-            subprocess.Popen(["python", "./commands/reg_music_add.py"])
+            os.system(["python", "./commands/reg_music_add.py"])
         else:
-            subprocess.Popen(["python", "./commands/reg_music_add_apple.py"]) 
+            os.system(["python", "./commands/reg_music_add_apple.py"]) 
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
@@ -652,9 +662,10 @@ def reg_apple_music():
         
         with ThreadPoolExecutor(max_workers=num_tabs) as executor:
             for i in range(num_tabs):
+                time.sleep(10)
                 executor.submit(run, options.index(selected_function))
+        root.deiconify()
     
-    root.deiconify()
     frame_app.place_forget()
     clear_frame(analysis_frame)
     image_label.place_forget()
