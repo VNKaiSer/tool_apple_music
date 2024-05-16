@@ -199,6 +199,13 @@ def add_payment(browser, data, apple):
     print(country)
     if country != "United States":
         print("Not US") 
+    # Kiểm tra đã add thẻ chưa 
+    try: 
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
+        added = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
+        print(added)
+    except Exception as e:
+        print('')
     # click nút change payment 
     try: 
         wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
