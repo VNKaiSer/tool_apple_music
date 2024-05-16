@@ -137,8 +137,13 @@ def apple_id_done(browser, data):
     try: 
        active_element.send_keys(data['ccv'])
        active_element.send_keys(Keys.ENTER)
+    except requests.exceptions.TooManyRedirects:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
+    except requests.exceptions.RequestException as e:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
     except Exception as e:
-        print("141")
         print(e) # Không còn nút đó 
     # Chuỗi ngày tháng năm ban đầu
     
@@ -473,15 +478,26 @@ def reg_apple_music(add, apple):
         inputs[inputs.__len__()-1].click()   
         WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
+    except requests.exceptions.TooManyRedirects:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
+    except requests.exceptions.RequestException as e:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
     except Exception as e:
         print('Đã login')
         if data['type'] == 'wait':
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{data['account']}'")
         try: 
             process_login(browser, data, add, apple)
+        except requests.exceptions.TooManyRedirects:
+            db_instance.insert_mail_wait(data["account"], data["password"]) 
+            browser.quit()
+        except requests.exceptions.RequestException as e:
+            db_instance.insert_mail_wait(data["account"], data["password"]) 
+            browser.quit()
         except Exception as e:
-            print("480")
-            print(e)
+            # print(e)
             browser.quit()
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             sys.exit(0)
@@ -512,7 +528,12 @@ def reg_apple_music(add, apple):
         else:
             db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
             browser.quit()
+    except requests.exceptions.TooManyRedirects:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
+    except requests.exceptions.RequestException as e:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
     except Exception as e:
-        print("513")
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
