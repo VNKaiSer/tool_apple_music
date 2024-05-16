@@ -400,10 +400,12 @@ def reg_apple_music(add, apple):
             
         )
     
-    browser.get('https://music.apple.com/us/login')
-    wait = WebDriverWait(browser, 10)
+    
+        
     # vào web 
     try:
+        browser.get('https://music.apple.com/us/login')
+        wait = WebDriverWait(browser, 10)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
         browser.switch_to.frame(iframe)
