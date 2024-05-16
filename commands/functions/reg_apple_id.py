@@ -228,6 +228,7 @@ def add_payment(browser, data, apple):
     
     
     run_add_card = True
+    time_ctsp = 0
     while run_add_card:
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
         try:
@@ -267,7 +268,6 @@ def add_payment(browser, data, apple):
             time.sleep(0.1)
     # browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]').send_keys("658")
         browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
-
     # Kiểm tra các trường hợp lỗi của thẻ 
         try:
             wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
@@ -296,7 +296,9 @@ def add_payment(browser, data, apple):
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
+                    time_ctsp = time_ctsp + 1
+                    if time_ctsp == 2:
+                        browser.quit()
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
