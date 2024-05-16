@@ -71,6 +71,7 @@ def random_address():
 
     # Chọn ngẫu nhiên một địa chỉ từ danh sách
     random_address = random.choice(addresses)
+    print(random_address)
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
 def getOTP(gmail):
