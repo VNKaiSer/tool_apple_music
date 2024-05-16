@@ -103,7 +103,6 @@ def click_first_login(browser):
     browser.get("https://music.apple.com/us/account/settings")
     
 def apple_id_done(browser, data):
-    # browser = webdriver.Firefox(seleniumwire_options=option)
     browser.get("https://appleid.apple.com/sign-in")
     
     WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
@@ -157,13 +156,17 @@ def process_login(browser, data, add, apple):
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
         # Trường hợp lần đầu đăng kí 
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
-        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
-        browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
-        time.sleep(3)
-        browser.switch_to.default_content()
+        try: 
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+            iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
+            browser.switch_to.frame(iframe_hello)
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+            browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
+            time.sleep(3)
+            browser.switch_to.default_content()
+            browser.get("https://music.apple.com/us/account/settings")
+        except Exception as e:
+           print(e)
         browser.get("https://music.apple.com/us/account/settings")
         if add == True:
             add_payment(browser, data, apple)
@@ -392,7 +395,9 @@ def reg_apple_music(add, apple):
     option = {
         'proxy':  
             {
-                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
+                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+                'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+                'no_proxy': 'localhost,127.0.0.1'
             },
         'port': generate_random_port()
     
