@@ -249,9 +249,9 @@ def add_payment(browser, data, apple):
     while run_add_card:
         
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
-        print(data_card[0])
+        # print(data_card[0])
         db_instance.update_data(table_name="pay", set_values={"on_use": 1},condition=f'id = {data_card[0][0]}')
-        print(data_card[0])
+        # print(data_card[0])
         try:
             if data_card[0] is None:
                 logging.error("Error: %s", str("Hết thẻ"))
