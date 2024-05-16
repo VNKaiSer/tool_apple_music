@@ -250,7 +250,7 @@ def add_payment(browser, data, apple):
         
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
         print(data_card[0])
-        db_instance.update_data(table_name="pay", data={"on_use": 1}, condition="id = %s", values=[data_card[0][0]])
+        db_instance.update_data(table_name="pay", condition=f'id = {data_card[0][0]}', data={"on_use": 1})
         print(data_card[0])
         try:
             if data_card[0] is None:
