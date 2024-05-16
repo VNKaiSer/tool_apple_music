@@ -43,7 +43,6 @@ def random_data():
     last_name = generate_name(5)
     date_of_birth = generate_random_date_of_birth()
     return frist_name, last_name, date_of_birth,password
-
 def generate_random_email():
         mail_wait = db_instance.get_mail_wait()
         print(mail_wait)
@@ -60,7 +59,9 @@ def generate_random_email():
                     return response_data['gmail'], 'rent'
                 time.sleep(20) 
                 
-    
+def generate_random_port():
+    return random.randint(49152, 65535)
+  
 def random_address():
     json_file = './assets/data/addresses.json'  
     with open(json_file, 'r') as f:

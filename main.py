@@ -652,9 +652,9 @@ def reg_apple_music():
         if choice == 0:
             subprocess.Popen("python ./commands/reg_music.py")
         elif choice == 1:
-            subprocess.system("python ./commands/reg_music_add.py")
+            subprocess.Popen("python ./commands/reg_music_add.py")
         else:
-            subprocess.system("python" "./commands/reg_music_add_apple.py") 
+            subprocess.Popen("python" "./commands/reg_music_add_apple.py") 
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
@@ -766,6 +766,7 @@ menu.add_cascade(label='Cài đặt', menu=setting_menu)
 setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
 setting_menu.add_separator()
 setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
+
 
 exit_menu = Menu(menu)
 menu.add_cascade(label='Exit', menu=exit_menu)
