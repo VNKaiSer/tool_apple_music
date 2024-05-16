@@ -202,11 +202,11 @@ def add_payment(browser, data, apple):
     # Kiểm tra đã add thẻ chưa 
     try: 
         WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
-        added = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
-        print(added)
-    except Exception as e:
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
         print('Đã add')
         browser.quit()
+    except Exception as e:
+        print('chưa add')
     # click nút change payment 
     try: 
         wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
@@ -247,9 +247,8 @@ def add_payment(browser, data, apple):
         for i in data["postalCode"]:
             post_code.send_keys(i)
             time.sleep(0.06)
-    except Exception as e:
-        print("243")
-        print(e)
+    except Exception as e: # không tìm form add thẻ
+        browser.quit()
     
     
     run_add_card = True
@@ -502,9 +501,11 @@ def reg_apple_music(add, apple):
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+        return
     except requests.exceptions.RequestException as e:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+        return
     except Exception as e:
         print('Đã login')
         if data['type'] == 'wait':
@@ -514,9 +515,11 @@ def reg_apple_music(add, apple):
         except requests.exceptions.TooManyRedirects:
             db_instance.insert_mail_wait(data["account"], data["password"]) 
             browser.quit()
+            return
         except requests.exceptions.RequestException as e:
             db_instance.insert_mail_wait(data["account"], data["password"]) 
             browser.quit()
+            return
         except Exception as e:
             # print(e)
             browser.quit()
@@ -546,16 +549,20 @@ def reg_apple_music(add, apple):
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+        return
     except requests.exceptions.RequestException as e:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+        return
     except Exception as e:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+        return
     
     if add == True:
         add_payment(browser, data, apple)
     else:
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
         browser.quit()
+        returns
     
