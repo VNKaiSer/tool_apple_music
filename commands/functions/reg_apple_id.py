@@ -365,8 +365,8 @@ def add_payment(browser, data, apple):
             run_add_card = False
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             db_instance.update_data(table_name="pay", set_values={"on_use": 0}, condition=f"id = {data_card[0][0]}")
-            if data['type'] == 'wait':
-                db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
+            # if data['type'] == 'wait':
+            #     db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             data['card_number'] = card.get_card_number()
             data['month_exp'] = data_card[0][2]
             data['year_exp'] = data_card[0][3]
@@ -535,12 +535,6 @@ def reg_apple_music(add, apple):
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
         # time.sleep(3)
-        
-        if add == True:
-            add_payment(browser, data, apple)
-        else:
-            db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
-            browser.quit()
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
@@ -550,3 +544,10 @@ def reg_apple_music(add, apple):
     except Exception as e:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
+    
+    if add == True:
+        add_payment(browser, data, apple)
+    else:
+        db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
+        browser.quit()
+    
