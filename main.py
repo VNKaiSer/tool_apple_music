@@ -701,7 +701,62 @@ def handle_proxy():
     else:
         USE_PROXY = True
         messagebox.showinfo("Thông báo", "Tắt proxy thành công")
+        
+import tkinter as tk
+def center_window(window):
+    # Lấy kích thước của màn hình
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
 
+    # Tính toán vị trí của cửa sổ Toplevel để nằm chính giữa màn hình
+    window_width = window.winfo_reqwidth()
+    window_height = window.winfo_reqheight()
+    x = (screen_width - window_width) // 2
+    y = (screen_height - window_height) // 2
+
+    # Đặt vị trí của cửa sổ
+    window.geometry(f"+{x}+{y}")
+
+def handle_add_card():
+    # Tạo cửa sổ con
+    add_card_window = tk.Toplevel(root)
+    add_card_window.title("Nhập số lần add thẻ")
+    
+    # Đặt cửa sổ con ở giữa màn hình
+    center_window(add_card_window)
+
+    # Tạo nhãn hướng dẫn
+    label = tk.Label(add_card_window, text="Nhập số lần add thẻ:")
+    label.pack(pady=10)
+
+    # Tạo ô nhập
+    entry = tk.Entry(add_card_window)
+    entry.pack(pady=5)
+
+    # Hàm xác nhận
+    def on_confirm():
+        try:
+            # Lấy giá trị từ ô nhập
+            user_input = int(entry.get())
+            f = open('./config/tool-config.json', 'r')
+            data = json.load(f)
+            f.close()
+            data['TIME_ADD_CARD'] = user_input
+            f = open('./config/tool-config.json', 'w')
+            f.seek(0)  # Đặt con trỏ tệp về đầu
+            f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+            f.truncate()  # Xóa nội dung còn lại nếu có
+            f.close()
+            # Hiển thị thông báo với giá trị nhập vào
+            messagebox.showinfo("Xác nhận", f"Số lần add thẻ: {user_input}")
+            add_card_window.destroy()  # Đóng cửa sổ con sau khi xác nhận
+        except ValueError:
+            # Hiển thị thông báo lỗi nếu giá trị nhập vào không phải là số
+            messagebox.showerror("Lỗi", "Vui lòng nhập một số hợp lệ")
+
+    # Tạo nút xác nhận
+    button = tk.Button(add_card_window, text="Xác nhận", command=on_confirm)
+    button.pack(pady=20)
 #===================================GUI END FUCITON======================================
   
 #===================================GUI=========================================
@@ -766,6 +821,7 @@ menu.add_cascade(label='Cài đặt', menu=setting_menu)
 setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
 setting_menu.add_separator()
 setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
+setting_menu.add_command(label='Số lần add thẻ', command=handle_add_card)
 
 
 exit_menu = Menu(menu)

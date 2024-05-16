@@ -61,7 +61,12 @@ def generate_random_email():
                 
 def generate_random_port():
     return random.randint(49152, 65535)
-  
+def get_max_card_add():
+    f = open ('./config/tool-config.json', "r")
+    data = json.loads(f.read())
+    f.close()
+    return data['TIME_ADD_CARD']
+
 def random_address():
     json_file = './assets/data/addresses.json'  
     with open(json_file, 'r') as f:
@@ -231,7 +236,9 @@ def add_payment(browser, data, apple):
             browser.quit()
             sys.exit()
          
-        
+        # Kiểm tra thẻ hiện tại đã max chưa
+        if data_card[0][6] >= get_max_card_add():
+            continue # next thẻ
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
         card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
