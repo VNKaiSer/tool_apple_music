@@ -650,11 +650,11 @@ def reg_apple_music():
     def run(choice):
         # while True:
         if choice == 0:
-            subprocess.Popen("python ./commands/reg_music.py")
+            subprocess.Popen("py ./commands/reg_music.py")
         elif choice == 1:
-            subprocess.Popen("python ./commands/reg_music_add.py")
+            subprocess.Popen("py ./commands/reg_music_add.py")
         else:
-            subprocess.Popen("python" "./commands/reg_music_add_apple.py") 
+            subprocess.Popen("py ./commands/reg_music_add_apple.py") 
 
     def on_click_reg_apple_music():
         num_tabs = int(spinbox.get())
