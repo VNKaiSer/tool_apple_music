@@ -394,7 +394,7 @@ def reg_apple_music(add, apple):
             {
                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
             },
-        'port': 9999
+        'port': generate_random_port()
     
     }
     
@@ -406,11 +406,11 @@ def reg_apple_music(add, apple):
         )
     else: 
         browser = webdriver.Firefox(
-            
+            seleniumwire_options={
+                'port': generate_random_port()
+            }
         )
     
-    
-        
     # vào web 
     try:
         browser.get('https://music.apple.com/us/login')
