@@ -179,8 +179,13 @@ def process_login(browser, data, add, apple):
             add_payment(browser, data, apple)
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'],data['date_of_birth']])
         browser.quit()
+    except requests.exceptions.TooManyRedirects:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
+    except requests.exceptions.RequestException as e:
+        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        browser.quit()
     except Exception as e:
-        print("178")
         db_instance.insert_mail_wait(data['account'], data['password'])
     
 def add_payment(browser, data, apple):
@@ -195,50 +200,55 @@ def add_payment(browser, data, apple):
     if country != "United States":
         print("Not US") 
     # click nút change payment 
-    wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-    time.sleep(5)
-    browser.switch_to.default_content()
-    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
-    iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
-    browser.switch_to.frame(iframe_payment)
-    # Nhấn nút add payment
-    wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
-    browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
-    browser.switch_to.default_content()
-    iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_add_payment)
-    
-    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineFirst")))
-    address_1 = browser.find_element(By.ID, "addressOfficialLineFirst")
-    for i in data["address1"]:
-        address_1.send_keys(i)
-        time.sleep(0.06)
-    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineSecond")))
-    address_2 = browser.find_element(By.ID, "addressOfficialLineSecond")
-    for i in data["address2"]:
-        address_2.send_keys(i)
-        time.sleep(0.06)
-    
-    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialCity")))
-    city_element = browser.find_element(By.ID, "addressOfficialCity")
-    for i in data["city"]:
-        city_element.send_keys(i)
-        time.sleep(0.06)
-    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
-    select = Select(browser.find_element(By.ID, "addressOfficialStateProvince"))
-    select.select_by_value(data["state"])
-    wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialPostalCode")))
-    post_code = browser.find_element(By.ID, "addressOfficialPostalCode")
-    for i in data["postalCode"]:
-        post_code.send_keys(i)
-        time.sleep(0.06)
+    try: 
+        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+        time.sleep(5)
+        browser.switch_to.default_content()
+        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
+        iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
+        browser.switch_to.frame(iframe_payment)
+        # Nhấn nút add payment
+        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+        browser.switch_to.default_content()
+        iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_add_payment)
+        
+        wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineFirst")))
+        address_1 = browser.find_element(By.ID, "addressOfficialLineFirst")
+        for i in data["address1"]:
+            address_1.send_keys(i)
+            time.sleep(0.06)
+        wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineSecond")))
+        address_2 = browser.find_element(By.ID, "addressOfficialLineSecond")
+        for i in data["address2"]:
+            address_2.send_keys(i)
+            time.sleep(0.06)
+        
+        wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialCity")))
+        city_element = browser.find_element(By.ID, "addressOfficialCity")
+        for i in data["city"]:
+            city_element.send_keys(i)
+            time.sleep(0.06)
+        wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
+        select = Select(browser.find_element(By.ID, "addressOfficialStateProvince"))
+        select.select_by_value(data["state"])
+        wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialPostalCode")))
+        post_code = browser.find_element(By.ID, "addressOfficialPostalCode")
+        for i in data["postalCode"]:
+            post_code.send_keys(i)
+            time.sleep(0.06)
+    except Exception as e:
+        print("243")
+        print(e)
     
     
     run_add_card = True
     time_ctsp = 0
     while run_add_card:
-        data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
+        data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
+        db_instance.update_data(table_name="pay", data={"on_use": 1}, condition="id = %s", values=[data_card[0][0]])
         try:
             if data_card[0] is None:
                 logging.error("Error: %s", str("Hết thẻ"))
@@ -351,6 +361,7 @@ def add_payment(browser, data, apple):
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             run_add_card = False
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
+            db_instance.update_data(table_name="pay", set_values={"on_use": 0}, condition=f"id = {data_card[0][0]}")
             if data['type'] == 'wait':
                 db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
             data['card_number'] = card.get_card_number()
@@ -446,7 +457,6 @@ def reg_apple_music(add, apple):
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e: # Trang apple load chậm
-        print("1")
         db_instance.insert_mail_wait(data["account"], data["password"])
         browser.quit()
         
