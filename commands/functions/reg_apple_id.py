@@ -205,7 +205,7 @@ def add_payment(browser, data, apple):
         added = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
         print(added)
     except Exception as e:
-        print('')
+        browser.quit()
     # click nút change payment 
     try: 
         wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
