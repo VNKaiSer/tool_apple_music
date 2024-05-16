@@ -138,6 +138,7 @@ def apple_id_done(browser, data):
        active_element.send_keys(data['ccv'])
        active_element.send_keys(Keys.ENTER)
     except Exception as e:
+        print("141")
         print(e) # Không còn nút đó 
     # Chuỗi ngày tháng năm ban đầu
     
@@ -166,13 +167,15 @@ def process_login(browser, data, add, apple):
             browser.switch_to.default_content()
             browser.get("https://music.apple.com/us/account/settings")
         except Exception as e:
-           print(e)
+            print("170")
+            print(e)
         browser.get("https://music.apple.com/us/account/settings")
         if add == True:
             add_payment(browser, data, apple)
         db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'],data['date_of_birth']])
         browser.quit()
     except Exception as e:
+        print("178")
         db_instance.insert_mail_wait(data['account'], data['password'])
     
 def add_payment(browser, data, apple):
@@ -477,6 +480,7 @@ def reg_apple_music(add, apple):
         try: 
             process_login(browser, data, add, apple)
         except Exception as e:
+            print("480")
             print(e)
             browser.quit()
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
@@ -509,6 +513,6 @@ def reg_apple_music(add, apple):
             db_instance.insert_mail_reg_apple_music_not_add([data['account'], data['password'], data['date_of_birth']])
             browser.quit()
     except Exception as e:
-        print(2)
+        print("513")
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
