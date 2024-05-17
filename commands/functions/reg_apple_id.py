@@ -345,6 +345,7 @@ def add_payment(browser, data, apple):
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
                     run_add_card = False # Dừng vì account bị disable
                     browser.quit()
+                    return
                 case tool_exception.MANY:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
