@@ -155,6 +155,19 @@ def apple_id_done(browser, data):
     #OTP xong
     browser.quit()
 
+def check_account_is_block(browser):
+    try:
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
+        text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
+        print(text)
+        if text == tool_exception.LOCK:
+            return True
+        else:
+            return False    
+    except Exception as e:
+            print(e)
+            return False
+        
 def process_login(browser, data, add, apple):
     browser.switch_to.default_content()
     try:
@@ -172,6 +185,11 @@ def process_login(browser, data, add, apple):
             WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(3)
+            if check_account_is_block(browser):
+                logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
+                db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
+                browser.quit()
+                return
             browser.switch_to.default_content()
             browser.get("https://music.apple.com/us/account/settings")
         except Exception as e:
@@ -194,7 +212,8 @@ def process_login(browser, data, add, apple):
         db_instance.insert_mail_wait(data['account'], data['password'])
         browser.quit()
         return
-    
+
+
 def add_payment(browser, data, apple):
     wait = WebDriverWait(browser, 20)
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
@@ -425,17 +444,17 @@ def reg_apple_music(add, apple):
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
     try:
-        mail, type_mail = generate_random_email()
-        if type_mail == 'wait':
-            password = mail[2]
-            mail = mail[1]   
+        # mail, type_mail = generate_random_email()
+        # if type_mail == 'wait':
+        #     password = mail[2]
+        #     mail = mail[1]   
         
         
         data = {
         "first_name": first_name,
-        "account": mail,
-        "type": type_mail,
-        "password": password,
+        "account": "shaniyacain13@gmail.com",
+        "type": "rent",
+        "password": "Aij1KHr5Z7U@",
         "last_name": last_name,
         "date_of_birth": date_of_birth,
         "address1": address1,
