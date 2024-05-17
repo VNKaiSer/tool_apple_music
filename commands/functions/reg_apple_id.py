@@ -47,7 +47,8 @@ def generate_random_email():
         time.sleep(3)
         mail_wait = db_instance.get_mail_wait()
         if mail_wait is not None:
-            db_instance.update_data('mail_reg_apple_music_wait', {'status': 'N'}, 'id = %s', mail_wait[0][0])
+            print(mail_wait)
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
             return mail_wait[0],'wait'
         else:
             while True:
