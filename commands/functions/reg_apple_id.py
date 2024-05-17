@@ -371,14 +371,14 @@ def add_payment(browser, data, apple):
                     time.sleep(2)
                     continue
                 case tool_exception.SUPPORT:
-                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    time_ctsp = time_ctsp + 1
-                    if time_ctsp == 2:
-                        browser.quit()
-                        return
+                    # logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
+                    # db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
+                    # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    # browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    # time_ctsp = time_ctsp + 1
+                    # if time_ctsp == 2:
+                    browser.quit()
+                    return
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
