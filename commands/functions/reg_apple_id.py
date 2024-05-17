@@ -158,6 +158,8 @@ def apple_id_done(browser, data):
 def check_account_is_block(browser):
     try:
         browser.switch_to.default_content()
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, 'aid-auth-widget-iFrame')))
+        iframe = browser.find_element(By.ID, 'aid-auth-widget-iFrame')
         WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
@@ -187,8 +189,8 @@ def process_login(browser, data, add, apple):
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(3)
             if check_account_is_block(browser):
-                logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
-                db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
+                # logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
+                # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
                 browser.quit()
                 return
             browser.switch_to.default_content()
