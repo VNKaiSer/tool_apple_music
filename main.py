@@ -662,6 +662,7 @@ def reg_apple_music():
         
         with ThreadPoolExecutor(max_workers=num_tabs) as executor:
             for i in range(num_tabs):
+                time.sleep(10)
                 executor.submit(run, options.index(selected_function))
         root.deiconify()
     

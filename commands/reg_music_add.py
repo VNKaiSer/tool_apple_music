@@ -7,7 +7,6 @@ def check_run_app():
     data = json.loads(f.read())
     f.close()
     return data['RUN']
-time.sleep(15)
 while check_run_app(): 
     reg.reg_apple_music(True, False)
     time.sleep(3)
