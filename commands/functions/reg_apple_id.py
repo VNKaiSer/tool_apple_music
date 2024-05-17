@@ -95,10 +95,10 @@ def click_first_login(browser):
     
     browser.get("https://music.apple.com/us/account/settings")
     time.sleep(5)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+    WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
     iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
     browser.switch_to.frame(iframe_hello)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
+    WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button').click()
     time.sleep(5)
     browser.switch_to.default_content()
@@ -107,11 +107,11 @@ def click_first_login(browser):
 def apple_id_done(browser, data):
     browser.get("https://appleid.apple.com/sign-in")
     
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+    WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
     iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
     browser.switch_to.frame(iframe_login)
     
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser, 20)
     wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
     browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
     
@@ -134,7 +134,7 @@ def apple_id_done(browser, data):
     active_element.send_keys(data['ccv'])
     active_element.send_keys(Keys.ENTER)
     # Nếu không được thì nhấn 1 lần nữa 
-    time.sleep(3)
+    time.sleep(10)
     
     try: 
        active_element.send_keys(data['ccv'])
@@ -161,15 +161,15 @@ def process_login(browser, data, add, apple):
         active_element = browser.switch_to.active_element
         active_element.send_keys(data['password'])
         active_element.send_keys(Keys.ENTER)
-        time.sleep(5)
+        time.sleep(10)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
         # Trường hợp lần đầu đăng kí 
         try: 
-            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+            WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
             iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
             browser.switch_to.frame(iframe_hello)
-            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+            WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(3)
             browser.switch_to.default_content()
@@ -196,19 +196,19 @@ def process_login(browser, data, add, apple):
         return
     
 def add_payment(browser, data, apple):
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser, 20)
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
     browser.switch_to.frame(iframe_setting)
 
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+    WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
     country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
     print(country)
     if country != "United States":
         print("Not US") 
     # Kiểm tra đã add thẻ chưa 
     try: 
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
         browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
         print('Đã add')
         browser.quit()
@@ -217,13 +217,23 @@ def add_payment(browser, data, apple):
         print('chưa add')
     # click nút change payment 
     try: 
-        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-        time.sleep(5)
-        browser.switch_to.default_content()
-        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
-        iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
-        browser.switch_to.frame(iframe_payment)
+        try: 
+            wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+            browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+            time.sleep(10)
+            browser.switch_to.default_content()
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
+            iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
+            browser.switch_to.frame(iframe_payment)
+        except Exception as e:
+            browser.get("https://music.apple.com/us/account/settings")
+            wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+            browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+            time.sleep(10)
+            browser.switch_to.default_content()
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
+            iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
+            browser.switch_to.frame(iframe_payment)
         # Nhấn nút add payment
         wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
         browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
@@ -235,18 +245,18 @@ def add_payment(browser, data, apple):
         address_1 = browser.find_element(By.ID, "addressOfficialLineFirst")
         for i in data["address1"]:
             address_1.send_keys(i)
-            time.sleep(0.06)
+            time.sleep(0.1)
         wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialLineSecond")))
         address_2 = browser.find_element(By.ID, "addressOfficialLineSecond")
         for i in data["address2"]:
             address_2.send_keys(i)
-            time.sleep(0.06)
+            time.sleep(0.1)
         
         wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialCity")))
         city_element = browser.find_element(By.ID, "addressOfficialCity")
         for i in data["city"]:
             city_element.send_keys(i)
-            time.sleep(0.06)
+            time.sleep(0.1)
         wait.until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
         select = Select(browser.find_element(By.ID, "addressOfficialStateProvince"))
         select.select_by_value(data["state"])
@@ -254,10 +264,10 @@ def add_payment(browser, data, apple):
         post_code = browser.find_element(By.ID, "addressOfficialPostalCode")
         for i in data["postalCode"]:
             post_code.send_keys(i)
-            time.sleep(0.06)
+            time.sleep(0.1)
     except Exception as e: # không tìm form add thẻ
         browser.quit()
-    
+        return
     
     run_add_card = True
     time_ctsp = 0
@@ -285,7 +295,7 @@ def add_payment(browser, data, apple):
         card_number_element.clear()
         for i in card.get_card_number():
             card_number_element.send_keys(i)
-            time.sleep(0.1)
+            time.sleep(0.2)
     # browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]').send_keys("")
 
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')))
@@ -293,7 +303,7 @@ def add_payment(browser, data, apple):
         card_expiration_element.clear()
         for i in card.get_card_expiration():
             card_expiration_element.send_keys(i)
-            time.sleep(0.1)
+            time.sleep(0.2)
     # browser.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]').send_keys("")
 
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditVerificationNumber"]')))
@@ -301,7 +311,8 @@ def add_payment(browser, data, apple):
         card_ccv_element.clear()
         for i in card.get_card_ccv():
             card_ccv_element.send_keys(i)
-            time.sleep(0.1)
+            time.sleep(0.2)
+        time.sleep(2)
     # browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]').send_keys("658")
         browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
     # Kiểm tra các trường hợp lỗi của thẻ 
@@ -320,12 +331,15 @@ def add_payment(browser, data, apple):
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
+                    continue
                 case tool_exception.INVALID_CARD:
                 # Thông tin thẻ sai
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
                     continue
                 case tool_exception.SUPPORT:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
@@ -335,11 +349,13 @@ def add_payment(browser, data, apple):
                     time_ctsp = time_ctsp + 1
                     if time_ctsp == 2:
                         browser.quit()
+                        return
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
                     continue
                 case tool_exception.ACC_SPAM:
                     # logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
@@ -348,24 +364,28 @@ def add_payment(browser, data, apple):
                     db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'])
                     run_add_card = False
                     browser.quit()
+                    return
                     # continue
                 case tool_exception.ISSUE_METHOD:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card Die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
                     continue
                 case tool_exception.DEC:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card DEC"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
                     continue
                 case tool_exception.DECLINED:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card DEC"))
                     # db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
                     wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                     browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    time.sleep(2)
                     continue
                 case _:
                     logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
@@ -393,6 +413,7 @@ def add_payment(browser, data, apple):
     else:
         db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
         browser.quit()
+        return
 
 def reg_apple_music(add, apple):
     global RUN_APP
@@ -403,7 +424,6 @@ def reg_apple_music(add, apple):
     data = None
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
-    print(password)
     try:
         mail, type_mail = generate_random_email()
         if type_mail == 'wait':
@@ -458,7 +478,7 @@ def reg_apple_music(add, apple):
     # vào web 
     try:
         browser.get('https://music.apple.com/us/login')
-        wait = WebDriverWait(browser, 10)
+        wait = WebDriverWait(browser, 20)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
         browser.switch_to.frame(iframe)
@@ -471,40 +491,41 @@ def reg_apple_music(add, apple):
         # Nhấn nút login
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
         # time.sleep(10)
-        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        # WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e: # Trang apple load chậm
         db_instance.insert_mail_wait(data["account"], data["password"])
         browser.quit()
+        return
         
     time.sleep(5) # Đợi 5s
 
     # Kiểm tra login 
     try: 
         browser.switch_to.default_content()
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
         iframe_register = browser.find_element(By.XPATH, "/html/body/div/div[5]/iframe")
         browser.switch_to.frame(iframe_register)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
         
         browser.find_element(By.ID, "acAccountPassword").send_keys(data["password"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "firstName")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.ID, "firstName")))
         browser.find_element(By.ID, "firstName").send_keys(data["first_name"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "lastName")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.ID, "lastName")))
         browser.find_element(By.ID, "lastName").send_keys(data["last_name"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "birthday")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.ID, "birthday")))
         birth = browser.find_element(By.ID, "birthday")
-        print(birth.tag_name)
+        
         for i in data["date_of_birth"]:
             time.sleep(0.2)
             birth.send_keys(i)
-        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
+        # WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
         
         inputs = browser.find_elements(By.TAG_NAME, "input")
         # print(inputs[inputs.__len__()-1].get_attribute("id"))
         inputs[inputs.__len__()-1].click()   
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
@@ -525,7 +546,7 @@ def reg_apple_music(add, apple):
             # print(e)
             browser.quit()
             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "Y"}, condition=f"mail = '{data['account']}'")
-            sys.exit(0)
+            return
         # db_instance.insert_mail_wait(data["account"], data["password"]) # Đoạn 
         browser.quit()
         return 
@@ -536,14 +557,14 @@ def reg_apple_music(add, apple):
         otp = getOTP(data["account"])
         active_element = browser.switch_to.active_element
         active_element.send_keys(otp)
-        time.sleep(8)
+        time.sleep(15)
         browser.get("https://music.apple.com/us/account/settings")
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
         iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
         browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
-        time.sleep(3)
+        time.sleep(5)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
         # time.sleep(3)
