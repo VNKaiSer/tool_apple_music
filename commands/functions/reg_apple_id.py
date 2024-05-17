@@ -158,9 +158,12 @@ def apple_id_done(browser, data):
 def check_account_is_block(browser):
     try:
         browser.switch_to.default_content()
-        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
-        iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
-        browser.switch_to.frame(iframe_login)
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
+        iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
+        browser.switch_to.frame(iframe)
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#aid-auth-widget-iFrame')))
+        iframe_auth = browser.find_element(By.CSS_SELECTOR, value= "#aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_auth)
         WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
