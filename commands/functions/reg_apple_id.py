@@ -158,20 +158,16 @@ def apple_id_done(browser, data):
 def check_account_is_block(browser):
     try:
         browser.switch_to.default_content()
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
-        iframe_1 = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
-        browser.switch_to.frame(iframe_1)
-        print(iframe_1)
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, 'aid-auth-widget-iFrame')))
-        iframe = browser.find_element(By.ID, 'aid-auth-widget-iFrame')
+        WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_login)
         WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
-        text = iframe.find_elements(By.TAG_NAME, 'h2')[0].text
+        text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
-        print(iframe)
         if text == tool_exception.LOCK:
             return True
         else:
-            return False    
+            return False
     except Exception as e:
             print(e)
             return False
@@ -183,7 +179,6 @@ def process_login(browser, data, add, apple):
         active_element.send_keys(data['password'])
         active_element.send_keys(Keys.ENTER)
         time.sleep(10)
-        browser.switch_to.default_content()
         try:
             if check_account_is_block(browser):
                 # logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
