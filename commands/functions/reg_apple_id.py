@@ -163,6 +163,7 @@ def check_account_is_block(browser):
         WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = iframe.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
+        print(iframe)
         if text == tool_exception.LOCK:
             return True
         else:
@@ -179,6 +180,14 @@ def process_login(browser, data, add, apple):
         active_element.send_keys(Keys.ENTER)
         time.sleep(10)
         browser.switch_to.default_content()
+        try:
+            if check_account_is_block(browser):
+                # logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
+                # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
+                browser.quit()
+                return
+        except Exception as e: # Không có lỗi bị block
+            print('')
         browser.get("https://music.apple.com/us/account/settings")
         # Trường hợp lần đầu đăng kí 
         try: 
@@ -188,11 +197,6 @@ def process_login(browser, data, add, apple):
             WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(3)
-            if check_account_is_block(browser):
-                # logging.error("Error Account: Id -  %s", str(data[0][1] +" "+tool_exception.LOCK))
-                # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "UnLock"}, condition=f"id = {data[0][0]}")
-                browser.quit()
-                return
             browser.switch_to.default_content()
             browser.get("https://music.apple.com/us/account/settings")
         except Exception as e:
