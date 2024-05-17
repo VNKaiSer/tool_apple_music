@@ -167,7 +167,7 @@ def check_account_is_block(browser):
         WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
-        if text == tool_exception.LOCK:
+        if text:
             return True
         else:
             return False
