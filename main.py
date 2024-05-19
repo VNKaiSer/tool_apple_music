@@ -698,10 +698,10 @@ def handle_proxy():
     global USE_PROXY
     if USE_PROXY == True:
         USE_PROXY = False
-        messagebox.showinfo("Thông báo", "Mở proxy thành công")
+        messagebox.showinfo("Thông báo", "Tắt proxy thành công")
     else:
         USE_PROXY = True
-        messagebox.showinfo("Thông báo", "Tắt proxy thành công")
+        messagebox.showinfo("Thông báo", "Mở proxy thành công")
         
 import tkinter as tk
 def center_window(window):
