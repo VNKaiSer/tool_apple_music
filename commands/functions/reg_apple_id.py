@@ -18,9 +18,21 @@ from faker import Faker
 fake = Faker()
 
 def generate_random_password():
-    password = fake.password(digits=3,length=10,special_chars=False, upper_case=True, lower_case=True)
-    
-    return 'A' + password + '@'
+    while True:
+        password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
+        # Kiểm tra xem có 3 ký tự giống nhau không phân biệt hoa thường
+        if has_three_consecutive_characters(password):
+            continue  # Tạo mật khẩu mới nếu có
+        else:
+            return 'A' + password + '@'  # Trả về mật khẩu nếu không có 3 ký tự giống nhau
+
+def has_three_consecutive_characters(password):
+    # Chuyển đổi mật khẩu thành chữ thường để so sánh không phân biệt hoa thường
+    password = password.lower()
+    for i in range(len(password) - 2):
+        if password[i] == password[i+1] == password[i+2]:
+            return True
+    return False
 
 def generate_name(length):
     random_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
@@ -43,6 +55,7 @@ def random_data():
     last_name = generate_name(5)
     date_of_birth = generate_random_date_of_birth()
     return frist_name, last_name, date_of_birth,password
+
 def generate_random_email():
         time.sleep(3)
         mail_wait = db_instance.get_mail_wait()
@@ -77,9 +90,13 @@ def random_address():
     # Lấy danh sách các địa chỉ từ khóa 'addresses'
     addresses = data.get('addresses', [])
 
-    # Chọn ngẫu nhiên một địa chỉ từ danh sách
-    random_address = random.choice(addresses)
-    print(random_address)
+    # Lựa chọn ngẫu nhiên một địa chỉ từ danh sách
+    while True:
+        random_address = random.choice(addresses)
+        # Kiểm tra xem có bất kỳ trường nào bị thiếu không
+        if all(key in random_address for key in ['address1', 'address2', 'city', 'state', 'postalCode']):
+            break  # Nếu không thiếu trường nào, thoát khỏi vòng lặp
+
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
 def getOTP(gmail):
