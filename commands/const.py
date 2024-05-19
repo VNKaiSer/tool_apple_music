@@ -255,9 +255,21 @@ class MySQLDatabase:
         else:
             return None
     def insert_mail_wait(self, mail_wait, password):
-        query = "INSERT INTO mail_reg_apple_music_wait(mail,password) VALUES (%s, %s)"
-        self.cursor.execute(query, (mail_wait, password))
-        self.connection.commit()
+            # Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+        query_check = "SELECT * FROM mail_reg_apple_music_wait WHERE mail = %s"
+        self.cursor.execute(query_check, (mail_wait,))
+        existing_record = self.cursor.fetchone()
+
+        if existing_record:
+        # Nếu email đã tồn tại, cập nhật trạng thái thành 'y'
+            query_update = "UPDATE mail_reg_apple_music_wait SET status = 'y' WHERE mail = %s"
+            self.cursor.execute(query_update, (mail_wait,))
+            self.connection.commit()
+        else:
+            # Nếu email chưa tồn tại, thêm email mới vào cơ sở dữ liệu
+            query_insert = "INSERT INTO mail_reg_apple_music_wait(mail, password) VALUES (%s, %s)"
+            self.cursor.execute(query_insert, (mail_wait, password))
+            self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
         date_string = mail[6]
