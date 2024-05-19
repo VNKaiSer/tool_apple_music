@@ -112,10 +112,10 @@ def click_first_login(browser):
     
     browser.get("https://music.apple.com/us/account/settings")
     time.sleep(5)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
     iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
     browser.switch_to.frame(iframe_hello)
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
+    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button')))
     browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div[5]/button').click()
     time.sleep(5)
     browser.switch_to.default_content()
@@ -124,11 +124,11 @@ def click_first_login(browser):
 def apple_id_done(browser, data):
     browser.get("https://appleid.apple.com/sign-in")
     
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
     iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
     browser.switch_to.frame(iframe_login)
     
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser, 15)
     wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
     browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
     
@@ -175,13 +175,13 @@ def apple_id_done(browser, data):
 def check_account_is_block(browser):
     try:
         browser.switch_to.default_content()
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
         browser.switch_to.frame(iframe)
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#aid-auth-widget-iFrame')))
+        WebDriverWait(browser, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#aid-auth-widget-iFrame')))
         iframe_auth = browser.find_element(By.CSS_SELECTOR, value= "#aid-auth-widget-iFrame")
         browser.switch_to.frame(iframe_auth)
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
+        WebDriverWait(browser, 15).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
         if text:
@@ -210,10 +210,10 @@ def process_login(browser, data, add, apple):
         browser.get("https://music.apple.com/us/account/settings")
         # Trường hợp lần đầu đăng kí 
         try: 
-            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+            WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
             iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
             browser.switch_to.frame(iframe_hello)
-            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+            WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
             time.sleep(3)
             browser.switch_to.default_content()
@@ -241,19 +241,19 @@ def process_login(browser, data, add, apple):
 
 
 def add_payment(browser, data, apple):
-    wait = WebDriverWait(browser, 10)
+    wait = WebDriverWait(browser, 15)
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
     browser.switch_to.frame(iframe_setting)
 
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
     country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
     print(country)
     if country != "United States":
         print("Not US") 
     # Kiểm tra đã add thẻ chưa 
     try: 
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
         browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
         print('Đã add')
         browser.quit()
@@ -490,6 +490,7 @@ def reg_apple_music(add, apple):
         "state": state,
         "postalCode": postalCode
         }
+        print(data)
         # Ngăn mail wait chạy nhiều tab
         # if type_mail == 'wait':
         #     db_instance.update_data(table_name="mail_reg_apple_music_wait", condition=f"mail = '{mail}'", set_values={"status": "N"})
@@ -524,7 +525,7 @@ def reg_apple_music(add, apple):
     # vào web 
     try:
         browser.get('https://music.apple.com/us/login')
-        wait = WebDriverWait(browser, 10)
+        wait = WebDriverWait(browser, 20)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
         browser.switch_to.frame(iframe)
@@ -537,7 +538,7 @@ def reg_apple_music(add, apple):
         # Nhấn nút login
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
         # time.sleep(10)
-        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        # WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         # browser.switch_to.frame(iframe_auth)
     except Exception as e: # Trang apple load chậm
@@ -550,28 +551,28 @@ def reg_apple_music(add, apple):
     # Kiểm tra login 
     try: 
         browser.switch_to.default_content()
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[5]/iframe")))
         iframe_register = browser.find_element(By.XPATH, "/html/body/div/div[5]/iframe")
         browser.switch_to.frame(iframe_register)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.ID, "acAccountPassword")))
         
         browser.find_element(By.ID, "acAccountPassword").send_keys(data["password"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "firstName")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.ID, "firstName")))
         browser.find_element(By.ID, "firstName").send_keys(data["first_name"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "lastName")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.ID, "lastName")))
         browser.find_element(By.ID, "lastName").send_keys(data["last_name"])
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.ID, "birthday")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.ID, "birthday")))
         birth = browser.find_element(By.ID, "birthday")
         
         for i in data["date_of_birth"]:
             time.sleep(0.2)
             birth.send_keys(i)
-        # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
+        # WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'form-checkbox create-account-v2__checkbox')))
         
         inputs = browser.find_elements(By.TAG_NAME, "input")
         # print(inputs[inputs.__len__()-1].get_attribute("id"))
         inputs[inputs.__len__()-1].click()   
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
         browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
@@ -605,10 +606,10 @@ def reg_apple_music(add, apple):
         active_element.send_keys(otp)
         time.sleep(15)
         browser.get("https://music.apple.com/us/account/settings")
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
         iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
         browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
         time.sleep(5)
         browser.switch_to.default_content()
