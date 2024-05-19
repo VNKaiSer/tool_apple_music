@@ -332,7 +332,8 @@ def add_payment(browser, data, apple):
          
         # Kiểm tra thẻ hiện tại đã max chưa
         if data_card[0][6] >= get_max_card_add():
-            continue # next thẻ
+            db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
+            continue
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
         card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
