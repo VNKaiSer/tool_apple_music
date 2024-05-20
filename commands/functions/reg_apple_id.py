@@ -146,11 +146,14 @@ def apple_id_done(browser, data):
     time.sleep(5)
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
-    otp = getOTP(data['account'])
+    # otp = getOTP(data['account'])
     global CODE_MAIL
+    otp = '*'
+    print('Code mail gobal: ', CODE_MAIL)
     while True:
+        otp = getOTP(data['account'])
         if CODE_MAIL != otp:
-            otp = getOTP(data['account'])
+            print('Code mail: ',otp)
             break
     # time.sleep(5)
     active_element.send_keys(otp)
