@@ -124,20 +124,25 @@ def click_first_login(browser):
 def apple_id_done(browser, data):
     browser.get("https://appleid.apple.com/sign-in")
     
-    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
-    iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
-    browser.switch_to.frame(iframe_login)
-    
-    wait = WebDriverWait(browser, 15)
-    wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
-    browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
-    
-    browser.switch_to.active_element.send_keys(Keys.ENTER)
-    browser.switch_to.default_content()
-    browser.switch_to.frame(iframe_login)
-    wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
-    browser.find_element(By.ID, "password_text_field").send_keys(data['password'])
-    browser.switch_to.active_element.send_keys(Keys.ENTER)
+    try: 
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_login)
+        
+        wait = WebDriverWait(browser, 15)
+        wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
+        browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
+        
+        browser.switch_to.active_element.send_keys(Keys.ENTER)
+        browser.switch_to.default_content()
+        browser.switch_to.frame(iframe_login)
+        wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
+        browser.find_element(By.ID, "password_text_field").send_keys(data['password'])
+        browser.switch_to.active_element.send_keys(Keys.ENTER)
+    except Exception as e:
+        db_instance.insert_mail_wait(data["account"], data["password"])
+        browser.quit()
+        return
     time.sleep(5)
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
