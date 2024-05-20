@@ -16,7 +16,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.firefox.service import Service
 from faker import Faker
 fake = Faker()
-
+CODE_MAIL = ''
 def generate_random_password():
     while True:
         password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
@@ -141,12 +141,15 @@ def apple_id_done(browser, data):
     time.sleep(5)
     browser.switch_to.default_content()
     active_element = browser.switch_to.active_element
-    # otp = getOTP(data["account"])
-    time.sleep(20)
-    otp = getOTP(data["account"])
+    otp = getOTP(data['account'])
+    global CODE_MAIL
+    while True:
+        if CODE_MAIL != otp:
+            otp = getOTP(data['account'])
+            break
     # time.sleep(5)
     active_element.send_keys(otp)
-    time.sleep(8)
+    time.sleep(10)
     active_element.send_keys(Keys.TAB)
     active_element.send_keys(data['ccv'])
     active_element.send_keys(Keys.ENTER)
@@ -335,9 +338,14 @@ def add_payment(browser, data, apple):
             db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
             continue
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
-        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
-        card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
-        card_number_element.clear()
+        try:
+            wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
+            card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
+            card_number_element.clear()
+        except Exception as e:
+            db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'])
+            browser.quit()
+            return
         for i in card.get_card_number():
             card_number_element.send_keys(i)
             time.sleep(0.2)
@@ -497,7 +505,8 @@ def reg_apple_music(add, apple):
         
     except:
         print("error")
-    
+        browser.quit()
+        return
     option = {
         'proxy':  
             {
@@ -599,11 +608,12 @@ def reg_apple_music(add, apple):
         return 
     
     try:
-        otp = getOTP(data["account"])
+        global CODE_MAIL
+        CODE_MAIL = getOTP(data["account"])
         # time.sleep(20)
         # otp = getOTP(data["account"])
         active_element = browser.switch_to.active_element
-        active_element.send_keys(otp)
+        active_element.send_keys(CODE_MAIL)
         time.sleep(15)
         browser.get("https://music.apple.com/us/account/settings")
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
