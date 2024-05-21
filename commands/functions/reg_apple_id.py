@@ -122,8 +122,9 @@ def click_first_login(browser):
     browser.get("https://music.apple.com/us/account/settings")
     
 def apple_id_done(browser, data):
+    global CODE_MAIL
     browser.get("https://appleid.apple.com/sign-in")
-    
+    time.sleep(10)
     try: 
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         iframe_login = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
@@ -132,15 +133,16 @@ def apple_id_done(browser, data):
         wait = WebDriverWait(browser, 15)
         wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
         browser.find_element(By.ID, "account_name_text_field").send_keys(data['account'])
-        
+        time.sleep(3)
         browser.switch_to.active_element.send_keys(Keys.ENTER)
         browser.switch_to.default_content()
         browser.switch_to.frame(iframe_login)
         wait.until(EC.visibility_of_element_located((By.ID, "password_text_field")))
         browser.find_element(By.ID, "password_text_field").send_keys(data['password'])
+        time.sleep(3)
         browser.switch_to.active_element.send_keys(Keys.ENTER)
     except Exception as e:
-        db_instance.insert_mail_wait(data["account"], data["password"])
+        db_instance.insert_mail_wait(data["account"], data["password"], CODE_MAIL)
         browser.quit()
         return
     time.sleep(5)
@@ -159,14 +161,16 @@ def apple_id_done(browser, data):
             break
     # time.sleep(5)
     active_element.send_keys(otp)
-    time.sleep(10)
+    time.sleep(5)
     active_element.send_keys(Keys.TAB)
     active_element.send_keys(data['ccv'])
+    time.sleep(5)
     active_element.send_keys(Keys.ENTER)
     # Nếu không được thì nhấn 1 lần nữa 
-    time.sleep(10)
+    time.sleep(5)
     
-    try: 
+    try:
+       active_element.clear()
        active_element.send_keys(data['ccv'])
        active_element.send_keys(Keys.ENTER)
     except requests.exceptions.TooManyRedirects:
