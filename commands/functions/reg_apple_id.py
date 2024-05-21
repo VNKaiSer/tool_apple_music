@@ -148,8 +148,8 @@ def apple_id_done(browser, data):
     active_element = browser.switch_to.active_element
     # otp = getOTP(data['account'])
     global CODE_MAIL
-    otp = '*'
-    print('Code mail gobal: ', CODE_MAIL)
+    otp = db_instance.get_code_old(data["account"])
+    print('Code mail old: ', otp)
     while True:
         otp = getOTP(data['account'])
         if CODE_MAIL != otp:
@@ -252,6 +252,7 @@ def process_login(browser, data, add, apple):
 
 
 def add_payment(browser, data, apple):
+    global CODE_MAIL
     wait = WebDriverWait(browser, 15)
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
@@ -351,7 +352,7 @@ def add_payment(browser, data, apple):
             card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
             card_number_element.clear()
         except Exception as e:
-            db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'])
+            db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'],code_old= CODE_MAIL)
             browser.quit()
             return
         for i in card.get_card_number():
@@ -423,7 +424,7 @@ def add_payment(browser, data, apple):
                     # logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                     # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
-                    db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'])
+                    db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'], code_old=CODE_MAIL)
                     run_add_card = False
                     browser.quit()
                     return
@@ -635,17 +636,17 @@ def reg_apple_music(add, apple):
         # time.sleep(3)
     except requests.exceptions.TooManyRedirects:
         print(e)
-        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        db_instance.insert_mail_wait(data["account"], data["password"], CODE_MAIL) 
         browser.quit()
         return
     except requests.exceptions.RequestException as e:
         print(e)
-        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        db_instance.insert_mail_wait(data["account"], data["password"], CODE_MAIL) 
         browser.quit()
         return
     except Exception as e:
         print(e)
-        db_instance.insert_mail_wait(data["account"], data["password"]) 
+        db_instance.insert_mail_wait(data["account"], data["password"], CODE_MAIL) 
         browser.quit()
         return
     

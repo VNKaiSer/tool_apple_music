@@ -254,7 +254,7 @@ class MySQLDatabase:
             return result
         else:
             return None
-    def insert_mail_wait(self, mail_wait, password):
+    def insert_mail_wait(self, mail_wait, password, code_old = ' '):
             # Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
         query_check = "SELECT * FROM mail_reg_apple_music_wait WHERE mail = %s"
         self.cursor.execute(query_check, (mail_wait,))
@@ -262,13 +262,13 @@ class MySQLDatabase:
 
         if existing_record:
         # Nếu email đã tồn tại, cập nhật trạng thái thành 'y'
-            query_update = "UPDATE mail_reg_apple_music_wait SET status = 'Y' WHERE mail = %s"
-            self.cursor.execute(query_update, (mail_wait,))
+            query_update = "UPDATE mail_reg_apple_music_wait SET status = 'Y', code = %s WHERE mail = %s"
+            self.cursor.execute(query_update, (mail_wait, code_old))
             self.connection.commit()
         else:
             # Nếu email chưa tồn tại, thêm email mới vào cơ sở dữ liệu
-            query_insert = "INSERT INTO mail_reg_apple_music_wait(mail, password) VALUES (%s, %s)"
-            self.cursor.execute(query_insert, (mail_wait, password))
+            query_insert = "INSERT INTO mail_reg_apple_music_wait(mail, password, code_old) VALUES (%s, %s, %s)"
+            self.cursor.execute(query_insert, (mail_wait, password, code_old))
             self.connection.commit()
     
     def insert_mail_reg_apple_music(self, mail):
@@ -282,7 +282,15 @@ class MySQLDatabase:
         query = "INSERT INTO reg_apple_music_id(mail, password, card_number, month_exp, year_exp, ccv, day) VALUES (%s, %s, %s, %s, %s, %s,%s)"
         self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],formatted_date))
         self.connection.commit()
-        
+    
+    def get_code_old(self, mail):
+        query = "SELECT code_old FROM mail_reg_apple_music_wait WHERE mail = %s"
+        self.cursor.execute(query, (mail,))
+        result = self.cursor.fetchall()
+        if result:
+            return result
+        else:
+            return ' '
     def close(self):
         self.connection.close()
         
