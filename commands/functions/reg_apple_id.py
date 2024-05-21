@@ -260,7 +260,6 @@ def add_payment(browser, data, apple):
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
         iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_setting)
-
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
         country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
         print(country)
@@ -523,7 +522,10 @@ def reg_apple_music(add, apple):
         print("error")
         browser.quit()
         return
-    option = {
+    
+    random_port = random.randint(9000, 9050)
+    random_proxy = [
+    {
         'proxy':  
             {
                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
@@ -532,7 +534,19 @@ def reg_apple_music(add, apple):
             },
         'port': generate_random_port()
     
-    }
+    },
+    {
+        'proxy':  
+            {
+        'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                'no_proxy': 'localhost,127.0.0.1'
+            },
+        'port': generate_random_port()
+    }]
+    option = random.choice(random_proxy)
     
     global USE_PROXY
     if USE_PROXY == True:
