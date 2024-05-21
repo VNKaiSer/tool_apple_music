@@ -148,7 +148,9 @@ def apple_id_done(browser, data):
     active_element = browser.switch_to.active_element
     # otp = getOTP(data['account'])
     global CODE_MAIL
-    otp = db_instance.get_code_old(data["account"])
+    otp = '*'
+    if data['type'] == 'wait':
+        otp = db_instance.get_code_old(data["account"])
     print('Code mail old: ', otp)
     while True:
         otp = getOTP(data['account'])
