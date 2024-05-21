@@ -255,17 +255,22 @@ def process_login(browser, data, add, apple):
 
 def add_payment(browser, data, apple):
     global CODE_MAIL
-    wait = WebDriverWait(browser, 15)
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-    iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_setting)
+    try: 
+        wait = WebDriverWait(browser, 15)
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_setting)
 
-    WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-    country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
-    print(country)
-    if country != "United States":
-        print("Not US") 
-    # Kiểm tra đã add thẻ chưa 
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+        print(country)
+        if country != "United States":
+            print("Not US") 
+    except Exception as e:
+        db_instance.insert_mail_wait(data['account'], data['password'], CODE_MAIL)
+        browser.quit()
+        return
+        # Kiểm tra đã add thẻ chưa 
     try: 
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]')))
         browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[1]').text
