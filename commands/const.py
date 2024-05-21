@@ -263,7 +263,7 @@ class MySQLDatabase:
         if existing_record:
         # Nếu email đã tồn tại, cập nhật trạng thái thành 'y'
             query_update = "UPDATE mail_reg_apple_music_wait SET status = 'Y', code_old = %s WHERE mail = %s"
-            self.cursor.execute(query_update, (mail_wait, code_old))
+            self.cursor.execute(query_update, (code_old, mail_wait))
             self.connection.commit()
         else:
             # Nếu email chưa tồn tại, thêm email mới vào cơ sở dữ liệu
