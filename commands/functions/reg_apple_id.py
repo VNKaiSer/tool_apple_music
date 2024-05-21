@@ -494,12 +494,12 @@ def check_region(browser):
                 response_body = request.response.body.decode('utf-8')
                 data = json.loads(response_body)
                 if data['countryCode'] != 'US':
-                    browser.quit()
+                    # browser.quit()
                     return False
-        browser.quit()
+        # browser.quit()
         return True
     except Exception as e:
-        browser.quit()
+        # browser.quit()
         return False
         
 def reg_apple_music(add, apple):
