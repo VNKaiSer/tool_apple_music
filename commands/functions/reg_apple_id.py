@@ -122,7 +122,6 @@ def click_first_login(browser):
     browser.get("https://music.apple.com/us/account/settings")
     
 def apple_id_done(browser, data):
-    global CODE_MAIL
     browser.get("https://appleid.apple.com/sign-in")
     time.sleep(10)
     try: 
@@ -142,7 +141,7 @@ def apple_id_done(browser, data):
         time.sleep(3)
         browser.switch_to.active_element.send_keys(Keys.ENTER)
     except Exception as e:
-        db_instance.insert_mail_wait(data["account"], data["password"], CODE_MAIL)
+        db_instance.insert_mail_wait(data["account"], data["password"])
         browser.quit()
         return
     time.sleep(5)
