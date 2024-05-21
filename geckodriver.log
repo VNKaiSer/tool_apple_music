@@ -13083,3 +13083,520 @@ WebDriver BiDi listening on ws://127.0.0.1:63253
 Read port: 63386
 1715955316701	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 1715955316816	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54892","sslProxy":"127.0.0.1:54892"}
+1716302375183	geckodriver	INFO	Listening on 127.0.0.1:59512
+1716302378231	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59513" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofilel47oOJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302378715	Marionette	INFO	Marionette enabled
+1716302378855	Marionette	INFO	Listening on port 59602
+WebDriver BiDi listening on ws://127.0.0.1:59513
+Read port: 59602
+1716302379193	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302379263	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:59511","sslProxy":"127.0.0.1:59511"}
+DevTools listening on ws://127.0.0.1:59513/devtools/browser/62a5a851-882a-4924-a9e0-345748ae9027
+1716302386439	Marionette	INFO	Stopped listening on port 59602
+Dynamically enable window occlusion 1
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1716302434861	geckodriver	INFO	Listening on 127.0.0.1:65465
+1716302437921	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "65466" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile7NytnB"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302438371	Marionette	INFO	Marionette enabled
+1716302438467	Marionette	INFO	Listening on port 49168
+WebDriver BiDi listening on ws://127.0.0.1:65466
+Read port: 49168
+1716302438807	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302438875	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:65464","sslProxy":"127.0.0.1:65464"}
+DevTools listening on ws://127.0.0.1:65466/devtools/browser/b9f25d08-d27d-4541-a689-b715faf7fefa
+1716302443206	Marionette	INFO	Stopped listening on port 49168
+JavaScript warning: resource://devtools/client/shared/vendor/react.js, line 849: Script terminated by timeout at:
+getCurrentTime@resource://devtools/client/shared/vendor/react.js:849:3
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:614:27
+interactiveUpdates$1@resource://devtools/client/shared/vendor/react-dom.js:15802:12
+interactiveUpdates@resource://devtools/client/shared/vendor/react-dom.js:1901:10
+dispatchInteractiveEvent@resource://devtools/client/shared/vendor/react-dom.js:4328:21
+componentDidMount@resource://devtools/client/jsonview/components/JsonPanel.js:67:55
+commitLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:12949:22
+commitAllLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:14174:23
+commitRoot@resource://devtools/client/shared/vendor/react-dom.js:14380:28
+completeRoot/<@resource://devtools/client/shared/vendor/react-dom.js:15731:15
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:617:12
+completeRoot@resource://devtools/client/shared/vendor/react-dom.js:15730:27
+performWorkOnRoot@resource://devtools/client/shared/vendor/react-dom.js:15659:21
+performWork@resource://devtools/client/shared/vendor/react-dom.js:15567:24
+performSyncWork@resource://devtools/client/shared/vendor/react-dom.js:15541:14
+requestWork@resource://devtools/client/shared/vendor/react-dom.js:15410:5
+scheduleWork@resource://devtools/client/shared/vendor/react-dom.js:15224:16
+scheduleRootUpdate@resource://devtools/client/shared/vendor/react-dom.js:15865:15
+updateContainerAtExpirationTime@resource://devtools/client/shared/vendor/react-dom.js:15881:10
+updateContainer@resource://devtools/client/shared/vendor/react-dom.js:15908:10
+ReactRoot.prototype.render@resource://devtools/client/shared/vendor/react-dom.js:16133:18
+legacyRenderSubtreeIntoContainer/<@resource://devtools/client/shared/vendor/react-dom.js:16242:14
+unbatchedUpdates@resource://devtools/client/shared/vendor/react-dom.js:15772:10
+legacyRenderSubtreeIntoContainer@resource://devtools/client/shared/vendor/react-dom.js:16238:21
+render@resource://devtools/client/shared/vendor/react-dom.js:16289:12
+appIsReady<@resource://devtools/client/jsonview/json-viewer.js:194:11
+@resource://devtools/client/jsonview/json-viewer.js:193:22
+execCb@resource://devtools/client/jsonview/lib/require.js:1662:33
+check@resource://devtools/client/jsonview/lib/require.js:878:51
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:628:33
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/checkLoaded/<@resource://devtools/client/jsonview/lib/require.js:704:31
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+checkLoaded@resource://devtools/client/jsonview/lib/require.js:703:21
+completeLoad@resource://devtools/client/jsonview/lib/require.js:1580:17
+onScriptLoad@resource://devtools/client/jsonview/lib/require.js:1683:29
+
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  main/query-stripping Signature failed  TypeError: NetworkError: Network request failed
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1716302510596	geckodriver	INFO	Listening on 127.0.0.1:50945
+1716302513643	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50946" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileX8V4lg"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302514140	Marionette	INFO	Marionette enabled
+1716302514263	Marionette	INFO	Listening on port 51036
+WebDriver BiDi listening on ws://127.0.0.1:50946
+Read port: 51036
+1716302514640	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302514704	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:50944","sslProxy":"127.0.0.1:50944"}
+DevTools listening on ws://127.0.0.1:50946/devtools/browser/e6328d73-d9fa-47e2-ae71-eeab77767321
+1716302519832	Marionette	INFO	Stopped listening on port 51036
+JavaScript warning: resource://devtools/client/shared/vendor/react.js, line 849: Script terminated by timeout at:
+getCurrentTime@resource://devtools/client/shared/vendor/react.js:849:3
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:614:27
+interactiveUpdates$1@resource://devtools/client/shared/vendor/react-dom.js:15802:12
+interactiveUpdates@resource://devtools/client/shared/vendor/react-dom.js:1901:10
+dispatchInteractiveEvent@resource://devtools/client/shared/vendor/react-dom.js:4328:21
+componentDidMount@resource://devtools/client/jsonview/components/JsonPanel.js:67:55
+commitLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:12949:22
+commitAllLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:14174:23
+commitRoot@resource://devtools/client/shared/vendor/react-dom.js:14380:28
+completeRoot/<@resource://devtools/client/shared/vendor/react-dom.js:15731:15
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:617:12
+completeRoot@resource://devtools/client/shared/vendor/react-dom.js:15730:27
+performWorkOnRoot@resource://devtools/client/shared/vendor/react-dom.js:15659:21
+performWork@resource://devtools/client/shared/vendor/react-dom.js:15567:24
+performSyncWork@resource://devtools/client/shared/vendor/react-dom.js:15541:14
+requestWork@resource://devtools/client/shared/vendor/react-dom.js:15410:5
+scheduleWork@resource://devtools/client/shared/vendor/react-dom.js:15224:16
+scheduleRootUpdate@resource://devtools/client/shared/vendor/react-dom.js:15865:15
+updateContainerAtExpirationTime@resource://devtools/client/shared/vendor/react-dom.js:15881:10
+updateContainer@resource://devtools/client/shared/vendor/react-dom.js:15908:10
+ReactRoot.prototype.render@resource://devtools/client/shared/vendor/react-dom.js:16133:18
+legacyRenderSubtreeIntoContainer/<@resource://devtools/client/shared/vendor/react-dom.js:16242:14
+unbatchedUpdates@resource://devtools/client/shared/vendor/react-dom.js:15772:10
+legacyRenderSubtreeIntoContainer@resource://devtools/client/shared/vendor/react-dom.js:16238:21
+render@resource://devtools/client/shared/vendor/react-dom.js:16289:12
+appIsReady<@resource://devtools/client/jsonview/json-viewer.js:194:11
+@resource://devtools/client/jsonview/json-viewer.js:193:22
+execCb@resource://devtools/client/jsonview/lib/require.js:1662:33
+check@resource://devtools/client/jsonview/lib/require.js:878:51
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:628:33
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/checkLoaded/<@resource://devtools/client/jsonview/lib/require.js:704:31
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+checkLoaded@resource://devtools/client/jsonview/lib/require.js:703:21
+completeLoad@resource://devtools/client/jsonview/lib/require.js:1580:17
+onScriptLoad@resource://devtools/client/jsonview/lib/require.js:1683:29
+
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  main/partitioning-exempt-urls Signature failed  TypeError: NetworkError: Network request failed
+console.error: services.settings: 
+  main/query-stripping Signature failed  TypeError: NetworkError: Network request failed
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+1716302585952	geckodriver	INFO	Listening on 127.0.0.1:52704
+1716302589022	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52705" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileNS663d"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302589478	Marionette	INFO	Marionette enabled
+1716302589580	Marionette	INFO	Listening on port 52797
+WebDriver BiDi listening on ws://127.0.0.1:52705
+Read port: 52797
+1716302589925	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302589988	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:52703","sslProxy":"127.0.0.1:52703"}
+DevTools listening on ws://127.0.0.1:52705/devtools/browser/4cbd733f-26ba-40bc-9751-0047983e1ded
+1716302594752	Marionette	INFO	Stopped listening on port 52797
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/partitioning-exempt-urls sync interrupted by shutdown
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+1716302663770	geckodriver	INFO	Listening on 127.0.0.1:54741
+1716302666826	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54742" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofile2hqOeG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302667269	Marionette	INFO	Marionette enabled
+1716302667372	Marionette	INFO	Listening on port 54832
+WebDriver BiDi listening on ws://127.0.0.1:54742
+Read port: 54832
+1716302667777	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302667864	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54740","sslProxy":"127.0.0.1:54740"}
+DevTools listening on ws://127.0.0.1:54742/devtools/browser/9688fae0-7401-4445-9589-268d76a76ed0
+1716302681705	Marionette	INFO	Stopped listening on port 54832
+JavaScript warning: resource://devtools/client/shared/vendor/react.js, line 849: Script terminated by timeout at:
+getCurrentTime@resource://devtools/client/shared/vendor/react.js:849:3
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:614:27
+interactiveUpdates$1@resource://devtools/client/shared/vendor/react-dom.js:15802:12
+interactiveUpdates@resource://devtools/client/shared/vendor/react-dom.js:1901:10
+dispatchInteractiveEvent@resource://devtools/client/shared/vendor/react-dom.js:4328:21
+componentDidMount@resource://devtools/client/jsonview/components/JsonPanel.js:67:55
+commitLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:12949:22
+commitAllLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:14174:23
+commitRoot@resource://devtools/client/shared/vendor/react-dom.js:14380:28
+completeRoot/<@resource://devtools/client/shared/vendor/react-dom.js:15731:15
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:617:12
+completeRoot@resource://devtools/client/shared/vendor/react-dom.js:15730:27
+performWorkOnRoot@resource://devtools/client/shared/vendor/react-dom.js:15659:21
+performWork@resource://devtools/client/shared/vendor/react-dom.js:15567:24
+performSyncWork@resource://devtools/client/shared/vendor/react-dom.js:15541:14
+requestWork@resource://devtools/client/shared/vendor/react-dom.js:15410:5
+scheduleWork@resource://devtools/client/shared/vendor/react-dom.js:15224:16
+scheduleRootUpdate@resource://devtools/client/shared/vendor/react-dom.js:15865:15
+updateContainerAtExpirationTime@resource://devtools/client/shared/vendor/react-dom.js:15881:10
+updateContainer@resource://devtools/client/shared/vendor/react-dom.js:15908:10
+ReactRoot.prototype.render@resource://devtools/client/shared/vendor/react-dom.js:16133:18
+legacyRenderSubtreeIntoContainer/<@resource://devtools/client/shared/vendor/react-dom.js:16242:14
+unbatchedUpdates@resource://devtools/client/shared/vendor/react-dom.js:15772:10
+legacyRenderSubtreeIntoContainer@resource://devtools/client/shared/vendor/react-dom.js:16238:21
+render@resource://devtools/client/shared/vendor/react-dom.js:16289:12
+appIsReady<@resource://devtools/client/jsonview/json-viewer.js:194:11
+@resource://devtools/client/jsonview/json-viewer.js:193:22
+execCb@resource://devtools/client/jsonview/lib/require.js:1662:33
+check@resource://devtools/client/jsonview/lib/require.js:878:51
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:628:33
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/checkLoaded/<@resource://devtools/client/jsonview/lib/require.js:704:31
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+checkLoaded@resource://devtools/client/jsonview/lib/require.js:703:21
+completeLoad@resource://devtools/client/jsonview/lib/require.js:1580:17
+onScriptLoad@resource://devtools/client/jsonview/lib/require.js:1683:29
+
+Dynamically enable window occlusion 1
+console.warn: services.settings: main/fingerprinting-protection-overrides sync interrupted by shutdown
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+1716302697568	geckodriver	INFO	Listening on 127.0.0.1:55585
+1716302700620	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55586" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileSEBCtH"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302701060	Marionette	INFO	Marionette enabled
+1716302701232	Marionette	INFO	Listening on port 55682
+Read port: 55682
+WebDriver BiDi listening on ws://127.0.0.1:55586
+1716302701383	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302701468	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:55584","sslProxy":"127.0.0.1:55584"}
+DevTools listening on ws://127.0.0.1:55586/devtools/browser/259c2e1c-7638-4e84-9c1e-d41a9f42c5ce
+1716302705915	Marionette	INFO	Stopped listening on port 55682
+JavaScript warning: resource://devtools/client/shared/vendor/react.js, line 849: Script terminated by timeout at:
+getCurrentTime@resource://devtools/client/shared/vendor/react.js:849:3
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:614:27
+interactiveUpdates$1@resource://devtools/client/shared/vendor/react-dom.js:15802:12
+interactiveUpdates@resource://devtools/client/shared/vendor/react-dom.js:1901:10
+dispatchInteractiveEvent@resource://devtools/client/shared/vendor/react-dom.js:4328:21
+componentDidMount@resource://devtools/client/jsonview/components/JsonPanel.js:67:55
+commitLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:12949:22
+commitAllLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:14174:23
+commitRoot@resource://devtools/client/shared/vendor/react-dom.js:14380:28
+completeRoot/<@resource://devtools/client/shared/vendor/react-dom.js:15731:15
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:617:12
+completeRoot@resource://devtools/client/shared/vendor/react-dom.js:15730:27
+performWorkOnRoot@resource://devtools/client/shared/vendor/react-dom.js:15659:21
+performWork@resource://devtools/client/shared/vendor/react-dom.js:15567:24
+performSyncWork@resource://devtools/client/shared/vendor/react-dom.js:15541:14
+requestWork@resource://devtools/client/shared/vendor/react-dom.js:15410:5
+scheduleWork@resource://devtools/client/shared/vendor/react-dom.js:15224:16
+scheduleRootUpdate@resource://devtools/client/shared/vendor/react-dom.js:15865:15
+updateContainerAtExpirationTime@resource://devtools/client/shared/vendor/react-dom.js:15881:10
+updateContainer@resource://devtools/client/shared/vendor/react-dom.js:15908:10
+ReactRoot.prototype.render@resource://devtools/client/shared/vendor/react-dom.js:16133:18
+legacyRenderSubtreeIntoContainer/<@resource://devtools/client/shared/vendor/react-dom.js:16242:14
+unbatchedUpdates@resource://devtools/client/shared/vendor/react-dom.js:15772:10
+legacyRenderSubtreeIntoContainer@resource://devtools/client/shared/vendor/react-dom.js:16238:21
+render@resource://devtools/client/shared/vendor/react-dom.js:16289:12
+appIsReady<@resource://devtools/client/jsonview/json-viewer.js:194:11
+@resource://devtools/client/jsonview/json-viewer.js:193:22
+execCb@resource://devtools/client/jsonview/lib/require.js:1662:33
+check@resource://devtools/client/jsonview/lib/require.js:878:51
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:628:33
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/checkLoaded/<@resource://devtools/client/jsonview/lib/require.js:704:31
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+checkLoaded@resource://devtools/client/jsonview/lib/require.js:703:21
+completeLoad@resource://devtools/client/jsonview/lib/require.js:1580:17
+onScriptLoad@resource://devtools/client/jsonview/lib/require.js:1683:29
+
+Dynamically enable window occlusion 1
+console.error: services.settings: 
+  main/query-stripping Signature failed  TypeError: NetworkError: Network request failed
+console.error: (new NetworkError("Network error: TypeError: NetworkError: Network request failed", "resource://services-settings/RemoteSettingsClient.sys.mjs", 107))
+console.error: (new Error("IndexedDB: main/fingerprinting-protection-overrides list() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+console.error: (new Error("IndexedDB: main/partitioning-exempt-urls list() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1716302903616	geckodriver	INFO	Listening on 127.0.0.1:61482
+1716302906672	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61483" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KAISER~1\\AppData\\Local\\Temp\\rust_mozprofileLMzDPE"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1716302907168	Marionette	INFO	Marionette enabled
+1716302907291	Marionette	INFO	Listening on port 61573
+WebDriver BiDi listening on ws://127.0.0.1:61483
+Read port: 61573
+1716302907699	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1716302907785	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61481","sslProxy":"127.0.0.1:61481"}
+DevTools listening on ws://127.0.0.1:61483/devtools/browser/b82b57e6-e63a-40e4-b1b3-ab3ac98cb97c
+1716302920543	Marionette	INFO	Stopped listening on port 61573
+JavaScript warning: resource://devtools/client/shared/vendor/react.js, line 849: Script terminated by timeout at:
+getCurrentTime@resource://devtools/client/shared/vendor/react.js:849:3
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:614:27
+interactiveUpdates$1@resource://devtools/client/shared/vendor/react-dom.js:15802:12
+interactiveUpdates@resource://devtools/client/shared/vendor/react-dom.js:1901:10
+dispatchInteractiveEvent@resource://devtools/client/shared/vendor/react-dom.js:4328:21
+componentDidMount@resource://devtools/client/jsonview/components/JsonPanel.js:67:55
+commitLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:12949:22
+commitAllLifeCycles@resource://devtools/client/shared/vendor/react-dom.js:14174:23
+commitRoot@resource://devtools/client/shared/vendor/react-dom.js:14380:28
+completeRoot/<@resource://devtools/client/shared/vendor/react-dom.js:15731:15
+unstable_runWithPriority@resource://devtools/client/shared/vendor/react.js:617:12
+completeRoot@resource://devtools/client/shared/vendor/react-dom.js:15730:27
+performWorkOnRoot@resource://devtools/client/shared/vendor/react-dom.js:15659:21
+performWork@resource://devtools/client/shared/vendor/react-dom.js:15567:24
+performSyncWork@resource://devtools/client/shared/vendor/react-dom.js:15541:14
+requestWork@resource://devtools/client/shared/vendor/react-dom.js:15410:5
+scheduleWork@resource://devtools/client/shared/vendor/react-dom.js:15224:16
+scheduleRootUpdate@resource://devtools/client/shared/vendor/react-dom.js:15865:15
+updateContainerAtExpirationTime@resource://devtools/client/shared/vendor/react-dom.js:15881:10
+updateContainer@resource://devtools/client/shared/vendor/react-dom.js:15908:10
+ReactRoot.prototype.render@resource://devtools/client/shared/vendor/react-dom.js:16133:18
+legacyRenderSubtreeIntoContainer/<@resource://devtools/client/shared/vendor/react-dom.js:16242:14
+unbatchedUpdates@resource://devtools/client/shared/vendor/react-dom.js:15772:10
+legacyRenderSubtreeIntoContainer@resource://devtools/client/shared/vendor/react-dom.js:16238:21
+render@resource://devtools/client/shared/vendor/react-dom.js:16289:12
+appIsReady<@resource://devtools/client/jsonview/json-viewer.js:194:11
+@resource://devtools/client/jsonview/json-viewer.js:193:22
+execCb@resource://devtools/client/jsonview/lib/require.js:1662:33
+check@resource://devtools/client/jsonview/lib/require.js:878:51
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/enable/</<@resource://devtools/client/jsonview/lib/require.js:1125:34
+bind/<@resource://devtools/client/jsonview/lib/require.js:136:23
+newContext/emit/<@resource://devtools/client/jsonview/lib/require.js:1168:23
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+emit@resource://devtools/client/jsonview/lib/require.js:1167:21
+check@resource://devtools/client/jsonview/lib/require.js:929:30
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:628:33
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/breakCycle/<@resource://devtools/client/jsonview/lib/require.js:630:39
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+breakCycle@resource://devtools/client/jsonview/lib/require.js:617:21
+newContext/checkLoaded/<@resource://devtools/client/jsonview/lib/require.js:704:31
+each@resource://devtools/client/jsonview/lib/require.js:61:31
+checkLoaded@resource://devtools/client/jsonview/lib/require.js:703:21
+completeLoad@resource://devtools/client/jsonview/lib/require.js:1580:17
+onScriptLoad@resource://devtools/client/jsonview/lib/require.js:1683:29
+
+Dynamically enable window occlusion 1
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.sys.mjs", 236))
