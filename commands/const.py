@@ -9,7 +9,7 @@ import logging
 import sys
 import mysql.connector
 import json
-
+import random
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -294,7 +294,36 @@ class MySQLDatabase:
             return ' '
     def close(self):
         self.connection.close()
-        
+    
+    def insert_mail_reg_apple_tv(self, mail):
+        date_string = mail[6]
+
+    # Chia chuỗi thành các phần để lấy ngày, tháng và năm
+        month = date_string[0:2]
+        day = date_string[2:4]
+        year = date_string[4:]
+        formatted_date = f"{day}_{month}_{year}"
+        query = "INSERT INTO reg_apple_tv_id(mail, password, card_number, month_exp, year_exp, ccv, day) VALUES (%s, %s, %s, %s, %s, %s,%s)"
+        self.cursor.execute(query, (mail[0], mail[1], mail[2], mail[3], mail[4], mail[5],formatted_date))
+        self.connection.commit() 
+    
+    def insert_mail_tv_wait(self, mail_wait, password, code_old = ' '):
+            # Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
+        query_check = "SELECT * FROM mail_reg_apple_tv_wait WHERE mail = %s"
+        self.cursor.execute(query_check, (mail_wait,))
+        existing_record = self.cursor.fetchone()
+
+        if existing_record:
+        # Nếu email đã tồn tại, cập nhật trạng thái thành 'y'
+            query_update = "UPDATE mail_reg_apple_tv_wait SET status = 'Y', code_old = %s WHERE mail = %s"
+            self.cursor.execute(query_update, (code_old, mail_wait))
+            self.connection.commit()
+        else:
+            # Nếu email chưa tồn tại, thêm email mới vào cơ sở dữ liệu
+            query_insert = "INSERT INTO mail_reg_apple_tv_wait(mail, password, code_old) VALUES (%s, %s, %s)"
+            self.cursor.execute(query_insert, (mail_wait, password, code_old))
+            self.connection.commit()
+       
 tool_exception = Tool_Exception()
 config = Config()
 def check_account_is_block(browser):
@@ -333,6 +362,25 @@ def get_max_card_add():
     data = json.loads(f.read())
     f.close()
     return data['TIME_ADD_CARD']
+
+def check_region(browser):
+    try: 
+        browser.get('http://ip-api.com/json/')
+        for request in browser.requests:
+            if request.response and 'ip-api.com/json' in request.url:
+                response_body = request.response.body.decode('utf-8')
+                data = json.loads(response_body)
+                if data['countryCode'] != 'US':
+                    # browser.quit()
+                    return False
+        # browser.quit() 
+        return True
+    except Exception as e:
+        # browser.quit()
+        return False
+    
+def generate_random_port():
+    return random.randint(49152, 65535)
 #cài đặt proxy
 option = {
     'proxy': 

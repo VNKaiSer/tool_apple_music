@@ -486,21 +486,7 @@ def add_payment(browser, data, apple):
         db_instance.insert_mail_reg_apple_music([data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']])
         browser.quit()
         return
-def check_region(browser):
-    try: 
-        browser.get('http://ip-api.com/json/')
-        for request in browser.requests:
-            if request.response and 'ip-api.com/json' in request.url:
-                response_body = request.response.body.decode('utf-8')
-                data = json.loads(response_body)
-                if data['countryCode'] != 'US':
-                    # browser.quit()
-                    return False
-        # browser.quit()
-        return True
-    except Exception as e:
-        # browser.quit()
-        return False
+
         
 def reg_apple_music(add, apple):
     global RUN_APP
