@@ -10,6 +10,7 @@ def check_run_app():
     f.close()
     return data['RUN']
 
-while check_run_app():    
+while check_run_app(): 
+    print(check_run_app())   
     reg.reg_apple_tv()
     time.sleep(3)
