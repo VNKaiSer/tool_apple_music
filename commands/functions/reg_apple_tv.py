@@ -132,18 +132,18 @@ data = None
 address1, address2, city, state, postalCode = random_address()
 type_mail = None
 try:
-    # mail, type_mail = generate_random_email()
-    # if type_mail == 'wait':
-    #     password = mail[2]
-    #     mail = mail[1]   
+    mail, type_mail = generate_random_email()
+    if type_mail == 'wait':
+        password = mail[2]
+        mail = mail[1]   
     
     
     data = {
         "first_name": first_name,
-        "account": "santanaevan098@gmail.com",
-        "type": "rent",
-        "password": "A9aYJJpjWtX@",
-        # "password": password,
+        "account": mail,
+        "type": type_mail,
+        # "password": "A9aYJJpjWtX@",
+        "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
         "address1": address1,
