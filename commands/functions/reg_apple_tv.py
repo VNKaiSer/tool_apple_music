@@ -140,10 +140,10 @@ try:
     
     data = {
         "first_name": first_name,
-        "account": mail,
+        "account": "giovaniholder644@gmail.com",
         "type": type_mail,
-        # "password": "A9aYJJpjWtX@",
-        "password": password,
+        "password": "A4WtDjJ9g1G@",
+        # "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
         "address1": address1,
@@ -267,7 +267,11 @@ try:
     time.sleep(1)
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-AR")))
     driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
+    time.sleep(2)
+    driver.find_element(By.ID, "addressOfficialStateProvince").click()
     time.sleep(1)
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-AR")))
+    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
 except Exception as e:
     print(e)
     driver.quit()
