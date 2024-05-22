@@ -197,16 +197,13 @@ try:
     driver.find_elements(By.TAG_NAME, 'button')[1].click()
 except Exception as e: # chưa login nằm ở đây
     print("Xữ lý login")
-    active_element = driver.switch_to.active_element
-    active_element.send_keys(data['password'])
-    active_element.send_keys(Keys.ENTER)
     # driver.switch_to.default_content()
-    # WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="aid-auth-widget-iFrame"]')))
-    # driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="aid-auth-widget-iFrame"]'))
-    # WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-    # input_login = driver.find_elements(By.TAG_NAME, 'input')
-    # input_login[1].send_keys(data['password'])
-    # driver.find_elements(By.TAG_NAME, 'button')[0].click()
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="aid-auth-widget-iFrame"]')))
+    driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="aid-auth-widget-iFrame"]'))
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+    input_login = driver.find_elements(By.TAG_NAME, 'input')
+    input_login[1].send_keys(data['password'])
+    driver.find_elements(By.TAG_NAME, 'button')[0].click()
     time.sleep(10)
     
 
