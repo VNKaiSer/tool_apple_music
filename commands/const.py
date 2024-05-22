@@ -376,6 +376,7 @@ def check_region(browser):
         browser.get('https://ip-api.com/')
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="codeOutput"]/span[12]')))
         contry_code = browser.find_element(By.XPATH, '//*[@id="codeOutput"]/span[12]').text
+        print(contry_code)
         if contry_code != 'US':
             # browser.quit()
             return False
