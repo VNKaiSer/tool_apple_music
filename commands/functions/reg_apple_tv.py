@@ -443,7 +443,7 @@ def reg_apple_tv():
                 [data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']]
             )
             
-            # 
+            driver.quit()
             break
     print("Hoàn thành")
 
