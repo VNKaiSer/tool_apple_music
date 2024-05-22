@@ -182,5 +182,6 @@ for i in date_of_birth:
     input_elements[4].send_keys(i)
     time.sleep(0.2)
 input_elements[-1].click()
+driver.find_element(By.TAG_NAME, 'button').click()
 time.sleep(100)
 driver.quit()
