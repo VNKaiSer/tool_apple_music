@@ -113,52 +113,10 @@ def getOTP(gmail):
         if resp['status'] == 'SUCCESS':
             return resp['otp']
     
-def create_driver():
-    random_port = random.randint(9000, 9050)
-    random_proxy = [
-    {
-        'proxy':  
-            {
-                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-        'port': generate_random_port()
-    
-    },
-    # {
-    #     'proxy':  
-    #         {
-    #     'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #     'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #     'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #     'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-    #             'no_proxy': 'localhost,127.0.0.1'
-    #         },
-    #     'port': generate_random_port()
-    # }
-    ]
-    proxy = random.choice(random_proxy)
+# def create_driver():
     
     
-    
-    chrome_options = Options()
-    chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.add_argument('--allow-insecure-localhost')
-    chrome_options.add_argument('--ignore-ssl-errors=yes')
-    chrome_options.add_argument('--log-level=3')  # Selenium log level
-    
-    driver = uc.Chrome(
-        options=chrome_options,
-        seleniumwire_options=proxy,
-        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
-    )
-    
-    if check_region(driver) == False:
-            driver.quit()
-            return None
-    
-    return driver
+#     return driver
 
 # tạo data 
 def reg_apple_tv():
@@ -195,7 +153,51 @@ def reg_apple_tv():
 
     # Kiểm tra có phải US k
     try: 
-        driver = create_driver()
+        random_port = random.randint(9000, 9050)
+        random_proxy = [
+        {
+            'proxy':  
+                {
+                    'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+                    'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+                    'no_proxy': 'localhost,127.0.0.1'
+                },
+            'port': generate_random_port()
+        
+        },
+        # {
+        #     'proxy':  
+        #         {
+        #     'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #     'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #     'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        #     'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         },
+        #     'port': generate_random_port()
+        # }
+        ]
+        proxy = random.choice(random_proxy)
+        
+        
+        
+        chrome_options = Options()
+        chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument('--allow-insecure-localhost')
+        chrome_options.add_argument('--ignore-ssl-errors=yes')
+        chrome_options.add_argument('--log-level=3')  # Selenium log level
+        
+        driver = uc.Chrome(
+            options=chrome_options,
+            seleniumwire_options=proxy,
+            service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        )
+        
+        if check_region(driver) == False:
+            driver.quit()
+            db_instance.insert_mail_tv_wait(data["account"], data["password"])
+            return
+        
         driver.get("https://tv.apple.com/login")
         time.sleep(10) 
     except Exception as e:
