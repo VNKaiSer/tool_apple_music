@@ -159,7 +159,7 @@ try:
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="accountName"]')))
     # Nhập tài khoản
     user_name = driver.find_element(By.XPATH, '//*[@id="accountName"]')
-    user_name.send_keys("tandatvo999@gmail.com")
+    user_name.send_keys(data['account'])
     user_name.send_keys(Keys.ENTER)
     
     active = driver.switch_to.active_element
