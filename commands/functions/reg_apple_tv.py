@@ -264,8 +264,8 @@ try:
     input_elements[5].send_keys(data['address1'])
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
     select = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
-    print(data["state"])
-    select.select_by_value(data["state"])
+    select.select_by_value("AL")
+    time.sleep(1)
     select.select_by_value(data["state"])
     time.sleep(10)
 except Exception as e:
