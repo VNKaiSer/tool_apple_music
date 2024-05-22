@@ -156,7 +156,7 @@ def create_driver():
     
     if check_region(driver) == False:
             driver.quit()
-            return
+            return None
     
     return driver
 
@@ -167,13 +167,13 @@ def reg_apple_tv():
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
     try:
-        # mail, type_mail = generate_random_email()
+        mail, type_mail = generate_random_email()
         if type_mail == 'wait':
             password = mail[2]
             mail = mail[1]   
         data = {
             "first_name": first_name,
-            "account": "langnoel076@gmail.com",
+            "account": mail,
             "type": type_mail,
             "password": password,
             # "password": password,
