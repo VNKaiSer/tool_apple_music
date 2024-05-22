@@ -373,19 +373,16 @@ def get_max_card_add():
 
 def check_region(browser):
     try: 
-        browser.get('http://ip-api.com/json/')
-        for request in browser.requests:
-            if request.response and 'ip-api.com/json' in request.url:
-                response_body = request.response.body.decode('utf-8')
-                data = json.loads(response_body)
-                print(data)
-                if data['countryCode'] != 'US':
-                    # browser.quit()
-                    return False
-        # browser.quit() 
+        browser.get('https://ip-api.com/')
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="codeOutput"]/span[12]')))
+        contry_code = browser.find_element(By.XPATH, '//*[@id="codeOutput"]/span[12]').text
+        if contry_code != 'US':
+            browser.quit()
+            return False
+ 
         return True
     except Exception as e:
-        # browser.quit()
+        browser.quit()
         return False
     
 def generate_random_port():
