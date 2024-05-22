@@ -262,21 +262,19 @@ try:
     input_elements[8].send_keys(data['postalCode'])
     input_elements[7].send_keys(data['city'])
     input_elements[6].send_keys(data['address2'])
-    input_elements[5].send_keys(data['address1'])
-    # Đợi và click vào dropdown
+    input_elements[5].send_keys(data['address1'])    # Đợi và click vào dropdown
     dropdown = WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
     )
-    dropdown.click()
+    ActionChains(driver).move_to_element(dropdown).click().perform()
 
-    # Kiểm tra xem option có tồn tại và hiển thị hay không
+    # Đợi cho đến khi option xuất hiện
     option = WebDriverWait(driver, 15).until(
-        EC.presence_of_element_located((By.ID, "addressOfficialStateProvince-AR"))
+        EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince-AR"))
     )
-    print(f"Option is displayed: {option.is_displayed()}")  # Should print True if the element is visible
 
-    # Sử dụng JavaScript để chọn option
-    driver.execute_script("arguments[0].click();", option)
+    # Click vào option
+    ActionChains(driver).move_to_element(option).click().perform()
 except Exception as e:
     print(e)
     driver.quit()
