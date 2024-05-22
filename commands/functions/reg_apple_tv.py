@@ -266,6 +266,8 @@ try:
     select = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
     print(data["state"])
     select.select_by_value(data["state"])
+    select.select_by_value(data["state"])
+    time.sleep(10)
 except Exception as e:
     print(e)
     driver.quit()
