@@ -143,7 +143,7 @@ try:
         "first_name": first_name,
         "account": mail,
         "type": "rent",
-        "password": "A4WtDjJ9g1G@",
+        "password": password,
         # "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
