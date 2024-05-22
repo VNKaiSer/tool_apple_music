@@ -87,13 +87,13 @@ def random_address():
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
 def generate_random_email():
-        # time.sleep(3)
-        # mail_wait = db_instance.get_mail_wait()
-        # if mail_wait is not None:
-        #     print(mail_wait)
-        #     db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
-        #     return mail_wait[0],'wait'
-        # else:
+        time.sleep(3)
+        mail_wait = db_instance.get_mail_wait()
+        if mail_wait is not None:
+            print(mail_wait)
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
+            return mail_wait[0],'wait'
+        else:
             while True:
                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
                 response = requests.get(thue_mail_url)

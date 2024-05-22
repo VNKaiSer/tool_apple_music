@@ -255,6 +255,14 @@ class MySQLDatabase:
             return result
         else:
             return None
+    def get_mail_tv_wait(self):
+        query = "SELECT * FROM mail_reg_apple_tv_wait WHERE `status` = 'Y'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        if result:
+            return result
+        else:
+            return None
     def insert_mail_wait(self, mail_wait, password, code_old = ' '):
             # Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
         query_check = "SELECT * FROM mail_reg_apple_music_wait WHERE mail = %s"
