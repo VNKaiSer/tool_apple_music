@@ -1,12 +1,10 @@
 import sys
 import seleniumwire.undetected_chromedriver as uc
-from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
-from selenium.webdriver import ActionChains
 import time
 import logging
 import os
@@ -102,7 +100,8 @@ def generate_random_email():
                 if response.status_code == 200:
                     response_data = response.json()
                     return response_data['gmail'], 'rent'
-                time.sleep(20) 
+                time.sleep(20)
+ 
 def getOTP(gmail):
     while True:
         thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
@@ -112,13 +111,7 @@ def getOTP(gmail):
             time.sleep(5)
         if resp['status'] == 'SUCCESS':
             return resp['otp']
-    
-# def create_driver():
-    
-    
-#     return driver
 
-# tạo data 
 def reg_apple_tv():
     first_name, last_name, date_of_birth, password = random_data()
     data = None
@@ -144,9 +137,6 @@ def reg_apple_tv():
             "postalCode": postalCode
     }
         print(data)
-    # Ngăn mail wait chạy nhiều tab
-    # if type_mail == 'wait':
-    #     db_instance.update_data(table_name="mail_reg_apple_music_wait", condition=f"mail = '{mail}'", set_values={"status": "N"})
     
     except:
         print("error")
@@ -270,10 +260,7 @@ def reg_apple_tv():
         else: 
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
             driver.find_element(By.TAG_NAME, 'button').click()
-            
-        time.sleep(5)
         
-        # driver.find_element(By.TAG_NAME, 'button').click()
         time.sleep(5)
     except Exception as e:
         print(e)
@@ -300,8 +287,8 @@ def reg_apple_tv():
         driver.quit()
         return
 
-# Thêm thẻ 
-#1. Điền thông tin trên thẻ
+    # Thêm thẻ 
+    #1. Điền thông tin trên thẻ
     try: 
         driver.switch_to.default_content()
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-modal"]/iframe')))
@@ -312,9 +299,10 @@ def reg_apple_tv():
         input_elements[7].send_keys(data['city'])
         input_elements[6].send_keys(data['address2'])
         input_elements[5].send_keys(data['address1'])    # Đợi và click vào dropdown
+        
         WebDriverWait(driver, 15).until(
-        EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
-    )
+            EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
+        )
         driver.find_element(By.ID, "addressOfficialStateProvince").click()
     
         active_element = driver.switch_to.active_element
@@ -375,7 +363,7 @@ def reg_apple_tv():
         time.sleep(2)
 
         driver.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
-    # Kiểm tra các trường hợp lỗi của thẻ 
+        # Kiểm tra các trường hợp lỗi của thẻ 
         try:
             wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
             add_payment_result = driver.find_element(By.CSS_SELECTOR, ".camk-modal-description")
