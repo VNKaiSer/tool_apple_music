@@ -51,16 +51,17 @@ try:
     
     active = driver.switch_to.active_element
     active.send_keys(Keys.ENTER)
-    time.sleep(100)
+    time.sleep(20)
 except Exception as e:
     print(e)
     driver.quit()
     sys.exit()
-time.sleep(5)
-WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+
 driver.switch_to.default_content()
-driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))    
-WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="password"]')))
-driver.find_element(By.XPATH, '//*[@id="password"]').send_keys("123456")
-time.sleep(10)
+WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+input_elements = driver.find_elements(By.TAG_NAME, 'input')
+print(len(input_elements))
+time.sleep(100)
 driver.quit()
