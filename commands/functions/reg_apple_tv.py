@@ -196,12 +196,13 @@ def reg_apple_tv():
     # Kiểm tra có phải US k
     try: 
         driver = create_driver()
+        driver.get("https://tv.apple.com/login")
+        time.sleep(10) 
     except Exception as e:
         db_instance.insert_mail_tv_wait(data["account"], data["password"])
         return
     
-    driver.get("https://tv.apple.com/login")
-    time.sleep(10) 
+    
     try:
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
