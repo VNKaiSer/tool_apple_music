@@ -101,6 +101,15 @@ def random_address():
 #                     response_data = response.json()
 #                     return response_data['gmail'], 'rent'
 #                 time.sleep(20) 
+def getOTP(gmail):
+    while True:
+        thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
+        response = requests.get(thue_mail_url)
+        resp = response.json()
+        if resp['status'] == 'PENDING':
+            time.sleep(5)
+        if resp['status'] == 'SUCCESS':
+            return resp['otp']
 
 def create_driver():
     chrome_options = Options()
@@ -130,7 +139,7 @@ try:
     
     data = {
         "first_name": first_name,
-        "account": "adminsd23ssad1231232@gmail.com",
+        "account": "tandatvo91@gmail.com",
         "type": "rent",
         "password": password,
         "last_name": last_name,
@@ -170,18 +179,24 @@ except Exception as e:
     driver.quit()
     sys.exit()
 
-driver.switch_to.default_content()
-WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
-driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-input_elements = driver.find_elements(By.TAG_NAME, 'input')
-input_elements[1].send_keys(password)
-input_elements[2].send_keys(first_name)
-input_elements[3].send_keys(last_name)
-for i in date_of_birth:
-    input_elements[4].send_keys(i)
-    time.sleep(0.2)
-input_elements[-1].click()
-driver.find_elements(By.TAG_NAME, 'button')[1].click()
-time.sleep(100)
+# Điền dữ liệu với frame
+try: 
+    driver.switch_to.default_content()
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+    driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+    input_elements = driver.find_elements(By.TAG_NAME, 'input')
+    input_elements[1].send_keys(password)
+    input_elements[2].send_keys(first_name)
+    input_elements[3].send_keys(last_name)
+    for i in date_of_birth:
+        input_elements[4].send_keys(i)
+        time.sleep(0.2)
+    input_elements[-1].click()
+    driver.find_elements(By.TAG_NAME, 'button')[1].click()
+    time.sleep(10)
+except Exception as e: # chưa login nằm ở đây
+    print(e)
+
+
 driver.quit()
