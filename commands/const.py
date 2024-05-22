@@ -370,6 +370,7 @@ def check_region(browser):
             if request.response and 'ip-api.com/json' in request.url:
                 response_body = request.response.body.decode('utf-8')
                 data = json.loads(response_body)
+                print(data)
                 if data['countryCode'] != 'US':
                     # browser.quit()
                     return False
