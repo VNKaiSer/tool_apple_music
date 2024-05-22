@@ -129,17 +129,17 @@ try:
     
     
     data = {
-    "first_name": first_name,
-    "account": "adminsd23ssad1231232@gmail.com",
-    "type": "rent",
-    "password": password,
-    "last_name": last_name,
-    "date_of_birth": date_of_birth,
-    "address1": address1,
-    "address2": address2,
-    "city": city,
-    "state": state,
-    "postalCode": postalCode
+        "first_name": first_name,
+        "account": "adminsd23ssad1231232@gmail.com",
+        "type": "rent",
+        "password": password,
+        "last_name": last_name,
+        "date_of_birth": date_of_birth,
+        "address1": address1,
+        "address2": address2,
+        "city": city,
+        "state": state,
+        "postalCode": postalCode
     }
     print(data)
     # Ngăn mail wait chạy nhiều tab
@@ -175,12 +175,12 @@ WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*
 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
 WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
 input_elements = driver.find_elements(By.TAG_NAME, 'input')
-input_elements[0].send_keys(password)
-input_elements[1].send_keys(first_name)
-input_elements[2].send_keys(last_name)
-for i in date_of_birth:
-    input_elements[3].send_keys(i)
-    time.sleep(0.2)
-input_elements[-1].click()
+input_elements[1].send_keys(password)
+# input_elements[1].send_keys(first_name)
+# input_elements[2].send_keys(last_name)
+# for i in date_of_birth:
+#     input_elements[3].send_keys(i)
+#     time.sleep(0.2)
+# input_elements[-1].click()
 time.sleep(100)
 driver.quit()
