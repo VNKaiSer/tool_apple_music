@@ -84,23 +84,23 @@ def random_address():
 
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
-# def generate_random_email():
-#         time.sleep(3)
-#         mail_wait = db_instance.get_mail_wait()
-#         if mail_wait is not None:
-#             print(mail_wait)
-#             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
-#             return mail_wait[0],'wait'
-#         else:
-#             while True:
-#                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
-#                 response = requests.get(thue_mail_url)
-#                 print(response.json())
-#                 # if response.json()['message'] == 200:
-#                 if response.status_code == 200:
-#                     response_data = response.json()
-#                     return response_data['gmail'], 'rent'
-#                 time.sleep(20) 
+def generate_random_email():
+        # time.sleep(3)
+        # mail_wait = db_instance.get_mail_wait()
+        # if mail_wait is not None:
+        #     print(mail_wait)
+        #     db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
+        #     return mail_wait[0],'wait'
+        # else:
+            while True:
+                thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
+                response = requests.get(thue_mail_url)
+                print(response.json())
+                # if response.json()['message'] == 200:
+                if response.status_code == 200:
+                    response_data = response.json()
+                    return response_data['gmail'], 'rent'
+                time.sleep(20) 
 def getOTP(gmail):
     while True:
         thue_mail_url = f'https://api.sptmail.com/api/otp-services/gmail-otp-lookup?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple&gmail={gmail}'
@@ -131,10 +131,10 @@ data = None
 address1, address2, city, state, postalCode = random_address()
 type_mail = None
 try:
-    # mail, type_mail = generate_random_email()
-    # if type_mail == 'wait':
-    #     password = mail[2]
-    #     mail = mail[1]   
+    mail, type_mail = generate_random_email()
+    if type_mail == 'wait':
+        password = mail[2]
+        mail = mail[1]   
     
     
     data = {
@@ -194,9 +194,15 @@ try:
         time.sleep(0.2)
     input_elements[-1].click()
     driver.find_elements(By.TAG_NAME, 'button')[1].click()
-    time.sleep(10)
 except Exception as e: # chưa login nằm ở đây
     print(e)
+    driver.quit()
+    sys.exit()
+
+CODE_MAIL = getOTP(data["account"])
+time.sleep(10)
+driver.switch_to.active_element.send_keys(CODE_MAIL)
+time.sleep(10000)
 
 
-driver.quit()
+
