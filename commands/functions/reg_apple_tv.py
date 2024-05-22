@@ -15,7 +15,7 @@ import string
 import datetime
 import requests
 import json
-from const import *
+# from const import *
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
 # Cấu hình proxy
