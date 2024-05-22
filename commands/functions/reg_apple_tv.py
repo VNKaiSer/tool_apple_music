@@ -47,7 +47,7 @@ try:
     # Nhập tài khoản
     user_name = driver.find_element(By.XPATH, '//*[@id="accountName"]')
     user_name.send_keys("tandatvo999@gmail.com")
-    iframe_login.find_elements(By.TAG_NAME, 'Button')[1].click()
+    print(iframe_login.find_elements(By.TAG_NAME, 'button')[0])
     time.sleep(10)
 except Exception as e:
     print(e)
