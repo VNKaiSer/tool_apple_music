@@ -438,11 +438,12 @@ def reg_apple_tv():
             data['card_number'] = card.get_card_number()
             data['month_exp'] = data_card[0][2]
             data['year_exp'] = data_card[0][3]
+            data['ccv'] = card.get_card_ccv()
             db_instance.insert_mail_reg_apple_tv([
                 [data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']]
             ])
             
-            # data['ccv'] = card.get_card_ccv()
+            # 
             break
     print("Hoàn thành")
 
