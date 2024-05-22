@@ -1,4 +1,3 @@
-print("Đang REG tài khoản Apple TV và thêm thẻ")
 import json
 import time
 from functions import reg_apple_tv as reg
@@ -11,6 +10,9 @@ def check_run_app():
     return data['RUN']
 
 while check_run_app(): 
-    print(check_run_app())   
-    reg.reg_apple_tv()
-    time.sleep(3)
+    print("Đang REG tài khoản Apple TV và thêm thẻ")
+    # print(check_run_app())   
+    # reg.reg_apple_tv()
+    # time.sleep(3)
+    
+print("Đã dừng REG tài khoản Apple TV và thêm thẻ")
