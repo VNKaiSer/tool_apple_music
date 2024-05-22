@@ -264,6 +264,7 @@ try:
     input_elements[5].send_keys(data['address1'])
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
     select = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
+    print(data["state"])
     select.select_by_value(data["state"])
 except Exception as e:
     print(e)
@@ -295,7 +296,7 @@ while True:
         card_number_element = driver.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
         card_number_element.clear()
     except Exception as e:
-        db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'],code_old= CODE_MAIL)
+        # db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'],code_old= CODE_MAIL)
         driver.quit()
     for i in card.get_card_number():
         card_number_element.send_keys(i)
@@ -365,7 +366,7 @@ while True:
                 # logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                 # db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
                 db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
-                db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'], code_old=CODE_MAIL)
+                # db_instance.insert_mail_wait(mail_wait=data['account'], password=data['password'], code_old=CODE_MAIL)
                 run_add_card = False
                 driver.quit()
                 # continue
