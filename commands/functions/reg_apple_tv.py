@@ -195,6 +195,8 @@ try:
         time.sleep(0.2)
     input_elements[-1].click()
     driver.find_elements(By.TAG_NAME, 'button')[1].click()
+    
+    # Nhập code OTP
     CODE_MAIL = getOTP(data["account"])
     driver.switch_to.active_element.send_keys(CODE_MAIL)
     time.sleep(15)
@@ -210,7 +212,7 @@ except Exception as e: # chưa login nằm ở đây
     time.sleep(10)
     
 
-# Nhập code OTP
+
 driver.switch_to.default_content()
 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
 driver.switch_to.default_content()
