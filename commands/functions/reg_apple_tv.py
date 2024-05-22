@@ -4,7 +4,7 @@ from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 import time
 import logging
@@ -262,16 +262,8 @@ try:
     input_elements[7].send_keys(data['city'])
     input_elements[6].send_keys(data['address2'])
     input_elements[5].send_keys(data['address1'])
-    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
-    driver.find_element(By.ID, "addressOfficialStateProvince").click()
-    time.sleep(1)
-    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-AR")))
-    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
-    time.sleep(2)
-    driver.find_element(By.ID, "addressOfficialStateProvince").click()
-    time.sleep(1)
-    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-AR")))
-    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
+    select_element = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
+    select_element.select_by_value("AR")
 except Exception as e:
     print(e)
     driver.quit()
