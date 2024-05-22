@@ -213,13 +213,39 @@ except Exception as e: # chưa login nằm ở đây
     
 
 
+try:
+    driver.switch_to.default_content()
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+    driver.switch_to.default_content()
+    driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+    driver.find_element(By.TAG_NAME, 'button').click()
+    time.sleep(10)
+except Exception as e:
+    print(e)
+    driver.quit()
+    sys.exit()
+    
+driver.switch_to.default_content()
+# Đổi vào https://tv.apple.com/settings thêm thẻ 
+driver.get("https://tv.apple.com/settings")
+# Đổi sang nút chang payment
+WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+# Nhấn nút add payment
 driver.switch_to.default_content()
 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
-driver.switch_to.default_content()
 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
-driver.find_element(By.TAG_NAME, 'button').click()
-time.sleep(10000)
+WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
+driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+
+
+    
+    
+        
+
 
 
 
