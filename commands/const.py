@@ -327,6 +327,11 @@ def check_account_has_otp(browser):
             print(e)
             return False
 
+def get_max_card_add():
+    f = open ('./config/tool-config.json', "r")
+    data = json.loads(f.read())
+    f.close()
+    return data['TIME_ADD_CARD']
 #cài đặt proxy
 option = {
     'proxy': 

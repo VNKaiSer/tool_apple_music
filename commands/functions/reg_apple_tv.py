@@ -15,7 +15,6 @@ import string
 import datetime
 import requests
 import json
-from commands.functions.reg_apple_id import get_max_card_add
 from const import *
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
