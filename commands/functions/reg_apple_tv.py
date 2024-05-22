@@ -265,8 +265,8 @@ try:
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince")))
     driver.find_element(By.ID, "addressOfficialStateProvince").click()
     time.sleep(1)
-    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-".join(data["state"]))))
-    driver.find_element(By.ID, "addressOfficialStateProvince-".join(data["state"])).click()
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID,"addressOfficialStateProvince-AR")))
+    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
     time.sleep(1)
 except Exception as e:
     print(e)
