@@ -10,7 +10,11 @@ import time
 import logging
 import os
 from selenium.webdriver.common.keys import Keys
-
+import random
+import string
+import datetime
+import requests
+import json
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
 # Cấu hình proxy
@@ -21,6 +25,82 @@ proxy = {
         'no_proxy': 'localhost,127.0.0.1'
     }
 }
+from faker import Faker
+fake = Faker()
+CODE_MAIL = ''
+def generate_random_password():
+    while True:
+        password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
+        # Kiểm tra xem có 3 ký tự giống nhau không phân biệt hoa thường
+        if has_three_consecutive_characters(password):
+            continue  # Tạo mật khẩu mới nếu có
+        else:
+            return 'A' + password + '@'  # Trả về mật khẩu nếu không có 3 ký tự giống nhau
+
+def has_three_consecutive_characters(password):
+    # Chuyển đổi mật khẩu thành chữ thường để so sánh không phân biệt hoa thường
+    password = password.lower()
+    for i in range(len(password) - 2):
+        if password[i] == password[i+1] == password[i+2]:
+            return True
+    return False
+
+def generate_name(length):
+    random_string = ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
+    letter = random_string.capitalize()
+    
+    return letter
+
+def generate_random_date_of_birth():
+    day = str(random.randint(1, 28)).zfill(2)  
+    month = str(random.randint(1, 12)).zfill(2)
+    year = str(random.randint(1904, datetime.datetime.now().year - 18))  
+    
+    date_of_birth = month + day + year
+    print(date_of_birth)
+    return date_of_birth
+
+def random_data():
+    password = generate_random_password()
+    frist_name = generate_name(5)
+    last_name = generate_name(5)
+    date_of_birth = generate_random_date_of_birth()
+    return frist_name, last_name, date_of_birth,password
+
+def random_address():
+    json_file = './assets/data/addresses.json'  
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+
+    # Lấy danh sách các địa chỉ từ khóa 'addresses'
+    addresses = data.get('addresses', [])
+
+    # Lựa chọn ngẫu nhiên một địa chỉ từ danh sách
+    while True:
+        random_address = random.choice(addresses)
+        # Kiểm tra xem có bất kỳ trường nào bị thiếu không
+        if all(key in random_address for key in ['address1', 'address2', 'city', 'state', 'postalCode']):
+            break  # Nếu không thiếu trường nào, thoát khỏi vòng lặp
+
+    return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
+
+# def generate_random_email():
+#         time.sleep(3)
+#         mail_wait = db_instance.get_mail_wait()
+#         if mail_wait is not None:
+#             print(mail_wait)
+#             db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
+#             return mail_wait[0],'wait'
+#         else:
+#             while True:
+#                 thue_mail_url = 'https://api.sptmail.com/api/otp-services/gmail-otp-rental?apiKey=CMFI1WCKSY339AIA&otpServiceCode=apple'
+#                 response = requests.get(thue_mail_url)
+#                 print(response.json())
+#                 # if response.json()['message'] == 200:
+#                 if response.status_code == 200:
+#                     response_data = response.json()
+#                     return response_data['gmail'], 'rent'
+#                 time.sleep(20) 
 
 def create_driver():
     chrome_options = Options()
@@ -36,9 +116,42 @@ def create_driver():
     )
     return driver
 
+# tạo data 
+first_name, last_name, date_of_birth, password = random_data()
+data = None
+address1, address2, city, state, postalCode = random_address()
+type_mail = None
+try:
+    # mail, type_mail = generate_random_email()
+    # if type_mail == 'wait':
+    #     password = mail[2]
+    #     mail = mail[1]   
+    
+    
+    data = {
+    "first_name": first_name,
+    "account": "adminsd23ssad1231232@gmail.com",
+    "type": "rent",
+    "password": password,
+    "last_name": last_name,
+    "date_of_birth": date_of_birth,
+    "address1": address1,
+    "address2": address2,
+    "city": city,
+    "state": state,
+    "postalCode": postalCode
+    }
+    print(data)
+    # Ngăn mail wait chạy nhiều tab
+    # if type_mail == 'wait':
+    #     db_instance.update_data(table_name="mail_reg_apple_music_wait", condition=f"mail = '{mail}'", set_values={"status": "N"})
+    
+except:
+    print("error")
+
 driver = create_driver()
 driver.get("https://tv.apple.com/login")
-time.sleep(10)  # Điều chỉnh thời gian ngủ cho phù hợp với yêu cầu của bạn
+time.sleep(10) 
 try:
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
     iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
@@ -51,7 +164,7 @@ try:
     
     active = driver.switch_to.active_element
     active.send_keys(Keys.ENTER)
-    time.sleep(20)
+    time.sleep(10)
 except Exception as e:
     print(e)
     driver.quit()
@@ -62,6 +175,12 @@ WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*
 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
 WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
 input_elements = driver.find_elements(By.TAG_NAME, 'input')
-print(len(input_elements))
+input_elements[0].send_keys(password)
+input_elements[1].send_keys(first_name)
+input_elements[2].send_keys(last_name)
+for i in date_of_birth:
+    input_elements[3].send_keys(i)
+    time.sleep(0.2)
+input_elements[-1].click()
 time.sleep(100)
 driver.quit()
