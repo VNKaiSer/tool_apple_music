@@ -252,7 +252,10 @@ WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*
 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="ck-modal"]/iframe'))
 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
 input_elements = driver.find_elements(By.TAG_NAME, 'input')
-print(len(input_elements))
+input_elements[8].send_keys(data['postalCode'])
+input_elements[7].send_keys(data['city'])
+input_elements[6].send_keys(data['address2'])
+input_elements[5].send_keys(data['address1'])
 time.sleep(1000)
 
     
