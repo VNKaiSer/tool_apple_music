@@ -133,17 +133,17 @@ data = None
 address1, address2, city, state, postalCode = random_address()
 type_mail = None
 try:
-    mail, type_mail = generate_random_email()
-    if type_mail == 'wait':
-        password = mail[2]
-        mail = mail[1]   
+    # mail, type_mail = generate_random_email()
+    # if type_mail == 'wait':
+    #     password = mail[2]
+    #     mail = mail[1]   
     
     
     data = {
         "first_name": first_name,
-        "account": mail,
+        "account": "clayfrancesca07@gmail.com",
         "type": "rent",
-        "password": password,
+        "password": "As0FcIIkZ37@",
         # "password": password,
         "last_name": last_name,
         "date_of_birth": date_of_birth,
@@ -263,23 +263,17 @@ try:
     input_elements[7].send_keys(data['city'])
     input_elements[6].send_keys(data['address2'])
     input_elements[5].send_keys(data['address1'])    # Đợi và click vào dropdown
-    dropdown = WebDriverWait(driver, 15).until(
-        EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
-    )
-    ActionChains(driver).move_to_element(dropdown).click().perform()
-
-    # Đợi cho đến khi option xuất hiện
     WebDriverWait(driver, 15).until(
-        EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince-AR"))
-    )
-
-    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
-    input_elements[5].send_keys(' ')
-    dropdown = WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
     )
-    ActionChains(driver).move_to_element(dropdown).click().perform()
-    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
+    driver.find_element(By.ID, "addressOfficialStateProvince").click()
+    
+    active_element = driver.switch_to.active_element
+    active_element.send_keys(Keys.DOWN)
+    time.sleep(1)
+    active_element.send_keys(Keys.ENTER)
+    
+    time.sleep(1000000)
 except Exception as e:
     print(e)
     driver.quit()
