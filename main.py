@@ -690,6 +690,44 @@ def reg_apple_music():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
+def reg_apple_tv():
+    def run():
+        subprocess.Popen("py ./commands/reg_apple_tv_add.py")
+
+    def on_click_reg_apple_tv():
+        num_tabs = int(spinbox.get())
+        selected_function = selected_value.get()
+        
+        with ThreadPoolExecutor(max_workers=num_tabs) as executor:
+            for i in range(num_tabs):
+                executor.submit(run)
+                time.sleep(10)
+        root.deiconify()
+    
+    frame_app.place_forget()
+    clear_frame(analysis_frame)
+    image_label.place_forget()
+
+    analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
+
+    label_title = Label(analysis_frame, text="Nhập số tab:", font=("Arial", 20), bg="white")
+    label_title.pack(pady=10)
+
+    spinbox = Spinbox(analysis_frame, from_=1, to=20, font=("Arial", 16))
+    spinbox.pack(pady=10)
+
+    label = Label(analysis_frame, text="Chọn tính năng:", font=("Arial", 20), bg="white")
+    label.pack(pady=5)
+    options = ["Tạo"]
+
+    selected_value = StringVar(analysis_frame)
+    selected_value.set(options[0])
+
+    option_menu = OptionMenu(analysis_frame, selected_value, *options)
+    option_menu.pack(pady=7)
+
+    submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_tv)
+    submit_btn.pack(pady=10)
 
 def clear_frame(frame):
     for widget in frame.winfo_children():
@@ -807,6 +845,8 @@ featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
 featuremenu.add_command(label='Login add', command=run_app)
 featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
+featuremenu.add_separator()
+featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
