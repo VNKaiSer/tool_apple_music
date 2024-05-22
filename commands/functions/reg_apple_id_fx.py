@@ -1,5 +1,5 @@
 import sys
-import seleniumwire.undetected_chromedriver as uc
+# import seleniumwire.undetected_chromedriver as uc
 from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -29,16 +29,16 @@ def create_driver():
     chrome_options.add_argument('--ignore-ssl-errors=yes')
     chrome_options.add_argument('--log-level=3')  # Selenium log level
 
-    driver = uc.Chrome(
-        options=chrome_options,
+    driver = webdriver.Firefox(
+        # options=chrome_options,
         seleniumwire_options=proxy,
-        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
     )
     return driver
 
 driver = create_driver()
 driver.get("https://tv.apple.com/login")
-time.sleep(10)  # Điều chỉnh thời gian ngủ cho phù hợp với yêu cầu của bạn
+time.sleep(1000)  # Điều chỉnh thời gian ngủ cho phù hợp với yêu cầu của bạn
 try:
     WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
     iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
