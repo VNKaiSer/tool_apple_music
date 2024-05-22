@@ -272,8 +272,8 @@ try:
     active_element.send_keys(Keys.DOWN)
     time.sleep(1)
     active_element.send_keys(Keys.ENTER)
-    
-    time.sleep(1000000)
+    select = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
+    select.select_by_value(data["state"])
 except Exception as e:
     print(e)
     driver.quit()
