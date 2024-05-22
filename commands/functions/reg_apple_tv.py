@@ -149,7 +149,7 @@ def create_driver():
     
     driver = uc.Chrome(
         options=chrome_options,
-        seleniumwire_options=proxy,
+        # seleniumwire_options=proxy,
         service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
     )
     
@@ -162,13 +162,13 @@ def reg_apple_tv():
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
     try:
-        mail, type_mail = generate_random_email()
+        # mail, type_mail = generate_random_email()
         if type_mail == 'wait':
             password = mail[2]
             mail = mail[1]   
         data = {
             "first_name": first_name,
-            "account": mail,
+            "account": "langnoel076@gmail.com",
             "type": type_mail,
             "password": password,
             # "password": password,
