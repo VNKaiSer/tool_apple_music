@@ -212,7 +212,7 @@ except Exception as e: # chưa login nằm ở đây
     time.sleep(10)
     
 
-
+# Nhấn nút continute nếu lần đầu login
 try:
     driver.switch_to.default_content()
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
@@ -223,8 +223,8 @@ try:
     time.sleep(10)
 except Exception as e:
     print(e)
-    driver.quit()
-    sys.exit()
+    # driver.quit()
+    # sys.exit()
     
 driver.switch_to.default_content()
 # Đổi vào https://tv.apple.com/settings thêm thẻ 
