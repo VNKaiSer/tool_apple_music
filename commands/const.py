@@ -377,12 +377,12 @@ def check_region(browser):
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="codeOutput"]/span[12]')))
         contry_code = browser.find_element(By.XPATH, '//*[@id="codeOutput"]/span[12]').text
         if contry_code != 'US':
-            browser.quit()
+            # browser.quit()
             return False
  
         return True
     except Exception as e:
-        browser.quit()
+        # browser.quit()
         return False
     
 def generate_random_port():
