@@ -1,3 +1,4 @@
+import sys
 import seleniumwire.undetected_chromedriver as uc
 from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -8,6 +9,7 @@ from selenium.webdriver.common.by import By
 import time
 import logging
 import os
+from selenium.webdriver.common.keys import Keys
 
 # Tắt logging của Selenium Wire
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
@@ -38,11 +40,22 @@ def create_driver():
 driver = create_driver()
 driver.get("https://tv.apple.com/login")
 time.sleep(10)  # Điều chỉnh thời gian ngủ cho phù hợp với yêu cầu của bạn
-WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
-iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
-print(iframe_login)
-driver.switch_to.frame(iframe_login)
-WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="accountName"]')))
-driver.find_element(By.XPATH, '//*[@id="accountName"]').send_keys("jmkokxul20oa@gmail.com")
+try:
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+    iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
+    driver.switch_to.frame(iframe_login)
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="accountName"]')))
+    # Nhập tài khoản
+    user_name = driver.find_element(By.XPATH, '//*[@id="accountName"]')
+    user_name.send_keys("tandatvo999@gmail.com")
+    user_name.send_keys(Keys.ENTER)
+    user_name.send_keys(Keys.ENTER)
+except Exception as e:
+    print(e)
+    driver.quit()
+    sys.exit()
+    
+WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="password"]')))
+driver.find_element(By.XPATH, '//*[@id="password"]').send_keys("123456")
 time.sleep(10)
 driver.quit()
