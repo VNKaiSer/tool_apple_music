@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
+from selenium.webdriver import ActionChains
 import time
 import logging
 import os
@@ -262,8 +263,16 @@ try:
     input_elements[7].send_keys(data['city'])
     input_elements[6].send_keys(data['address2'])
     input_elements[5].send_keys(data['address1'])
-    select_element = Select(driver.find_element(By.ID, "addressOfficialStateProvince"))
-    select_element.select_by_value("AR")
+    # Tạo một ActionChains object
+    actions = ActionChains(driver)
+
+    # Đợi và click vào dropdown
+    dropdown = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince")))
+    actions.move_to_element(dropdown).click().perform()
+
+    # Đợi và click vào option từ dropdown
+    option = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince-AR")))
+    actions.move_to_element(option).click().perform()
 except Exception as e:
     print(e)
     driver.quit()
