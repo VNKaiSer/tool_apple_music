@@ -11,7 +11,6 @@ import logging
 import os
 from selenium.webdriver.common.keys import Keys
 
-# Tắt logging của Selenium Wire
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
 # Cấu hình proxy
@@ -49,11 +48,12 @@ try:
     user_name = driver.find_element(By.XPATH, '//*[@id="accountName"]')
     user_name.send_keys("tandatvo999@gmail.com")
     user_name.send_keys(Keys.ENTER)
-    user_name.send_keys(Keys.ENTER)
+    driver.switch_to.active_element.send_keys(Keys.ENTER)
 except Exception as e:
     print(e)
     driver.quit()
     sys.exit()
+time.sleep(5)
 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
 driver.switch_to.default_content()
 driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))    
