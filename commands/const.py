@@ -8,6 +8,7 @@ import time
 import logging
 import sys
 import mysql.connector
+import json
 
 # Class
 class Tool_Exception:
