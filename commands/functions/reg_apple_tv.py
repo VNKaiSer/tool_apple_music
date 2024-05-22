@@ -267,7 +267,6 @@ try:
     select.select_by_value("AL")
     time.sleep(1)
     select.select_by_value(data["state"])
-    time.sleep(10)
 except Exception as e:
     print(e)
     driver.quit()
