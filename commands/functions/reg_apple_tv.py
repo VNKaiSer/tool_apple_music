@@ -435,12 +435,13 @@ def reg_apple_tv():
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
             db_instance.update_data(table_name="pay", set_values={"on_use": 0}, condition=f"id = {data_card[0][0]}")
             # Lưu apple_tv thành công
+            data['card_number'] = card.get_card_number()
+            data['month_exp'] = data_card[0][2]
+            data['year_exp'] = data_card[0][3]
             db_instance.insert_mail_reg_apple_tv([
                 [data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']]
             ])
-            # data['card_number'] = card.get_card_number()
-            # data['month_exp'] = data_card[0][2]
-            # data['year_exp'] = data_card[0][3]
+            
             # data['ccv'] = card.get_card_ccv()
             break
     print("Hoàn thành")
