@@ -260,14 +260,19 @@ def reg_apple_tv():
 
     # Nhấn nút continute nếu lần đầu login
     try:
-        if is_login == False:
-            time.sleep(5)
         driver.switch_to.default_content()
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button')))
-        driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button').click()
+        if is_login == False: 
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button')))
+            driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button').click()
+        else: 
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+            driver.find_element(By.TAG_NAME, 'button').click()
+            
+        time.sleep(5)
+        
         # driver.find_element(By.TAG_NAME, 'button').click()
         time.sleep(5)
     except Exception as e:
