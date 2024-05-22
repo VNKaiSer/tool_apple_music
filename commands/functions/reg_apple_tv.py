@@ -269,12 +269,17 @@ try:
     ActionChains(driver).move_to_element(dropdown).click().perform()
 
     # Đợi cho đến khi option xuất hiện
-    option = WebDriverWait(driver, 15).until(
+    WebDriverWait(driver, 15).until(
         EC.visibility_of_element_located((By.ID, "addressOfficialStateProvince-AR"))
     )
 
-    # Click vào option
-    ActionChains(driver).move_to_element(option).click().perform()
+    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
+    input_elements[5].send_keys(' ')
+    dropdown = WebDriverWait(driver, 15).until(
+        EC.element_to_be_clickable((By.ID, "addressOfficialStateProvince"))
+    )
+    ActionChains(driver).move_to_element(dropdown).click().perform()
+    driver.find_element(By.ID, "addressOfficialStateProvince-AR").click()
 except Exception as e:
     print(e)
     driver.quit()
