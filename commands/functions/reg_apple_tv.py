@@ -264,7 +264,7 @@ def reg_apple_tv():
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         driver.switch_to.default_content()
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-        if is_login == False: 
+        if is_login == True: 
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button')))
             driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div/div[5]/button').click()
         else: 
