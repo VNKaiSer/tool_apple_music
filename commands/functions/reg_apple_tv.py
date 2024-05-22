@@ -196,12 +196,21 @@ try:
     driver.find_elements(By.TAG_NAME, 'button')[1].click()
 except Exception as e: # chưa login nằm ở đây
     print(e)
-    driver.quit()
-    sys.exit()
+    active_element = driver.switch_to.active_element
+    active_element.send_keys(data['password'])
+    active_element.send_keys(Keys.ENTER)
+    time.sleep(10)
+    
 
-CODE_MAIL = getOTP(data["account"])
-time.sleep(10)
-driver.switch_to.active_element.send_keys(CODE_MAIL)
+# Nhập code OTP
+# CODE_MAIL = getOTP(data["account"])
+# driver.switch_to.active_element.send_keys(CODE_MAIL)
+# time.sleep(15)
+WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+driver.switch_to.default_content()
+driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+driver.find_element(By.TAG_NAME, 'button').click()
 time.sleep(10000)
 
 
