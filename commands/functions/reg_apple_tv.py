@@ -181,6 +181,7 @@ except Exception as e:
     driver.quit()
     sys.exit()
 
+is_login = False
 # Điền dữ liệu với frame
 try: 
     driver.switch_to.default_content()
@@ -203,6 +204,7 @@ try:
     time.sleep(10)
 except Exception as e: # chưa login nằm ở đây
     print("Xữ lý login")
+    is_login = True
     # driver.switch_to.default_content()
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="aid-auth-widget-iFrame"]')))
     driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="aid-auth-widget-iFrame"]'))
@@ -214,13 +216,14 @@ except Exception as e: # chưa login nằm ở đây
 
 # Nhấn nút continute nếu lần đầu login
 try:
+    if is_login == False:
+        time.sleep(5)
     driver.switch_to.default_content()
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
     driver.switch_to.default_content()
     driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
     driver.find_element(By.TAG_NAME, 'button').click()
-    print('Click nhầm')
     time.sleep(10)
 except Exception as e:
     print(e)
@@ -266,7 +269,8 @@ except Exception as e:
     print(e)
     driver.quit()
     sys.exit()
-while run_add_card:
+    
+while True:
     wait = WebDriverWait(driver, 15)
     data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
     # print(data_card[0])
