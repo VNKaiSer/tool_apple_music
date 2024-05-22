@@ -268,7 +268,7 @@ def reg_apple_tv():
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
         driver.find_element(By.TAG_NAME, 'button').click()
-        time.sleep(10)
+        time.sleep(5)
     except Exception as e:
         print(e)
 
