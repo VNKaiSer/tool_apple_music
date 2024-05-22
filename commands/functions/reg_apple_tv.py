@@ -446,7 +446,6 @@ def reg_apple_tv():
             break
     print("Hoàn thành")
 
-reg_apple_tv()
 
 
 

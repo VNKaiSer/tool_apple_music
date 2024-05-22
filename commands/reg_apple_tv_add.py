@@ -11,8 +11,8 @@ def check_run_app():
 
 while check_run_app(): 
     print("Đang REG tài khoản Apple TV và thêm thẻ")
-    # print(check_run_app())   
-    # reg.reg_apple_tv()
-    # time.sleep(3)
+    print(check_run_app())   
+    reg.reg_apple_tv()
+    time.sleep(3)
     
 print("Đã dừng REG tài khoản Apple TV và thêm thẻ")
