@@ -226,18 +226,23 @@ def reg_apple_tv():
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_elements = driver.find_elements(By.TAG_NAME, 'input')
+        time.sleep(2)
         input_elements[1].send_keys(password)
+        time.sleep(1)
         input_elements[2].send_keys(first_name)
+        time.sleep(1)
         input_elements[3].send_keys(last_name)
         for i in date_of_birth:
             input_elements[4].send_keys(i)
-            time.sleep(0.2)
+            time.sleep(0.3)
         input_elements[-1].click()
         driver.find_elements(By.TAG_NAME, 'button')[1].click()
     
         # Nhập code OTP
         CODE_MAIL = getOTP(data["account"])
-        driver.switch_to.active_element.send_keys(CODE_MAIL)
+        for i in CODE_MAIL:
+            driver.switch_to.active_element.send_keys(CODE_MAIL)
+            time.sleep(0.5)
         time.sleep(15)
     except Exception as e: # chưa login nằm ở đây
         print("Xữ lý login")
