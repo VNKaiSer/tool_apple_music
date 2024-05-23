@@ -89,7 +89,7 @@ def generate_random_email():
         mail_wait = db_instance.get_mail_tv_wait()
         if mail_wait is not None:
             print(mail_wait)
-            db_instance.update_data(table_name="mail_reg_apple_tv_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
+            db_instance.update_data(table_name="mail_reg_apple_music_wait", set_values={"status": "N"}, condition=f"mail = '{mail_wait[0][1]}'")
             return mail_wait[0],'wait'
         else:
             while True:

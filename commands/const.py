@@ -256,7 +256,7 @@ class MySQLDatabase:
         else:
             return None
     def get_mail_tv_wait(self):
-        query = "SELECT * FROM mail_reg_apple_tv_wait WHERE `status` = 'Y'"
+        query = "SELECT * FROM mail_reg_apple_music_wait WHERE `status` = 'Y'"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
@@ -317,18 +317,18 @@ class MySQLDatabase:
     
     def insert_mail_tv_wait(self, mail_wait, password, code_old = ' '):
             # Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
-        query_check = "SELECT * FROM mail_reg_apple_tv_wait WHERE mail = %s"
+        query_check = "SELECT * FROM mail_reg_apple_music_wait WHERE mail = %s"
         self.cursor.execute(query_check, (mail_wait,))
         existing_record = self.cursor.fetchone()
 
         if existing_record:
         # Nếu email đã tồn tại, cập nhật trạng thái thành 'y'
-            query_update = "UPDATE mail_reg_apple_tv_wait SET status = 'Y', code_old = %s WHERE mail = %s"
+            query_update = "UPDATE mail_reg_apple_music_wait SET status = 'Y', code_old = %s WHERE mail = %s"
             self.cursor.execute(query_update, (code_old, mail_wait))
             self.connection.commit()
         else:
             # Nếu email chưa tồn tại, thêm email mới vào cơ sở dữ liệu
-            query_insert = "INSERT INTO mail_reg_apple_tv_wait(mail, password, code_old) VALUES (%s, %s, %s)"
+            query_insert = "INSERT INTO mail_reg_apple_music_wait(mail, password, code_old) VALUES (%s, %s, %s)"
             self.cursor.execute(query_insert, (mail_wait, password, code_old))
             self.connection.commit()
        
