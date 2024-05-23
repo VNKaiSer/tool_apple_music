@@ -155,17 +155,17 @@ def reg_apple_tv():
             'port': generate_random_port()
         
         },
-        # {
-        #     'proxy':  
-        #         {
-        #     'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        #     'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        #     'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-        #     'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-        #             'no_proxy': 'localhost,127.0.0.1'
-        #         },
-        #     'port': generate_random_port()
-        # }
+        {
+            'proxy':  
+                {
+            'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+            'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+            'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+            'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                    'no_proxy': 'localhost,127.0.0.1'
+                },
+            'port': generate_random_port()
+        }
         ]
         proxy = random.choice(random_proxy)
         
@@ -183,10 +183,10 @@ def reg_apple_tv():
             service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         
-        if check_region(driver) == False:
-            driver.quit()
-            db_instance.insert_mail_tv_wait(data["account"], data["password"])
-            return
+        # if check_region(driver) == False:
+        #     driver.quit()
+        #     db_instance.insert_mail_tv_wait(data["account"], data["password"])
+        #     return
         
         driver.get("https://tv.apple.com/login")
         time.sleep(10) 
