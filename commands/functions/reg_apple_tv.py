@@ -119,6 +119,7 @@ def reg_apple_tv():
     data = None
     address1, address2, city, state, postalCode = random_address()
     type_mail = None
+    driver = None
     try:
         mail, type_mail = generate_random_email()
         if type_mail == 'wait':
@@ -129,7 +130,6 @@ def reg_apple_tv():
             "account": mail,
             "type": type_mail,
             "password": password,
-            # "password": password,
             "last_name": last_name,
             "date_of_birth": date_of_birth,
             "address1": address1,
@@ -137,7 +137,7 @@ def reg_apple_tv():
             "city": city,
             "state": state,
             "postalCode": postalCode
-    }
+        }
         print(data)
     
     except:
@@ -203,7 +203,7 @@ def reg_apple_tv():
         iframe_login = driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe')
         driver.switch_to.frame(iframe_login)
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="accountName"]')))
-    # Nhập tài khoản
+        # Nhập tài khoản
         user_name = driver.find_element(By.XPATH, '//*[@id="accountName"]')
         user_name.send_keys(data['account'])
         user_name.send_keys(Keys.ENTER)

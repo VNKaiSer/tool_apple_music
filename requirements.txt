@@ -7,5 +7,5 @@ pillow
 tk
 requests==2.31.0
 Faker
-undetected_chromedriver
+undetected_chromedriver==3.5.5
 webdriver_manager
