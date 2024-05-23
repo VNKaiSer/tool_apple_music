@@ -15,6 +15,8 @@ import datetime
 import requests
 import json
 from const import *
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
 # Cấu hình proxy
@@ -155,10 +157,10 @@ def reg_apple_tv():
     {
         'proxy':  
             {
-        'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-        'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+                'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+                'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+                'http': f'http://usa.rotating.proxyrack.net:{random_port}',
                 'no_proxy': 'localhost,127.0.0.1'
             },
         'port': generate_random_port()
@@ -175,7 +177,7 @@ def reg_apple_tv():
     chrome_options.add_argument('--log-level=3')  # Selenium log level
     
     driver = uc.Chrome(
-        executable_path='./driver/chrome/chromedriver.exe',
+        service=Service(ChromeDriverManager().install())
         options=chrome_options,
         seleniumwire_options=proxy,
         service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
