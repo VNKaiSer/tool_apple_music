@@ -175,6 +175,7 @@ def reg_apple_tv():
     chrome_options.add_argument('--log-level=3')  # Selenium log level
     
     driver = uc.Chrome(
+        executable_path='./driver/chrome/chromedriver.exe',
         options=chrome_options,
         seleniumwire_options=proxy,
         service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
