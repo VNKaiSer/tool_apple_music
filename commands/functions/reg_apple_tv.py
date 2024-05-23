@@ -242,7 +242,7 @@ def reg_apple_tv():
         CODE_MAIL = getOTP(data["account"])
         for i in CODE_MAIL:
             driver.switch_to.active_element.send_keys(CODE_MAIL)
-            time.sleep(0.5)
+            time.sleep(0.4)
         time.sleep(15)
     except Exception as e: # chưa login nằm ở đây
         print("Xữ lý login")
