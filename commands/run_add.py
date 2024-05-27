@@ -119,16 +119,7 @@ def run():
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "2FA"}, condition=f"id = {data[0][0]}")
             browser.quit()
             return
-    # Lần đầu đăng nhập
-        try:
-            click_on_setting = False
-            active_element = browser.switch_to.active_element
-            active_element.send_keys(Keys.TAB)
-            active_element.send_keys(Keys.TAB)
-            active_element.send_keys(Keys.TAB)
-            active_element.send_keys(Keys.ENTER)
-            time.sleep(5)
-            click_on_setting = True
+   
         # time.sleep(10)
         # browser.switch_to.default_content()
         # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
@@ -139,14 +130,6 @@ def run():
         
         # browser.find_element(By.TAG_NAME, 'button').click()
         # time.sleep(5)
-
-
-        except Exception as e:
-            click_on_setting = False
-            print(e)
-        
-    
-        browser.switch_to.default_content()
     # time.sleep(5)
     
     
@@ -158,20 +141,23 @@ def run():
     browser.switch_to.default_content()
 # Đoạn này là đăng nhập đã thành công
 # Chuyển hướng sang trang cài đặt
+    time.sleep(10)
     browser.get("https://music.apple.com/us/account/settings")
-    if click_on_setting:
+    try:
 # time.sleep(5)
     # time.sleep(5)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
-        iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
+        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[4]/div/div[2]/div/div/div/div[5]/button').click()
-        time.sleep(5)
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+        browser.find_element(By.TAG_NAME, 'button').click()
+        time.sleep(10)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
 # Đợi cái frame cài đặt hiển thị lên 
-
+    except Exception as e:
+        browser.get("https://music.apple.com/us/account/settings")
+        print(e)
 
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
     iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
