@@ -24,7 +24,9 @@ class MySQLDatabase:
         self.connection.commit()
 
     def insert_apple_music_id(self, id_data):
-        account, password = id_data.strip().split('-')
+        parts = id_data.strip().split('-')
+        account = '-'.join(parts[:-1])
+        password = parts[-1]
         query = "INSERT INTO mail (user, password) VALUES (%s, %s)"
         self.cursor.execute(query, (account, password))
         self.connection.commit()
