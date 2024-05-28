@@ -84,6 +84,8 @@ def run():
     except Exception as e:
         logging.error("Error Tool: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
         db_instance.update_data(table_name="mail", set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        browser.quit()
+        return
         # sys.exit()
 
 #Nhập password
@@ -269,6 +271,7 @@ def run():
     except Exception as e:
         print('')
         db_instance.update_data(table_name='mail', set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        browser.quit()
         return
 #Tìm thông tin thẻ 
     run_add_card = True
