@@ -138,48 +138,92 @@ def run():
         db_instance.update_data(table_name="mail", set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
         browser.quit()
         return
+    try:
+        active_element = browser.switch_to.active_element
+        active_element.send_keys(Keys.TAB)
+        active_element.send_keys(Keys.TAB)
+        active_element.send_keys(Keys.TAB)
+        active_element.send_keys(Keys.ENTER)
+        time.sleep(5)
+    # time.sleep(10)
+    # browser.switch_to.default_content()
+    # WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-container"]')))
+    # iframe_hello = browser.find_element(By.XPATH,'//*[@id="ck-container"]').find_element(By.TAG_NAME, 'iframe')
+    # # src_value = iframe_hello.get_attribute("src")
+    # browser.switch_to.frame(iframe_hello)
+    # browser.find_element(By.TAG_NAME, 'button')
+    
+    # browser.find_element(By.TAG_NAME, 'button').click()
+    # time.sleep(5)
+
+
+    except Exception as e:
+        print(e)
+    
+
     browser.switch_to.default_content()
 # Đoạn này là đăng nhập đã thành công
 # Chuyển hướng sang trang cài đặt
-    time.sleep(10)
-    browser.get("https://music.apple.com/us/account/settings")
+    # browser.get("https://music.apple.com/vn/browse")
     try:
-# time.sleep(5)
-    # time.sleep(5)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
-        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
+        time.sleep(10)
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')))
+        iframe_hello = browser.find_element(By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
-        browser.find_element(By.TAG_NAME, 'button').click()
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+        browser.find_elements(By.TAG_NAME, 'button')[1].click()
         time.sleep(10)
         browser.switch_to.default_content()
-        browser.get("https://music.apple.com/us/account/settings")
-# Đợi cái frame cài đặt hiển thị lên 
+    except Exception as e:
+        print('')
+    browser.get("https://music.apple.com/us/account/settings")
+
+    try: 
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+
+        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_setting)
+
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+        print(country)
+        if country != "United States":
+            db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
+            browser.quit()
+            return
+    # click nút change payment 
+        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+        browser.switch_to.default_content()
+
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_payment)
     except Exception as e:
         browser.get("https://music.apple.com/us/account/settings")
-        print(e)
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
 
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-    iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_setting)
 
-    iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_setting)
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+        print(country)
+        if country != "United States":
+            db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
+            browser.quit()
+            return
+    # click nút change payment 
+        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+        browser.switch_to.default_content()
 
-    WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-    country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
-    print(country)
-    if country != "United States":
-        db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
-        browser.quit()
-        return
-# click nút change payment 
-    wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-    browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-    browser.switch_to.default_content()
-
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-    iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_payment)
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_payment)
+        print('')
 # Kiểm tra đã add thẻ 
 
     wait_child = WebDriverWait(browser, 10)
@@ -233,6 +277,10 @@ def run():
             logging.error("Error: %s", str("Hết thẻ"))
             browser.quit()
             sys.exit()
+        
+        if data_card[0][6] >= get_max_card_add():
+            db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
+            continue
         
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
         wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
@@ -335,9 +383,18 @@ def run():
             logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
             logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
-            db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_number()}, condition=f"id = {data[0][0]}")
+            db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_ccv()}, condition=f"id = {data[0][0]}")
             run_add_card = False
             browser.quit()
 
-time.sleep(10)
+# from functions import reg_apple_id as reg
+# import json
+# import time
+print("Đang login Apple Music và thêm thẻ")
+# def check_run_app():
+#     f = open ('./config/tool-config.json', "r")
+#     data = json.loads(f.read())
+#     f.close()
+#     return data['RUN']
+# while check_run_app():
 run()
