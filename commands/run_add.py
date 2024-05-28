@@ -163,16 +163,15 @@ def run():
 
     browser.switch_to.default_content()
 # Đoạn này là đăng nhập đã thành công
-# Chuyển hướng sang trang cài đặt
-    # browser.get("https://music.apple.com/vn/browse")
+    # Kiểm tra có iframe lần đầu đăng nhập
     try:
-        time.sleep(10)
+        time.sleep(5)
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')))
         iframe_hello = browser.find_element(By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')
         browser.switch_to.frame(iframe_hello)
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
         browser.find_elements(By.TAG_NAME, 'button')[1].click()
-        time.sleep(10)
+        time.sleep(5)
         browser.switch_to.default_content()
     except Exception as e:
         print('')
@@ -383,6 +382,7 @@ def run():
             logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
             logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
+            # Lưu thông tin lên db
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_ccv()}, condition=f"id = {data[0][0]}")
             run_add_card = False
             browser.quit()
