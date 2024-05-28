@@ -136,6 +136,7 @@ def run():
     except Exception as e:
         logging.error("Error: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
         db_instance.update_data(table_name="mail", set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        
         browser.quit()
         return
     try:
@@ -254,16 +255,21 @@ def run():
     # browser.quit()
     # break
 # Vào lại iframe thanh toán
-    browser.switch_to.default_content()
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-    iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_payment)
-# Nhấn nút add payment method
-    wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
-    browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
-    browser.switch_to.default_content()
-    iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
-    browser.switch_to.frame(iframe_add_payment)
+    try: 
+        browser.switch_to.default_content()
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+        iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_payment)
+    # Nhấn nút add payment method
+        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+        browser.switch_to.default_content()
+        iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_add_payment)
+    except Exception as e:
+        print('')
+        db_instance.update_data(table_name='mail', set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        return
 #Tìm thông tin thẻ 
     run_add_card = True
     while run_add_card:
