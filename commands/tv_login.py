@@ -209,6 +209,7 @@ def run():
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH,'//*[@id="app"]/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
         driver.find_element(By.XPATH,'//*[@id="app"]/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
         driver.switch_to.default_content()
+        time.sleep(10)
         driver.get("https://tv.apple.com/settings")
     # Add thẻ 
     try:
