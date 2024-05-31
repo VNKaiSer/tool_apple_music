@@ -1,34 +1,4 @@
 from const import *
-def check_account_is_block(browser):
-    try:
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
-        text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
-        print(text)
-        if text == tool_exception.LOCK:
-            return True
-        else:
-            return False    
-    except Exception as e:
-            print(e)
-            return False
-def check_account_login_invalid_password(browser):
-    try:
-        err_element = browser.find_element(By.CSS_SELECTOR, 'p.fat#errMsg')
-        if tool_exception.INVALID_PASSWORD == err_element.text:
-            return True
-        else:
-            return False
-    except:
-        return False
-
-def check_account_has_otp(browser):
-    try:
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'verify-phone')))
-        print("Has OTP")
-        return True    
-    except Exception as e:
-            print(e)
-            return False
 
 #cài đặt proxy
 option = {

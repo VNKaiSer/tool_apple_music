@@ -10,6 +10,26 @@ import sys
 import mysql.connector
 import json
 import random
+import sys
+import seleniumwire.undetected_chromedriver as uc
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
+import time
+import logging
+import os
+from selenium.webdriver.common.keys import Keys
+import random
+import string
+import datetime
+import requests
+import json
+from const import *
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -331,12 +351,15 @@ class MySQLDatabase:
             query_insert = "INSERT INTO mail_reg_apple_music_wait(mail, password, code_old) VALUES (%s, %s, %s)"
             self.cursor.execute(query_insert, (mail_wait, password, code_old))
             self.connection.commit()
+    
+    def get_account_login_apple_tv(self):
+        pass
        
 tool_exception = Tool_Exception()
 config = Config()
 def check_account_is_block(browser):
     try:
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
+        WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
         text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
         print(text)
         if text == tool_exception.LOCK:
@@ -358,7 +381,7 @@ def check_account_login_invalid_password(browser):
 
 def check_account_has_otp(browser):
     try:
-        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'verify-phone')))
+        WebDriverWait(browser, 2).until(EC.presence_of_element_located((By.CLASS_NAME, 'verify-phone')))
         print("Has OTP")
         return True    
     except Exception as e:
@@ -390,6 +413,36 @@ def check_region(browser):
 def generate_random_port():
     return random.randint(49152, 65535)
 #cài đặt proxy
+def check_account_is_block(browser):
+    try:
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h2')))
+        text = browser.find_elements(By.TAG_NAME, 'h2')[0].text
+        print(text)
+        if text == tool_exception.LOCK:
+            return True
+        else:
+            return False    
+    except Exception as e:
+            print(e)
+            return False
+def check_account_login_invalid_password(browser):
+    try:
+        err_element = browser.find_element(By.CSS_SELECTOR, 'p.fat#errMsg')
+        if tool_exception.INVALID_PASSWORD == err_element.text:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+def check_account_has_otp(browser):
+    try:
+        WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'verify-phone')))
+        print("Has OTP")
+        return True    
+    except Exception as e:
+            print(e)
+            return False
 option = {
     'proxy': 
         config.PROXY_URL
