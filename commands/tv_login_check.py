@@ -157,27 +157,27 @@ def run():
         print('2 login')
     
     # Vào cài đặt và kiểm tra country
-    try: 
-        driver.switch_to.default_content()
-        driver.get("https://tv.apple.com/settings")
-        
-        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
-        driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-        country = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
-        balance = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[3]/div/ul/li').text
-        # Lưu mail check
-        db_instance.insert_mail_check([gmail, password, country, float(balance.replace("$",""))])
+    # try: 
+    driver.switch_to.default_content()
+    driver.get("https://tv.apple.com/settings")
+    
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
+    driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+    country = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+    balance = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[3]/div/ul/li').text
+    # Lưu mail check
+    db_instance.insert_mail_check([gmail, password, country, float(balance.replace("$",""))])
 
-    except Exception as e:
-        exception = True
+    # except Exception as e:
+    #     exception = True
     
     if exception == True:
         update_mail_re_run(mail_id)
         driver.quit()
         return
-    
-    driver.quit()
+    else:
+        driver.quit()
     
 
 def check_run_app():
@@ -190,7 +190,9 @@ def check_run_app():
 if __name__ == "__main__":
     while check_run_app(): 
         print("Đang Login Check tài khoản Apple TV")
-        print(check_run_app())   
-        run()
+        try: 
+            run()
+        except Exception as e:
+            run = False
         time.sleep(3)
     

@@ -9,6 +9,7 @@ import logging
 import sys
 import mysql.connector
 from concurrent.futures import ThreadPoolExecutor
+sys.path.append('./commands')
 from commands.const import *
 
 # Class

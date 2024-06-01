@@ -358,6 +358,9 @@ if __name__ == "__main__":
     while check_run_app(): 
         print("Đang Login tài khoản Apple TV và thêm thẻ")
         print(check_run_app())   
-        run()
+        try: 
+            run()
+        except Exception as e:
+            run = False
         time.sleep(3)
     

@@ -218,8 +218,10 @@ def check_run_app():
    
 if __name__ == "__main__":
     while check_run_app(): 
-        print("Đang Login Check tài khoản Apple TV")
-        print(check_run_app())   
-        run()
+        print("Đang Login Delete tài khoản Apple TV")
+        try: 
+            run()
+        except Exception as e:
+            run = False
         time.sleep(3)
     
