@@ -167,7 +167,7 @@ def run():
         country = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
         balance = driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div[3]/div/ul/li').text
         # Lưu mail check
-        db_instance.insert_mail_check(mail_id, password, country, float(balance.replace("$","")))
+        db_instance.insert_mail_check([mail_id, password, country, float(balance.replace("$",""))])
     except Exception as e:
         exception = True
     
