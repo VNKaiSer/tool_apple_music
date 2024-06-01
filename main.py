@@ -690,6 +690,50 @@ def reg_apple_music():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
+def run_app_tv():
+    def run(choice):
+        # while True:
+        if choice == 0:
+            subprocess.Popen("py ./commands/tv_login_check.py")
+        elif choice == 1:
+            subprocess.Popen("py ./commands/tv_login_delete.py")
+        else:
+            subprocess.Popen("py ./commands/tv_login.py") 
+
+    def on_click_reg_apple_music():
+        num_tabs = int(spinbox.get())
+        selected_function = selected_value.get()
+        
+        with ThreadPoolExecutor(max_workers=num_tabs) as executor:
+            for i in range(num_tabs):
+                time.sleep(10)
+                executor.submit(run, options.index(selected_function))
+        root.deiconify()
+    
+    frame_app.place_forget()
+    clear_frame(analysis_frame)
+    image_label.place_forget()
+
+    analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
+
+    label_title = Label(analysis_frame, text="Nhập số tab:", font=("Arial", 20), bg="white")
+    label_title.pack(pady=10)
+
+    spinbox = Spinbox(analysis_frame, from_=1, to=20, font=("Arial", 16))
+    spinbox.pack(pady=10)
+
+    label = Label(analysis_frame, text="Chọn tính năng:", font=("Arial", 20), bg="white")
+    label.pack(pady=5)
+    options = ["Login check", "Login delete", "Login add"]
+
+    selected_value = StringVar(analysis_frame)
+    selected_value.set(options[0])
+
+    option_menu = OptionMenu(analysis_frame, selected_value, *options)
+    option_menu.pack(pady=7)
+
+    submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
+    submit_btn.pack(pady=10)
 def reg_apple_tv():
     def run():
         subprocess.Popen("py ./commands/reg_apple_tv_add.py")
@@ -847,6 +891,8 @@ featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
 featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
+featuremenu.add_separator()
+featuremenu.add_command(label='Tv login', command=run_app_tv)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
