@@ -222,6 +222,6 @@ if __name__ == "__main__":
         try: 
             run()
         except Exception as e:
-            run = False
+            sys.exit(0)
         time.sleep(3)
     
