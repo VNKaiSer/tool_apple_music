@@ -336,7 +336,7 @@ def run():
             except Exception as e: # Không có thông báo. => Add thẻ thành công
                 db_instance.update_data(table_name="pay", set_values={"number_use": num_add+1}, condition=f"id = {card_id}")
                 db_instance.update_data(table_name="pay", set_values={"on_use": 0}, condition=f"id = {card_id}")
-                db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done"}, condition=f"id = {mail_id}")
+                db_instance.update_data(table_name="mail", set_values={"status": 0, "card_add": card_ccv,"exception": "Done"}, condition=f"id = {mail_id}")
                 break
     except Exception as e:
         exception = True
