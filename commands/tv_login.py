@@ -347,6 +347,17 @@ def run():
         return
     
 
-    
+def check_run_app():
+    f = open ('./config/tool-config.json', "r")
+    data = json.loads(f.read())
+    f.close()
+    return data['RUN']
+
+   
 if __name__ == "__main__":
-    run()
+    while check_run_app(): 
+        print("Đang Login tài khoản Apple TV và thêm thẻ")
+        print(check_run_app())   
+        run()
+        time.sleep(3)
+    
