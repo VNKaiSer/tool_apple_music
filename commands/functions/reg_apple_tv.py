@@ -154,17 +154,17 @@ def reg_apple_tv():
         'port': generate_random_port()
     
     },
-    {
-        'proxy':  
-            {
-                'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-                'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-                'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-                'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-        'port': generate_random_port()
-    }
+    # {
+    #     'proxy':  
+    #         {
+    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'no_proxy': 'localhost,127.0.0.1'
+    #         },
+    #     'port': generate_random_port()
+    # }
     ]
     proxy = random.choice(random_proxy)
     
@@ -208,8 +208,8 @@ def reg_apple_tv():
         user_name.send_keys(data['account'])
         user_name.send_keys(Keys.ENTER)
     
-        active = driver.switch_to.active_element
-        active.send_keys(Keys.ENTER)
+         
+        # active.send_keys(Keys.ENTER)
         time.sleep(10)
     except Exception as e:
         print(e)
