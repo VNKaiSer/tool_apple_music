@@ -388,7 +388,7 @@ def add_payment(browser, data, apple):
         browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
     # Kiểm tra các trường hợp lỗi của thẻ 
         try:
-            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
             add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
             print(add_payment_result.text)
             match add_payment_result.text:
