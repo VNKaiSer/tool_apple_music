@@ -401,23 +401,23 @@ def add_payment(browser, data, apple):
                 case tool_exception.MANY:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case tool_exception.INVALID_CARD:
                 # Thông tin thẻ sai
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case tool_exception.SUPPORT:
                     # logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
-                    # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    # browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    # browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     # time_ctsp = time_ctsp + 1
                     # if time_ctsp == 2:
                     browser.quit()
@@ -425,8 +425,8 @@ def add_payment(browser, data, apple):
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case tool_exception.ACC_SPAM:
@@ -441,22 +441,22 @@ def add_payment(browser, data, apple):
                 case tool_exception.ISSUE_METHOD:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card Die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case tool_exception.DEC:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card DEC"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case tool_exception.DECLINED:
                     logging.error("Error Card: Id - %s", str(data_card[0][1] +" - "+"Card DEC"))
                     # db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     time.sleep(2)
                     continue
                 case _:
@@ -465,8 +465,8 @@ def add_payment(browser, data, apple):
             logging.error("Error Card: Thông tin thẻ không hợp lệ - %s")
             db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
             continue
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-        # browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+        # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+        # browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
 
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             run_add_card = False
