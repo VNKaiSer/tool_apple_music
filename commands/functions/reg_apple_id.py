@@ -544,17 +544,17 @@ def reg_apple_music(add, apple):
         'port': generate_random_port()
     
     },
-    # {
-    #     'proxy':  
-    #         {
-    #     'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #     'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #     'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #     'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-    #             'no_proxy': 'localhost,127.0.0.1'
-    #         },
-    #     'port': generate_random_port()
-    # }
+    {
+        'proxy':  
+            {
+        'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                'no_proxy': 'localhost,127.0.0.1'
+            },
+        'port': generate_random_port()
+    }
     ]
     option = random.choice(random_proxy)
     
