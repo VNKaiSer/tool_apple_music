@@ -281,14 +281,14 @@ def reg_apple_tv():
         # Đổi sang nút chang payment
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-        driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+        driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
         # Nhấn nút add payment
         driver.switch_to.default_content()
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
-        driver.find_element(By.XPATH, '//*[@id="app"]/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
     except Exception as e:
         print(e)
         db_instance.insert_mail_tv_wait(data["account"], data["password"])
@@ -370,10 +370,10 @@ def reg_apple_tv():
             time.sleep(0.2)
         time.sleep(2)
 
-        driver.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
+        driver.find_element(By.XPATH,'//*[@id="modal-footer-0"]/div/button').click()
         # Kiểm tra các trường hợp lỗi của thẻ 
         try:
-            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
             add_payment_result = driver.find_element(By.CSS_SELECTOR, ".camk-modal-description")
             print(add_payment_result.text)
             match add_payment_result.text:
@@ -382,15 +382,15 @@ def reg_apple_tv():
                     break
                 case tool_exception.MANY:
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
                 case tool_exception.INVALID_CARD:
             # Thông tin thẻ sai
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
                 case tool_exception.SUPPORT:
@@ -401,8 +401,8 @@ def reg_apple_tv():
                 
                 case tool_exception.DIE:
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
                 case tool_exception.ACC_SPAM:
@@ -412,20 +412,20 @@ def reg_apple_tv():
                 # continue
                 case tool_exception.ISSUE_METHOD:
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
                 case tool_exception.DEC:
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
                 case tool_exception.DECLINED:
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    driver.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
                     time.sleep(2)
                     continue
         except NoSuchElementException as e:
