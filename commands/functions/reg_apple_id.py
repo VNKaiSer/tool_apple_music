@@ -539,17 +539,18 @@ def reg_apple_music(add, apple):
         'port': generate_random_port()
     
     },
-    {
-        'proxy':  
-            {
-        'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-        'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-        'port': generate_random_port()
-    }]
+    # {
+    #     'proxy':  
+    #         {
+    #     'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #     'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #     'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    #     'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'no_proxy': 'localhost,127.0.0.1'
+    #         },
+    #     'port': generate_random_port()
+    # }
+    ]
     option = random.choice(random_proxy)
     
     global USE_PROXY
@@ -581,7 +582,7 @@ def reg_apple_music(add, apple):
         inputAccount.send_keys(data["account"])
         
         # Nhấn nút login
-        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
+        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div[1]/div/div/div[3]/button").click()
         # time.sleep(10)
         # WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         # iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
@@ -617,8 +618,8 @@ def reg_apple_music(add, apple):
         inputs = browser.find_elements(By.TAG_NAME, "input")
         # print(inputs[inputs.__len__()-1].get_attribute("id"))
         inputs[inputs.__len__()-1].click()   
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]")))
-        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[3]/div/button[2]").click()
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/div/button[2]")))
+        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div[2]/div/button[2]").click()
     except requests.exceptions.TooManyRedirects:
         db_instance.insert_mail_wait(data["account"], data["password"]) 
         browser.quit()
@@ -652,11 +653,11 @@ def reg_apple_music(add, apple):
         active_element.send_keys(CODE_MAIL)
         time.sleep(15)
         browser.get("https://music.apple.com/us/account/settings")
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')))
-        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[4]/main/div/div/iframe')
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
+        iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[5]/div/div[2]/div/div/div/div[5]/button').click()
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[5]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[5]/button').click()
         time.sleep(5)
         browser.switch_to.default_content()
         browser.get("https://music.apple.com/us/account/settings")
