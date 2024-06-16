@@ -259,12 +259,12 @@ def reg_apple_tv():
     # Nhấn nút continute nếu lần đầu login
     try:
         driver.switch_to.default_content()
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ck-modal"]/iframe')))
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="content-area"]/div/iframe')))
         driver.switch_to.default_content()
-        driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="ck-modal"]/iframe'))
+        driver.switch_to.frame(driver.find_element(By.XPATH, '//*[@id="content-area"]/div/iframe'))
         if is_login == True: 
-            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="modal-body"]/div/div/div/div/div/div[5]/button')))
-            driver.find_element(By.XPATH, '//*[@id="modal-body"]/div/div/div/div/div/div[5]/button').click()
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[5]/button')))
+            driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div/div/div/div/div/div[5]/button').click()
         else: 
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
             driver.find_element(By.TAG_NAME, 'button').click()
