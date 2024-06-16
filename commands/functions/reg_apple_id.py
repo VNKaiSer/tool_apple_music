@@ -230,6 +230,8 @@ def process_login(browser, data, add, apple):
             WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
             iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
             browser.switch_to.frame(iframe_hello)
+            print(iframe_hello);
+            print(len(browser.find_element(By.TAG_NAME, 'button')))
             WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[5]/button')))
             browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[5]/button').click()
             time.sleep(3)
