@@ -226,6 +226,7 @@ def process_login(browser, data, add, apple):
         browser.get("https://music.apple.com/us/account/settings")
         # Trường hợp lần đầu đăng kí 
         try: 
+            browser.switch_to.default_content()
             WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[6]/iframe')))
             iframe_hello = browser.find_element(By.XPATH, '/html/body/div/div[6]/iframe')
             browser.switch_to.frame(iframe_hello)
