@@ -263,8 +263,8 @@ def add_payment(browser, data, apple):
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
         iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_setting)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
+        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
         print(country)
         if country != "United States":
             print("Not US") 
@@ -281,10 +281,10 @@ def add_payment(browser, data, apple):
         return
     except Exception as e:
         print('chưa add')
-    # click nút change payment 
+    # click nút manage payment 
     try: 
-        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
+        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
+        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
         time.sleep(10)
         browser.switch_to.default_content()
         wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")))
@@ -300,8 +300,8 @@ def add_payment(browser, data, apple):
         #     iframe_payment = browser.find_element(By.XPATH, "/html/body/div/div[4]/main/div/div/iframe")
         #     browser.switch_to.frame(iframe_payment)
         # Nhấn nút add payment
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
         browser.switch_to.default_content()
         iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_add_payment)
@@ -385,7 +385,7 @@ def add_payment(browser, data, apple):
             time.sleep(0.2)
         time.sleep(2)
     # browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]').send_keys("658")
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
     # Kiểm tra các trường hợp lỗi của thẻ 
         try:
             wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
