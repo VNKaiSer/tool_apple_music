@@ -5,7 +5,7 @@ if %errorlevel% neq 0 (
     REM Python chưa được cài đặt, tiến hành cài đặt
     echo Python chưa được cài đặt. Bắt đầu quá trình cài đặt...
     REM Tải và cài đặt Python từ trang chủ
-    start /wait https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe
+    start /wait https://www.python.org/ftp/python/3.12.0/python-3.12.0-amd64.exe
     REM Đợi cho quá trình cài đặt hoàn tất (tối đa 30 giây)
     timeout /t 30 /nobreak >nul
     REM Kiểm tra lại sau khi cài đặt
