@@ -1,5 +1,22 @@
 from const import *
 from faker import Faker
+fake = Faker()
+def generate_random_password():
+    while True:
+        password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
+        # Kiểm tra xem có 3 ký tự giống nhau không phân biệt hoa thường
+        if has_three_consecutive_characters(password):
+            continue  # Tạo mật khẩu mới nếu có
+        else:
+            return 'A' + password + '@'  # Trả về mật khẩu nếu không có 3 ký tự giống nhau
+
+def has_three_consecutive_characters(password):
+    # Chuyển đổi mật khẩu thành chữ thường để so sánh không phân biệt hoa thường
+    password = password.lower()
+    for i in range(len(password) - 2):
+        if password[i] == password[i+1] == password[i+2]:
+            return True
+    return False
 
 # Định nghĩa các element cho dễ bảo trì 
 IFRAME_AUTH = '#aid-auth-widget-iFrame'
@@ -10,6 +27,7 @@ ANSWER1 = 'input'
 ID_QUESTION_2 = 'question-2'
 BTN_CONTINUTE_AT_QUESTION = 'button'
 IF_REPAIR = "#repairFrame"
+BTN_CHANGE_PASS = '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button'
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
@@ -142,7 +160,7 @@ def login_apple_id():
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
         btns = driver.find_elements(By.TAG_NAME,value= "button")
         btns[1].click()
-        time.sleep(500)
+        time.sleep(5)
         
     except Exception as e:
         # làm lại
@@ -152,10 +170,21 @@ def change_password():
     global driver
     global data
     driver.get("https://appleid.apple.com/account/manage")
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button')))
-    btns = driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button')
+    # Mở modal thay đổi mật khẩu
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, BTN_CHANGE_PASS)))
+    btns = driver.find_element(By.XPATH,value= BTN_CHANGE_PASS)
     btns.click()
+    # Đổi pass
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-body")))
+    modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-body")
+    ipunts = modal_change_pass.find_elements(By.TAG_NAME,value= "input")
+    newPass = generate_random_password(10)
+    ipunts[0].send_keys(data['password'])
+    ipunts[1].send_keys(newPass)
+    ipunts[2].send_keys(newPass) 
+    
     
 
 login_apple_id()
 change_password()
+time.sleep(10)
