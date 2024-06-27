@@ -18,6 +18,23 @@ def has_three_consecutive_characters(password):
             return True
     return False
 
+def random_address():
+    json_file = './assets/data/addresses.json'  
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+
+    # Lấy danh sách các địa chỉ từ khóa 'addresses'
+    addresses = data.get('addresses', [])
+
+    # Lựa chọn ngẫu nhiên một địa chỉ từ danh sách
+    while True:
+        random_address = random.choice(addresses)
+        # Kiểm tra xem có bất kỳ trường nào bị thiếu không
+        if all(key in random_address for key in ['address1', 'address2', 'city', 'state', 'postalCode']):
+            break  # Nếu không thiếu trường nào, thoát khỏi vòng lặp
+
+    return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
+
 # Định nghĩa các element cho dễ bảo trì 
 IFRAME_AUTH = '#aid-auth-widget-iFrame'
 ID_USERNAME = 'account_name_text_field'
@@ -39,7 +56,7 @@ def login_apple_id():
     try:
         data = {
             "email" : "wendtbartez@hotmail.com",
-            "password" : "Ai4i0OswHC1@",
+            "password" : "AqyNIJyq62O@",
             "question" : {
                 "school" : "myoiw",
                 "dream" : "5edj",
@@ -190,9 +207,26 @@ def change_password():
     active_element.send_keys(Keys.TAB)
     time.sleep(1)
     active_element.send_keys(Keys.ENTER)
+
+def change_region():
+    global driver
+    global data
+    driver.get("https://appleid.apple.com/account/manage?mode=standalone&section=payment")
+    address1, address2, city, state, postalCode = random_address()
+    
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, "payment-content")))
+    payment_content = driver.find_element(By.ID,value= "payment-content")
+    select = Select(payment_content.find_element(By.TAG_NAME,value= "select"))
+    select.select_by_value("USA")
+    inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
+    print(len(inputs))
+    time.sleep(500)
+    
+    
     
     
 
 login_apple_id()
 change_password()
+change_region()
 time.sleep(500)
