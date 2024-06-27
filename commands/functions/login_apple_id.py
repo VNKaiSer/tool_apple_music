@@ -38,12 +38,12 @@ def login_apple_id():
     global data
     try:
         data = {
-            "email" : "wemeclom@hotmail.com",
-            "password" : "A5YSYjNjU44@",
+            "email" : "wendtbartez@hotmail.com",
+            "password" : "Ai4i0OswHC1@",
             "question" : {
-                "school" : "bpjwdn",
-                "dream" : "fn1h",
-                "parent" : "fih2c"
+                "school" : "myoiw",
+                "dream" : "5edj",
+                "parent" : "fnqkv"
             }
         }
         print(data)
@@ -179,13 +179,16 @@ def change_password():
     modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-body")
     ipunts = modal_change_pass.find_elements(By.TAG_NAME,value= "input")
     newPass = generate_random_password()
+    print(newPass)
     ipunts[0].send_keys(data['password'])
     ipunts[1].send_keys(newPass)
     ipunts[2].send_keys(newPass)
     
     active_element = driver.switch_to.active_element
     active_element.send_keys(Keys.TAB)
+    time.sleep(1)
     active_element.send_keys(Keys.TAB)
+    time.sleep(1)
     active_element.send_keys(Keys.ENTER)
     
     
