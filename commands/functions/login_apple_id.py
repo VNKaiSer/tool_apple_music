@@ -96,6 +96,7 @@ def login_apple_id():
         # Câu hỏi 1
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_1)))
         question_1 = driver.find_element(By.ID,value= ID_QUESTION_1).text
+        print(question_1)
         ansewer_1 = ""
         if question_1 == Question.SCHOOL:
             ansewer_1 = data['question']['school']
@@ -112,6 +113,7 @@ def login_apple_id():
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_2)))
         question_2 = driver.find_element(By.ID,value= ID_QUESTION_2).text
         ansewer_2 = ""
+        print(question_2)
         if question_2 == Question.SCHOOL:
             ansewer_2 = data['question']['school']
         elif question_2 == Question.PARENT:
