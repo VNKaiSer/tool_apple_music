@@ -139,8 +139,8 @@ def login_apple_id():
         time.sleep(5)
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
         btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[1].click()
-        time.sleep(5)
+        btns[0].click()
+        time.sleep(500)
         
     except Exception as e:
         # làm lại
