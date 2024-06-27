@@ -181,10 +181,14 @@ def change_password():
     newPass = generate_random_password(10)
     ipunts[0].send_keys(data['password'])
     ipunts[1].send_keys(newPass)
-    ipunts[2].send_keys(newPass) 
+    ipunts[2].send_keys(newPass)
+    
+    btns = modal_change_pass.find_elements(By.TAG_NAME,value= "button")
+    btns[1].click()
+    time.sleep(5) 
     
     
 
 login_apple_id()
 change_password()
-time.sleep(10)
+time.sleep(500)
