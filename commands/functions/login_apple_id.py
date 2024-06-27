@@ -183,6 +183,8 @@ def change_password():
     ipunts[1].send_keys(newPass)
     ipunts[2].send_keys(newPass)
     
+    driver.switch_to.default_content()
+    modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-body")
     btns = modal_change_pass.find_elements(By.TAG_NAME,value= "button")
     btns[1].click()
     time.sleep(5) 
