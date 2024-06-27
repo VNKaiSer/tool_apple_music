@@ -9,6 +9,7 @@ ID_QUESTION_1 = 'question-1'
 ANSWER1 = 'input'
 ID_QUESTION_2 = 'question-2'
 BTN_CONTINUTE_AT_QUESTION = 'button'
+IF_REPAIR = "#repairFrame"
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
@@ -126,7 +127,20 @@ def login_apple_id():
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, BTN_CONTINUTE_AT_QUESTION)))
         btns = driver.find_elements(By.TAG_NAME,value= BTN_CONTINUTE_AT_QUESTION)
         btns[1].click()
-        time.sleep(500)
+        
+        # Nhấn các nút rồi tới frame chính
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
+        repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
+        driver.switch_to.frame(repairFrame)
+        # Nhấn nút continute
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+        btns = driver.find_elements(By.TAG_NAME,value= "button")
+        btns[1].click()
+        time.sleep(5)
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+        btns = driver.find_elements(By.TAG_NAME,value= "button")
+        btns[1].click()
+        time.sleep(5)
         
     except Exception as e:
         # làm lại
