@@ -227,7 +227,7 @@ def change_region():
     inputs[4].send_keys(city)
     inputs[5].send_keys(postalCode)
     inputs[6].send_keys(fake.phone_number())
-    select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[1])
+    select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[2])
     select.select_by_value(state)
     time.sleep(500)
     
