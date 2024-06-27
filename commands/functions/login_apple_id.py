@@ -13,9 +13,10 @@ IF_REPAIR = "#repairFrame"
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
+data = None
+driver = None
 def login_apple_id():
-    data = None
-    driver = None
+    
     try:
         data = {
             "email" : "wemeclom@hotmail.com",
@@ -139,11 +140,19 @@ def login_apple_id():
         time.sleep(5)
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
         btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[0].click()
+        btns[1].click()
         time.sleep(500)
         
     except Exception as e:
         # làm lại
         return
 
+def change_password():
+    driver.switch_to.default_content()
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+    btns = driver.find_elements(By.TAG_NAME,value= "button")
+    btns[2].click()
+    
+
 login_apple_id()
+change_password()
