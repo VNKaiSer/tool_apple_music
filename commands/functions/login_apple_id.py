@@ -1,6 +1,6 @@
 from const import *
 from faker import Faker
-fake = Faker()
+fake = Faker(locale='en_US')
 def generate_random_password():
     while True:
         password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
@@ -35,6 +35,8 @@ def random_address():
 
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
+def generate_name():
+    return fake.first_name(), fake.last_name()
 # Định nghĩa các element cho dễ bảo trì 
 IFRAME_AUTH = '#aid-auth-widget-iFrame'
 ID_USERNAME = 'account_name_text_field'
@@ -213,13 +215,20 @@ def change_region():
     global data
     driver.get("https://appleid.apple.com/account/manage?mode=standalone&section=payment")
     address1, address2, city, state, postalCode = random_address()
-    
+    firstName, lastName = generate_name()
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, "payment-content")))
     payment_content = driver.find_element(By.ID,value= "payment-content")
-    select = Select(payment_content.find_element(By.TAG_NAME,value= "select"))
+    select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
     select.select_by_value("USA")
     inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
-    print(len(inputs))
+    inputs[0].send_keys(firstName)
+    inputs[1].send_keys(lastName)
+    inputs[2].send_keys(address1)
+    inputs[4].send_keys(city)
+    inputs[5].send_keys(postalCode)
+    inputs[6].send_keys(fake.phone_number())
+    select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[1])
+    select.select_by_value(state)
     time.sleep(500)
     
     
