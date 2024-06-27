@@ -178,7 +178,7 @@ def change_password():
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-body")))
     modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-body")
     ipunts = modal_change_pass.find_elements(By.TAG_NAME,value= "input")
-    newPass = generate_random_password(10)
+    newPass = generate_random_password()
     ipunts[0].send_keys(data['password'])
     ipunts[1].send_keys(newPass)
     ipunts[2].send_keys(newPass)
