@@ -152,9 +152,9 @@ def change_password():
     global driver
     global data
     driver.get("https://appleid.apple.com/account/manage")
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-    btns = driver.find_elements(By.TAG_NAME,value= "button")
-    print(len(btns))
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button')))
+    btns = driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button')
+    btns.click()
     
 
 login_apple_id()
