@@ -16,7 +16,8 @@ class Question:
 data = None
 driver = None
 def login_apple_id():
-    
+    global driver
+    global data
     try:
         data = {
             "email" : "wemeclom@hotmail.com",
@@ -148,10 +149,12 @@ def login_apple_id():
         return
 
 def change_password():
-    driver.switch_to.default_content()
+    global driver
+    global data
+    driver.get("https://appleid.apple.com/account/manage")
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
     btns = driver.find_elements(By.TAG_NAME,value= "button")
-    btns[2].click()
+    print(len(btns))
     
 
 login_apple_id()
