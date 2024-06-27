@@ -6,7 +6,7 @@ IFRAME_AUTH = '#aid-auth-widget-iFrame'
 ID_USERNAME = 'account_name_text_field'
 ID_PASSWORD = 'password_text_field'
 ID_QUESTION_1 = 'question-1'
-ID_ANSWER_1 = 'form-textbox-1719221840276-0'
+CLS_ANSWER1 = 'input'
 ID_QUESTION_2 = 'question-2'
 ID_ANSWER_2 = 'form-textbox-1719221840278-0'
 class Question:
@@ -96,7 +96,6 @@ def login_apple_id():
         # Câu hỏi 1
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_1)))
         question_1 = driver.find_element(By.ID,value= ID_QUESTION_1).text
-        print(question_1)
         ansewer_1 = ""
         if question_1 == Question.SCHOOL:
             ansewer_1 = data['question']['school']
@@ -106,9 +105,9 @@ def login_apple_id():
             ansewer_1 = data['question']['dream']
         
         # Trả lời 
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_ANSWER_1)))
-        answer_1 = driver.find_element(By.ID,value= ID_ANSWER_1)
-        answer_1.send_keys(ansewer_1)
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, CLS_ANSWER1)))
+        answer = driver.find_elements(By.ID,value= CLS_ANSWER1)
+        print(len(answer))
         # Câu hỏi 2
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_2)))
         question_2 = driver.find_element(By.ID,value= ID_QUESTION_2).text
