@@ -8,7 +8,7 @@ ID_PASSWORD = 'password_text_field'
 ID_QUESTION_1 = 'question-1'
 ANSWER1 = 'input'
 ID_QUESTION_2 = 'question-2'
-ID_ANSWER_2 = 'form-textbox-1719221840278-0'
+BTN_CONTINUTE_AT_QUESTION = 'button'
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
@@ -112,7 +112,6 @@ def login_apple_id():
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_2)))
         question_2 = driver.find_element(By.ID,value= ID_QUESTION_2).text
         ansewer_2 = ""
-        print(question_2)
         if question_2 == Question.SCHOOL:
             ansewer_2 = data['question']['school']
         elif question_2 == Question.PARENT:
@@ -120,11 +119,15 @@ def login_apple_id():
         else:
             ansewer_2 = data['question']['dream']
         
-        # Trả lựi 
+        # Trả lời câu hỏi 2
         answeres[1].send_keys(ansewer_2)
         
+        # Nhấn nút continute
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, BTN_CONTINUTE_AT_QUESTION)))
+        btns = driver.find_elements(By.TAG_NAME,value= BTN_CONTINUTE_AT_QUESTION)
+        btns[1].click()
+        time.sleep(500)
         
-        time.sleep(10) 
     except Exception as e:
         # làm lại
         return
