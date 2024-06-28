@@ -221,14 +221,24 @@ def change_region():
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
     select.select_by_value("USA")
     inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
+    inputs[0].clear()
     inputs[0].send_keys(firstName)
+    inputs[1].clear()
     inputs[1].send_keys(lastName)
+    inputs[2].clear()
     inputs[2].send_keys(address1)
+    inputs[4].clear()
     inputs[4].send_keys(city)
+    inputs[5].clear()
     inputs[5].send_keys(postalCode)
+    inputs[6].clear()
     inputs[6].send_keys(fake.phone_number())
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[2])
     select.select_by_value(state)
+
+    # Nhấn nút 
+    btns = payment_content.find_elements(By.TAG_NAME,value= "button")
+    btns[1].click()
     time.sleep(500)
     
     
