@@ -308,7 +308,7 @@ def add_card():
     iframe_payment = driver.find_element(By.TAG_NAME,value= 'iframe')
     driver.switch_to.frame(iframe_payment)
     # Nhấn nút thêm add payment method
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'button')))
+    WebDriverWait(driver, WAIT_CHILD).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
     btns = driver.find_elements(By.TAG_NAME,value= 'button')
     btns[0].click()
         
