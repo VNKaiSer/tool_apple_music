@@ -1,6 +1,15 @@
 from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
+
+def wait_dialog(driver):
+    modal_dialogs = driver.find_elements(By.CLASS_NAME, "modal-dialog")
+    for dialog in modal_dialogs:
+        aria_label = dialog.get_attribute("aria-label")
+        if aria_label == "Confirm Your Password":
+            return True
+    return False
+
 def generate_random_password():
     while True:
         password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
@@ -284,7 +293,7 @@ def change_security_question():
     btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
     btns[1].click()
     # Xác nhận mật khẩu
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "modal-dialog")))
+    WebDriverWait(driver, WAIT_CHILD).until(wait_dialog)
     modal_dialog = driver.find_elements(By.CLASS_NAME,value= "modal-dialog")
     for dialog in modal_dialog:
         print(dialog.get_attribute("aria-label"))
