@@ -311,11 +311,16 @@ def add_card():
         lambda driver: driver.execute_script('return document.readyState') == 'complete'
     )
     # Wait for the button to be clickable
-    WebDriverWait(driver, 60).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'button')))
-    WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
-    btn = driver.find_element(By.TAG_NAME, 'button')
-    if(btn.is_displayed()):
-        btn.click()
+    button = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
+    
+    # Scroll nút vào view và click
+    driver.execute_script("arguments[0].scrollIntoView(true);", button)
+    
+    try:
+        button.click()
+    except Exception as e:
+        # Nếu click bị chặn, dùng JavaScript để click
+        driver.execute_script("arguments[0].click();", button)
     
         
     while True:
