@@ -303,6 +303,7 @@ def change_security_question():
 def add_card():
     global driver
     global data
+    driver.get("https://appleid.apple.com/account/manage/section/payment")
     WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
     iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
     driver.switch_to.frame(iframe_payment)
