@@ -304,19 +304,26 @@ def add_card():
     global driver
     global data
     wait_60_second = 0
+    driver.get("https://appleid.apple.com/account/manage/section/payment")
+    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+    iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
+    driver.switch_to.frame(iframe_payment)
+    WebDriverWait(driver, 60).until(
+        lambda driver: driver.execute_script('return document.readyState') == 'complete'
+    )
     while True:
         try:
             if wait_60_second == 0 or wait_60_second == 60:
                 if wait_60_second == 60:
                     wait_60_second = 0 
-                    
-                driver.get("https://appleid.apple.com/account/manage/section/payment")
-                WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
-                iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
-                driver.switch_to.frame(iframe_payment)
-                WebDriverWait(driver, 60).until(
-                    lambda driver: driver.execute_script('return document.readyState') == 'complete'
-                )
+                    driver.refresh()
+                    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+                    iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
+                    driver.switch_to.frame(iframe_payment)
+                    WebDriverWait(driver, 60).until(
+                        lambda driver: driver.execute_script('return document.readyState') == 'complete'
+                    )
+                
     # Wait for the button to be clickable
     
     
