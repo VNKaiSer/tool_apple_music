@@ -35,6 +35,8 @@ def random_address():
 
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
+def generate_anwser():
+    return fake.password(length=5,special_chars=False, digits=False,upper_case=True, lower_case=True)
 def generate_name():
     return fake.first_name(), fake.last_name()
 # Định nghĩa các element cho dễ bảo trì 
@@ -270,14 +272,15 @@ def change_security_question():
     time.sleep(1)
     
     # Nhâp câu trả lời 
-    ans1, ans2, ans3 = fake.company(), fake.company(), fake.company()
+    ans1, ans2, ans3 = generate_anwser(), generate_anwser(), generate_anwser()
     print(ans1, ans2, ans3)
     inputs = modals[1].find_elements(By.TAG_NAME,value= "input")
     inputs[0].send_keys(ans1)
     inputs[1].send_keys(ans2)
     inputs[2].send_keys(ans3)
     time.sleep(1)
-    btns = modals[1].find_elements(By.TAG_NAME,value= "button")
+    btns = WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-button-bar")))
+    print(len(btns))
     btns[1].click()
     time.sleep(5)
     
