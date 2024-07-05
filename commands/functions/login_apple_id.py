@@ -284,11 +284,10 @@ def change_security_question():
     btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
     btns[1].click()
     # Xác nhận mật khẩu
-    active_element = driver.switch_to.active_element
-    active_element.send_keys(Keys.TAB)
-    time.sleep(1)
-    active_element.send_keys(data['password'])
-    active_element.send_keys(Keys.ENTER)
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, "modal-dialog")))
+    modal_dialog = driver.find_elements(By.CLASS_NAME,value= "modal-dialog")
+    for dialog in modal_dialog:
+        print(dialog.get_attribute("aria-label"))
 login_apple_id()
 # change_password()
 # change_region()
