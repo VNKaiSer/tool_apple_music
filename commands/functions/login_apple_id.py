@@ -261,12 +261,8 @@ def change_region():
 def change_security_question():
     global driver
     global data
-    try:
-        driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
-    except Exception as e:
-        driver.get("https://appleid.apple.com/account/manage/section/payment")
-    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
+    driver.get("https://appleid.apple.com/account/manage")
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
     driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button').click()
     modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-dialog")
     btns = modal_change_pass.find_elements(By.TAG_NAME,value= "button")
@@ -307,6 +303,11 @@ def change_security_question():
 def add_card():
     global driver
     global data
+    try:
+        driver.get("https://appleid.apple.com/account/manage")
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
+    except Exception as e:
+        driver.get("https://appleid.apple.com/account/manage")
     while True:
         wait = WebDriverWait(driver, 15)
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
@@ -434,5 +435,6 @@ def add_card():
 login_apple_id() 
 # change_password()
 # change_region()
-change_security_question()
+# change_security_question()
+add_card()
 time.sleep(500)
