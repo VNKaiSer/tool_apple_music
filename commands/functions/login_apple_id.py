@@ -285,8 +285,8 @@ def change_security_question():
     btns[1].click()
     # Xác nhận mật khẩu
     driver.switch_to.default_content()
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, 'modal modal-blurry-overlay modal-alert')))
-    modal_dialog = driver.find_elements(By.CLASS_NAME,value= 'modal modal-blurry-overlay modal-alert')
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'aside')))
+    modal_dialog = driver.find_elements(By.TAG_NAME,value= 'aside')
     print(len(modal_dialog))
     input_confirm_pass = modal_dialog[1].find_element(By.TAG_NAME,value= "input")
     input_confirm_pass.send_keys(data['password'])
