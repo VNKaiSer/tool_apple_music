@@ -71,9 +71,9 @@ def login_apple_id():
             "email" : "wendtbartez@hotmail.com",
             "password" : "AqyNIJyq62O@",
             "question" : {
-                "school" : "myoiw",
-                "dream" : "5edj",
-                "parent" : "fnqkv"
+                "school" : "BhWns",
+                "dream" : "FCucf",
+                "parent" : "XHpBs"
             }
         }
         print(data)
