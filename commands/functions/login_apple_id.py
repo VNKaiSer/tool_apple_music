@@ -286,6 +286,7 @@ def change_security_question():
     # Xác nhận mật khẩu
     active_element = driver.switch_to.default_content()
     active_element.send_keys(Keys.TAB)
+    time.sleep(1)
     active_element.send_keys(data['password'])
     active_element.send_keys(Keys.ENTER)
 login_apple_id()
