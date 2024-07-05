@@ -284,10 +284,10 @@ def change_security_question():
     btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
     btns[1].click()
     # Xác nhận mật khẩu
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-dialog')))
-    modal_dialog = driver.find_elements(By.CLASS_NAME,value= 'modal-form')
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal modal-blurry-overlay modal-alert')))
+    modal_dialog = driver.find_elements(By.CLASS_NAME,value= 'modal modal-blurry-overlay modal-alert')
     print(len(modal_dialog))
-    input_confirm_pass = modal_dialog[2].find_element(By.TAG_NAME,value= "input")
+    input_confirm_pass = modal_dialog[1].find_element(By.TAG_NAME,value= "input")
     input_confirm_pass.send_keys(data['password'])
     time.sheep(1) 
     # Nhấn nút update
