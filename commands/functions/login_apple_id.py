@@ -279,11 +279,20 @@ def change_security_question():
     inputs[1].send_keys(ans2)
     inputs[2].send_keys(ans3)
     time.sleep(1)
+    # Nhấn nút update
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-button-bar")))
     btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
-    print(len(btns))
     btns[1].click()
-    time.sleep(5)
+    # Xác nhận mật khẩu
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-body')))
+    modal_body = driver.find_element(By.CLASS_NAME,value= 'modal-body')
+    input_confirm_pass = modal_body.find_element(By.TAG_NAME,value= "input")
+    input_confirm_pass.send_keys(data['password'])
+    time.sheep(1) 
+    # Nhấn nút update
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-button-bar")))
+    btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
+    btns[1].click()
     
 login_apple_id()
 # change_password()
