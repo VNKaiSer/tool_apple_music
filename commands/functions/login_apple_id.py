@@ -303,20 +303,15 @@ def change_security_question():
 def add_card():
     global driver
     global data
-    try:
-        driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
-        iframe_payment = driver.find_element(By.TAG_NAME,value= 'iframe')
-        driver.switch_to.frame(iframe_payment)
-        btns = driver.find_elements(By.TAG_NAME,value= 'button')
-        for btn in btns:
-            print(btn.text)
+    driver.get("https://appleid.apple.com/account/manage/section/payment")
+    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+    iframe_payment = driver.find_element(By.TAG_NAME,value= 'iframe')
+    driver.switch_to.frame(iframe_payment)
+    # Nhấn nút thêm add payment method
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'button')))
+    btns = driver.find_elements(By.TAG_NAME,value= 'button')
+    btns[0].click()
         
-        
-    except Exception as e:
-        driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
-        driver.find_element(By.XPATH,value= '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
     while True:
         wait = WebDriverWait(driver, 15)
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
