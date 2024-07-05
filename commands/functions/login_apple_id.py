@@ -261,8 +261,12 @@ def change_region():
 def change_security_question():
     global driver
     global data
-    driver.get("https://appleid.apple.com/account/manage")
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
+    try:
+        driver.get("https://appleid.apple.com/account/manage/section/payment")
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
+    except Exception as e:
+        driver.get("https://appleid.apple.com/account/manage/section/payment")
+    WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
     driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button').click()
     modal_change_pass = driver.find_element(By.CLASS_NAME,value= "modal-dialog")
     btns = modal_change_pass.find_elements(By.TAG_NAME,value= "button")
@@ -299,6 +303,133 @@ def change_security_question():
     input_passs.send_keys(data['password'])
     btns = modal_dialogs[len(modal_dialogs) - 1].find_elements(By.TAG_NAME,value= "button")
     btns[1].click()
+
+def add_card():
+    global driver
+    global data
+    while True:
+        wait = WebDriverWait(driver, 15)
+        data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
+    # print(data_card[0])
+        db_instance.update_data(table_name="pay", set_values={"on_use": 1},condition=f'id = {data_card[0][0]}')
+    # print(data_card[0])
+        try:
+            if data_card[0] is None:
+                logging.error("Error: %s", str("Hết thẻ"))
+                sys.exit() # Dừng chương trình
+        except IndexError:
+            logging.error("Error: %s", str("Hết thẻ"))
+            driver.quit()
+            sys.exit()
+        
+    # Kiểm tra thẻ hiện tại đã max chưa
+        if data_card[0][6] >= get_max_card_add():
+            db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
+            continue
+        card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
+        try:
+            wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
+            card_number_element = driver.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
+            card_number_element.clear()
+        except Exception as e:
+            driver.quit()
+        for i in card.get_card_number():
+            card_number_element.send_keys(i)
+            time.sleep(0.2)
+        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')))
+        card_expiration_element = driver.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')
+        card_expiration_element.clear()
+        for i in card.get_card_expiration():
+            card_expiration_element.send_keys(i)
+            time.sleep(0.2)
+
+
+        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditVerificationNumber"]')))
+        card_ccv_element = driver.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]')
+        card_ccv_element.clear()
+        for i in card.get_card_ccv():
+            card_ccv_element.send_keys(i)
+            time.sleep(0.2)
+        time.sleep(2)
+
+        driver.find_element(By.XPATH,'//*[@id="modal-footer-0"]/div/button').click()
+        # Kiểm tra các trường hợp lỗi của thẻ 
+        try:
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
+            add_payment_result = driver.find_element(By.CSS_SELECTOR, ".camk-modal-description")
+            print(add_payment_result.text)
+            match add_payment_result.text:
+                case tool_exception.DISSABLE:
+                    driver.quit()
+                    break
+                case tool_exception.MANY:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+                case tool_exception.INVALID_CARD:
+            # Thông tin thẻ sai
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+                case tool_exception.SUPPORT:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
+                    driver.quit()
+                    break
+                
+                
+                case tool_exception.DIE:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+                case tool_exception.ACC_SPAM:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
+                    break
+                    driver.quit()
+                # continue
+                case tool_exception.ISSUE_METHOD:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+                case tool_exception.DEC:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+                case tool_exception.DECLINED:
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+                    driver.find_element(By.XPATH, '//*[@id="app"]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+                    time.sleep(2)
+                    continue
+        except NoSuchElementException as e:
+            db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+            continue
+
+
+        except Exception as e: # Không có thông báo. => Add thẻ thành công
+            db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
+            db_instance.update_data(table_name="pay", set_values={"on_use": 0}, condition=f"id = {data_card[0][0]}")
+            # Lưu apple_tv thành công
+            data['card_number'] = card.get_card_number()
+            data['month_exp'] = data_card[0][2]
+            data['year_exp'] = data_card[0][3]
+            data['ccv'] = card.get_card_ccv()
+            db_instance.insert_mail_reg_apple_tv(
+                [data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']]
+            )
+            
+            driver.quit()
+            break
+    print("Hoàn thành")
     
 login_apple_id() 
 # change_password()
