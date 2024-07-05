@@ -305,9 +305,12 @@ def add_card():
     global data
     try:
         driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        driver.find_element(By.XPATH,value= '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
     except Exception as e:
         driver.get("https://appleid.apple.com/account/manage/section/payment")
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        driver.find_element(By.XPATH,value= '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
     while True:
         wait = WebDriverWait(driver, 15)
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
