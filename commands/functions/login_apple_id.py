@@ -303,25 +303,30 @@ def change_security_question():
 def add_card():
     global driver
     global data
-    driver.get("https://appleid.apple.com/account/manage/section/payment")
-    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
-    iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
-    driver.switch_to.frame(iframe_payment)
-    WebDriverWait(driver, 60).until(
-        lambda driver: driver.execute_script('return document.readyState') == 'complete'
-    )
+    wait_60_second = 0
+    while True:
+        try:
+            if wait_60_second == 0 or wait_60_second == 60:
+                if wait_60_second == 60:
+                    wait_60_second = 0 
+                    
+                driver.get("https://appleid.apple.com/account/manage/section/payment")
+                WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+                iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
+                driver.switch_to.frame(iframe_payment)
+                WebDriverWait(driver, 60).until(
+                    lambda driver: driver.execute_script('return document.readyState') == 'complete'
+                )
     # Wait for the button to be clickable
-    button = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
     
-    # Scroll nút vào view và click
-    driver.execute_script("arguments[0].scrollIntoView(true);", button)
     
-    try:
-        button.click()
-    except Exception as e:
-        # Nếu click bị chặn, dùng JavaScript để click
-        driver.execute_script("arguments[0].click();", button)
-    
+            button = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
+            button.click()
+            break
+        except Exception as e:
+            time.sleep(20)
+            wait_60_second += 20
+        
         
     while True:
         wait = WebDriverWait(driver, 15)
