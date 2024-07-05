@@ -284,7 +284,7 @@ def change_security_question():
     btns = driver.find_elements(By.CLASS_NAME,value= "modal-button-bar")
     btns[1].click()
     # Xác nhận mật khẩu
-    active_element = driver.switch_to.default_content()
+    active_element = driver.switch_to.active_element
     active_element.send_keys(Keys.TAB)
     time.sleep(1)
     active_element.send_keys(data['password'])
