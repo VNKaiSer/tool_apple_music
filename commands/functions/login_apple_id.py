@@ -305,11 +305,17 @@ def add_card():
     global data
     try:
         driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
-        driver.find_element(By.XPATH,value= '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
+        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+        iframe_payment = driver.find_element(By.TAG_NAME,value= 'iframe')
+        driver.switch_to.frame(iframe_payment)
+        btns = driver.find_elements(By.TAG_NAME,value= 'button')
+        for btn in btns:
+            print(btn.text)
+        
+        
     except Exception as e:
         driver.get("https://appleid.apple.com/account/manage/section/payment")
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
         driver.find_element(By.XPATH,value= '//*[@id="app"]/div/div/div[1]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
     while True:
         wait = WebDriverWait(driver, 15)
