@@ -304,20 +304,14 @@ def add_card():
     global driver
     global data
     driver.get("https://appleid.apple.com/account/manage/section/payment")
-    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+    WebDriverWait(driver, 60).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'iframe')))
     iframe_payment = driver.find_element(By.TAG_NAME, 'iframe')
     driver.switch_to.frame(iframe_payment)
     
     # Wait for the button to be clickable
     WebDriverWait(driver, 60).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'button')))
-    WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
-    
-    # Find the buttons and click the first one
     btns = driver.find_elements(By.TAG_NAME, 'button')
-    
-    # Ensure the button is in view and clickable
-    driver.execute_script("arguments[0].scrollIntoView(true);", btns[0])
-    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
+    WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
     btns[0].click()
         
     while True:
