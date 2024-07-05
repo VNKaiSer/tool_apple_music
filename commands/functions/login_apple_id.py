@@ -308,6 +308,7 @@ def add_card():
     driver.switch_to.frame(iframe_payment)
     
     # Wait for the button to be clickable
+    WebDriverWait(driver, 60).until(EC.visibility_of_all_elements_located((By.TAG_NAME, 'button')))
     WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.TAG_NAME, 'button')))
     
     # Find the buttons and click the first one
