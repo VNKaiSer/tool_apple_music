@@ -294,10 +294,13 @@ def change_security_question():
     btns[1].click()
     # Xác nhận mật khẩu
     WebDriverWait(driver, WAIT_CHILD).until(wait_dialog)
-    modal_dialog = driver.find_elements(By.CLASS_NAME,value= "modal-dialog")
-    for dialog in modal_dialog:
-        print(dialog.get_attribute("aria-label"))
-login_apple_id()
+    modal_dialogs = driver.find_elements(By.CLASS_NAME,value= "modal-dialog")
+    input_passs = modal_dialogs[len(modal_dialogs) - 1].find_element(By.TAG_NAME,value= "input")
+    input_passs.send_keys(data['password'])
+    btns = modal_dialogs[len(modal_dialogs) - 1].find_elements(By.TAG_NAME,value= "button")
+    btns[1].click()
+    
+login_apple_id() 
 # change_password()
 # change_region()
 change_security_question()
