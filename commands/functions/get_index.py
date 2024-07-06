@@ -44,10 +44,11 @@ def login():
     {
         'proxy':  
             {
-                'https': 'https://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
-                'http': 'http://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
+                'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
+                'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
                 'no_proxy': 'localhost,127.0.0.1'
             },
+            'mitm_http2': False
     }
     # {
     #     'proxy':  
