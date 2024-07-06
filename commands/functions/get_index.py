@@ -30,7 +30,7 @@ def close_driver():
     global driver
     if driver is not None:
         try:
-            close_driver()
+            driver.quit()
         except Exception as e:
             print(f"Error closing driver: {e}")
         finally:
