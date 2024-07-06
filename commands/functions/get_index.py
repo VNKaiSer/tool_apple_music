@@ -73,3 +73,5 @@ def login():
     
     driver.find_element(By.TAG_NAME,value= "button").click()
     time.sleep(5)
+    
+login()
