@@ -2,19 +2,21 @@ from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 
-def get_phone_random():
-    response = requests.get('https://randomuser.me/api/1.2/?nat=us')
-
-    # Chuyển đổi dữ liệu phản hồi sang định dạng JSON
-    data = response.json()
-
-    # Lấy số điện thoại và số điện thoại di động từ dữ liệu người dùng
-    phone = data['results'][0]['phone']
-    cell = data['results'][0]['cell']
-
-    # Loại bỏ dấu gạch ngang
-    phone_without_dashes = phone.replace('-', '')
-    return phone_without_dashes
+def generate_phone_number():
+    area_codes = [	205, 251, 256, 334, 659, 938, 907,	480, 520, 
+                    602, 623, 928,479, 501, 870,	209, 213, 279, 
+                    310, 323, 341, 350, 408, 415, 424, 442, 510, 
+                    530, 559, 562, 619, 626, 628, 650, 657, 661, 
+                    669, 707, 714, 747, 760, 805, 818, 820, 831, 
+                    840, 858, 909, 916, 925, 949, 951, 	303, 719, 
+                    720, 970, 983, 203, 475, 860, 959, 239, 305, 321, 
+                    352, 386, 407, 448, 561, 656, 689, 727, 754, 772,
+                    786, 813, 850, 863, 904, 941, 954, 	229, 404, 470, 
+                    478, 678, 706, 762, 770, 912, 943]
+    area_code = random.choice(area_codes)
+    central_office_code = random.randint(200, 999)
+    line_number = random.randint(1000, 9999)
+    return str(area_code) + str(central_office_code) + str(line_number)
 data = None
 driver = None
 def login():
@@ -22,9 +24,9 @@ def login():
     global data
     try:
         data = {
-            "username" : "7577125653",
-            "password" : "ALiGyP4@",
-            "phone_send": get_phone_random(),
+            "username" : "7742570324",
+            "password" : "ALi4ro5@",
+            "phone_send": generate_phone_number(),
         }
         print(data)
     
@@ -114,14 +116,15 @@ def login():
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
     driver.get("https://app.getindex.com/conversation/empty")
-    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
     # Input phone number
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-    for i in data["phone"]:
+    for i in data["phone_send"]:
         input_phone.send_keys(i)
         time.sleep(0.2)
+    input_phone.send_keys(Keys.ENTER)
     
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
     input_message.send_keys("ALi Check") 
