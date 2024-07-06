@@ -33,14 +33,25 @@ def login():
     {
         'proxy':  
             {
-                'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-                'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
                 'https': f'https://usa.rotating.proxyrack.net:{random_port}',
                 'http': f'http://usa.rotating.proxyrack.net:{random_port}',
                 'no_proxy': 'localhost,127.0.0.1'
             },
-        'port': generate_random_port()
-    }
+        'port': generate_random_port(),
+        'disable_encoding': True
+    
+    },
+    # {
+    #     'proxy':  
+    #         {
+    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'no_proxy': 'localhost,127.0.0.1'
+    #         },
+    #     'port': generate_random_port()
+    # }
     ]
     proxy = random.choice(random_proxy)
     
