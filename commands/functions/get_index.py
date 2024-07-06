@@ -30,17 +30,25 @@ def login():
     #     'disable_encoding': True
     
     # },
+    # {
+    #     'proxy':  
+    #         {
+    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'no_proxy': 'localhost,127.0.0.1'
+    #         },
+    #     'port': generate_random_port(),
+    #     'disable_encoding': True
+    
+    # },
     {
-        'proxy':  
+        proxy:  
             {
-                'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-                'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                'https': 'https://gate.dc.smartproxy.com:20000:daigia403:Zxcv123321',
+                'http': 'http://gate.dc.smartproxy.com:20000:daigia403:Zxcv123321',
                 'no_proxy': 'localhost,127.0.0.1'
             },
-        'port': generate_random_port(),
-        'disable_encoding': True
-    
-    },
+    }
     # {
     #     'proxy':  
     #         {
