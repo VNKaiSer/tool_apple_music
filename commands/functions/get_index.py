@@ -44,8 +44,8 @@ def login():
     {
         proxy:  
             {
-                'https': 'https://gate.dc.smartproxy.com:20000:daigia403:Zxcv123321',
-                'http': 'http://gate.dc.smartproxy.com:20000:daigia403:Zxcv123321',
+                'https': 'https://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
+                'http': 'http://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
                 'no_proxy': 'localhost,127.0.0.1'
             },
     }
