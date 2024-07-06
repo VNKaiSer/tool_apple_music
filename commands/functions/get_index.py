@@ -115,6 +115,7 @@ def login():
     
     time.sleep(8)
     for request in driver.requests:
+        print(request.url)
         if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
             body = request.response.body
             data = json.loads(body)
@@ -125,30 +126,34 @@ def login():
             else:
                 break
     # https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-    app_root = driver.find_element(By.TAG_NAME, 'app-root')
-    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
-    driver.get("https://app.getindex.com/conversation/empty")
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-    app_root = driver.find_element(By.TAG_NAME, 'app-root')
-    # Input phone number
-    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-    input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-    time.sleep(0.2)
-    input_phone.send_keys(data["phone_send"])
-    time.sleep(0.2)
-    input_phone.send_keys(Keys.ENTER)
-    print(input_phone.get_attribute('value'))
-    while input_phone.get_attribute('value') == '':
-        try:
-            time.sleep(0.2)
-            input_phone.send_keys(data["phone_send"])
-            time.sleep(0.2)
-            input_phone.send_keys(Keys.ENTER)
-            break
-        except Exception as e:
-            print(e)
-            time.sleep(1)
+    try: 
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        app_root = driver.find_element(By.TAG_NAME, 'app-root')
+        WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
+        driver.get("https://app.getindex.com/conversation/empty")
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        app_root = driver.find_element(By.TAG_NAME, 'app-root')
+        # Input phone number
+        WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+        input_phone = app_root.find_element(By.TAG_NAME,value= "input")
+        time.sleep(0.2)
+        input_phone.send_keys(data["phone_send"])
+        time.sleep(0.2)
+        input_phone.send_keys(Keys.ENTER)
+        print(input_phone.get_attribute('value'))
+        while input_phone.get_attribute('value') == '':
+            try:
+                time.sleep(0.2)
+                input_phone.send_keys(data["phone_send"])
+                time.sleep(0.2)
+                input_phone.send_keys(Keys.ENTER)
+                break
+            except Exception as e:
+                print(e)
+                time.sleep(1)
+    except Exception as e:
+        print('Không kịp request làm lại')
+        return
     
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
