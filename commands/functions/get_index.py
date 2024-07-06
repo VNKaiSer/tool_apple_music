@@ -126,6 +126,7 @@ def login():
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
+    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
     input_message.send_keys("ALi Check") 
     time.sleep(0.5)
