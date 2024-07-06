@@ -40,8 +40,9 @@ def login():
     try:
         global driver
         global data
-        username, password = getData()
+        
         try:
+            username, password = getData()
             data = {
                 "username" : username,
                 "password" : password,
@@ -50,7 +51,8 @@ def login():
             print(data)
         
         except:
-            print("error")
+            print("Het acc")
+            return
         random_port = random.randint(10000, 10249)
         random_proxy = [
         # {
