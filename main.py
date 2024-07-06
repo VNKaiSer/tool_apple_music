@@ -766,7 +766,19 @@ def run_app_tv():
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
 def get_index():
-    pass
+    
+    def run():
+        subprocess.Popen("py ./commands/login_getindex.py")
+    
+    time_run = int(combo.get())
+
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run)
+            time.sleep(10)
+    root.deiconify()
+    
+    
 def reg_apple_tv():
     def run():
         subprocess.Popen("py ./commands/reg_apple_tv_add.py")
@@ -875,8 +887,7 @@ def handle_add_card():
     # Tạo nút xác nhận
     button = tk.Button(add_card_window, text="Xác nhận", command=on_confirm)
     button.pack(pady=20)
-def run_tasks():
-    print(combo.get())
+    
 from tkinter import ttk
 def show_dialog():
     dialog = tk.Toplevel(root)
@@ -891,11 +902,10 @@ def show_dialog():
     combo.pack(padx=10, pady=10)
     combo.current(0)
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=run_tasks)
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=get_index)
     confirm_button.pack(padx=10, pady=10)
 
-    # Đặt focus cho combobox để người dùng dễ dàng nhập liệu
-    combo.focus_set()
+    dialog.destroy()
 
 #===================================GUI END FUCITON======================================
   
