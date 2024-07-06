@@ -17,30 +17,30 @@ def login():
     
     except:
         print("error")
-    random_port = random.randint(9000, 9050)
+    random_port = random.randint(10000, 10249)
     random_proxy = [
-    {
-        'proxy':  
-            {
-                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-        'port': generate_random_port(),
-        'disable_encoding': True
-    
-    },
     # {
     #     'proxy':  
     #         {
-    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+    #             'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
     #             'no_proxy': 'localhost,127.0.0.1'
     #         },
-    #     'port': generate_random_port()
-    # }
+    #     'port': generate_random_port(),
+    #     'disable_encoding': True
+    
+    # },
+    {
+        'proxy':  
+            {
+                'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+                'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+                'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+                'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+                'no_proxy': 'localhost,127.0.0.1'
+            },
+        'port': generate_random_port()
+    }
     ]
     proxy = random.choice(random_proxy)
     
@@ -66,12 +66,16 @@ def login():
     
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
-    print(app_root)
+    inputs = app_root.find_elements(By.TAG_NAME,value= "input")
+    inputs[0].send_keys(data["username"])
+    time.sleep(1)
+    inputs[1].send_keys(data["password"])
+    time.sleep(1)
+    inputs[1].send_keys(Keys.ENTER)
     time.sleep(5000)
     # inputs[0].send_keys(data["username"])
     # inputs[1].send_keys(data["password"])
     
-    driver.find_element(By.TAG_NAME,value= "button").click()
     time.sleep(5)
     
 login()
