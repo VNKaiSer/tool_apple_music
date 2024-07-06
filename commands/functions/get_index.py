@@ -19,13 +19,21 @@ def generate_phone_number():
     return str(area_code) + str(central_office_code) + str(line_number)
 data = None
 driver = None
+
+def getData():
+    acc_get = db_instance.get_acc_get_index()
+    username = acc_get[1]
+    password = acc_get[2]
+    return username, password
+    
 def login():
     global driver
     global data
+    username, password = getData()
     try:
         data = {
-            "username" : "7742570324",
-            "password" : "ALi4ro5@",
+            "username" : username,
+            "password" : password,
             "phone_send": generate_phone_number(),
         }
         print(data)
@@ -96,7 +104,7 @@ def login():
     try: 
         driver.get("https://app.getindex.com/login")
     except Exception as e:
-        # làm lại
+        db_instance.update_rerun_acc_get_index(username)
         return
     
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
@@ -118,11 +126,12 @@ def login():
         print(request.url)
         if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
             body = request.response.body
-            data = json.loads(body)
-            if 'errNo' in data and data['errNo'] is not None:
-                if(data['errNo'] == 119):
-                    print('Sai mat khau', errNo)  # Output: 2205
-                    break
+            dataReq = json.loads(body)
+            if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                if(dataReq['errNo'] == 119):
+                    db_instance.result_acc_getindex(username, "sai pass")
+                    driver.quit()
+                    return
             else:
                 break
     # https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth
@@ -152,7 +161,7 @@ def login():
                 print(e)
                 time.sleep(1)
     except Exception as e:
-        print('Không kịp request làm lại')
+        db_instance.update_rerun_acc_get_index(username)
         return
     
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
@@ -165,7 +174,9 @@ def login():
     # Kiểm tra kết trường hợp contact support
     try:
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-        print('contact support')
+        db_instance.result_acc_getindex(username, "support")
+        driver.quit()
+        return
     except Exception as e:
         print('No contact support')
         
@@ -173,16 +184,15 @@ def login():
     for request in driver.requests:
         if 'https://api.pinger.com/2.2/message' in request.url:
             body = request.response.body
-            data = json.loads(body)
-            if 'errNo' in data and data['errNo'] is not None:
-                errNo = data['errNo']
+            dataReq = json.loads(body)
+            if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                errNo = dataReq['errNo']
                 print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
-                break
+                db_instance.result_acc_getindex(username, "no sent text")
+                driver.quit()
+                return
             else:
                 break
-            
-
     
-    time.sleep(500)
-    
-login()
+# login()
+print(getData())

@@ -352,6 +352,34 @@ class MySQLDatabase:
             self.cursor.execute(query_insert, (mail_wait, password, code_old))
             self.connection.commit()
     
+    def get_acc_get_index(self):
+        query = "SELECT * FROM get_index_tool WHERE is_running = 'N' LIMIT 1"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        if result:
+            update_running = "UPDATE get_index_tool SET is_running = 'Y' WHERE user_name = %s"
+            self.cursor.execute(update_running, (result[0][1],))
+            self.connection.commit()
+            return result[0]
+        else:
+            return ''
+    
+    def update_rerun_acc_get_index(self, username):
+        query = "UPDATE get_index_tool SET is_running = 'Y' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def insert_acc_getindex(self, username, password):
+        query = "INSERT INTO get_index_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def result_acc_getindex(self, username, ex):
+        query = "UPDATE get_index_tool SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+    
+        
     def get_account_login_apple_tv(self):
         pass
        
