@@ -26,7 +26,8 @@ def login():
                 'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
                 'no_proxy': 'localhost,127.0.0.1'
             },
-        'port': generate_random_port()
+        'port': generate_random_port(),
+        'disable_encoding': True
     
     },
     # {
@@ -55,7 +56,7 @@ def login():
         service=Service(ChromeDriverManager().install()),
         options=chrome_options,
         seleniumwire_options=proxy,
-        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        service_log_path=os.path.devnul  # Chuyển hướng log của ChromeDriver
     )
     try: 
         driver.get("https://app.getindex.com/login")
@@ -63,7 +64,7 @@ def login():
         # làm lại
         return
     
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_all_elements_located((By.ID, 'ion-input-0')))
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.ID, 'ion-input-0')))
     inputs = driver.find_elements(By.ID,value= "input")
     time.sleep(5000)
     inputs[0].send_keys(data["username"])
