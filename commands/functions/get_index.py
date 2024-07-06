@@ -58,10 +58,7 @@ def login():
         service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
     )
     try: 
-        
-        
-        driver.get("https://appleid.apple.com/sign-in")
-        time.sleep(10) 
+        driver.get("https://app.getindex.com/login")
     except Exception as e:
         # làm lại
         return
