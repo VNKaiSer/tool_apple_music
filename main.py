@@ -765,6 +765,8 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
+def get_index():
+    pass
 def reg_apple_tv():
     def run():
         subprocess.Popen("py ./commands/reg_apple_tv_add.py")
@@ -873,6 +875,28 @@ def handle_add_card():
     # Tạo nút xác nhận
     button = tk.Button(add_card_window, text="Xác nhận", command=on_confirm)
     button.pack(pady=20)
+def run_tasks():
+    print(combo.get())
+from tkinter import ttk
+def show_dialog():
+    dialog = tk.Toplevel(root)
+    dialog.title("Nhập số lượng tab")
+
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(padx=10, pady=10)
+
+    # Combobox cho phép chọn số từ 10-30
+    global combo
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(padx=10, pady=10)
+    combo.current(0)
+
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=run_tasks)
+    confirm_button.pack(padx=10, pady=10)
+
+    # Đặt focus cho combobox để người dùng dễ dàng nhập liệu
+    combo.focus_set()
+
 #===================================GUI END FUCITON======================================
   
 #===================================GUI=========================================
@@ -928,7 +952,7 @@ featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
 featuremenu.add_separator()
-# featuremenu.add_command(label='Get index tool', command=get_index)
+featuremenu.add_command(label='Get index tool', command=get_index)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
