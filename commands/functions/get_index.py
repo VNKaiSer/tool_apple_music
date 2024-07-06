@@ -52,6 +52,7 @@ def login():
         
         except:
             print("Het acc")
+            sys.exit()
             return
         random_port = random.randint(10000, 10249)
         random_proxy = [

@@ -905,7 +905,7 @@ def show_dialog():
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=get_index)
     confirm_button.pack(padx=10, pady=10)
 
-    dialog.destroy()
+    # dialog.destroy()
 
 #===================================GUI END FUCITON======================================
   
