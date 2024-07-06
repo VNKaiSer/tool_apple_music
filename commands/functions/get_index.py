@@ -3,8 +3,18 @@ from faker import Faker
 fake = Faker(locale='en_US')
 
 def get_phone_random():
-    phone = fake.phone_number()
-    return phone.replace('-', '').replace('(', '').replace(')', '').replace(' ', '')
+    response = requests.get('https://randomuser.me/api/1.2/?nat=us')
+
+    # Chuyển đổi dữ liệu phản hồi sang định dạng JSON
+    data = response.json()
+
+    # Lấy số điện thoại và số điện thoại di động từ dữ liệu người dùng
+    phone = data['results'][0]['phone']
+    cell = data['results'][0]['cell']
+
+    # Loại bỏ dấu gạch ngang
+    phone_without_dashes = phone.replace('-', '')
+    return phone_without_dashes
 data = None
 driver = None
 def login():
@@ -99,16 +109,25 @@ def login():
     # inputs[0].send_keys(data["username"])
     # inputs[1].send_keys(data["password"])
     
-    time.sleep(5)
+    time.sleep(8)
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
-    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
+    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
     driver.get("https://app.getindex.com/conversation/empty")
-    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
     # Input phone number
-    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-    input_phone.send_keys(data["phone_send"])
+    for i in data["phone"]:
+        input_phone.send_keys(i)
+        time.sleep(0.2)
+    
+    input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
+    input_message.send_keys("ALi Check") 
+    time.sleep(0.5)
+    input_message.send_keys(Keys.ENTER)
+    
+    time.sleep(500)
     
 login()
