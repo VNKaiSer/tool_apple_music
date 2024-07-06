@@ -952,7 +952,7 @@ featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
 featuremenu.add_separator()
-featuremenu.add_command(label='Get index tool', command=get_index)
+featuremenu.add_command(label='Get index tool', command=show_dialog)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
