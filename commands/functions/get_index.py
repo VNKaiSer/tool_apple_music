@@ -42,7 +42,7 @@ def login():
     
     # },
     {
-        proxy:  
+        'proxy':  
             {
                 'https': 'https://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
                 'http': 'http://gate.dc.smartproxy.com:20000:adz56789:Zxcv123123=5',
@@ -75,7 +75,7 @@ def login():
         service=Service(ChromeDriverManager().install()),
         options=chrome_options,
         seleniumwire_options=proxy,
-        service_log_path=os.path.devnul  # Chuyển hướng log của ChromeDriver
+        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
     )
     try: 
         driver.get("https://app.getindex.com/login")
