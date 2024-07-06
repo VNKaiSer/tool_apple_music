@@ -51,6 +51,11 @@ class MySQLDatabase:
         print(result)
         return result
     
+    def insert_acc_getindex(self, username, password):
+        query = "INSERT IGNORE INTO get_index_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
 
     def close(self):
         self.connection.close()

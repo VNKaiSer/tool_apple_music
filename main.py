@@ -313,6 +313,7 @@ sys.path.append('./utils')
 sys.path.append('./')
 from utils import import_id 
 from utils import import_card
+from utils import import_acc_getindex
 import threading
 from PIL import Image, ImageTk
 import os
@@ -347,7 +348,18 @@ def add_card():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
-        
+def add_getindex():
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_acc_getindex.process_data(content)
+                messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
+                
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
 def clear_frame(frame):
     for widget in frame.winfo_children():
         widget.destroy()
@@ -774,6 +786,8 @@ def reg_apple_tv():
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_tv)
     submit_btn.pack(pady=10)
 
+# def 
+
 def clear_frame(frame):
     for widget in frame.winfo_children():
         widget.destroy()
@@ -882,6 +896,7 @@ menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
 add_data_menu.add_command(label='Thêm id', command=add_id)
 add_data_menu.add_command(label='Thêm thẻ', command=add_card)
 add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm acc getindex', command=add_getindex)
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)
@@ -894,6 +909,8 @@ featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
+featuremenu.add_separator()
+# featuremenu.add_command(label='Get index tool', command=get_index)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
