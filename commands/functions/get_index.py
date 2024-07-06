@@ -121,10 +121,17 @@ def login():
     # Input phone number
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
+    time.sleep(0.2)
+    input_phone.send_keys(data["phone_send"])
+    time.sleep(0.2)
+    input_phone.send_keys(Keys.ENTER)
+    print(input_phone.get_attribute('value'))
     while input_phone.get_attribute('value') == '':
         try:
-            input_phone.clear()
-            input_phone.send_keys(data["phone"])
+            time.sleep(0.2)
+            input_phone.send_keys(data["phone_send"])
+            time.sleep(0.2)
+            input_phone.send_keys(Keys.ENTER)
             break
         except Exception as e:
             print(e)
