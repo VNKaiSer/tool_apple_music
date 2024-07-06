@@ -25,7 +25,17 @@ def getData():
     username = acc_get[1]
     password = acc_get[2]
     return username, password
-    
+
+def close_driver():
+    global driver
+    if driver is not None:
+        try:
+            close_driver()
+        except Exception as e:
+            print(f"Error closing driver: {e}")
+        finally:
+            driver = None
+            
 def login():
     global driver
     global data
@@ -105,6 +115,7 @@ def login():
         driver.get("https://app.getindex.com/login")
     except Exception as e:
         db_instance.update_rerun_acc_get_index(username)
+        close_driver()
         return
     
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
@@ -130,7 +141,7 @@ def login():
             if 'errNo' in dataReq and dataReq['errNo'] is not None:
                 if(dataReq['errNo'] == 119):
                     db_instance.result_acc_getindex(username, "sai pass")
-                    driver.quit()
+                    close_driver()
                     return
             else:
                 break
@@ -175,7 +186,7 @@ def login():
     try:
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
         db_instance.result_acc_getindex(username, "support")
-        driver.quit()
+        close_driver()
         return
     except Exception as e:
         print('No contact support')
@@ -189,7 +200,7 @@ def login():
                 errNo = dataReq['errNo']
                 print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
                 db_instance.result_acc_getindex(username, "no sent text")
-                driver.quit()
+                close_driver()
                 return
             else:
                 break
