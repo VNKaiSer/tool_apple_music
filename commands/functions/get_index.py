@@ -2,6 +2,9 @@ from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 
+def get_phone_random():
+    phone = fake.phone_number()
+    return phone.replace('-', '').replace('(', '').replace(')', '').replace(' ', '')
 data = None
 driver = None
 def login():
@@ -11,7 +14,7 @@ def login():
         data = {
             "username" : "7577125653",
             "password" : "ALiGyP4@",
-            "phone_send": fake.phone_number(),
+            "phone_send": get_phone_random(),
         }
         print(data)
     
@@ -88,14 +91,24 @@ def login():
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
     inputs = app_root.find_elements(By.TAG_NAME,value= "input")
     inputs[0].send_keys(data["username"])
-    time.sleep(1)
+    time.sleep(0.5)
     inputs[1].send_keys(data["password"])
-    time.sleep(1)
+    time.sleep(0.5)
     inputs[1].send_keys(Keys.ENTER)
-    time.sleep(5000)
+    
     # inputs[0].send_keys(data["username"])
     # inputs[1].send_keys(data["password"])
     
     time.sleep(5)
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    app_root = driver.find_element(By.TAG_NAME, 'app-root')
+    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
+    driver.get("https://app.getindex.com/conversation/empty")
+    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    app_root = driver.find_element(By.TAG_NAME, 'app-root')
+    # Input phone number
+    WebDriverWait(app_root, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+    input_phone = app_root.find_element(By.TAG_NAME,value= "input")
+    input_phone.send_keys(data["phone_send"])
     
 login()
