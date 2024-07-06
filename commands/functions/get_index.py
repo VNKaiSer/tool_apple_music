@@ -64,11 +64,12 @@ def login():
         # làm lại
         return
     
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.ID, 'ion-input-0')))
-    inputs = driver.find_elements(By.ID,value= "input")
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    app_root = driver.find_element(By.TAG_NAME, 'app-root')
+    print(app_root)
     time.sleep(5000)
-    inputs[0].send_keys(data["username"])
-    inputs[1].send_keys(data["password"])
+    # inputs[0].send_keys(data["username"])
+    # inputs[1].send_keys(data["password"])
     
     driver.find_element(By.TAG_NAME,value= "button").click()
     time.sleep(5)
