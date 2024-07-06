@@ -37,173 +37,178 @@ def close_driver():
             driver = None
             
 def login():
-    global driver
-    global data
-    username, password = getData()
     try:
-        data = {
-            "username" : username,
-            "password" : password,
-            "phone_send": generate_phone_number(),
+        global driver
+        global data
+        username, password = getData()
+        try:
+            data = {
+                "username" : username,
+                "password" : password,
+                "phone_send": generate_phone_number(),
+            }
+            print(data)
+        
+        except:
+            print("error")
+        random_port = random.randint(10000, 10249)
+        random_proxy = [
+        # {
+        #     'proxy':  
+        #         {
+        #             'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+        #             'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         },
+        #     'port': generate_random_port(),
+        #     'disable_encoding': True
+        
+        # },
+        # {
+        #     'proxy':  
+        #         {
+        #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         },
+        #     'port': generate_random_port(),
+        #     'disable_encoding': True
+        
+        # },
+        {
+            'proxy':  
+                {
+                    'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
+                    'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
+                    'no_proxy': 'localhost,127.0.0.1'
+                },
+                'mitm_http2': False
         }
-        print(data)
-    
-    except:
-        print("error")
-    random_port = random.randint(10000, 10249)
-    random_proxy = [
-    # {
-    #     'proxy':  
-    #         {
-    #             'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-    #             'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-    #             'no_proxy': 'localhost,127.0.0.1'
-    #         },
-    #     'port': generate_random_port(),
-    #     'disable_encoding': True
-    
-    # },
-    # {
-    #     'proxy':  
-    #         {
-    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-    #             'no_proxy': 'localhost,127.0.0.1'
-    #         },
-    #     'port': generate_random_port(),
-    #     'disable_encoding': True
-    
-    # },
-    {
-        'proxy':  
-            {
-                'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
-                'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-            'mitm_http2': False
-    }
-    # {
-    #     'proxy':  
-    #         {
-    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-    #             'no_proxy': 'localhost,127.0.0.1'
-    #         },
-    #     'port': generate_random_port()
-    # }
-    ]
-    proxy = random.choice(random_proxy)
-    
-    
-    
-    chrome_options = Options()
-    chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.add_argument('--allow-insecure-localhost')
-    chrome_options.add_argument('--ignore-ssl-errors=yes')
-    chrome_options.add_argument('--log-level=3')  # Selenium log level
-    
-    driver = uc.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=chrome_options,
-        seleniumwire_options=proxy,
-        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
-    )
-    try: 
-        driver.get("https://app.getindex.com/login")
-    except Exception as e:
-        db_instance.update_rerun_acc_get_index(username)
-        close_driver()
-        return
-    
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-    app_root = driver.find_element(By.TAG_NAME, 'app-root')
-    inputs = app_root.find_elements(By.TAG_NAME,value= "input")
-    inputs[0].send_keys(data["username"])
-    time.sleep(0.5)
-    inputs[1].send_keys(data["password"])
-    time.sleep(0.5)
-    inputs[1].send_keys(Keys.ENTER)
-    
-    # Check error login
-    
-    # inputs[0].send_keys(data["username"])
-    # inputs[1].send_keys(data["password"])
-    
-    time.sleep(8)
-    for request in driver.requests:
-        print(request.url)
-        if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
-            body = request.response.body
-            dataReq = json.loads(body)
-            if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                if(dataReq['errNo'] == 119):
-                    db_instance.result_acc_getindex(username, "sai pass")
+        # {
+        #     'proxy':  
+        #         {
+        #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         },
+        #     'port': generate_random_port()
+        # }
+        ]
+        proxy = random.choice(random_proxy)
+        
+        
+        
+        chrome_options = Options()
+        chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument('--allow-insecure-localhost')
+        chrome_options.add_argument('--ignore-ssl-errors=yes')
+        chrome_options.add_argument('--log-level=3')  # Selenium log level
+        
+        driver = uc.Chrome(
+            service=Service(ChromeDriverManager().install()),
+            options=chrome_options,
+            seleniumwire_options=proxy,
+            service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        )
+        try: 
+            driver.get("https://app.getindex.com/login")
+        except Exception as e:
+            db_instance.update_rerun_acc_get_index(username)
+            close_driver()
+            return
+        
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        app_root = driver.find_element(By.TAG_NAME, 'app-root')
+        inputs = app_root.find_elements(By.TAG_NAME,value= "input")
+        inputs[0].send_keys(data["username"])
+        time.sleep(0.5)
+        inputs[1].send_keys(data["password"])
+        time.sleep(0.5)
+        inputs[1].send_keys(Keys.ENTER)
+        
+        # Check error login
+        
+        # inputs[0].send_keys(data["username"])
+        # inputs[1].send_keys(data["password"])
+        
+        time.sleep(8)
+        for request in driver.requests:
+            print(request.url)
+            if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
+                body = request.response.body
+                dataReq = json.loads(body)
+                if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                    if(dataReq['errNo'] == 119):
+                        db_instance.result_acc_getindex(username, "sai pass")
+                        close_driver()
+                        return
+                else:
+                    break
+        # https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth
+        try: 
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+            WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
+            driver.get("https://app.getindex.com/conversation/empty")
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+            # Input phone number
+            WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+            input_phone = app_root.find_element(By.TAG_NAME,value= "input")
+            time.sleep(0.2)
+            input_phone.send_keys(data["phone_send"])
+            time.sleep(0.2)
+            input_phone.send_keys(Keys.ENTER)
+            print(input_phone.get_attribute('value'))
+            while input_phone.get_attribute('value') == '':
+                try:
+                    time.sleep(0.2)
+                    input_phone.send_keys(data["phone_send"])
+                    time.sleep(0.2)
+                    input_phone.send_keys(Keys.ENTER)
+                    break
+                except Exception as e:
+                    print(e)
+                    time.sleep(1)
+        except Exception as e:
+            db_instance.update_rerun_acc_get_index(username)
+            close_driver()
+            return
+        
+        WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+        input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
+        time.sleep(0.3)
+        input_message.send_keys("ALi Check") 
+        time.sleep(0.5)
+        input_message.send_keys(Keys.ENTER)
+        time.sleep(5)
+        # Kiểm tra kết trường hợp contact support
+        try:
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            db_instance.result_acc_getindex(username, "support")
+            close_driver()
+            return
+        except Exception as e:
+            print('No contact support')
+            
+        # Kiểm tra lỗi not sent text 
+        for request in driver.requests:
+            if 'https://api.pinger.com/2.2/message' in request.url:
+                body = request.response.body
+                dataReq = json.loads(body)
+                if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                    errNo = dataReq['errNo']
+                    print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
+                    db_instance.result_acc_getindex(username, "no sent text")
                     close_driver()
                     return
-            else:
-                break
-    # https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth
-    try: 
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        app_root = driver.find_element(By.TAG_NAME, 'app-root')
-        WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
-        driver.get("https://app.getindex.com/conversation/empty")
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        app_root = driver.find_element(By.TAG_NAME, 'app-root')
-        # Input phone number
-        WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-        input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-        time.sleep(0.2)
-        input_phone.send_keys(data["phone_send"])
-        time.sleep(0.2)
-        input_phone.send_keys(Keys.ENTER)
-        print(input_phone.get_attribute('value'))
-        while input_phone.get_attribute('value') == '':
-            try:
-                time.sleep(0.2)
-                input_phone.send_keys(data["phone_send"])
-                time.sleep(0.2)
-                input_phone.send_keys(Keys.ENTER)
-                break
-            except Exception as e:
-                print(e)
-                time.sleep(1)
-    except Exception as e:
-        db_instance.update_rerun_acc_get_index(username)
-        return
-    
-    WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-    input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
-    time.sleep(0.3)
-    input_message.send_keys("ALi Check") 
-    time.sleep(0.5)
-    input_message.send_keys(Keys.ENTER)
-    time.sleep(5)
-    # Kiểm tra kết trường hợp contact support
-    try:
-        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-        db_instance.result_acc_getindex(username, "support")
+                else:
+                    break
+        db_instance.result_acc_getindex(username, "done")
         close_driver()
-        return
-    except Exception as e:
-        print('No contact support')
-        
-    # Kiểm tra lỗi not sent text 
-    for request in driver.requests:
-        if 'https://api.pinger.com/2.2/message' in request.url:
-            body = request.response.body
-            dataReq = json.loads(body)
-            if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                errNo = dataReq['errNo']
-                print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
-                db_instance.result_acc_getindex(username, "no sent text")
-                close_driver()
-                return
-            else:
-                break
-    
+    finally:
+        close_driver()
 # login()
 print(getData())
