@@ -123,17 +123,32 @@ def login():
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
     time.sleep(0.5)
     input_phone.send_keys(data["phone_send"])
+    time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
-    
+    time.sleep(1)
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
     input_message.send_keys("ALi Check") 
     time.sleep(0.5)
     input_message.send_keys(Keys.ENTER)
+    time.sleep(5)
+    # Kiểm tra kết trường hợp contact support
+    try:
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        print('contact support')
+    except Exception as e:
+        print('No contact support')
+        
+    # Kiểm tra lỗi not sent text 
     for request in driver.requests:
         if 'https://api.pinger.com/2.2/message' in request.url:
-            print(f"URL: {request.url}")
-            print(f"Status Code: {request.response}")
-            print(f'Body: {request.response.body}')
+            body = request.response.body
+            if 'errNo' in data and data['errNo'] is not None:
+                errNo = data['errNo']
+                print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
+                break
+            else:
+                break
+            
 
     
     time.sleep(500)
