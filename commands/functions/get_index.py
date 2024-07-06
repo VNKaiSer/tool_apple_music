@@ -121,13 +121,18 @@ def login():
     # Input phone number
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-    time.sleep(0.5)
-    input_phone.send_keys(data["phone_send"])
-    time.sleep(0.3)
-    input_phone.send_keys(Keys.ENTER)
-    time.sleep(1)
+    while input_phone.get_attribute('value') == '':
+        try:
+            input_phone.clear()
+            input_phone.send_keys(data["phone"])
+            break
+        except Exception as e:
+            print(e)
+            time.sleep(1)
+    
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
+    time.sleep(0.3)
     input_message.send_keys("ALi Check") 
     time.sleep(0.5)
     input_message.send_keys(Keys.ENTER)
@@ -143,6 +148,7 @@ def login():
     for request in driver.requests:
         if 'https://api.pinger.com/2.2/message' in request.url:
             body = request.response.body
+            data = json.loads(body)
             if 'errNo' in data and data['errNo'] is not None:
                 errNo = data['errNo']
                 print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
