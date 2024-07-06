@@ -108,10 +108,23 @@ def login():
     time.sleep(0.5)
     inputs[1].send_keys(Keys.ENTER)
     
+    # Check error login
+    
     # inputs[0].send_keys(data["username"])
     # inputs[1].send_keys(data["password"])
     
     time.sleep(8)
+    for request in driver.requests:
+        if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
+            body = request.response.body
+            data = json.loads(body)
+            if 'errNo' in data and data['errNo'] is not None:
+                if(data['errNo'] == 119):
+                    print('Sai mat khau', errNo)  # Output: 2205
+                    break
+            else:
+                break
+    # https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     app_root = driver.find_element(By.TAG_NAME, 'app-root')
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'h1')))
@@ -146,7 +159,7 @@ def login():
     time.sleep(5)
     # Kiểm tra kết trường hợp contact support
     try:
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
         print('contact support')
     except Exception as e:
         print('No contact support')
