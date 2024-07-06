@@ -258,6 +258,12 @@ class MySQLDatabase:
         self.cursor.execute(query, (mail[0], mail[1], mail[2]))
         self.connection.commit()
         
+    def analysis_acc_getindex(self):
+        query = "SELECT user_name, password,ex FROM get_index_tool WHERE is_running = 'Y'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+        
     def close(self):
         self.connection.close()
         
@@ -592,7 +598,19 @@ def export_login_delete_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
-
+def export_acc_getindex():
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_getindex():
+                    file.write(data[0] + '|' + data[1] + data[2] + '\n')
+                messagebox.showinfo("Thể báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thể báo", "Error: Xuất dữ liệu thất bại")
+        
 import json
 def handle_onpen_tool():
     with open('./config/tool-config.json', 'r+') as f:
@@ -920,6 +938,9 @@ analysis_menu.add_command(label='Xuất thẻ thành công', command=export_succ
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+analysis_menu.add_separator()
+
+analysis_menu.add_command(label='Xuất acc getindex', command=export_acc_getindex)
 
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
