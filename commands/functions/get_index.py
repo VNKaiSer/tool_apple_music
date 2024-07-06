@@ -121,15 +121,20 @@ def login():
     # Input phone number
     WebDriverWait(app_root, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
     input_phone = app_root.find_element(By.TAG_NAME,value= "input")
-    for i in data["phone_send"]:
-        input_phone.send_keys(i)
-        time.sleep(0.2)
+    time.sleep(0.5)
+    input_phone.send_keys(data["phone_send"])
     input_phone.send_keys(Keys.ENTER)
     
     input_message = app_root.find_element(By.TAG_NAME,value= "textarea")
     input_message.send_keys("ALi Check") 
     time.sleep(0.5)
     input_message.send_keys(Keys.ENTER)
+    for request in driver.requests:
+        if 'https://api.pinger.com/2.2/message' in request.url:
+            print(f"URL: {request.url}")
+            print(f"Status Code: {request.response}")
+            print(f'Body: {request.response.body}')
+
     
     time.sleep(500)
     
