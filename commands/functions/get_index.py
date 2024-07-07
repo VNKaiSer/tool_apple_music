@@ -5,7 +5,7 @@ fake = Faker(locale='en_US')
 def generate_phone_number():
     area_codes = [
         205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
-        479, 501, 870, 209, 213, 279, 310, 323, 341, 350, 408, 415,
+        479, 501, 870, 209, 213, 279, 310, 341, 350, 408, 415,
         424, 442, 510, 530, 559, 562, 619, 626, 628, 650, 657, 661,
         669, 707, 714, 747, 760, 805, 818, 820, 831, 840, 858, 909,
         916, 925, 949, 951, 303, 719, 720, 970, 983, 203, 475, 860,
@@ -90,7 +90,7 @@ def login():
                         driver.quit()
                         return
                     if dataReq['errNo'] == 2218:
-                        db_instance.result_acc_getindex(username, "Trial")
+                        db_instance.result_acc_getindex(username, "NoSub")
                         driver.quit()
                         return
 
