@@ -89,24 +89,36 @@ def login():
                         db_instance.result_acc_getindex(username, "sai pass")
                         driver.quit()
                         return
-        
+                    if dataReq['errNo'] == 2218:
+                        db_instance.result_acc_getindex(username, "Trial")
+                        driver.quit()
+                        return
+
+        try:
         # Gửi tin nhắn
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        driver.get("https://app.getindex.com/conversation/empty")
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-        input_phone = driver.find_element(By.TAG_NAME, "input")
-        input_phone.send_keys(data["phone_send"])
-        input_phone.send_keys(Keys.ENTER)
-        
-        while input_phone.get_attribute('value') == '':
-            time.sleep(0.2)
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            driver.get("https://app.getindex.com/conversation/empty")
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+            input_phone = driver.find_element(By.TAG_NAME, "input")
             input_phone.send_keys(data["phone_send"])
             input_phone.send_keys(Keys.ENTER)
-            break
+            
+            while input_phone.get_attribute('value') == '':
+                time.sleep(1)
+                input_phone.send_keys(data["phone_send"])
+                time.sleep(0.3)
+                input_phone.send_keys(Keys.ENTER)
+                break
+        except Exception as e:
+            db_instance.result_acc_getindex(username, "NoTrial")
+            driver.quit()
+            return
         
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
         input_message = driver.find_element(By.TAG_NAME, "textarea")
+        time.sleep(1)
         input_message.send_keys("ALi Check")
+        time.sleep(0.3)
         input_message.send_keys(Keys.ENTER)
         
         # Kiểm tra trường hợp hỗ trợ
@@ -134,7 +146,6 @@ def login():
 
         
     except Exception as e:
-        print(e)
         db_instance.update_rerun_acc_get_index(username)
 
 
