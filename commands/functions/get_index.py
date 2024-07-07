@@ -21,7 +21,7 @@ def generate_phone_number():
 def getData():
     acc_get = db_instance.get_acc_get_index()
     if acc_get == '':
-        sys.exit()
+        return None
     username = acc_get[1]
     password = acc_get[2]
     return username, password
@@ -31,7 +31,10 @@ def login():
     driver = None
     try:
         try:
-            username, password = getData()
+            tmp = getData()
+            if tmp == None:
+                return
+            username, password = tmp
             data = {
                 "username" : username,
                 "password" : password,
@@ -41,7 +44,7 @@ def login():
         
         except:
             print("Het acc")
-            sys.exit()
+            return
         random_port = random.randint(10000, 10249)
         random_proxy = [
         # {
