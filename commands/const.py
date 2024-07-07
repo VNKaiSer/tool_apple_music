@@ -379,6 +379,12 @@ class MySQLDatabase:
         self.cursor.execute(query, (ex, username))
         self.connection.commit()
     
+    def count_account_getindex_store(self):
+        query = "SELECT COUNT(*) FROM get_index_tool WHERE is_running = 'N'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
         
     def get_account_login_apple_tv(self):
         pass
