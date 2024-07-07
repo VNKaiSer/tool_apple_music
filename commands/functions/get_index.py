@@ -198,8 +198,6 @@ def login():
                 body = request.response.body
                 dataReq = json.loads(body)
                 if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                    errNo = dataReq['errNo']
-                    print(' Có lỗi not sent text. errNo:', errNo)  # Output: 2205
                     db_instance.result_acc_getindex(username, "no sent text")
                     driver.quit()
                     return
