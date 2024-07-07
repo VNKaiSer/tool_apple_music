@@ -605,11 +605,11 @@ def export_acc_getindex():
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_acc_getindex():
                     file.write(data[0] + '|' + data[1] + '|' + data[2] + '\n')
-                messagebox.showinfo("Thể báo", "Xuất dữ liệu thành công")
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
         print(e)
-        messagebox.showerror("Thể báo", "Error: Xuất dữ liệu thất bại")
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
         
 import json
 def handle_onpen_tool():

@@ -10,11 +10,10 @@ def check_run_app():
     return data['RUN']
 
 while check_run_app(): 
-    print("Đang chạy get index")
-    print(check_run_app())   
+    print("RUN get index")
     get_index.login()
     time.sleep(3)
 
-print("Đã dừng ")
+print("STOP")
 sys.exit()
 
