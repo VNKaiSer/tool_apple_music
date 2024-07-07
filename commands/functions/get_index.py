@@ -20,6 +20,8 @@ def generate_phone_number():
 
 def getData():
     acc_get = db_instance.get_acc_get_index()
+    if acc_get == '':
+        sys.exit()
     username = acc_get[1]
     password = acc_get[2]
     return username, password
