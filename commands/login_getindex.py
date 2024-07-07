@@ -15,5 +15,5 @@ while check_run_app():
     time.sleep(3)
 
 print("STOP")
-sys.exit()
+
 
