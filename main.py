@@ -604,7 +604,8 @@ def export_acc_getindex():
         if file_path:
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_acc_getindex():
-                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '\n')
+                    ex = "Unknown" if data[2] is None else  data[2] 
+                    file.write(data[0] + '|' + data[1] + '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
