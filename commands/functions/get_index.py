@@ -124,7 +124,6 @@ def login():
         
         time.sleep(8)
         for request in driver.requests:
-            print(request.url)
             if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
                 body = request.response.body
                 dataReq = json.loads(body)
