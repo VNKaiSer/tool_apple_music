@@ -103,20 +103,20 @@ def login():
         )
         try: 
             driver.get("https://app.getindex.com/login")
+        
+        
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+            inputs = app_root.find_elements(By.TAG_NAME,value= "input")
+            inputs[0].send_keys(data["username"])
+            time.sleep(0.5)
+            inputs[1].send_keys(data["password"])
+            time.sleep(0.5)
+            inputs[1].send_keys(Keys.ENTER)
         except Exception as e:
             db_instance.update_rerun_acc_get_index(username)
             driver.quit()
             return
-        
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        app_root = driver.find_element(By.TAG_NAME, 'app-root')
-        inputs = app_root.find_elements(By.TAG_NAME,value= "input")
-        inputs[0].send_keys(data["username"])
-        time.sleep(0.5)
-        inputs[1].send_keys(data["password"])
-        time.sleep(0.5)
-        inputs[1].send_keys(Keys.ENTER)
-        
         # Check error login
         
         # inputs[0].send_keys(data["username"])
