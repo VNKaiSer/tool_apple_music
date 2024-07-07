@@ -365,7 +365,7 @@ class MySQLDatabase:
             return ''
     
     def update_rerun_acc_get_index(self, username):
-        query = "UPDATE get_index_tool SET is_running = 'Y' WHERE user_name = %s"
+        query = "UPDATE get_index_tool SET is_running = 'N' WHERE user_name = %s"
         self.cursor.execute(query, (username,))
         self.connection.commit()
     
