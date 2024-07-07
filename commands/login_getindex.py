@@ -12,7 +12,7 @@ def check_run_app():
 
 while check_run_app(): 
     print("RUN get index")
-    if db_instance.count_account_getindex_store() == 0:
+    if db_instance.count_account_getindex_store()[0][0] == 0:
         sys.exit()
     
     get_index.login()
