@@ -24,16 +24,6 @@ def getData():
     password = acc_get[2]
     return username, password
 
-def close_driver():
-    global driver
-    if driver is not None:
-        try:
-            driver.quit()
-        except Exception as e:
-            print(f"Error closing driver: {e}")
-        finally:
-            driver = None
-            
 def login():
     data = None
     driver = None
