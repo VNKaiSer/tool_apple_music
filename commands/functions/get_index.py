@@ -114,6 +114,9 @@ def login():
             driver.quit()
             return
         
+        # Kiểm tra lỗi Nosub 
+        
+        
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
         input_message = driver.find_element(By.TAG_NAME, "textarea")
         time.sleep(1)
@@ -124,7 +127,16 @@ def login():
         # Kiểm tra trường hợp hỗ trợ
         try:
             WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-            db_instance.result_acc_getindex(username, "support")
+            sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+            modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
+            print(modal_title.text)
+            if modal_title.text == "Well, That Didn't Work...":
+                db_instance.result_acc_getindex(username, "Didnt Work")
+                driver.quit()
+                return
+            
+            db_instance.result_acc_getindex(username, modal_title.text)
             driver.quit()
             return
         except:
