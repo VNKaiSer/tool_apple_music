@@ -2,6 +2,7 @@ from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 
+LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 def generate_phone_number():
     area_codes = [
         205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
@@ -97,7 +98,7 @@ def login():
         try:
         # Gửi tin nhắn
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-            driver.get("https://app.getindex.com/conversation/empty")
+            driver.get("https://app.getindex.com/conversation/empty") 
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
             input_phone = driver.find_element(By.TAG_NAME, "input")
             input_phone.send_keys(data["phone_send"])
@@ -110,7 +111,13 @@ def login():
                 input_phone.send_keys(Keys.ENTER)
                 break
         except Exception as e:
-            db_instance.result_acc_getindex(username, "NoTrial")
+            current_url = driver.current_url
+            print("URL hiện tại là:", current_url)
+            if current_url == LINK_ERR_NO_TRIAL:
+                db_instance.result_acc_getindex(username, "NoTrial")
+                driver.quit()
+                return
+            db_instance.result_acc_getindex(username, current_url)
             driver.quit()
             return
         
