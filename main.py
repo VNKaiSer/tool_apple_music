@@ -259,7 +259,7 @@ class MySQLDatabase:
         self.connection.commit()
         
     def analysis_acc_getindex(self):
-        query = "SELECT user_name, password,ex FROM get_index_tool WHERE is_running = 'Y'"
+        query = "SELECT user_name, password,ex FROM get_index_tool WHERE is_running = 'Y' order by ex desc"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
