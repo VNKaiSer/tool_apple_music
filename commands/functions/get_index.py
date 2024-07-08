@@ -1,8 +1,32 @@
 from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
+from selenium.webdriver.common.action_chains import ActionChains
 
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
+
+def delete_message(driver : webdriver, data):
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
+    conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
+    # delete message
+    try:
+        while len(conversation_list.find_elements(By.TAG_NAME, 'ion-item-sliding')) > 0:
+            WebDriverWait(conversation_list, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
+            conversation = conversation_list.find_element(By.TAG_NAME, 'ion-item-sliding')
+            action_hover = ActionChains(driver).move_to_element(conversation).perform()
+            WebDriverWait(conversation, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
+            btn_delete = conversation.find_element(By.CLASS_NAME, 'icon-delete')
+            btn_delete.click()
+            time.sleep(1)
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
+            btns = sc_modal.find_elements(By.TAG_NAME, 'sc-button')
+            btns[1].click()
+            time.sleep(3)
+    except Exception as e:
+        print() 
+        
 def generate_phone_number():
     area_codes = [
         205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
@@ -95,15 +119,13 @@ def login():
                         driver.quit()
                         return
 
+        delete_message(driver,data)
         try:
         # Gửi tin nhắn
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             driver.get("https://app.getindex.com/conversation/empty") 
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-            input_phone = driver.find_element(By.TAG_NAME, "input")
-            input_phone.send_keys(data["phone_send"])
-            input_phone.send_keys(Keys.ENTER)
-            
+            input_phone = driver.find_element(By.TAG_NAME, "input")    
             while input_phone.get_attribute('value') == '':
                 time.sleep(1)
                 input_phone.send_keys(data["phone_send"])
@@ -166,5 +188,3 @@ def login():
         
     except Exception as e:
         db_instance.update_rerun_acc_get_index(username)
-
-
