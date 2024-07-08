@@ -29,7 +29,10 @@ import json
 from const import *
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from faker import Faker
+fake = Faker(locale='en_US')
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
+
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -477,6 +480,23 @@ def check_account_has_otp(browser):
     except Exception as e:
             print(e)
             return False
+        
+def generate_random_password():
+    while True:
+        password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
+        # Kiểm tra xem có 3 ký tự giống nhau không phân biệt hoa thường
+        if has_three_consecutive_characters(password):
+            continue  # Tạo mật khẩu mới nếu có
+        else:
+            return 'A' + password + '@'
+        
+def has_three_consecutive_characters(password):
+    # Chuyển đổi mật khẩu thành chữ thường để so sánh không phân biệt hoa thường
+    password = password.lower()
+    for i in range(len(password) - 2):
+        if password[i] == password[i+1] == password[i+2]:
+            return True
+    return False
 option = {
     'proxy': 
         config.PROXY_URL

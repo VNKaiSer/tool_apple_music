@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 
+
 def delete_message(driver : webdriver, data):
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
     conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
@@ -26,6 +27,33 @@ def delete_message(driver : webdriver, data):
             time.sleep(3)
     except Exception as e:
         print() 
+
+def change_password(driver : webdriver, data):
+    driver.get("https://app.getindex.com/accountSettings") 
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
+    form_update_pass = driver.find_elements(By.TAG_NAME, "ion-item-group")
+    WebDriverWait(form_update_pass[1], WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-input")))
+    labels = form_update_pass[1].find_elements(By.TAG_NAME, "ion-input")
+    labels[0].click()
+    new_pass = generate_random_password()
+    time.sleep(0.3)
+    driver.switch_to.active_element.send_keys(data['password'])
+    time.sleep(0.3)
+    labels[1].click()
+    time.sleep(0.3)
+    driver.switch_to.active_element.send_keys(new_pass)
+    time.sleep(0.3)
+    labels[2].click()
+    time.sleep(0.3)
+    driver.switch_to.active_element.send_keys(new_pass)
+    time.sleep(1)
+    driver.switch_to.default_content()
+    # Nhấn nút save
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-header")))
+    header = driver.find_elements(By.TAG_NAME, "ion-header")[1]
+    WebDriverWait(header, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-button")))
+    btns = header.find_elements(By.TAG_NAME, "ion-button")
+    btns[1].click()
         
 def generate_phone_number():
     area_codes = [
