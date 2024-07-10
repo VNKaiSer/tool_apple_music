@@ -159,10 +159,15 @@ def login():
                     expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
                     new_expiration_date = expiration_date + timedelta(hours=7)
                     formatted_date = new_expiration_date.strftime("%d-%m-%Y")
-                    print(formatted_date) 
+                    db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
+                    driver.quit()
+                    return
                                         
 
-        delete_message(driver,data)
+        # delete_message(driver,data)
+        # change_password(driver, data)   # nếu chỉ muốn chạy đổi mật khẩu thì mở cmt 166,167,168. Còn muốn đổi mà vẫn làm tiếp thì chỉ cần mở hàng này
+        # driver.quit()     
+        # return
         try:
         # Gửi tin nhắn
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
