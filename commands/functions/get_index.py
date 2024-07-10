@@ -230,11 +230,17 @@ def login(change_password = False, send_message = False, delete_message = False 
                 dataReq = json.loads(body)
                 if 'errNo' in dataReq and dataReq['errNo'] is not None:
                     if dataReq['errNo'] == 119:
-                        db_instance.result_acc_getindex(username, "sai pass")
+                        if not change_password:
+                            db_instance.result_acc_getindex(username, "sai pass")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "sai pass")
                         driver.quit()
                         return
                     if dataReq['errNo'] == 2218:
-                        db_instance.result_acc_getindex(username, "NoSub")
+                        if not change_password:
+                            db_instance.result_acc_getindex(username, "NoSub")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "NoSub")
                         driver.quit()
                         return
             if 'https://api.pinger.com/1.0/account/status' in request.url:
@@ -245,7 +251,10 @@ def login(change_password = False, send_message = False, delete_message = False 
                     expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
                     new_expiration_date = expiration_date + timedelta(hours=7)
                     formatted_date = new_expiration_date.strftime("%d-%m-%Y")
-                    db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
+                    if not change_password:
+                        db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
+                    else :
+                        db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
                     driver.quit()
                     return
                                         
