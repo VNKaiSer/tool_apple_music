@@ -75,7 +75,8 @@ def generate_phone_number():
     central_office_code = random.randint(200, 999)
     line_number = random.randint(1000, 9999)
     return f"{area_code}{central_office_code}{line_number}"
-
+def random_message():
+    return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
 def getData():
     acc_get = db_instance.get_acc_get_index()
     if acc_get == '':
@@ -196,7 +197,7 @@ def login():
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
         input_message = driver.find_element(By.TAG_NAME, "textarea")
         time.sleep(1)
-        input_message.send_keys("ALi Check")
+        input_message.send_keys(random_message())
         time.sleep(0.3)
         input_message.send_keys(Keys.ENTER)
         
