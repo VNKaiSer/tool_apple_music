@@ -45,7 +45,6 @@ def change_password_func(driver: webdriver, data):
         
     actions.move_to_element(labels[0]).click().perform()
     new_pass = generate_random_password_index()
-    print(new_pass)
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(data['password'])
     time.sleep(0.3)
@@ -68,7 +67,7 @@ def change_password_func(driver: webdriver, data):
     btns = header.find_elements(By.TAG_NAME, "ion-button")
     btns[1].click()
     
-    db_instance.change_password_get_index(data['username'], new_pass)
+    db_instance.count_account_getindex_change_password(data['username'], new_pass)
     time.sleep(8)
     
 def generate_phone_number():
@@ -251,4 +250,7 @@ def login(change_password = False, send_message = False, delete_message = False 
             send_message_func(driver, username, data)
         
     except Exception as e:
-        db_instance.update_rerun_acc_get_index(username)
+        if not change_password:
+            db_instance.update_rerun_acc_get_index(username)
+        else:
+            db_instance.update_rerun_acc_get_index_change_password(username)

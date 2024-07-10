@@ -425,6 +425,11 @@ class MySQLDatabase:
         else:
             return ''
     
+    def update_rerun_acc_get_index_change_password(self, username):
+        query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
 
     
         
