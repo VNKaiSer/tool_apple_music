@@ -38,7 +38,7 @@ def change_password(driver : webdriver, data):
     WebDriverWait(form_update_pass[1], WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-input")))
     labels = form_update_pass[1].find_elements(By.TAG_NAME, "ion-input")
     labels[0].click()
-    new_pass = generate_random_password()
+    new_pass = generate_random_password_index()
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(data['password'])
     time.sleep(0.3)
