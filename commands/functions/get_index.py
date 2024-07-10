@@ -31,32 +31,43 @@ def delete_message(driver : webdriver, data):
 def generate_random_password_index():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
 
-def change_password(driver : webdriver, data):
+def change_password(driver: webdriver, data):
     driver.get("https://app.getindex.com/accountSettings") 
+    actions = ActionChains(driver)
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
     form_update_pass = driver.find_elements(By.TAG_NAME, "ion-item-group")
+    actions.move_to_element(form_update_pass[1]).perform()
+    print(len(form_update_pass))
     WebDriverWait(form_update_pass[1], WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-input")))
     labels = form_update_pass[1].find_elements(By.TAG_NAME, "ion-input")
-    labels[0].click()
+   
+   
+        
+    actions.move_to_element(labels[0]).click().perform()
     new_pass = generate_random_password_index()
+    print(new_pass)
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(data['password'])
     time.sleep(0.3)
-    labels[1].click()
+    
+    actions.move_to_element(labels[1]).click().perform()
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(new_pass)
     time.sleep(0.3)
-    labels[2].click()
+    
+    actions.move_to_element(labels[2]).click().perform()
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(new_pass)
     time.sleep(1)
     driver.switch_to.default_content()
+    
     # Nhấn nút save
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-header")))
     header = driver.find_elements(By.TAG_NAME, "ion-header")[1]
     WebDriverWait(header, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-button")))
     btns = header.find_elements(By.TAG_NAME, "ion-button")
     btns[1].click()
+    
     db_instance.change_password_get_index(data['username'], new_pass)
     time.sleep(8)
     
