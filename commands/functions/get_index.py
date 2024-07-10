@@ -109,6 +109,7 @@ def getData(change_pass):
 def send_message_func(driver: webdriver, username, data):
     try:
         # Gửi tin nhắn
+        driver.switch_to.default_content()
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
         driver.get("https://app.getindex.com/conversation/empty") 
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))

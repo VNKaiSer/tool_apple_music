@@ -11,7 +11,10 @@ import mysql.connector
 from concurrent.futures import ThreadPoolExecutor
 sys.path.append('./commands')
 from commands.const import *
-
+# DEFINE 
+send_message_var = None
+delete_message_var = None
+change_password_var = None
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -260,6 +263,12 @@ class MySQLDatabase:
         
     def analysis_acc_getindex(self):
         query = "SELECT user_name, password,ex FROM get_index_tool WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def analysis_acc_getindex_change_password(self):
+        query = "SELECT user_name, password,ex FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
@@ -598,12 +607,12 @@ def export_login_delete_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
-def export_acc_getindex():
+def export_acc_getindex(change_password):
     try:
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
             with open(file_path, 'w') as file:
-                for data in db_instance.analysis_acc_getindex():
+                for data in db_instance.analysis_acc_getindex() if change_password == False else db_instance.analysis_acc_getindex_change_password():
                     ex = "Unknown" if data[2] is None else  data[2] 
                     file.write(data[0] + '|' + data[1] + '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
@@ -766,32 +775,32 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
-def get_index():
-    
-    def run():
-        global send_message_var
-        global delete_message_var
-        global change_password_var
-        print(send_message_var.get(), delete_message_var.get(), change_password_var.get())
+def get_index(send_message_var, delete_message_var, change_password_var):
+    def run(send_message_var, delete_message_var, change_password_var):
         if send_message_var.get() and delete_message_var.get() :
+            print("send and delete")
             subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
             
         elif send_message_var.get():
+            print("send message")
             subprocess.Popen("py ./commands/login_getindex.py --actions send_message")
             
         elif delete_message_var.get():
+            print("delete message")
             subprocess.Popen("py ./commands/login_getindex.py --actions delete_message")
             
         elif change_password_var.get():
+            print("change password")
             subprocess.Popen("py ./commands/login_getindex.py --actions change_password")
+        else:
+            return
             
             
     
     time_run = int(combo.get())
-
     with ThreadPoolExecutor(max_workers=time_run) as executor:
         for i in range(time_run):
-            executor.submit(run)
+            executor.submit(run(send_message_var, delete_message_var, change_password_var))
             time.sleep(10)
     root.deiconify()
     
@@ -924,6 +933,11 @@ def show_dialog():
     delete_message_var = tk.BooleanVar()
     delete_message_checkbox = ttk.Checkbutton(dialog, text="Xoá tin nhắn", variable=delete_message_var)
     delete_message_checkbox.pack(padx=10, pady=5)
+    
+    global send_message_var
+    send_message_var = tk.BooleanVar()
+    send_message_checkbox = ttk.Checkbutton(dialog, text="Gửi tin nhắn", variable=send_message_var)
+    send_message_checkbox.pack(padx=10, pady=5)
 
     # Checkbox for "Đổi mật khẩu"
     global change_password_var
@@ -931,12 +945,9 @@ def show_dialog():
     change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
     change_password_checkbox.pack(padx=10, pady=5)
     
-    global send_message_var
-    send_message_var = tk.BooleanVar()
-    send_message_checkbox = ttk.Checkbutton(dialog, text="Gửi tin nhắn", variable=send_message_var)
-    send_message_checkbox.pack(padx=10, pady=5)
+    
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=get_index)
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var))
     confirm_button.pack(padx=10, pady=10)
 
     # dialog.destroy()
@@ -1009,7 +1020,8 @@ analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 analysis_menu.add_separator()
 
-analysis_menu.add_command(label='Xuất acc getindex', command=export_acc_getindex)
+analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
+analysis_menu.add_command(label='Xuất acc getindex change_pass', command=lambda:export_acc_getindex(change_password=True))
 
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
