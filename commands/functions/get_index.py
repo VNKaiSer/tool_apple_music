@@ -248,7 +248,7 @@ def login(change_password = False, send_message = False, delete_message = False 
         if delete_message:
             delete_message_func(driver,data)
         if send_message:
-            send_message_func(driver, data)
+            send_message_func(driver, username, data)
         
     except Exception as e:
         db_instance.update_rerun_acc_get_index(username)
