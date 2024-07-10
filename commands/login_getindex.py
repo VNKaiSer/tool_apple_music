@@ -27,8 +27,12 @@ def main():
     while check_run_app():
         print("RUN get index")
         # Thay thế bằng logic kiểm tra tài khoản của bạn
-        if db_instance.count_account_getindex_store()[0][0] == 0:
-            sys.exit()
+        if "change_password " not in args.actions:    
+            if db_instance.count_account_getindex_store()[0][0] == 0:
+                sys.exit()
+        else:
+            if db_instance.count_account_getindex_change_password()[0][0] == 0:
+                sys.exit()
 
         if args.actions:
             for action in args.actions:
