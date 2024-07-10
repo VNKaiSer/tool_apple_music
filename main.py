@@ -772,18 +772,19 @@ def get_index():
         global send_message_var
         global delete_message_var
         global change_password_var
+        print(send_message_var.get(), delete_message_var.get(), change_password_var.get())
         if send_message_var.get() and delete_message_var.get() :
             subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
-            return
-        if send_message_var.get():
+            
+        elif send_message_var.get():
             subprocess.Popen("py ./commands/login_getindex.py --actions send_message")
-            return
-        if delete_message_var.get():
+            
+        elif delete_message_var.get():
             subprocess.Popen("py ./commands/login_getindex.py --actions delete_message")
-            return
-        if change_password_var.get():
+            
+        elif change_password_var.get():
             subprocess.Popen("py ./commands/login_getindex.py --actions change_password")
-            return
+            
             
     
     time_run = int(combo.get())
