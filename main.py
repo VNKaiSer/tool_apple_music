@@ -354,13 +354,13 @@ def add_card():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
-def add_getindex():
+def add_getindex(change_password = False):
     try:
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
             with open(file_path, 'r') as file:
                 content = file.read()
-                import_acc_getindex.process_data(content)
+                import_acc_getindex.process_data(change_password ,content)
                 messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
                 
     except Exception as e:
@@ -769,7 +769,22 @@ def run_app_tv():
 def get_index():
     
     def run():
-        subprocess.Popen("py ./commands/login_getindex.py")
+        global send_message_var
+        global delete_message_var
+        global change_password_var
+        if send_message_var.get() and delete_message_var.get() :
+            subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
+            return
+        if send_message_var.get():
+            subprocess.Popen("py ./commands/login_getindex.py --actions send_message")
+            return
+        if delete_message_var.get():
+            subprocess.Popen("py ./commands/login_getindex.py --actions delete_message")
+            return
+        if change_password_var.get():
+            subprocess.Popen("py ./commands/login_getindex.py --actions change_password")
+            return
+            
     
     time_run = int(combo.get())
 
@@ -914,6 +929,11 @@ def show_dialog():
     change_password_var = tk.BooleanVar()
     change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
     change_password_checkbox.pack(padx=10, pady=5)
+    
+    global send_message_var
+    send_message_var = tk.BooleanVar()
+    send_message_checkbox = ttk.Checkbutton(dialog, text="Gửi tin nhắn", variable=send_message_var)
+    send_message_checkbox.pack(padx=10, pady=5)
 
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=get_index)
     confirm_button.pack(padx=10, pady=10)
@@ -961,7 +981,8 @@ menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
 add_data_menu.add_command(label='Thêm id', command=add_id)
 add_data_menu.add_command(label='Thêm thẻ', command=add_card)
 add_data_menu.add_separator()
-add_data_menu.add_command(label='Thêm acc getindex', command=add_getindex)
+add_data_menu.add_command(label='Thêm acc getindex', command=lambda:add_getindex(change_password=False))
+add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda:add_getindex(change_password=True))
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)

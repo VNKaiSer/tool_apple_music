@@ -2,8 +2,11 @@ from commands.const import MySQLDatabase
 
 
 db_intance = MySQLDatabase()
-def process_data(data):
+def process_data(change_password, data):
     for line in data.split('\n'):
         if line:
             username, password = line.strip().split('-')
-            db_intance.insert_acc_getindex(username, password)
+            if not change_password:
+                db_intance.insert_acc_getindex(username, password)
+            else:
+                db_intance.insert_acc_getindex_change_password(username, password)

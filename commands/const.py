@@ -377,6 +377,11 @@ class MySQLDatabase:
         self.cursor.execute(query, (username, password))
         self.connection.commit()
     
+    def insert_acc_getindex_change_password(self, username, password):
+        query = "INSERT INTO IndexChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
     def result_acc_getindex(self, username, ex):
         query = "UPDATE get_index_tool SET ex = %s WHERE user_name = %s" 
         self.cursor.execute(query, (ex, username))
