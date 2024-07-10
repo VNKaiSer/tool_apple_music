@@ -67,8 +67,17 @@ def change_password_func(driver: webdriver, data):
     btns = header.find_elements(By.TAG_NAME, "ion-button")
     btns[1].click()
     
-    db_instance.count_account_getindex_change_password(data['username'], new_pass)
     time.sleep(8)
+    for request in driver.requests:
+        if 'https://api.pinger.com/1.0/account/username/changePassword' in request.url:
+            body = request.response.body
+            dataReq = json.loads(body)
+            if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                if dataReq['errNo'] == 100:
+                    db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
+                    driver.quit()
+                    return
+    db_instance.count_account_getindex_change_password(data['username'], new_pass)
     
 def generate_phone_number():
     area_codes = [

@@ -18,8 +18,7 @@ def main():
     args = parser.parse_args()
     while check_run_app():
         print("RUN get index")
-        # Thay thế bằng logic kiểm tra tài khoản của bạn
-        if "change_password " not in args.actions:    
+        if "change_password" not in args.actions:    
             if db_instance.count_account_getindex_store()[0][0] == 0:
                 print("Has no account")
                 sys.exit()

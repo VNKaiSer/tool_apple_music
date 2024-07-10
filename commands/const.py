@@ -356,11 +356,11 @@ class MySQLDatabase:
             self.connection.commit()
     
     def get_acc_get_index(self):
-        query = "SELECT * FROM get_index_tool WHERE is_running = 'N' LIMIT 1"
+        query = "SELECT * FROM get_index_tool WHERE is_running = 'N' and count_run < 3 LIMIT 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
-            update_running = "UPDATE get_index_tool SET is_running = 'Y' WHERE user_name = %s"
+            update_running = "UPDATE get_index_tool SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
             self.cursor.execute(update_running, (result[0][1],))
             self.connection.commit()
             return result[0]
@@ -414,11 +414,11 @@ class MySQLDatabase:
         return result
 
     def get_acc_get_index_change_password(self):
-        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' LIMIT 1"
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run < 3 LIMIT 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
-            update_running = "UPDATE IndexChangePass SET is_running = 'Y' WHERE user_name = %s"
+            update_running = "UPDATE IndexChangePass SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
             self.cursor.execute(update_running, (result[0][1],))
             self.connection.commit()
             return result[0]
@@ -428,6 +428,11 @@ class MySQLDatabase:
     def update_rerun_acc_get_index_change_password(self, username):
         query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
         self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def result_acc_getindex_change_password(self, username, ex):
+        query = "UPDATE IndexChangePass SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
         self.connection.commit()
     
 
