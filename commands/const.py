@@ -388,10 +388,44 @@ class MySQLDatabase:
         result = self.cursor.fetchall()
         return result
 
+# Change password get index tool
+## 
+##
     def change_password_get_index(self, username, password):
-        query = "UPDATE get_index_tool SET password = %s WHERE user_name = %s"
+        query = "UPDATE IndexChangePass SET password = %s WHERE user_name = %s"
         self.cursor.execute(query, (password, username))
         self.connection.commit()
+    
+    def insert_acc_index_change_password(self, username, password):
+        query = "INSERT INTO IndexChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+        
+    def export_acc_index_change_password(self):
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'Y'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def count_account_getindex_change_password(self):
+        query = "SELECT COUNT(*) FROM IndexChangePass WHERE is_running = 'N'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def get_acc_get_index_change_password(self):
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' LIMIT 1"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        if result:
+            update_running = "UPDATE IndexChangePass SET is_running = 'Y' WHERE user_name = %s"
+            self.cursor.execute(update_running, (result[0][1],))
+            self.connection.commit()
+            return result[0]
+        else:
+            return ''
+    
+
     
         
     def get_account_login_apple_tv(self):

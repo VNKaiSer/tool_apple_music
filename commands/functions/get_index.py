@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 
 
-def delete_message(driver : webdriver, data):
+def delete_message_func(driver : webdriver, data):
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
     conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
     # delete message
@@ -31,7 +31,7 @@ def delete_message(driver : webdriver, data):
 def generate_random_password_index():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
 
-def change_password(driver: webdriver, data):
+def change_password_func(driver: webdriver, data):
     driver.get("https://app.getindex.com/accountSettings") 
     actions = ActionChains(driver)
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
@@ -88,18 +88,84 @@ def generate_phone_number():
     return f"{area_code}{central_office_code}{line_number}"
 def random_message():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
-def getData():
-    acc_get = db_instance.get_acc_get_index()
+def getData(change_pass):
+    if not change_pass:
+        acc_get = db_instance.get_acc_get_index()
+    else:
+        acc_get = db_instance.get_acc_get_index_change_password()
     if acc_get == '':
         return None
     username = acc_get[1]
     password = acc_get[2]
     return username, password
-
-def login():
+def send_message_func(driver: webdriver, username, data):
+    try:
+        # Gửi tin nhắn
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        driver.get("https://app.getindex.com/conversation/empty") 
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+        input_phone = driver.find_element(By.TAG_NAME, "input")    
+        while input_phone.get_attribute('value') == '':
+            time.sleep(1)
+            input_phone.send_keys(data["phone_send"])
+            time.sleep(0.3)
+            input_phone.send_keys(Keys.ENTER)
+            break
+    except Exception as e:
+        current_url = driver.current_url
+        if current_url == LINK_ERR_NO_TRIAL:
+            db_instance.result_acc_getindex(username, "NoTrial")
+            driver.quit()
+            return
+        db_instance.result_acc_getindex(username, current_url)
+        driver.quit()
+        return
+    
+    # Kiểm tra lỗi Nosub 
+    
+    
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+    input_message = driver.find_element(By.TAG_NAME, "textarea")
+    time.sleep(1)
+    input_message.send_keys(random_message())
+    time.sleep(0.3)
+    input_message.send_keys(Keys.ENTER)
+    
+    # Kiểm tra trường hợp hỗ trợ
+    try:
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+        WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+        modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
+        print(modal_title.text)
+        if modal_title.text == "Well, That Didn't Work...":
+            db_instance.result_acc_getindex(username, "Didnt Work")
+            driver.quit()
+            return
+        
+        db_instance.result_acc_getindex(username, modal_title.text)
+        driver.quit()
+        return
+    except:
+        print('')
+    
+    # Kiểm tra lỗi không gửi được tin nhắn
+    for request in driver.requests:
+        if 'https://api.pinger.com/2.2/message' in request.url:
+            body = request.response.body
+            dataReq = json.loads(body)
+            if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                db_instance.result_acc_getindex(username, "no sent text")
+                driver.quit()
+                return
+    
+    db_instance.result_acc_getindex(username, "done")
+    driver.quit()
+    
+def login(change_password = False, send_message = False, delete_message = False ):
     data = None
     try:
-        tmp = getData()
+        tmp = getData(change_password)
         if tmp is None:
             print("No acc! Input more acc.")
             return
@@ -175,75 +241,14 @@ def login():
                     driver.quit()
                     return
                                         
-
-        # delete_message(driver,data)
-        # change_password(driver, data)   # nếu chỉ muốn chạy đổi mật khẩu thì mở cmt 166,167,168. Còn muốn đổi mà vẫn làm tiếp thì chỉ cần mở hàng này
-        # driver.quit()     
-        # return
-        try:
-        # Gửi tin nhắn
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-            driver.get("https://app.getindex.com/conversation/empty") 
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-            input_phone = driver.find_element(By.TAG_NAME, "input")    
-            while input_phone.get_attribute('value') == '':
-                time.sleep(1)
-                input_phone.send_keys(data["phone_send"])
-                time.sleep(0.3)
-                input_phone.send_keys(Keys.ENTER)
-                break
-        except Exception as e:
-            current_url = driver.current_url
-            if current_url == LINK_ERR_NO_TRIAL:
-                db_instance.result_acc_getindex(username, "NoTrial")
-                driver.quit()
-                return
-            db_instance.result_acc_getindex(username, current_url)
-            driver.quit()
+        if change_password:
+            change_password_func(driver, data)   # nếu chỉ muốn chạy đổi mật khẩu thì mở cmt 166,167,168. Còn muốn đổi mà vẫn làm tiếp thì chỉ cần mở hàng này
+            driver.quit()     
             return
-        
-        # Kiểm tra lỗi Nosub 
-        
-        
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-        input_message = driver.find_element(By.TAG_NAME, "textarea")
-        time.sleep(1)
-        input_message.send_keys(random_message())
-        time.sleep(0.3)
-        input_message.send_keys(Keys.ENTER)
-        
-        # Kiểm tra trường hợp hỗ trợ
-        try:
-            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-            sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
-            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
-            modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
-            print(modal_title.text)
-            if modal_title.text == "Well, That Didn't Work...":
-                db_instance.result_acc_getindex(username, "Didnt Work")
-                driver.quit()
-                return
-            
-            db_instance.result_acc_getindex(username, modal_title.text)
-            driver.quit()
-            return
-        except:
-            print('')
-        
-        # Kiểm tra lỗi không gửi được tin nhắn
-        for request in driver.requests:
-            if 'https://api.pinger.com/2.2/message' in request.url:
-                body = request.response.body
-                dataReq = json.loads(body)
-                if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                    db_instance.result_acc_getindex(username, "no sent text")
-                    driver.quit()
-                    return
-        
-        db_instance.result_acc_getindex(username, "done")
-        driver.quit()
-
-
+        if delete_message:
+            delete_message_func(driver,data)
+        if send_message:
+            send_message_func(driver, data)
         
     except Exception as e:
         db_instance.update_rerun_acc_get_index(username)
