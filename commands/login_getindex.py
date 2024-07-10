@@ -24,19 +24,27 @@ def main():
     parser.add_argument("--actions", nargs='+', choices=["send_message", "delete_message", "change_password","send_and_delete"], help="Choice action")
 
     args = parser.parse_args()
-    if args.actions:
-        for action in args.actions:
-            if action == "send_and_delete":
-                get_index.login(send_message=True, delete_message=True)
-            elif action == "send_message":
-                get_index.login(send_message=True)
-            elif action == "delete_message":
-                get_index.login(delete_message=True)
-            elif action == "change_password":
-                get_index.login(change_password=True)
+    while check_run_app():
+        print("RUN get index")
+        # Thay thế bằng logic kiểm tra tài khoản của bạn
+        if db_instance.count_account_getindex_store()[0][0] == 0:
+            sys.exit()
 
+        if args.actions:
+            for action in args.actions:
+                if action == "send_and_delete":
+                    get_index.login(send_message=True, delete_message=True)
+                elif action == "send_message":
+                    get_index.login(send_message=True)
+                elif action == "delete_message":
+                    get_index.login(delete_message=True)
+                elif action == "change_password":
+                    get_index.login(change_password=True)
+
+        time.sleep(3)
+    print("STOP")
 if __name__ == "__main__":
     main()
-print("STOP")
+
 
 
