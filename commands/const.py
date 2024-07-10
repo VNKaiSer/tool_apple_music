@@ -26,10 +26,10 @@ import string
 import datetime
 import requests
 import json
-from const import *
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from faker import Faker
+from datetime import datetime, timedelta
 fake = Faker(locale='en_US')
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 
@@ -387,6 +387,11 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
+
+    def change_password_get_index(self, username, password):
+        query = "UPDATE get_index_tool SET password = %s WHERE user_name = %s"
+        self.cursor.execute(query, (password, username))
+        self.connection.commit()
     
         
     def get_account_login_apple_tv(self):

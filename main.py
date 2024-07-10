@@ -903,6 +903,18 @@ def show_dialog():
     combo.pack(padx=10, pady=10)
     combo.current(0)
 
+    # Checkbox for "Xoá tin nhắn"
+    global delete_message_var
+    delete_message_var = tk.BooleanVar()
+    delete_message_checkbox = ttk.Checkbutton(dialog, text="Xoá tin nhắn", variable=delete_message_var)
+    delete_message_checkbox.pack(padx=10, pady=5)
+
+    # Checkbox for "Đổi mật khẩu"
+    global change_password_var
+    change_password_var = tk.BooleanVar()
+    change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
+    change_password_checkbox.pack(padx=10, pady=5)
+
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=get_index)
     confirm_button.pack(padx=10, pady=10)
 

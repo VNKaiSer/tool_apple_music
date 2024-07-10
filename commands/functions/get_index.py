@@ -28,6 +28,9 @@ def delete_message(driver : webdriver, data):
     except Exception as e:
         print() 
 
+def generate_random_password_index():
+    return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
+
 def change_password(driver : webdriver, data):
     driver.get("https://app.getindex.com/accountSettings") 
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
@@ -54,7 +57,9 @@ def change_password(driver : webdriver, data):
     WebDriverWait(header, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-button")))
     btns = header.find_elements(By.TAG_NAME, "ion-button")
     btns[1].click()
-        
+    db_instance.change_password_get_index(data['username'], new_pass)
+    time.sleep(8)
+    
 def generate_phone_number():
     area_codes = [
         205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
@@ -146,6 +151,16 @@ def login():
                         db_instance.result_acc_getindex(username, "NoSub")
                         driver.quit()
                         return
+            if 'https://api.pinger.com/1.0/account/status' in request.url:
+                body = request.response.body
+                dataReq = json.loads(body)
+                if 'result' in dataReq and dataReq['result'] is not None:
+                    expiration_str = dataReq["result"]["expiration"]
+                    expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
+                    new_expiration_date = expiration_date + timedelta(hours=7)
+                    formatted_date = new_expiration_date.strftime("%d-%m-%Y")
+                    print(formatted_date) 
+                                        
 
         delete_message(driver,data)
         try:
@@ -162,7 +177,6 @@ def login():
                 break
         except Exception as e:
             current_url = driver.current_url
-            print("URL hiện tại là:", current_url)
             if current_url == LINK_ERR_NO_TRIAL:
                 db_instance.result_acc_getindex(username, "NoTrial")
                 driver.quit()
