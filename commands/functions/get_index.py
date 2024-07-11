@@ -2,6 +2,30 @@ from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 from selenium.webdriver.common.action_chains import ActionChains
+import logging
+logger = logging.getLogger("Change-password")
+logger.setLevel(logging.DEBUG)
+
+# Create handlers for logging to the standard output and a file
+stdoutHandler = logging.StreamHandler(stream=sys.stdout)
+errHandler = logging.FileHandler("./logs/change-pass.log")
+
+# Set the log levels on the handlers
+stdoutHandler.setLevel(logging.DEBUG)
+errHandler.setLevel(logging.ERROR)
+
+# Create a log format using Log Record attributes
+fmt = logging.Formatter(
+    "%(name)s: %(asctime)s | %(levelname)s | %(filename)s:%(lineno)s | %(process)d >>> %(message)s"
+)
+
+# Set the log format on each handler
+stdoutHandler.setFormatter(fmt)
+errHandler.setFormatter(fmt)
+
+# Add each handler to the Logger object
+logger.addHandler(stdoutHandler)
+logger.addHandler(errHandler)
 
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 
@@ -45,6 +69,7 @@ def change_password_func(driver: webdriver, data):
         
     actions.move_to_element(labels[0]).click().perform()
     new_pass = generate_random_password_index()
+    logger.info(f'Change password: {new_pass} for user: {data["username"]}, old_pass: {data["password"]}')
     time.sleep(0.3)
     driver.switch_to.active_element.send_keys(data['password'])
     time.sleep(0.3)
@@ -74,10 +99,12 @@ def change_password_func(driver: webdriver, data):
             dataReq = json.loads(body)
             if 'errNo' in dataReq and dataReq['errNo'] is not None:
                 if dataReq['errNo'] == 100:
+                    logger.error(f'Change password: ERROR for user: {data["username"]}')
                     db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
                     driver.quit()
                     return
-    db_instance.count_account_getindex_change_password(data['username'], new_pass)
+    logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
+    db_instance.change_password_get_index(data['username'], new_pass)
     
 def generate_phone_number():
     area_codes = [
@@ -185,6 +212,7 @@ def login(change_password = False, send_message = False, delete_message = False 
             "password": password,
             "phone_send": generate_phone_number(),
         }
+        logger.info(data)
         print(data)
         
         random_port = random.randint(10000, 10249)

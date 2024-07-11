@@ -5382,3 +5382,12 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-05-28 13:22:11,060 - Error: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
 2024-05-28 13:25:08,118 - Error Card: Id - 5mmrzohwa4v@gmail.com - Card DEC
 2024-05-28 13:25:14,508 - Error Card: Id - 5mmrzohwa4v@gmail.com - Card DEC
+2024-07-11 12:24:28,135 - {'username': '2198694501', 'password': 'ALi7F2g@', 'phone_send': '6562117046'}
+2024-07-11 12:25:26,581 - Change password: ALi1JfA@ for user: 2198694501, old_pass: ALi7F2g@
+2024-07-11 12:27:55,914 - This is a DEBUG message.
+2024-07-11 12:27:55,914 - This is an INFO message.
+2024-07-11 12:27:55,915 - This is a WARNING message.
+2024-07-11 12:27:55,915 - This is an ERROR message.
+2024-07-11 12:27:55,916 - This is a CRITICAL message.
+2024-07-11 12:28:43,246 - {'username': '2198694501', 'password': 'ALi1JfA@', 'phone_send': '4756795786'}
+2024-07-11 12:30:16,882 - Change password: ALih9Ri@ for user: 2198694501, old_pass: ALi1JfA@

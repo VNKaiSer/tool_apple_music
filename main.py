@@ -612,7 +612,7 @@ def export_acc_getindex(change_password):
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
             with open(file_path, 'w') as file:
-                for data in db_instance.analysis_acc_getindex() if change_password == False else db_instance.analysis_acc_getindex_change_password():
+                for data in db_instance.analysis_acc_getindex() if change_password == False else db_instance.analysis_acc_getindex_change_password ():
                     ex = "Unknown" if data[2] is None else  data[2] 
                     file.write(data[0] + '|' + data[1] + '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
