@@ -122,7 +122,7 @@ def generate_phone_number():
     line_number = random.randint(1000, 9999)
     return f"{area_code}{central_office_code}{line_number}"
 def random_message():
-    return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
+    return 'ALiCheck' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
 def getData(change_pass):
     if not change_pass:
         acc_get = db_instance.get_acc_get_index()
