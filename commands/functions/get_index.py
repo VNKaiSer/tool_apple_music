@@ -28,7 +28,7 @@ logger.addHandler(stdoutHandler)
 logger.addHandler(errHandler)
 
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
-
+ERR_RENEW = "Subscription has expired"
 
 def delete_message_func(driver : webdriver, data):
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
@@ -122,7 +122,7 @@ def generate_phone_number():
     line_number = random.randint(1000, 9999)
     return f"{area_code}{central_office_code}{line_number}"
 def random_message():
-    return 'ALiCheck-' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
+    return 'ALiCheck' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
 def getData(change_pass):
     if not change_pass:
         acc_get = db_instance.get_acc_get_index()
@@ -198,7 +198,7 @@ def send_message_func(driver: webdriver, username, data):
     db_instance.result_acc_getindex(username, "done")
     driver.quit()
     
-def login(change_password = False, send_message = False, delete_message = False ):
+def login(change_password = False, send_message = False, delete_message = False, check_live = False):
     data = None
     try:
         tmp = getData(change_password)
@@ -286,7 +286,24 @@ def login(change_password = False, send_message = False, delete_message = False 
                         db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
                     driver.quit()
                     return
-                                        
+            # Kiểm tra lỗi renew 
+            try:
+                WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+                sc_modal = driver.find_element(By.TAG_NAME, 'sc-modal')
+                WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+                modal_title = sc_modal.find_element(By.CLASS_NAME, 'modal-title')
+                print(modal_title.text)
+                if ERR_RENEW in modal_title.text:
+                    db_instance.result_acc_getindex(username, "renew sub")
+                    driver.quit()
+                    return
+            except Exception as e:
+                pass
+            
+        if check_live:
+            db_instance.result_acc_getindex(username, "live")
+            driver.quit()
+            return        
         if change_password:
             change_password_func(driver, data)   # nếu chỉ muốn chạy đổi mật khẩu thì mở cmt 166,167,168. Còn muốn đổi mà vẫn làm tiếp thì chỉ cần mở hàng này
             driver.quit()     

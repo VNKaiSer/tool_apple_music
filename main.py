@@ -775,8 +775,8 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
-def get_index(send_message_var, delete_message_var, change_password_var):
-    def run(send_message_var, delete_message_var, change_password_var):
+def get_index(send_message_var, delete_message_var, change_password_var, check_live_var):
+    def run(send_message_var, delete_message_var, change_password_var, check_live_var):
         if send_message_var.get() and delete_message_var.get() :
             print("send and delete")
             subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
@@ -792,6 +792,9 @@ def get_index(send_message_var, delete_message_var, change_password_var):
         elif change_password_var.get():
             print("change password")
             subprocess.Popen("py ./commands/login_getindex.py --actions change_password")
+        elif check_live_var.get():
+            print("check live")
+            subprocess.Popen("py ./commands/login_getindex.py --actions check_live")
         else:
             return
             
@@ -800,7 +803,7 @@ def get_index(send_message_var, delete_message_var, change_password_var):
     time_run = int(combo.get())
     with ThreadPoolExecutor(max_workers=time_run) as executor:
         for i in range(time_run):
-            executor.submit(run(send_message_var, delete_message_var, change_password_var))
+            executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var))
             time.sleep(10)
     root.deiconify()
     
@@ -945,9 +948,14 @@ def show_dialog():
     change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
     change_password_checkbox.pack(padx=10, pady=5)
     
+    global check_live_var
+    check_live_var = tk.BooleanVar()
+    check_live_checkbox = ttk.Checkbutton(dialog, text="Check live", variable=check_live_var)
+    check_live_checkbox.pack(padx=10, pady=5)
+    
     
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var))
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var))
     confirm_button.pack(padx=10, pady=10)
 
     # dialog.destroy()
