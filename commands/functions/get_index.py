@@ -286,19 +286,19 @@ def login(change_password = False, send_message = False, delete_message = False,
                         db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
                     driver.quit()
                     return
-            # Kiểm tra lỗi renew 
-            try:
-                WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-                sc_modal = driver.find_element(By.TAG_NAME, 'sc-modal')
-                WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
-                modal_title = sc_modal.find_element(By.CLASS_NAME, 'modal-title')
-                print(modal_title.text)
-                if ERR_RENEW in modal_title.text:
-                    db_instance.result_acc_getindex(username, "renew sub")
-                    driver.quit()
-                    return
-            except Exception as e:
-                pass
+        # Kiểm tra lỗi renew 
+        try:
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            sc_modal = driver.find_element(By.TAG_NAME, 'sc-modal')
+            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+            modal_title = sc_modal.find_element(By.CLASS_NAME, 'modal-title')
+            print(modal_title.text)
+            if ERR_RENEW in modal_title.text:
+                db_instance.result_acc_getindex(username, "renew sub")
+                driver.quit()
+                return
+        except Exception as e:
+            print('')
             
         if check_live:
             db_instance.result_acc_getindex(username, "live")
