@@ -133,7 +133,7 @@ def getData(change_pass):
     username = acc_get[1]
     password = acc_get[2]
     return username, password
-def send_message_func(driver: webdriver, username, data):
+def send_message_func(driver: webdriver, username, data, send_and_delete = False):
     try:
         # Gửi tin nhắn
         driver.switch_to.default_content()
@@ -195,10 +195,13 @@ def send_message_func(driver: webdriver, username, data):
                 driver.quit()
                 return
     
+    if send_and_delete:
+        delete_message_func(driver, data)
+
     db_instance.result_acc_getindex(username, "done")
     driver.quit()
     
-def login(change_password = False, send_message = False, delete_message = False, check_live = False):
+def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
     data = None
     try:
         tmp = getData(change_password)
@@ -314,6 +317,8 @@ def login(change_password = False, send_message = False, delete_message = False,
             return
         if delete_message:
             delete_message_func(driver,data)
+        if send_and_delete:
+            send_message_func(driver, username, data, send_and_delete)
         if send_message:
             send_message_func(driver, username, data)
         

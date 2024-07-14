@@ -13,7 +13,7 @@ def check_run_app():
 
 def main():
     parser = argparse.ArgumentParser(description="Get index tool")
-    parser.add_argument("--actions", nargs='+', choices=["send_message", "delete_message", "change_password","send_and_delete", "check_live"], help="Choice action")
+    parser.add_argument("--actions", nargs='+', choices=["send_message", "delete_message", "change_password","send_and_delete", "check_live", "send_and_delete"], help="Choice action")
 
     args = parser.parse_args()
     while check_run_app():
@@ -39,6 +39,8 @@ def main():
                     get_index.login(change_password=True)
                 elif action == "check_live":
                     get_index.login(check_live=True)
+                elif action == "send_and_delete":
+                    get_index.login(send_message=True, delete_message=True) 
                 
 
         time.sleep(3)
