@@ -15,6 +15,7 @@ from commands.const import *
 send_message_var = None
 delete_message_var = None
 change_password_var = None
+send_and_delete_var = None
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -797,7 +798,7 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
             subprocess.Popen("py ./commands/login_getindex.py --actions check_live")
         elif send_and_delete_var.get():
             print("send and delete")
-            subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
+            subprocess.Popen("py ./commands/login_getindex.py --actions delete_after_send")
         else:
             return
             
@@ -957,8 +958,8 @@ def show_dialog():
     check_live_checkbox.pack(padx=10, pady=5)
     
     global send_and_delete_var 
-    send_and_delete = tk.BooleanVar()
-    send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Xoá sau khi gửi", variable=send_and_delete_var)
+    send_and_delete_var = tk.BooleanVar()
+    send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
     send_and_delete_checkbox.pack(padx=10, pady=5)
 
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var))

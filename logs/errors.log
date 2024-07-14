@@ -5391,3 +5391,11 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-07-11 12:27:55,916 - This is a CRITICAL message.
 2024-07-11 12:28:43,246 - {'username': '2198694501', 'password': 'ALi1JfA@', 'phone_send': '4756795786'}
 2024-07-11 12:30:16,882 - Change password: ALih9Ri@ for user: 2198694501, old_pass: ALi1JfA@
+2024-07-14 22:50:39,758 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '6693158114'}
+2024-07-14 22:51:42,860 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '3037106497'}
+2024-07-14 23:02:08,939 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '4798886298'}
+2024-07-14 23:03:21,014 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9548675340'}
+2024-07-14 23:04:46,693 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '5629895612'}
+2024-07-14 23:06:13,637 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '5206465359'}
+2024-07-14 23:14:50,696 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9708752164'}
+2024-07-14 23:18:25,598 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9123743547'}
