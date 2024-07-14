@@ -36,19 +36,19 @@ def delete_message_func(driver : webdriver, data):
     # delete message
     try:
         while len(conversation_list.find_elements(By.TAG_NAME, 'ion-item-sliding')) > 0:
-            WebDriverWait(conversation_list, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
+            WebDriverWait(conversation_list, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
             conversation = conversation_list.find_element(By.TAG_NAME, 'ion-item-sliding')
             action_hover = ActionChains(driver).move_to_element(conversation).perform()
-            WebDriverWait(conversation, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
+            WebDriverWait(conversation, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
             btn_delete = conversation.find_element(By.CLASS_NAME, 'icon-delete')
             btn_delete.click()
             time.sleep(1)
-            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
             sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
-            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
+            WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
             btns = sc_modal.find_elements(By.TAG_NAME, 'sc-button')
             btns[1].click()
-            time.sleep(3)
+            time.sleep(5)
     except Exception as e:
         print() 
 
