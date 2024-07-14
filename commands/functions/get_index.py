@@ -29,7 +29,7 @@ logger.addHandler(errHandler)
 
 LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 ERR_RENEW = "Subscription has expired"
-
+ERR_NOSUB = "Subscription Required"
 def delete_message_func(driver : webdriver, data):
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
     conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
@@ -267,9 +267,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                         return
                     if dataReq['errNo'] == 2218:
                         if not change_password:
-                            db_instance.result_acc_getindex(username, "NoSub")
+                            db_instance.result_acc_getindex(username, "NoTrial")
                         else :
-                            db_instance.result_acc_getindex_change_password(username, "NoSub")
+                            db_instance.result_acc_getindex_change_password(username, "NoTrial")
                         driver.quit()
                         return
             if 'https://api.pinger.com/1.0/account/status' in request.url:
@@ -288,13 +288,17 @@ def login(change_password = False, send_message = False, delete_message = False,
                     return
         # Kiểm tra lỗi renew 
         try:
-            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
             sc_modal = driver.find_element(By.TAG_NAME, 'sc-modal')
-            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+            WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
             modal_title = sc_modal.find_element(By.CLASS_NAME, 'modal-title')
-            print(modal_title.text)
+           
             if ERR_RENEW in modal_title.text:
                 db_instance.result_acc_getindex(username, "renew sub")
+                driver.quit()
+                return
+            if ERR_NOSUB in modal_title.text:
+                db_instance.result_acc_getindex(username, "NoSub")
                 driver.quit()
                 return
         except Exception as e:
