@@ -234,8 +234,6 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument('--allow-insecure-localhost')
         chrome_options.add_argument('--ignore-ssl-errors=yes')
         chrome_options.add_argument('--log-level=3')  # Selenium log level
-        # service=Service(ChromeDriverManager().install()),
-        # service.service_log_path = os.path.devnull
         driver = webdriver.Chrome(
             
             options=chrome_options,
@@ -291,9 +289,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                     return
         # Kiểm tra lỗi renew 
         try:
-            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
             sc_modal = driver.find_element(By.TAG_NAME, 'sc-modal')
-            WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+            WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
             modal_title = sc_modal.find_element(By.CLASS_NAME, 'modal-title')
            
             if ERR_RENEW in modal_title.text:
@@ -305,14 +303,39 @@ def login(change_password = False, send_message = False, delete_message = False,
                 driver.quit()
                 return
         except Exception as e:
-            print('')
+            print()
+        
+        try:
+            action = ActionChains(driver)
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'number-expired')))
+            frame_number_expired = driver.find_element(By.TAG_NAME, 'number-expired')
+            print(frame_number_expired)
+            WebDriverWait(frame_number_expired, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
+            btn = frame_number_expired.find_element(By.TAG_NAME, 'button')
+            action.move_to_element(btn).perform()
+            time.sleep(0.5)
+            btn.click()
+            time.sleep(5)
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'number-selection')))
+            frame_number_selection = driver.find_element(By.TAG_NAME, 'number-selection')
+            spans = frame_number_selection.find_elements(By.TAG_NAME, 'span')
+            print(len(spans))
+            for span in spans:
+                action.move_to_element(span).perform()
+            time.sleep(0.5)
+            btn = frame_number_selection.find_element(By.TAG_NAME, 'button')
+            action.move_to_element(btn).perform()
+            btn.click()
+            time.sleep(5)
+        except Exception as e:
+            print()
             
         if check_live:
             db_instance.result_acc_getindex(username, "live")
             driver.quit()
             return        
         if change_password:
-            change_password_func(driver, data)   # nếu chỉ muốn chạy đổi mật khẩu thì mở cmt 166,167,168. Còn muốn đổi mà vẫn làm tiếp thì chỉ cần mở hàng này
+            change_password_func(driver, data) 
             driver.quit()     
             return
         if delete_message:
