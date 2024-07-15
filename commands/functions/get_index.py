@@ -204,12 +204,12 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
     data = None
     try:
-        # tmp = getData(change_password)
-        # if tmp is None:
-        #     print("No acc! Input more acc.")
-        #     return
+        tmp = getData(change_password)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
         
-        username, password = "2012819495" ,"ALibMc3@"
+        username, password = tmp
         data = {
             "username": username,
             "password": password,
