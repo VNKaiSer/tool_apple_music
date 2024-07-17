@@ -31,6 +31,7 @@ LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 ERR_RENEW = "Subscription has expired"
 ERR_NOSUB = "Subscription Required"
 def delete_message_func(driver : webdriver, data):
+    # Mở dòng 35 - 36 và 56-59 nhaaa
     # time_retry = 0
     # while True:
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
