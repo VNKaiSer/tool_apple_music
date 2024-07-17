@@ -31,26 +31,32 @@ LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 ERR_RENEW = "Subscription has expired"
 ERR_NOSUB = "Subscription Required"
 def delete_message_func(driver : webdriver, data):
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
-    conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
-    # delete message
-    try:
-        while len(conversation_list.find_elements(By.TAG_NAME, 'ion-item-sliding')) > 0:
-            WebDriverWait(conversation_list, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
-            conversation = conversation_list.find_element(By.TAG_NAME, 'ion-item-sliding')
-            action_hover = ActionChains(driver).move_to_element(conversation).perform()
-            WebDriverWait(conversation, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
-            btn_delete = conversation.find_element(By.CLASS_NAME, 'icon-delete')
-            btn_delete.click()
-            time.sleep(1)
-            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-            sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
-            WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
-            btns = sc_modal.find_elements(By.TAG_NAME, 'sc-button')
-            btns[1].click()
-            time.sleep(5)
-    except Exception as e:
-        print() 
+    # time_retry = 0
+    # while True:
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
+        conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
+        # delete message
+        try:
+            while len(conversation_list.find_elements(By.TAG_NAME, 'ion-item-sliding')) > 0:
+                WebDriverWait(conversation_list, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
+                conversation = conversation_list.find_element(By.TAG_NAME, 'ion-item-sliding')
+                action_hover = ActionChains(driver).move_to_element(conversation).perform()
+                WebDriverWait(conversation, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
+                btn_delete = conversation.find_element(By.CLASS_NAME, 'icon-delete')
+                btn_delete.click()
+                time.sleep(1)
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+                sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+                WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
+                btns = sc_modal.find_elements(By.TAG_NAME, 'sc-button')
+                btns[1].click()
+                time.sleep(5)
+        except Exception as e:
+            # time_retry = time_retry + 1
+            # if time_retry == 3:
+            #     break
+            # driver.refresh()
+            print() 
 
 def generate_random_password_index():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
@@ -218,15 +224,28 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(10000, 10249)
-        random_proxy = [{
+        random_port = random.randint(20200, 10499)
+        random_proxy = [
+            {
             'proxy': {
                 'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
                 'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
                 'no_proxy': 'localhost,127.0.0.1'
             },
             'mitm_http2': False
-        }]
+        },
+        # {
+        #     'proxy':  
+        #         {
+        #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+        #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+        #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         },
+        #     'port': generate_random_port()
+        # }
+        ]
         proxy = random.choice(random_proxy)
         
         chrome_options = Options()
