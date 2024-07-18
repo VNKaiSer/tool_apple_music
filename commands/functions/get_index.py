@@ -225,7 +225,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(20200, 10499)
+        random_port = random.randint(10200, 10499)
         random_proxy = [
             {
             'proxy': {
