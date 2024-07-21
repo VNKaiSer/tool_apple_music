@@ -114,11 +114,11 @@ def login_apple_id():
     chrome_options.add_argument('--ignore-ssl-errors=yes')
     chrome_options.add_argument('--log-level=3')  # Selenium log level
     
-    driver = uc.Chrome(
+    driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()),
         options=chrome_options,
         seleniumwire_options=proxy,
-        service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
     )
     try: 
         
@@ -336,7 +336,7 @@ def add_card():
         
         
     while True:
-        wait = WebDriverWait(driver, 15)
+        wait = WebDriverWait(driver, 60)
         data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 and on_use = 0 limit 1")
     # print(data_card[0])
         db_instance.update_data(table_name="pay", set_values={"on_use": 1},condition=f'id = {data_card[0][0]}')
@@ -355,6 +355,11 @@ def add_card():
             db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
             continue
         card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
+        print(card)
+        driver.switch_to.default_content()
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
+        iframe_payment = driver.find_elements(By.TAG_NAME, 'iframe')
+        print(len(iframe_payment))
         try:
             wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
             card_number_element = driver.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
