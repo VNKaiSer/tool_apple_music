@@ -392,6 +392,12 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
+    
+    def count_account_music_store(self):
+        query = "SELECT COUNT(*) FROM mail WHERE isRunning = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
 
 # Change password get index tool
 ## 

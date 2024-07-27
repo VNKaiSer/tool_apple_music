@@ -9,6 +9,7 @@ import logging
 import sys
 import mysql.connector
 from concurrent.futures import ThreadPoolExecutor
+from enums.apple_music_login_enum import AppleMusicLogin
 sys.path.append('./commands')
 from commands.const import *
 # DEFINE 
@@ -414,43 +415,55 @@ def run_app():
     # tool_thread = threading.Thread(target=run_tool)
     # tool_thread.start()
     # all_thread.append(tool_thread)
-def run_app_check():
-    def run_tool():
-        while True: # Call the main tool function
-            os.system('py ./commands/run_check.py') 
-        # After the tool finishes execution, show the main window again
-    root.deiconify()
-    def on_spin_change():
-        value = spinbox.get()
-        
-        try:
-            value = int(value)
-            for i in range(1, value + 1):
-                time.sleep(10)
-                threading.Thread(target=run_tool).start()
-                # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                # if len(all_thread) < value or not all_thread[i-1].is_alive():
-                #     all_thread.append(threading.Thread(target=run_tool))
-                #     all_thread[i-1].start()
-                # else:
-                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
-        except ValueError:
-            messagebox.showerror("Error", "Nhập số tab không hợp lệ")
-    # root.withdraw()
-    image_label.place_forget()
-    analysis_frame.place_forget()
-    clear_frame(frame_app)
-    frame_app.place(relx=0.5, rely=0.5, anchor="center")
+def login_apple_music_run(combo , option: StringVar):
+    def run(option):
+        if option == AppleMusicLogin.CHECK:
+            print("Login check")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_check")
+            
+        elif option == AppleMusicLogin.DELETE:
+            print("Login message")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_delete")
+            
+        elif option == AppleMusicLogin.ADD:
+            print("Login add")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_add")
+        else:
+            return
+            
+            
     
-    label_title = Label(frame_app, text="Số tab cần chạy", font=("Arial", 20), bg="white")
-    label_title.pack(pady=10)
-    # Tạo một Spinbox với các giá trị từ 1 đến 10
-    spinbox = Spinbox(frame_app, from_=1, to=20)
-    spinbox.pack(pady=10)
+    time_run = int(combo.get())
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run(option.get()))
+            time.sleep(10)
+    root.deiconify()
+    
+def run_apple_music_login():
+    dialog = tk.Toplevel(root)
+    dialog.title("Nhập số lượng tab")
 
-    # Button để lấy giá trị hiện tại của Spinbox
-    btn_get_value = Button(frame_app, text="Get Value", command=on_spin_change)
-    btn_get_value.pack(pady=5)
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(padx=10, pady=10)
+
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(padx=10, pady=10)
+    combo.current(0)
+
+    option_var = tk.StringVar(value="Login check")
+    
+    run_check_option = ttk.Radiobutton(dialog, text="Login check", variable=option_var, value=AppleMusicLogin.CHECK)
+    run_check_option.pack(padx=10, pady=5)
+    
+    run_delete_option = ttk.Radiobutton(dialog, text="Login delete", variable=option_var, value=AppleMusicLogin.DELETE)
+    run_delete_option.pack(padx=10, pady=5)
+
+    run_add_option = ttk.Radiobutton(dialog, text="Login add", variable=option_var, value=AppleMusicLogin.ADD)
+    run_add_option.pack(padx=10, pady=5)
+    
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: login_apple_music_run(combo, option_var))
+    confirm_button.pack(padx=10, pady=10)
     
 def run_app_delete():
     def run_tool():
@@ -1013,9 +1026,7 @@ add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)
-featuremenu.add_command(label='Login check', command=run_app_check)
-featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
-featuremenu.add_command(label='Login add', command=run_app)
+featuremenu.add_command(label='Tool login apple music', command=run_apple_music_login)
 featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
 featuremenu.add_separator()
@@ -1052,26 +1063,4 @@ exit_menu.add_command(label='Exit', command=close_app)
 
 mainloop()
 
-# option = {
-#         'proxy':  
-#             {
-#                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
-#             }
-    
-#     }
-    
-# browser = webdriver.Firefox(
-#     seleniumwire_options=option
-# )
-
-# browser.get('https://music.apple.com/us/account/settings')
-# apple_id_done(browser,{'first_name': 'Nsysf', 'account': 'tandatvo91@gmail.com', 'type': 'rent', 'password': 'Zxcv123123', 'last_name': 'Zaesa', 'date_of_birth': '07051969', 'address1': '2034 Fairfax Road', 'address2': '', 'city': 'Annapolis', 'state': 'MD', 'postalCode': '21401', 'card_number': '4403938038007684', 'month_exp': '10', 'year_exp': '2024', 'ccv': '187'})
-
-# reg_apple_music()
-# click_first_login(browser)
-# add_payment(browser,{'first_name': 'Clvof', 'account': 'leblancmylie373@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Pnrme', 'date_of_birth': '08151999', 'address1': '12245 West 71st Place', 'address2': '', 'city': 'Arvada', 'state': 'CO', 'postalCode': '80004'} )
-# time.sleep(40)
-# add_payment(browser,{'first_name': 'Jveuw', 'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Evnea', 'date_of_birth': '08221974', 'address1': '8 Village Circle', 'address2': '', 'city': 'Randolph', 'state': 'VT', 'postalCode': '05060'} )
-# reg_apple_music()
-# process_login(browser, {'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123'})
 
