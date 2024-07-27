@@ -446,8 +446,8 @@ class MySQLDatabase:
         self.cursor.execute(query, (ex, username))
         self.connection.commit()
     
-    def increment_count_run(self, table_name):
-        query = f"UPDATE {table_name} SET count_run = count_run + 1 WHERE is_running = 'Y'"
+    def increment_count_run(self, table_name, id):
+        query = f"UPDATE {table_name} SET count_run = count_run + 1 WHERE id = '{id}'"
         self.cursor.execute(query)
         self.connection.commit()
     

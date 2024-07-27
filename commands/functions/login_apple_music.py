@@ -11,13 +11,15 @@ option = {
 db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 def run(run_check = False, run_delete = False):
-    global RUN_APP
-    data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
-    print(data)
-    db_instance.increment_count_run(table_name="mail")
-    if RUN_APP == False:
+    try: 
+        data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
+        print(data)
+        db_instance.increment_count_run(table_name="mail", id= data[0][0])
+        db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
+    except Exception as e:
+        print('Có lỗi khi lấy data')
         return
-    db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
+    
     time.sleep(2)
     if USE_PROXY == True:
         browser = webdriver.Firefox(
