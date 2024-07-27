@@ -18,10 +18,9 @@ def main():
     args = parser.parse_args()
     while check_run_app():
         print("RUN apple music")
-        if "change_password" not in args.actions:    
-            if db_instance.count_account_music_store()[0][0] == 0:
-                print("Has no account")
-                sys.exit()
+        if db_instance.count_account_music_store()[0][0] == 0:
+            print("Has no account")
+            sys.exit()
 
         if args.actions:
             for action in args.actions:
