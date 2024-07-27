@@ -48,7 +48,7 @@ class Tool_Exception:
     ISSUE_METHOD = "There is an issue with your payment method. Update your payment information to correct the problem and try again."
     DEC = "Your payment method was declined. Please enter valid payment method information."
     DECLINED = "Payment Method Declined"
-
+    PAYMENT_ERR= "This payment method is associated with too many Apple Accounts. To continue, choose another payment method."
 class Config:
     #web
     WEB_URL = "https://music.apple.com/us/login"
