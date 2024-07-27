@@ -114,6 +114,10 @@ class MySQLDatabase:
             database="apple_music"
         )
         self.cursor = self.connection.cursor()
+        self.set_isolation_level()
+        
+    def set_isolation_level(self):
+        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
 
     def create_table(self, table_name, columns):
         column_str = ', '.join(columns)
@@ -391,12 +395,14 @@ class MySQLDatabase:
         query = "SELECT COUNT(*) FROM get_index_tool WHERE is_running = 'N' and count_run <= 3"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
+        self.connection.commit()
         return result
     
     def count_account_music_store(self):
         query = "SELECT COUNT(*) FROM mail WHERE isRunning = 'N' and count_run <= 3"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
+        self.connection.commit()
         return result
 
 # Change password get index tool
