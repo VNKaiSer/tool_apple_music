@@ -12,7 +12,7 @@ db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 def run(run_check = False, run_delete = False):
     global RUN_APP
-    data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="status = 1 and isRunning = 'N' and count_run <= 3 limit 1") 
+    data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
     print(data)
     db_instance.update_data(table_name="mail", set_values={"count_run": "count_run + 1"}, condition="id = %s" % data[0][0])
     if RUN_APP == False:
