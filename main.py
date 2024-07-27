@@ -417,15 +417,15 @@ def run_app():
     # all_thread.append(tool_thread)
 def login_apple_music_run(combo , option: StringVar):
     def run(option):
-        if option == AppleMusicLogin.CHECK:
+        if option == AppleMusicLogin.CHECK.value:
             print("Login check")
             subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_check")
             
-        elif option == AppleMusicLogin.DELETE:
+        elif option == AppleMusicLogin.DELETE.value:
             print("Login message")
             subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_delete")
             
-        elif option == AppleMusicLogin.ADD:
+        elif option == AppleMusicLogin.ADD.value:
             print("Login add")
             subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_add")
         else:
@@ -453,16 +453,16 @@ def run_apple_music_login():
 
     option_var = tk.StringVar(value="Login check")
     
-    run_check_option = ttk.Radiobutton(dialog, text="Login check", variable=option_var, value=AppleMusicLogin.CHECK)
+    run_check_option = ttk.Radiobutton(dialog, text="Login check", variable=option_var, value=AppleMusicLogin.CHECK.value)
     run_check_option.pack(padx=10, pady=5)
     
-    run_delete_option = ttk.Radiobutton(dialog, text="Login delete", variable=option_var, value=AppleMusicLogin.DELETE)
+    run_delete_option = ttk.Radiobutton(dialog, text="Login delete", variable=option_var, value=AppleMusicLogin.DELETE.value)
     run_delete_option.pack(padx=10, pady=5)
 
-    run_add_option = ttk.Radiobutton(dialog, text="Login add", variable=option_var, value=AppleMusicLogin.ADD)
+    run_add_option = ttk.Radiobutton(dialog, text="Login add", variable=option_var, value=AppleMusicLogin.ADD.value)
     run_add_option.pack(padx=10, pady=5)
     
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: login_apple_music_run(combo, option_var))
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:login_apple_music_run(combo, option_var))
     confirm_button.pack(padx=10, pady=10)
     
 def run_app_delete():

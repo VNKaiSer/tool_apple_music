@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
 class AppleMusicLogin(Enum):
-    CHECK = auto()
-    DELETE = auto()
-    ADD = auto()
+    CHECK = "CHECK"
+    DELETE = "DELETE"
+    ADD = "ADD"
