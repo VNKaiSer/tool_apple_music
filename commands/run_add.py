@@ -19,7 +19,7 @@ def run():
     time.sleep(2)
     if USE_PROXY == True:
         browser = webdriver.Firefox(
-        seleniumwire_options=  option
+            seleniumwire_options=  option
         )
         print("Dùng proxy")
     else:
@@ -42,12 +42,14 @@ def run():
         browser.switch_to.frame(iframe)
     
     #Nhập account name
+        
         wait.until(EC.visibility_of_element_located((By.ID, "accountName")))
         inputAccount = browser.find_element(By.ID, "accountName")
+        time.sleep(2)
         inputAccount.send_keys(account.get_account())
     
     # Nhấn nút login
-        browser.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div/div[2]/div/div/div[3]/button").click()
+        browser.switch_to.active_element.send_keys(Keys.ENTER)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         browser.switch_to.frame(iframe_auth)
@@ -62,6 +64,7 @@ def run():
     try:   # Chọn tới vị trí con trỏ hiện tại
         wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="password_text_field"]')))
         inputPassword = browser.find_element(By.XPATH, '//*[@id="password_text_field"]')
+        time.sleep(2)
         inputPassword.send_keys(account.get_password())
         wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="sign-in"]')))
         browser.find_element(By.XPATH, '//*[@id="sign-in"]').click()
@@ -148,31 +151,9 @@ def run():
         browser.switch_to.default_content()
     except Exception as e:
         print('')
-    browser.get("https://music.apple.com/us/account/settings")
+        browser.get("https://music.apple.com/us/account/settings")
 
     try: 
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-
-        iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-        browser.switch_to.frame(iframe_setting)
-
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
-        print(country)
-        if country != "United States":
-            db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
-            browser.quit()
-            return
-    # click nút change payment 
-        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-        browser.switch_to.default_content()
-
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-        iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-        browser.switch_to.frame(iframe_payment)
-    except Exception as e:
         browser.get("https://music.apple.com/us/account/settings")
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
         iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
@@ -180,49 +161,44 @@ def run():
         iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_setting)
 
-        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li')))
-        country = browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[3]/ul/li').text
+        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'li')))
+        lis = browser.find_elements(By.TAG_NAME, 'li')
+        country = lis[10].text
+        index = 0
+        for li in lis:
+            print(str(index) + ": " + li.text)
+            index += 1
+            
         print(country)
         if country != "United States":
             db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
             browser.quit()
             return
-    # click nút change payment 
-        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button')))
-        browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/main/div/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/ul/li[2]/button').click()
-        browser.switch_to.default_content()
-
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-        iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-        browser.switch_to.frame(iframe_payment)
-        print('')
-# Kiểm tra đã add thẻ 
+        # click nút change payment 
+        lis[3].click()
+    except Exception as e:
+        print(e)
 
     wait_child = WebDriverWait(browser, 10)
     try: 
-        wait_child.until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
         browser.find_element(By.CLASS_NAME, 'payment-method-module-card').click()
-    
-    #Nhấn vào thẻ 
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-section-item[1]/div/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-section-item[1]/div/button').click()
-    
-    # Chuyển sang iframe thanh toán 
+        time.sleep(5)
         browser.switch_to.default_content()
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")))
-        iframe_child_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
-        browser.switch_to.frame(iframe_child_payment)
-        print(iframe_child_payment)
-    #Remove thẻ 
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/div/div[2]/div/div[4]/csk-button/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[2]/div/div[4]/csk-button/button').click()
-    
-    # Nhấn nút remove
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+        iframe_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe_payment)
+        print('Đã vào iframe thanh toán')
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div[1]/div/div[5]/csk-button/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[1]/div/div[5]/csk-button/button').click()
+        time.sleep(5)
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
+        time.sleep(5)
+        
     except Exception as e:
         print(e)
-        browser.switch_to.default_content()
+    #     browser.switch_to.default_content()
     # run_add_card = False
     # browser.quit()
     # break
@@ -233,13 +209,12 @@ def run():
         iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_payment)
     # Nhấn nút add payment method
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/main/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/div[2]/button').click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
         browser.switch_to.default_content()
         iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_add_payment)
     except Exception as e:
-        print('')
         db_instance.update_data(table_name='mail', set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
         browser.quit()
         return
@@ -284,13 +259,13 @@ def run():
             card_ccv_element.send_keys(i)
             time.sleep(0.1)
     # browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]').send_keys("658")
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div[3]/div/button').click()
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
 
     # Kiểm tra các trường hợp lỗi của thẻ 
         try:
-            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal")))
+            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
             add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
-        
+            print(add_payment_result.text)
             match add_payment_result.text:
                 case tool_exception.DISSABLE:
                     logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
@@ -300,19 +275,19 @@ def run():
                 case tool_exception.MANY:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                 case tool_exception.INVALID_CARD:
                 # Thông tin thẻ sai
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                 case tool_exception.SUPPORT:
                     logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                 case tool_exception.DONE:
                     logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
                     logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
@@ -322,8 +297,8 @@ def run():
                 case tool_exception.DIE:
                     logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                 case tool_exception.ACC_SPAM:
                     logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
                     db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
@@ -333,29 +308,38 @@ def run():
                 case tool_exception.ISSUE_METHOD:
                     logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     continue
                 case tool_exception.DEC:
                     logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     continue
                 case tool_exception.DECLINED:
                     logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
                     db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
+                case tool_exception.PAYMENT_ERR:
+                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Many add"}, condition=f"id = {data_card[0][0]}")
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                     continue
                 case _:
                     logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
+                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    continue
         except NoSuchElementException as e:
             logging.error("Error Card: Thông tin thẻ không hợp lệ - %s")
             db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
             continue
-        # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-        # browser.find_element(By.XPATH, "/html/body/div[1]/div/div/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+        # wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+        # browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
 
         except Exception as e: # Không có thông báo. => Add thẻ thành công
             logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
