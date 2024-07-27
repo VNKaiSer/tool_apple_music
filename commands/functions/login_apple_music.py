@@ -14,7 +14,7 @@ def run(run_check = False, run_delete = False):
     global RUN_APP
     data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
     print(data)
-    db_instance.update_data(table_name="mail", set_values={"count_run": "count_run + 1"}, condition="id = %s" % data[0][0])
+    db_instance.increment_count_run(table_name="mail")
     if RUN_APP == False:
         return
     db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
