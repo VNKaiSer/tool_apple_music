@@ -422,7 +422,7 @@ def login_apple_music_run(combo , option: StringVar):
             subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_check")
             
         elif option == AppleMusicLogin.DELETE.value:
-            print("Login message")
+            print("Login delete")
             subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_delete")
             
         elif option == AppleMusicLogin.ADD.value:
