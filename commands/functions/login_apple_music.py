@@ -119,7 +119,6 @@ def run(run_check = False, run_delete = False):
     # Nhấn vào form privacy
     try:
         browser.switch_to.default_content()
-        browser.get("https://music.apple.com/us/browse")
         WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe:nth-child(1)")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe)
@@ -139,18 +138,23 @@ def run(run_check = False, run_delete = False):
     
 
     try: # Lần đầu đăng nhập
+        browser.get("https://music.apple.com/us/account/settings")
         browser.switch_to.default_content()
-
         time.sleep(5)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')))
-        iframe_hello = browser.find_element(By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
+        iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
         browser.switch_to.frame(iframe_hello)
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
-        browser.find_elements(By.TAG_NAME, 'button')[1].click()
+        btns = iframe_hello.find_elements(By.TAG_NAME, 'button')
+        index = 0
+        for btn in btns:
+            print(str(index) + " "+ btn.text)
+            index = index + 1
+        # btns[5].click()
         time.sleep(5)
         browser.switch_to.default_content()
     except Exception as e:
-        browser.get("https://music.apple.com/us/account/settings")
+        print('')
 
     time_reload = 0
     while time_reload < 2:
