@@ -21,12 +21,37 @@ def run(run_check = False, run_delete = False):
         return
     
     time.sleep(2)
-    if USE_PROXY == True:
-        browser = webdriver.Firefox(
-            seleniumwire_options=  option
-        )
-    else:
-        browser = webdriver.Firefox()
+    # if USE_PROXY == True:
+    random_port = random.randint(10200, 10499)
+    random_proxy = [
+    #     {
+    #     'proxy': {
+    #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
+    #         'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
+    #         'no_proxy': 'localhost,127.0.0.1'
+    #     },
+    #     'mitm_http2': False
+    # },
+    {'proxy': {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}}
+    # {
+    #     'proxy':  
+    #         {
+    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'no_proxy': 'localhost,127.0.0.1'
+    #         },
+    #     'port': generate_random_port()
+    # }
+    ]
+    proxy = random.choice(random_proxy)
+    browser = webdriver.Firefox(
+        seleniumwire_options=proxy
+    )
+    # else:
+    #     browser = webdriver.Firefox()
+        
     wait = WebDriverWait(browser, 20)
 
     if(data[0] is None): # Trường hợp hết mail
@@ -91,20 +116,31 @@ def run(run_check = False, run_delete = False):
         db_instance.update_data(table_name="mail", set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
         browser.quit()
         return
+    # Nhấn vào form privacy
     try:
-        active_element = browser.switch_to.active_element
-        active_element.send_keys(Keys.TAB)
-        active_element.send_keys(Keys.TAB)
-        active_element.send_keys(Keys.TAB)
-        active_element.send_keys(Keys.ENTER)
-        time.sleep(5)
+        browser.switch_to.default_content()
+        browser.get("https://music.apple.com/us/browse")
+        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe:nth-child(1)")))
+        iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe)
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
+        iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_auth)
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#repairFrame")))
+        iframe_auth = browser.find_element(By.CSS_SELECTOR, "#repairFrame")
+        browser.switch_to.frame(iframe_auth)
+        btns = browser.find_elements(By.TAG_NAME, "button")
+        btns[0].click()
+        time.sleep(10)
     except Exception as e:
         print('')
     
 
-    browser.switch_to.default_content()
+    
 
     try: # Lần đầu đăng nhập
+        browser.switch_to.default_content()
+
         time.sleep(5)
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')))
         iframe_hello = browser.find_element(By.CSS_SELECTOR, '#ck-container > iframe:nth-child(1)')

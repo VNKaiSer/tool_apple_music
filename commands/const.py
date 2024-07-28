@@ -531,7 +531,6 @@ def check_account_is_block(browser):
         else:
             return False    
     except Exception as e:
-            print(e)
             return False
 def check_account_login_invalid_password(browser):
     try:
@@ -549,7 +548,6 @@ def check_account_has_otp(browser):
         print("Has OTP")
         return True    
     except Exception as e:
-            print(e)
             return False
         
 def generate_random_password():
