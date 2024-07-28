@@ -144,13 +144,11 @@ def run(run_check = False, run_delete = False):
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')))
         iframe_hello = browser.find_element(By.CSS_SELECTOR, '.commerce-modal-embedded > iframe:nth-child(1)')
         browser.switch_to.frame(iframe_hello)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'button')))
-        btns = iframe_hello.find_elements(By.TAG_NAME, 'button')
-        index = 0
-        for btn in btns:
-            print(str(index) + " "+ btn.text)
-            index = index + 1
-        # btns[5].click()
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.ID, 'modal-body')))
+        modal_welcome = browser.find_element(By.ID, 'modal-body')
+        
+        btns = modal_welcome.find_elements(By.TAG_NAME, 'button')
+        btns[0].click()
         time.sleep(5)
         browser.switch_to.default_content()
     except Exception as e:
