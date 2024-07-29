@@ -159,35 +159,40 @@ def run(run_check = False, run_delete = False):
         browser.switch_to.default_content()
     except Exception as e:
         print('')
+        
+    try:
+        time_reload = 0
+        while time_reload < 2:
+            browser.get("https://music.apple.com/us/account/settings")
+            time_reload = time_reload + 1
+            try: 
+                WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
+                iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
 
-    time_reload = 0
-    while time_reload < 2:
-        browser.get("https://music.apple.com/us/account/settings")
-        time_reload = time_reload + 1
-        try: 
-            WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-            iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+                iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+                browser.switch_to.frame(iframe_setting)
 
-            iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
-            browser.switch_to.frame(iframe_setting)
-
-            WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.TAG_NAME, 'li')))
-            lis = browser.find_elements(By.TAG_NAME, 'li')
-            country = lis[10].text
-            if country != "United States":
-                db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
-                browser.quit()
-                return
-            
-            if run_check == True:
-                balance = lis[11].text
-                db_instance.insert_mail_check([data[0][1], data[0][2],country,float(balance.replace("$",""))])
-                browser.quit()
-                return
-            
-            lis[3].click()
-        except Exception as e:
-            print('')
+                WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.TAG_NAME, 'li')))
+                lis = browser.find_elements(By.TAG_NAME, 'li')
+                country = lis[10].text
+                if country != "United States":
+                    db_instance.update_data(table_name="mail", set_values={"status": 0, "country": country}, condition=f"id = {data[0][0]}")
+                    browser.quit()
+                    return
+                
+                if run_check == True:
+                    balance = lis[11].text
+                    db_instance.insert_mail_check([data[0][1], data[0][2],country,float(balance.replace("$",""))])
+                    browser.quit()
+                    return
+                
+                lis[3].click()
+            except Exception as e:
+                print('')
+    except Exception as e:
+        db_instance.update_data(table_name='mail', set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        browser.quit()
+        return
 
     try: 
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
@@ -228,122 +233,128 @@ def run(run_check = False, run_delete = False):
         browser.quit()
         return
     
-    run_add_card = True
-    while run_add_card:
-        data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
-        try:
-            if data_card[0] is None:
+    try:
+        run_add_card = True
+        while run_add_card:
+            data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
+            try:
+                if data_card[0] is None:
+                    logging.error("Error: %s", str("Hết thẻ"))
+                    sys.exit() # Dừng cjương trình
+            except IndexError:
                 logging.error("Error: %s", str("Hết thẻ"))
-                sys.exit() # Dừng cjương trình
-        except IndexError:
-            logging.error("Error: %s", str("Hết thẻ"))
-            browser.quit()
-            sys.exit()
-        
-        if data_card[0][6] >= get_max_card_add():
-            db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
-            continue
-        
-        card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
-        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
-        card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
-        card_number_element.clear()
-        for i in card.get_card_number():
-            card_number_element.send_keys(i)
-            time.sleep(0.1)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')))
-        card_expiration_element = browser.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')
-        card_expiration_element.clear()
-        for i in card.get_card_expiration():
-            card_expiration_element.send_keys(i)
-            time.sleep(0.1)
-
-        wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditVerificationNumber"]')))
-        card_ccv_element = browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]')
-        card_ccv_element.clear()
-        for i in card.get_card_ccv():
-            card_ccv_element.send_keys(i)
-            time.sleep(0.1)
+                browser.quit()
+                sys.exit()
             
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
+            if data_card[0][6] >= get_max_card_add():
+                db_instance.update_data(table_name="pay", set_values={"status": 0},condition=f'id = {data_card[0][0]}')
+                continue
+            
+            card = Card(data_card[0][1], data_card[0][2]+""+ data_card[0][3], data_card[0][4])
+            wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardNumber"]')))
+            card_number_element = browser.find_element(By.XPATH,'//*[@id="creditCardNumber"]')
+            card_number_element.clear()
+            for i in card.get_card_number():
+                card_number_element.send_keys(i)
+                time.sleep(0.1)
 
-        try:
-            wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
-            add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
-            match add_payment_result.text:
-                case tool_exception.DISSABLE:
-                    logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
-                    db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
-                    run_add_card = False # Dừng vì account bị disable
-                    browser.quit()
-                case tool_exception.MANY:
-                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                case tool_exception.INVALID_CARD:
-                # Thông tin thẻ sai
-                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                case tool_exception.SUPPORT:
-                    logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                case tool_exception.DIE:
-                    logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                case tool_exception.ACC_SPAM:
-                    logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
-                    db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
-                    run_add_card = False
-                    browser.quit()
-                case tool_exception.ISSUE_METHOD:
-                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
-                case tool_exception.DEC:
-                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
-                case tool_exception.DECLINED:
-                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
-                case tool_exception.PAYMENT_ERR:
-                    logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
-                    db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Many add"}, condition=f"id = {data_card[0][0]}")
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
-                case _:
-                    logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
-                    wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                    browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
-                    continue
-        except NoSuchElementException as e:
-            logging.error("Error Card: Thông tin thẻ không hợp lệ - %s")
-            db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
-            continue
-        
-        except Exception as e: # Không có thông báo. => Add thẻ thành công
-            logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
-            logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
-            db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
-            db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_ccv()}, condition=f"id = {data[0][0]}")
-            run_add_card = False
-            browser.quit()
+            wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')))
+            card_expiration_element = browser.find_element(By.XPATH,'//*[@id="creditCardExpirationMonth-creditCardExpirationYear"]')
+            card_expiration_element.clear()
+            for i in card.get_card_expiration():
+                card_expiration_element.send_keys(i)
+                time.sleep(0.1)
+
+            wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="creditVerificationNumber"]')))
+            card_ccv_element = browser.find_element(By.XPATH,'//*[@id="creditVerificationNumber"]')
+            card_ccv_element.clear()
+            for i in card.get_card_ccv():
+                card_ccv_element.send_keys(i)
+                time.sleep(0.1)
+                
+            browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
+
+            try:
+                wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
+                add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
+                match add_payment_result.text:
+                    case tool_exception.DISSABLE:
+                        logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
+                        db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Diss"}, condition=f"id = {data[0][0]}")
+                        run_add_card = False # Dừng vì account bị disable
+                        browser.quit()
+                    case tool_exception.MANY:
+                        logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is many account add"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "To Many ID"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    case tool_exception.INVALID_CARD:
+                    # Thông tin thẻ sai
+                        logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is invalid"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    case tool_exception.SUPPORT:
+                        logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    case tool_exception.DIE:
+                        logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                    case tool_exception.ACC_SPAM:
+                        logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is spam"))
+                        db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data_card[0][0]}")
+                        run_add_card = False
+                        browser.quit()
+                    case tool_exception.ISSUE_METHOD:
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        continue
+                    case tool_exception.DEC:
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        continue
+                    case tool_exception.DECLINED:
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        continue
+                    case tool_exception.PAYMENT_ERR:
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Many add"}, condition=f"id = {data_card[0][0]}")
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        continue
+                    case _:
+                        logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
+                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
+                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        continue
+            except NoSuchElementException as e:
+                logging.error("Error Card: Thông tin thẻ không hợp lệ - %s")
+                db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Invalid Card"}, condition=f"id = {data_card[0][0]}")
+                continue
+            
+            except Exception as e: # Không có thông báo. => Add thẻ thành công
+                logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
+                logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
+                db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
+                db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_ccv()}, condition=f"id = {data[0][0]}")
+                run_add_card = False
+                browser.quit()
+    except Exception as e:
+        db_instance.update_data(table_name='mail', set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
+        logging.error("Error Card: Lỗi không xác định - %s", str(e))
+        browser.quit()
+        return 
 
 
