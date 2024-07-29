@@ -59,7 +59,12 @@ def run(run_check = False, run_delete = False):
         browser.quit()
         return
     
-    browser.get(config.WEB_URL)
+    try: 
+        browser.get(config.WEB_URL)
+    except Exception as e:
+        logging.error("Error Tool: %s", str("Lỗi proxy"))
+        browser.quit()
+        return
 
     account = Account(data[0][1], data[0][2])
     try:
