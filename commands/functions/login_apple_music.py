@@ -336,7 +336,7 @@ def run(run_check = False, run_delete = False):
             logging.info("Success Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is done"))
             logging.info("Success Account: Id - %s", str(data[0][1] +" - "+"Account is done"))
             db_instance.update_data(table_name="pay", set_values={"number_use": data_card[0][6]+1}, condition=f"id = {data_card[0][0]}")
-            db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_ccv()}, condition=f"id = {data[0][0]}")
+            db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "Done","card_add" : card.get_card_number()}, condition=f"id = {data[0][0]}")
             run_add_card = False
             browser.quit()
 
