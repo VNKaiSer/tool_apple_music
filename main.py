@@ -143,7 +143,7 @@ class MySQLDatabase:
         self.connection.commit()
         pass
     def analysis_id_scusess(self):
-        query = "SELECT m.user , m.password, p.card_number, p.`day`, p.`year`, p.ccv FROM mail m INNER JOIN pay p ON m.card_add = p.card_number"
+        query = "SELECT user, password, card_add FROM mail WHERE exception = 'Done'"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
@@ -151,13 +151,13 @@ class MySQLDatabase:
     def export_error_id(self, error):
         query = None
         if error == 'country':
-            query = "SELECT user, password, country FROM mail WHERE country IS NOT NULL"
+            query = "SELECT user, password, card_add,country FROM mail WHERE country IS NOT NULL"
             self.cursor.execute(query)
         elif error == 'all':
-            query = "SELECT user, password, exception FROM mail"
+            query = "SELECT user, password,card_add, exception FROM mail"
             self.cursor.execute(query) 
         else:
-            query = "SELECT user, password FROM mail WHERE exception = %s"
+            query = "SELECT user, password,card_add FROM mail WHERE exception = %s"
             self.cursor.execute(query, (error,))
 
         result = self.cursor.fetchall()
@@ -530,13 +530,14 @@ def open_analysis():
         try:
             file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
             err = selected_value.get()
+            data_export = db_instance.export_error_id(err) if err != "done" else db_instance.analysis_id_scusess()
             if file_path:
                 with open(file_path, 'w') as file:
-                    for data in db_instance.export_error_id(err):
-                        if len(data) >= 3:
-                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_nuse') + '\n')
+                    for data in data_export:
+                        if len(data) >= 4:
+                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_add') +'|' +(data[3] if data[3] != None else 'non_nuse') + '\n')
                         else:
-                            file.write(data[0] + '|' + data[1] + '|' + err + '\n')
+                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_add') +'|' + err + '\n')
                     messagebox.showinfo("Thông báo", "Xuất thành công") 
                     subprocess.Popen(['notepad.exe', file_path])
             
@@ -553,7 +554,7 @@ def open_analysis():
     analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
     label = Label(analysis_frame, text="Chọn keyword muốn xuất:", font=("Arial", 20), bg="white")
     label.pack(pady=5)
-    options = ["Diss", "UnLock", "add sup", "2FA", "SaiPass","country","all"]
+    options = ["Diss", "UnLock", "add sup", "2FA", "SaiPass","country","all","done"]
 
     # Biến để lưu trữ giá trị được chọn
     selected_value = StringVar(analysis_frame)
@@ -1037,7 +1038,6 @@ featuremenu.add_command(label='Get index tool', command=show_dialog)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
-analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
 analysis_menu.add_command(label='Xuất id theo keyword', command=open_analysis)
 analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
