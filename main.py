@@ -534,9 +534,7 @@ def open_analysis():
                 with open(file_path, 'w') as file:
                     for data in db_instance.export_error_id(err):
                         if len(data) >= 3:
-                            file.write(data[0] + '|' + data[1] + '|' + data[2] + '\n')
-                        elif err == "all": 
-                            file.write(data[0] + '|' + data[1] + '|' + 'no error'+ '\n')
+                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_nuse') + '\n')
                         else:
                             file.write(data[0] + '|' + data[1] + '|' + err + '\n')
                     messagebox.showinfo("Thông báo", "Xuất thành công") 
@@ -553,7 +551,7 @@ def open_analysis():
     
     # Tạo một Frame với chiều rộng bằng với root
     analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
-    label = Label(analysis_frame, text="Chọn lỗi muốn xuất:", font=("Arial", 20), bg="white")
+    label = Label(analysis_frame, text="Chọn keyword muốn xuất:", font=("Arial", 20), bg="white")
     label.pack(pady=5)
     options = ["Diss", "UnLock", "add sup", "2FA", "SaiPass","country","all"]
 
