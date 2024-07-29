@@ -148,12 +148,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         driver.get("https://app.getindex.com/conversation/empty") 
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_phone = driver.find_element(By.TAG_NAME, "input")    
-        while input_phone.get_attribute('value') == '':
-            time.sleep(1)
-            input_phone.send_keys(data["phone_send"])
-            time.sleep(0.3)
-            input_phone.send_keys(Keys.ENTER)
-            break
+        input_phone_func(input_phone, data)
     except Exception as e:
         current_url = driver.current_url
         if current_url == LINK_ERR_NO_TRIAL:
@@ -164,15 +159,44 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         driver.quit()
         return
     
+    # Kiểm tra số điện thoại có đúng k
+    while True:
+        try:
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+            input_message = driver.find_element(By.TAG_NAME, "textarea")
+            time.sleep(1)
+            input_message.clear()
+            input_message.send_keys('Check')
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
+            sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+            input_phone = driver.find_element(By.TAG_NAME, "input")  
+            input_phone_func(input_phone, data)
+        except:
+            break
     # Kiểm tra lỗi Nosub 
+    try:
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+        input_message = driver.find_element(By.TAG_NAME, "textarea")
+        time.sleep(1)
+        input_message.clear()
+        input_message.send_keys(random_message())
+        time.sleep(0.3)
+        input_message.send_keys(Keys.ENTER)
+    except:
+        db_instance.update_rerun_acc_get_index(username)
     
-    
-    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-    input_message = driver.find_element(By.TAG_NAME, "textarea")
-    time.sleep(1)
-    input_message.send_keys(random_message())
-    time.sleep(0.3)
-    input_message.send_keys(Keys.ENTER)
+    # Kiểm tra lỗi Nosub 
+    try:
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+        input_message = driver.find_element(By.TAG_NAME, "textarea")
+        time.sleep(1)
+        input_message.clear()
+        input_message.send_keys(random_message())
+        time.sleep(0.3)
+        input_message.send_keys(Keys.ENTER)
+    except:
+        db_instance.update_rerun_acc_get_index(username)
     
     # Kiểm tra trường hợp hỗ trợ
     try:
@@ -201,12 +225,25 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
                 db_instance.result_acc_getindex(username, "no sent text")
                 driver.quit()
                 return
-    
     if send_and_delete:
         delete_message_func(driver, data)
 
-    db_instance.result_acc_getindex(username, "done")
+    for request in driver.requests:
+        if 'https://api.pinger.com/2.2/message' in request.url:
+            print(request.response.body)
+            print("Sent message success")
+            db_instance.result_acc_getindex(username, "done")
+            driver.quit()
+            return
+        
+    db_instance.update_rerun_acc_get_index(username)
     driver.quit()
+
+def input_phone_func(input_phone, data):
+    time.sleep(1)
+    input_phone.send_keys(data["phone_send"])
+    time.sleep(0.3)
+    input_phone.send_keys(Keys.ENTER)
     
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
     data = None
@@ -227,14 +264,15 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         random_port = random.randint(10200, 10499)
         random_proxy = [
-            {
-            'proxy': {
-                'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
-                'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-            'mitm_http2': False
-        },
+        #     {
+        #     'proxy': {
+        #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
+        #         'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
+        #         'no_proxy': 'localhost,127.0.0.1'
+        #     },
+        #     'mitm_http2': False
+        # },
+        {'proxy': {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}, 'mitm_http2': False}
         # {
         #     'proxy':  
         #         {
