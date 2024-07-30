@@ -78,8 +78,8 @@ def run(run_check = False, run_delete = False):
         inputAccount = browser.find_element(By.ID, "accountName")
         time.sleep(2)
         inputAccount.send_keys(account.get_account())
-    
         # Nhấn nút login
+        time.sleep(3)
         browser.switch_to.active_element.send_keys(Keys.ENTER)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
