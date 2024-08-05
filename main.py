@@ -453,16 +453,47 @@ def run_apple_music_login():
     option_var = tk.StringVar(value="Login check")
     
     run_check_option = ttk.Radiobutton(dialog, text="Login check", variable=option_var, value=AppleMusicLogin.CHECK.value)
-    run_check_option.pack(padx=10, pady=5)
+    run_check_option.pack(anchor='w',padx=10, pady=5)
     
     run_delete_option = ttk.Radiobutton(dialog, text="Login delete", variable=option_var, value=AppleMusicLogin.DELETE.value)
-    run_delete_option.pack(padx=10, pady=5)
+    run_delete_option.pack(anchor='w',padx=10, pady=5)
 
     run_add_option = ttk.Radiobutton(dialog, text="Login add", variable=option_var, value=AppleMusicLogin.ADD.value)
-    run_add_option.pack(padx=10, pady=5)
+    run_add_option.pack(anchor='w',padx=10, pady=5)
     
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:login_apple_music_run(combo, option_var))
-    confirm_button.pack(padx=10, pady=10)
+    confirm_button.pack(anchor='w',padx=10, pady=10)
+
+def apple_id_tool():
+    dialog = tk.Toplevel(root)
+    dialog.title("Nhập số lượng tab")
+
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(anchor='w', padx=10, pady=5)
+
+    global combo
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(anchor='w', padx=10, pady=5)
+    combo.current(0)
+
+    change_secury_question_var = tk.BooleanVar()
+    change_secury_question_checkbox = ttk.Checkbutton(dialog, text="Đổi câu hỏi bảo mật", variable=change_secury_question_var)
+    change_secury_question_checkbox.pack(anchor='w', padx=10, pady=5)
+    
+    change_region_var = tk.BooleanVar()
+    change_region_checkbox = ttk.Checkbutton(dialog, text="Đổi quốc gia", variable=change_region_var)
+    change_region_checkbox.pack(anchor='w', padx=10, pady=5)
+
+    change_password_var = tk.BooleanVar()
+    change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
+    change_password_checkbox.pack(anchor='w', padx=10, pady=5)
+    
+    add_payment_var = tk.BooleanVar()
+    add_payment_checkbox = ttk.Checkbutton(dialog, text="Add thẻ", variable=add_payment_var)
+    add_payment_checkbox.pack(anchor='w', padx=10, pady=5)
+
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: get_index(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var))
+    confirm_button.pack(anchor='w', padx=10, pady=10)
     
 def run_app_delete():
     def run_tool():
@@ -952,28 +983,28 @@ def show_dialog():
     global delete_message_var
     delete_message_var = tk.BooleanVar()
     delete_message_checkbox = ttk.Checkbutton(dialog, text="Xoá tin nhắn", variable=delete_message_var)
-    delete_message_checkbox.pack(padx=10, pady=5)
+    delete_message_checkbox.pack(anchor='w',padx=10, pady=5)
     
     global send_message_var
     send_message_var = tk.BooleanVar()
     send_message_checkbox = ttk.Checkbutton(dialog, text="Gửi tin nhắn", variable=send_message_var)
-    send_message_checkbox.pack(padx=10, pady=5)
+    send_message_checkbox.pack(anchor='w',padx=10, pady=5)
 
     # Checkbox for "Đổi mật khẩu"
     global change_password_var
     change_password_var = tk.BooleanVar()
     change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
-    change_password_checkbox.pack(padx=10, pady=5)
+    change_password_checkbox.pack(anchor='w',padx=10, pady=5)
     
     global check_live_var
     check_live_var = tk.BooleanVar()
     check_live_checkbox = ttk.Checkbutton(dialog, text="Check live", variable=check_live_var)
-    check_live_checkbox.pack(padx=10, pady=5)
+    check_live_checkbox.pack(anchor='w',padx=10, pady=5)
     
     global send_and_delete_var 
     send_and_delete_var = tk.BooleanVar()
     send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
-    send_and_delete_checkbox.pack(padx=10, pady=5)
+    send_and_delete_checkbox.pack(anchor='w',padx=10, pady=5)
 
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var))
     confirm_button.pack(padx=10, pady=10)
@@ -1035,6 +1066,8 @@ featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Get index tool', command=show_dialog)
+featuremenu.add_separator()
+featuremenu.add_command(label='Apple id tool', command=apple_id_tool)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
