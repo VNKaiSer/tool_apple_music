@@ -133,8 +133,10 @@ def random_message():
 def getData(change_pass):
     if not change_pass:
         acc_get = db_instance.get_acc_get_index()
+        time.sleep(2)
     else:
         acc_get = db_instance.get_acc_get_index_change_password()
+        time.sleep(2)
     if acc_get == '':
         return None
     username = acc_get[1]
