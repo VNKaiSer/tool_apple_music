@@ -270,7 +270,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #     },
         #     'mitm_http2': False
         # },
-        {'proxy': {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}, 'mitm_http2': False}
+        # {'proxy': {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}, 'mitm_http2': False}
         # {
         #     'proxy':  
         #         {
@@ -282,6 +282,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         },
         #     'port': generate_random_port()
         # }
+        {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False}
         ]
         proxy = random.choice(random_proxy)
         
