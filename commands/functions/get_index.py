@@ -167,7 +167,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             time.sleep(1)
             input_message.clear()
             input_message.send_keys('Check')
-            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
             sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
             input_phone = driver.find_element(By.TAG_NAME, "input")  
@@ -230,8 +230,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
 
     for request in driver.requests:
         if 'https://api.pinger.com/2.2/message' in request.url:
-            print(request.response.body)
-            print("Sent message success")
             db_instance.result_acc_getindex(username, "done")
             driver.quit()
             return
