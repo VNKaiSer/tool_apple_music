@@ -168,7 +168,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             input_message = driver.find_element(By.TAG_NAME, "textarea")
             time.sleep(1)
             input_message.clear()
-            input_message.send_keys('Check')
             WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
             sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
@@ -176,17 +175,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             input_phone_func(input_phone, data)
         except:
             break
-    # Kiểm tra lỗi Nosub 
-    try:
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-        input_message = driver.find_element(By.TAG_NAME, "textarea")
-        time.sleep(1)
-        input_message.clear()
-        input_message.send_keys(random_message())
-        time.sleep(0.3)
-        input_message.send_keys(Keys.ENTER)
-    except:
-        db_instance.update_rerun_acc_get_index(username)
     
     # Kiểm tra lỗi Nosub 
     try:
@@ -229,7 +217,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
                 return
     if send_and_delete:
         delete_message_func(driver, data)
-
         
     db_instance.result_acc_getindex(username, "done")
     driver.quit()
@@ -390,7 +377,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             return        
         if change_password:
             change_password_func(driver, data) 
-            driver.quit()     
+            driver.quit()      
             return
         if delete_message:
             delete_message_func(driver,data)
