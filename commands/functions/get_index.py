@@ -230,15 +230,9 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
     if send_and_delete:
         delete_message_func(driver, data)
 
-    try:
-        for request in driver.requests:
-            if 'https://api.pinger.com/2.2/message' in request.url:
-                db_instance.result_acc_getindex(username, "done")
-                driver.quit()
-                return
-    except Exception as e:
-        # db_instance.update_rerun_acc_get_index(username)
-        driver.quit()
+        
+    db_instance.result_acc_getindex(username, "done")
+    driver.quit()
 
 def input_phone_func(input_phone, data):
     time.sleep(1)
@@ -408,4 +402,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data)
         
     except Exception as e:
-        print("")
+        if not change_password:
+            db_instance.update_rerun_acc_get_index(username)
+        else:
+            db_instance.update_rerun_acc_get_index_change_password(username)
