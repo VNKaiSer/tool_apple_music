@@ -226,7 +226,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
 
 def input_phone_func(input_phone, data):
     time.sleep(1)
-    input_phone.send_keys(data["phone_send"])
+    input_phone.send_keys(generate_phone_number())
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     
@@ -242,7 +242,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         data = {
             "username": username,
             "password": password,
-            "phone_send": generate_phone_number(),
+            # "phone_send": generate_phone_number(),
         }
         logger.info(data)
         print(data)
