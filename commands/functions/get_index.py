@@ -193,7 +193,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
     
     # Kiểm tra trường hợp hỗ trợ
     try:
-        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
         sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
         WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
         modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
@@ -317,6 +317,14 @@ def login(change_password = False, send_message = False, delete_message = False,
                             db_instance.result_acc_getindex_change_password(username, "NoTrial")
                         driver.quit()
                         return
+                    if dataReq['errNo'] == 106:
+                        if not change_password:
+                            db_instance.result_acc_getindex(username, "Didn't Work")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "Didn't Work")
+                        driver.quit()
+                        return
+                    
             if 'https://api.pinger.com/1.0/account/status' in request.url:
                 body = request.response.body
                 dataReq = json.loads(body)
