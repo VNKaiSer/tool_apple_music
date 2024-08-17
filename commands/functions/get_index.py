@@ -298,7 +298,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(5000)
+        time.sleep(0.5)
         inputs[1].send_keys(Keys.ENTER)
         
         # Kiểm tra lỗi đăng nhập
