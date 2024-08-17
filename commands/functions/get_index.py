@@ -247,7 +247,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(10200, 10499)
+        random_port = random.randint(10200, 15304)
         random_proxy = [
         #     {
         #     'proxy': {
@@ -269,7 +269,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         },
         #     'port': generate_random_port()
         # }
-        {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False}
+        # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False},
+        {'proxy': {'https': f'hermes.p.shifter.io:{random_port}'}, 'mitm_http2': False}
         ]
         proxy = random.choice(random_proxy)
         
@@ -293,7 +294,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(0.5)
+        time.sleep(5000)
         inputs[1].send_keys(Keys.ENTER)
         
         # Kiểm tra lỗi đăng nhập
