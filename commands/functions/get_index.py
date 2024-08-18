@@ -312,6 +312,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         driver = webdriver.Chrome(
             
             options=chrome_options,
+            desired_capabilities=caps,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
