@@ -363,13 +363,13 @@ def login(change_password = False, send_message = False, delete_message = False,
                             db_instance.result_acc_getindex_change_password(username, "NoTrial")
                         driver.quit()
                         return
-                    if dataReq['errNo'] == 106:
-                        if not change_password:
-                            db_instance.result_acc_getindex(username, "Didn't Work")
-                        else :
-                            db_instance.result_acc_getindex_change_password(username, "Didn't Work")
-                        driver.quit()
-                        return
+                    # if dataReq['errNo'] == 106:
+                    #     if not change_password:
+                    #         db_instance.result_acc_getindex(username, "Didn't Work")
+                    #     else :
+                    #         db_instance.result_acc_getindex_change_password(username, "Didn't Work")
+                    #     driver.quit()
+                    #     return
                     
             if 'https://api.pinger.com/1.0/account/status' in request.url:
                 body = request.response.body
