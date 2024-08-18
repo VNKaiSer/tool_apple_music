@@ -1,36 +1,11 @@
-import datetime
-from selenium import webdriver
-
-from selenium.webdriver.chrome.service import Service
-
-from webdriver_manager.chrome import ChromeDriverManager
-
-from selenium.webdriver.chrome.options import Options
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
-import sys
-import time 
-import random
+from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-caps = DesiredCapabilities.CHROME
-caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 import logging
 logger = logging.getLogger("Change-password")
 logger.setLevel(logging.DEBUG)
 
-WAIT_CHILD = 30
-WAIT_START = 60
-
-from const import json
-from const import db_instance
-from const import datetime, timedelta
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
@@ -167,6 +142,19 @@ def getData(change_pass):
     username = acc_get[1]
     password = acc_get[2]
     return username, password
+def get_account_trick():
+    file_path = './assets/data/random-acc.txt' 
+
+    # Đọc toàn bộ nội dung file và lưu vào danh sách
+    with open(file_path, 'r') as file:
+        accounts = file.readlines()
+
+    # Lấy ngẫu nhiên một tài khoản
+    random_account = random.choice(accounts).strip()
+
+    # Tách user và pass
+    user, password = random_account.split('|')
+    return user, password
 def send_message_func(driver: webdriver, username, data, send_and_delete = False):
     try:
         # Gửi tin nhắn
@@ -255,7 +243,7 @@ def input_phone_func(input_phone, data):
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     
-def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
+def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, use_trick = True):
     data = None
     try:
         tmp = getData(change_password)
@@ -272,8 +260,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(15280, 15304)
-        #random_proxy = [
+        random_port = random.randint(15635, 15659)
+        random_proxy = [
         #     {
         #     'proxy': {
         #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
@@ -294,115 +282,103 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         },
         #     'port': generate_random_port()
         # }
-        # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False},
-        # {'proxy': {
-        #             'https': f'https://hermes.p.shifter.io:{random_port}',
-        #             'http': f'http://hermes.p.shifter.io:{random_port}',
-        #             'no_proxy': 'localhost,127.0.0.1'
-        #         }, 'mitm_http2': False}
-        # ]
-        # proxy = random.choice(random_proxy)
-        proxy = f'hermes.p.shifter.io:{random_port}'
+        # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False}
+         {'proxy': {
+                    'https': f'https://apollo.p.shifter.io:{random_port}',
+                    'http': f'http://apollo.p.shifter.io:{random_port}',
+                    'no_proxy': 'localhost,127.0.0.1'
+                }, 'mitm_http2': False}
+        ]
+        proxy = random.choice(random_proxy)
+        
         chrome_options = Options()
-        # chrome_options.add_argument('--ignore-certificate-errors')
-        # chrome_options.add_argument('--allow-insecure-localhost')
-        # chrome_options.add_argument('--ignore-ssl-errors=yes')
-        # chrome_options.add_argument('--log-level=3')  # Selenium log level
-        chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument('--allow-insecure-localhost')
+        chrome_options.add_argument('--ignore-ssl-errors=yes')
+        chrome_options.add_argument('--log-level=3')  # Selenium log level
         driver = webdriver.Chrome(
             
             options=chrome_options,
-            desired_capabilities=caps,
-            #seleniumwire_options=proxy,
+            seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
+        action = ActionChains(driver)
         
-        driver.get("https://app.getindex.com/login")
-        
-        # Mở tab mới
-        try:
-            root_tab = driver.current_window_handle
-            driver.execute_script("window.open('https://www.google.com', '_blank');")
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(5)
-            driver.switch_to.window(root_tab)
-        except Exception as e:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return
-        
+        # Đăng nhập lần đầu
+        driver.get("https://getindex.com/")
+        data_trick = get_account_trick()
+        time.sleep(5)
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.ID, 'menu-header-menu')))
+        menu_header = driver.find_element(By.ID, 'menu-header-menu')
+        WebDriverWait(menu_header, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'li')))
+        menu_items = menu_header.find_elements(By.TAG_NAME, 'li')
+        menu_items[3].click()
+        time.sleep(5)
+        if use_trick:
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+            inputs = app_root.find_elements(By.TAG_NAME, "input")
+            inputs[0].send_keys(data_trick["username"])
+            time.sleep(0.5)
+            inputs[1].send_keys(data_trick["password"])
+            time.sleep(0.5)
+            inputs[1].send_keys(Keys.ENTER)
+            
+            # Kiểm tra lỗi đăng nhập
+            time.sleep(15)
+            driver.execute_script("location.reload();")
+
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
         app_root = driver.find_element(By.TAG_NAME, 'app-root')
         inputs = app_root.find_elements(By.TAG_NAME, "input")
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(1)
+        time.sleep(0.5)
         inputs[1].send_keys(Keys.ENTER)
         
-        # Kiểm tra lỗi đăng nhập
         time.sleep(15)
-        logs = driver.get_log('performance')
-        for log in logs:
-            log_json = json.loads(log['message'])['message']
-            
-            # Xử lý response cho URL switchDeviceAndUserAuth
-            if log_json['method'] == 'Network.responseReceived':
-                response = log_json['params']['response']
-                request_id = log_json['params']['requestId']
-                request_url = response['url']
-
-                if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request_url:
-                    # Lấy body của response
-                    response_body = driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})['body']
-                    dataReq = json.loads(response_body)
-
-                    # Xử lý dữ liệu response
-                    if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                        if dataReq['errNo'] == 119:
-                            if not change_password:
-                                db_instance.result_acc_getindex(username, "sai pass")
-                            else:
-                                db_instance.result_acc_getindex_change_password(username, "sai pass")
-                            driver.quit()
-                            return
-                        elif dataReq['errNo'] == 2218:
-                            if not change_password:
-                                db_instance.result_acc_getindex(username, "NoTrial")
-                            else:
-                                db_instance.result_acc_getindex_change_password(username, "NoTrial")
-                            driver.quit()
-                            return
-                        elif dataReq['errNo'] == 106:
-                            if not change_password:
-                                db_instance.result_acc_getindex(username, "Didn't Work")
-                            else:
-                                db_instance.result_acc_getindex_change_password(username, "Didn't Work")
-                            driver.quit()
-                            return
-                
-                # Xử lý response cho URL account/status
-                elif 'https://api.pinger.com/1.0/account/status' in request_url:
-                    response_body = driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})['body']
-                    dataReq = json.loads(response_body)
-
-                    if 'result' in dataReq and dataReq['result'] is not None:
-                        expiration_str = dataReq["result"]["expiration"]
-                        expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
-                        new_expiration_date = expiration_date + timedelta(hours=7)
-                        formatted_date = new_expiration_date.strftime("%d-%m-%Y")
-
+        for request in driver.requests:
+            if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
+                body = request.response.body
+                dataReq = json.loads(body)
+                if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                    if dataReq['errNo'] == 119:
                         if not change_password:
-                            db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
-                        else:
-                            db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
+                            db_instance.result_acc_getindex(username, "sai pass")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "sai pass")
                         driver.quit()
                         return
+                    if dataReq['errNo'] == 2218:
+                        if not change_password:
+                            db_instance.result_acc_getindex(username, "NoTrial")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "NoTrial")
+                        driver.quit()
+                        return
+                    if dataReq['errNo'] == 106:
+                        if not change_password:
+                            db_instance.result_acc_getindex(username, "Didn't Work")
+                        else :
+                            db_instance.result_acc_getindex_change_password(username, "Didn't Work")
+                        driver.quit()
+                        return
+                    
+            if 'https://api.pinger.com/1.0/account/status' in request.url:
+                body = request.response.body
+                dataReq = json.loads(body)
+                if 'result' in dataReq and dataReq['result'] is not None:
+                    expiration_str = dataReq["result"]["expiration"]
+                    expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
+                    new_expiration_date = expiration_date + timedelta(hours=7)
+                    formatted_date = new_expiration_date.strftime("%d-%m-%Y")
+                    if not change_password:
+                        db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
+                    else :
+                        db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
+                    driver.quit()
+                    return
         # Kiểm tra lỗi renew 
         try:
             WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
@@ -422,7 +398,6 @@ def login(change_password = False, send_message = False, delete_message = False,
             print()
         
         try:
-            action = ActionChains(driver)
             WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'number-expired')))
             frame_number_expired = driver.find_element(By.TAG_NAME, 'number-expired')
             print(frame_number_expired)

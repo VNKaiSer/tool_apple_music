@@ -18,6 +18,9 @@ import random
 from faker import Faker
 fake = Faker(locale='en_US')
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+caps = DesiredCapabilities.CHROME
+caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 import logging
 logger = logging.getLogger("Change-password")
 logger.setLevel(logging.DEBUG)
@@ -315,58 +318,90 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         driver.get("https://app.getindex.com/login")
         
+        # Mở tab mới
+        try:
+            root_tab = driver.current_window_handle
+            driver.execute_script("window.open('https://www.google.com', '_blank');")
+            driver.switch_to.window(driver.window_handles[1])
+            time.sleep(5)
+            driver.switch_to.window(root_tab)
+        except Exception as e:
+            if change_password:
+                db_instance.update_rerun_acc_get_index_change_password(username)
+                driver.quit()
+                return
+            else :
+                db_instance.update_rerun_acc_get_index(username)
+                driver.quit()
+                return
+        
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
         app_root = driver.find_element(By.TAG_NAME, 'app-root')
         inputs = app_root.find_elements(By.TAG_NAME, "input")
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(0.5)
+        time.sleep(1)
         inputs[1].send_keys(Keys.ENTER)
         
         # Kiểm tra lỗi đăng nhập
-        time.sleep(8)
-        for request in driver.requests:
-            if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
-                body = request.response.body
-                dataReq = json.loads(body)
-                if 'errNo' in dataReq and dataReq['errNo'] is not None:
-                    if dataReq['errNo'] == 119:
+        time.sleep(15)
+        logs = driver.get_log('performance')
+        for log in logs:
+            log_json = json.loads(log['message'])['message']
+            
+            # Xử lý response cho URL switchDeviceAndUserAuth
+            if log_json['method'] == 'Network.responseReceived':
+                response = log_json['params']['response']
+                request_id = log_json['params']['requestId']
+                request_url = response['url']
+
+                if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request_url:
+                    # Lấy body của response
+                    response_body = driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})['body']
+                    dataReq = json.loads(response_body)
+
+                    # Xử lý dữ liệu response
+                    if 'errNo' in dataReq and dataReq['errNo'] is not None:
+                        if dataReq['errNo'] == 119:
+                            if not change_password:
+                                db_instance.result_acc_getindex(username, "sai pass")
+                            else:
+                                db_instance.result_acc_getindex_change_password(username, "sai pass")
+                            driver.quit()
+                            return
+                        elif dataReq['errNo'] == 2218:
+                            if not change_password:
+                                db_instance.result_acc_getindex(username, "NoTrial")
+                            else:
+                                db_instance.result_acc_getindex_change_password(username, "NoTrial")
+                            driver.quit()
+                            return
+                        elif dataReq['errNo'] == 106:
+                            if not change_password:
+                                db_instance.result_acc_getindex(username, "Didn't Work")
+                            else:
+                                db_instance.result_acc_getindex_change_password(username, "Didn't Work")
+                            driver.quit()
+                            return
+                
+                # Xử lý response cho URL account/status
+                elif 'https://api.pinger.com/1.0/account/status' in request_url:
+                    response_body = driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})['body']
+                    dataReq = json.loads(response_body)
+
+                    if 'result' in dataReq and dataReq['result'] is not None:
+                        expiration_str = dataReq["result"]["expiration"]
+                        expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
+                        new_expiration_date = expiration_date + timedelta(hours=7)
+                        formatted_date = new_expiration_date.strftime("%d-%m-%Y")
+
                         if not change_password:
-                            db_instance.result_acc_getindex(username, "sai pass")
-                        else :
-                            db_instance.result_acc_getindex_change_password(username, "sai pass")
+                            db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
+                        else:
+                            db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
                         driver.quit()
                         return
-                    if dataReq['errNo'] == 2218:
-                        if not change_password:
-                            db_instance.result_acc_getindex(username, "NoTrial")
-                        else :
-                            db_instance.result_acc_getindex_change_password(username, "NoTrial")
-                        driver.quit()
-                        return
-                    if dataReq['errNo'] == 106:
-                        if not change_password:
-                            db_instance.result_acc_getindex(username, "Didn't Work")
-                        else :
-                            db_instance.result_acc_getindex_change_password(username, "Didn't Work")
-                        driver.quit()
-                        return
-                    
-            if 'https://api.pinger.com/1.0/account/status' in request.url:
-                body = request.response.body
-                dataReq = json.loads(body)
-                if 'result' in dataReq and dataReq['result'] is not None:
-                    expiration_str = dataReq["result"]["expiration"]
-                    expiration_date = datetime.strptime(expiration_str, "%Y-%m-%d %H:%M:%S")
-                    new_expiration_date = expiration_date + timedelta(hours=7)
-                    formatted_date = new_expiration_date.strftime("%d-%m-%Y")
-                    if not change_password:
-                        db_instance.result_acc_getindex(username, f'suspend {formatted_date}')
-                    else :
-                        db_instance.result_acc_getindex_change_password(username, f'suspend {formatted_date}')
-                    driver.quit()
-                    return
         # Kiểm tra lỗi renew 
         try:
             WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
