@@ -270,7 +270,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         print(data)
         
         random_port = random.randint(15280, 15304)
-        random_proxy = [
+        #random_proxy = [
         #     {
         #     'proxy': {
         #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
@@ -292,23 +292,24 @@ def login(change_password = False, send_message = False, delete_message = False,
         #     'port': generate_random_port()
         # }
         # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False},
-        {'proxy': {
-                    'https': f'https://hermes.p.shifter.io:{random_port}',
-                    'http': f'http://hermes.p.shifter.io:{random_port}',
-                    'no_proxy': 'localhost,127.0.0.1'
-                }, 'mitm_http2': False}
-        ]
-        proxy = random.choice(random_proxy)
-        
+        # {'proxy': {
+        #             'https': f'https://hermes.p.shifter.io:{random_port}',
+        #             'http': f'http://hermes.p.shifter.io:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         }, 'mitm_http2': False}
+        # ]
+        # proxy = random.choice(random_proxy)
+        proxy = f'hermes.p.shifter.io:{random_port}'
         chrome_options = Options()
-        chrome_options.add_argument('--ignore-certificate-errors')
-        chrome_options.add_argument('--allow-insecure-localhost')
-        chrome_options.add_argument('--ignore-ssl-errors=yes')
-        chrome_options.add_argument('--log-level=3')  # Selenium log level
+        # chrome_options.add_argument('--ignore-certificate-errors')
+        # chrome_options.add_argument('--allow-insecure-localhost')
+        # chrome_options.add_argument('--ignore-ssl-errors=yes')
+        # chrome_options.add_argument('--log-level=3')  # Selenium log level
+        chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
             options=chrome_options,
-            seleniumwire_options=proxy,
+            #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         
