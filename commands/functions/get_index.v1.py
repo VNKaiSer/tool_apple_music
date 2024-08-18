@@ -1,4 +1,20 @@
-from const import *
+import datetime
+from selenium import webdriver
+
+from selenium.webdriver.chrome.service import Service
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+from selenium.webdriver.chrome.options import Options
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+import sys
+import time 
+import random
 from faker import Faker
 fake = Faker(locale='en_US')
 from selenium.webdriver.common.action_chains import ActionChains
@@ -6,6 +22,12 @@ import logging
 logger = logging.getLogger("Change-password")
 logger.setLevel(logging.DEBUG)
 
+WAIT_CHILD = 30
+WAIT_START = 60
+
+from const import json
+from const import db_instance
+from const import datetime, timedelta
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
@@ -248,7 +270,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         print(data)
         
         random_port = random.randint(15280, 15304)
-        random_proxy = [
+        #random_proxy = [
         #     {
         #     'proxy': {
         #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
@@ -270,27 +292,41 @@ def login(change_password = False, send_message = False, delete_message = False,
         #     'port': generate_random_port()
         # }
         # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False},
-        {'proxy': {
-                    'https': f'https://hermes.p.shifter.io:{random_port}',
-                    'http': f'http://hermes.p.shifter.io:{random_port}',
-                    'no_proxy': 'localhost,127.0.0.1'
-                }, 'mitm_http2': False}
-        ]
-        proxy = random.choice(random_proxy)
-        
+        # {'proxy': {
+        #             'https': f'https://hermes.p.shifter.io:{random_port}',
+        #             'http': f'http://hermes.p.shifter.io:{random_port}',
+        #             'no_proxy': 'localhost,127.0.0.1'
+        #         }, 'mitm_http2': False}
+        # ]
+        # proxy = random.choice(random_proxy)
+        proxy = f'hermes.p.shifter.io:{random_port}'
         chrome_options = Options()
-        chrome_options.add_argument('--ignore-certificate-errors')
-        chrome_options.add_argument('--allow-insecure-localhost')
-        chrome_options.add_argument('--ignore-ssl-errors=yes')
-        chrome_options.add_argument('--log-level=3')  # Selenium log level
+        # chrome_options.add_argument('--ignore-certificate-errors')
+        # chrome_options.add_argument('--allow-insecure-localhost')
+        # chrome_options.add_argument('--ignore-ssl-errors=yes')
+        # chrome_options.add_argument('--log-level=3')  # Selenium log level
+        chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
             options=chrome_options,
-            seleniumwire_options=proxy,
+            #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         
         driver.get("https://app.getindex.com/login")
+        
+        # Mở tab mới
+        try:
+            root_tab = driver.current_window_handle
+            driver.execute_script("window.open('https://www.google.com', '_blank');")
+            driver.switch_to.window(driver.window_handles[1])
+            time.sleep(5)
+            driver.switch_to.window(root_tab)
+        except Exception as e:
+            if change_password:
+                db_instance.update_rerun_acc_get_index_change_password(username)
+            else :
+                db_instance.update_rerun_acc_get_index(username)
         
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
         app_root = driver.find_element(By.TAG_NAME, 'app-root')
@@ -298,11 +334,11 @@ def login(change_password = False, send_message = False, delete_message = False,
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(0.5)
+        time.sleep(1)
         inputs[1].send_keys(Keys.ENTER)
         
         # Kiểm tra lỗi đăng nhập
-        time.sleep(8)
+        time.sleep(15)
         for request in driver.requests:
             if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
                 body = request.response.body
