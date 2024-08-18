@@ -130,6 +130,12 @@ def generate_phone_number():
     return f"{area_code}{central_office_code}{line_number}"
 def random_message():
     return 'ALiCheck' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
+def check_use_trick():
+    f = open ('./config/tool-config.json', "r")
+    data = json.loads(f.read())
+    f.close()
+    return data['GET_INDEX_TRICK']
+
 def getData(change_pass):
     if not change_pass:
         acc_get = db_instance.get_acc_get_index()
@@ -314,13 +320,13 @@ def login(change_password = False, send_message = False, delete_message = False,
         menu_items = menu_header.find_elements(By.TAG_NAME, 'li')
         menu_items[3].click()
         time.sleep(5)
-        if use_trick:
+        if check_use_trick() == True:
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
-            inputs[0].send_keys(data_trick["username"])
+            inputs[0].send_keys(data["username"])
             time.sleep(0.5)
-            inputs[1].send_keys(data_trick["password"])
+            inputs[1].send_keys(data["password"])
             time.sleep(0.5)
             inputs[1].send_keys(Keys.ENTER)
             

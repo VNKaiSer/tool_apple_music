@@ -967,7 +967,7 @@ def handle_add_card():
     
 from tkinter import ttk
 def show_dialog():
-    dialog = tk.Toplevel(root)
+    dialog = tk.Toplevel(root)  
     dialog.title("Nhập số lượng tab")
 
     label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
@@ -1008,6 +1008,45 @@ def show_dialog():
 
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var))
     confirm_button.pack(padx=10, pady=10)
+
+
+def handle_user_trick_get_index():
+    def confirm_choice(choice):
+        with open('./config/tool-config.json', 'r+') as f:
+            data = json.load(f)
+            print(choice)
+            if choice == "1":
+                data['GET_INDEX_TRICK'] = True
+                f.seek(0)  # Đặt con trỏ tệp về đầu
+                f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+                f.truncate()  # Xóa nội dung còn lại nếu có
+                messagebox.showinfo("Thông báo", "Đã cấu hình sử dụng trick")
+            else: 
+                data['GET_INDEX_TRICK'] = False
+                f.seek(0)  # Đặt con trỏ tệp về đầu
+                f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+                f.truncate()  # Xóa nội dung còn lại nếu có
+                messagebox.showinfo("Thông báo", "Huỷ cấu hình sử dụng trick")
+                
+    dialog = tk.Toplevel(root)  
+    dialog.title("Cài đặt trick cho getindex")
+    
+    # Tạo biến để lưu giá trị lựa chọn
+    choice_var = tk.StringVar(value="Option1")
+    
+    # Tạo Radiobuttons
+    radio1 = tk.Radiobutton(dialog, text="Dùng trick", variable=choice_var, value="1")
+    radio2 = tk.Radiobutton(dialog, text="Không", variable=choice_var, value="2")
+    
+    # Đặt vị trí cho các Radiobuttons
+    radio1.pack(anchor=tk.W, padx=10, pady=5)
+    radio2.pack(anchor=tk.W, padx=10, pady=5)
+    
+    # Tạo nút xác nhận
+    confirm_button = tk.Button(dialog, text="Xác nhận", command=lambda: confirm_choice(choice_var.get()))
+    confirm_button.pack(pady=10)
+
+    
 
     # dialog.destroy()
 
@@ -1087,6 +1126,7 @@ setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
 setting_menu.add_separator()
 setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
 setting_menu.add_command(label='Số lần add thẻ', command=handle_add_card)
+setting_menu.add_command(label='Trick GetIndex', command=handle_user_trick_get_index)
 
 
 exit_menu = Menu(menu)
