@@ -315,30 +315,17 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         driver.get("https://app.getindex.com/login")
         
-        # Mở tab mới
-        try:
-            root_tab = driver.current_window_handle
-            driver.execute_script("window.open('https://www.google.com', '_blank');")
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(5)
-            driver.switch_to.window(root_tab)
-        except Exception as e:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-        
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
         app_root = driver.find_element(By.TAG_NAME, 'app-root')
         inputs = app_root.find_elements(By.TAG_NAME, "input")
         inputs[0].send_keys(data["username"])
         time.sleep(0.5)
         inputs[1].send_keys(data["password"])
-        time.sleep(1)
+        time.sleep(0.5)
         inputs[1].send_keys(Keys.ENTER)
         
         # Kiểm tra lỗi đăng nhập
-        time.sleep(15)
+        time.sleep(8)
         for request in driver.requests:
             if 'https://api.pinger.com/2.0/account/username/switchDeviceAndUserAuth' in request.url:
                 body = request.response.body
