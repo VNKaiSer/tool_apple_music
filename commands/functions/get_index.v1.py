@@ -1,20 +1,4 @@
-import datetime
-from selenium import webdriver
-
-from selenium.webdriver.chrome.service import Service
-
-from webdriver_manager.chrome import ChromeDriverManager
-
-from selenium.webdriver.chrome.options import Options
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
-import sys
-import time 
-import random
+from const import *
 from faker import Faker
 fake = Faker(locale='en_US')
 from selenium.webdriver.common.action_chains import ActionChains
@@ -22,12 +6,6 @@ import logging
 logger = logging.getLogger("Change-password")
 logger.setLevel(logging.DEBUG)
 
-WAIT_CHILD = 30
-WAIT_START = 60
-
-from const import json
-from const import db_instance
-from const import datetime, timedelta
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
