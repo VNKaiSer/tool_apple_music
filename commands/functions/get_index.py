@@ -121,15 +121,18 @@ def change_password_func(driver: webdriver, data):
     btns = header.find_elements(By.TAG_NAME, "ion-button")
     btns[1].click()
     
-    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
-    sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
-    WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
-    modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
-    print(modal_title.text)
-    if modal_title.text == "Well, That Didn't Work...":
-        db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
-        driver.quit()
-        return
+    try: 
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+        WebDriverWait(sc_modal, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+        modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
+        print(modal_title.text)
+        if modal_title.text == "Well, That Didn't Work...":
+            db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
+            driver.quit()
+            return
+    except Exception as e:
+        print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
     db_instance.change_password_get_index(data['username'], new_pass)
     
