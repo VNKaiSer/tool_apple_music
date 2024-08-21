@@ -224,7 +224,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         time.sleep(1)
         input_message.clear()
         input_message.send_keys(random_message())
-        time.sleep(0.3)
+        time.sleep(0.5)
         input_message.send_keys(Keys.ENTER)
     except:
         db_instance.update_rerun_acc_get_index(username)
@@ -258,6 +258,7 @@ def input_phone_func(input_phone, data):
     input_phone.send_keys(generate_phone_number())
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
+    time.sleep(1)
     
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
     data = None
@@ -276,7 +277,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(15635, 15659)
+        random_port = random.randint(13270, 13294)
         #random_proxy = [
         #     {
         #     'proxy': {
@@ -306,7 +307,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy = f'apollo.p.shifter.io:{random_port}'
+        proxy = f'dionysus.p.shifter.io:{random_port}'
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')

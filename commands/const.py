@@ -431,7 +431,7 @@ class MySQLDatabase:
         return result
 
     def get_acc_get_index_change_password(self):
-        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 and LIMIT 1"
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 LIMIT 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
