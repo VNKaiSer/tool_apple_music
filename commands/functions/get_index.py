@@ -351,7 +351,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             time.sleep(1)
             inputs[1].send_keys(Keys.ENTER)
             try:
-                WebDriverWait(app_root, 30).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
+                WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
                     if not change_password:
