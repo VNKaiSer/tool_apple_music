@@ -360,7 +360,7 @@ class MySQLDatabase:
             self.connection.commit()
     
     def get_acc_get_index(self):
-        query = "SELECT * FROM get_index_tool WHERE is_running = 'N' and count_run <= 3 and ex != 'done' LIMIT 1"
+        query = "SELECT * FROM get_index_tool WHERE is_running = 'N' and count_run <= 3 and ex is Null LIMIT 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
@@ -431,7 +431,7 @@ class MySQLDatabase:
         return result
 
     def get_acc_get_index_change_password(self):
-        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 and ex != 'done' LIMIT 1"
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 and ex is NULL LIMIT 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         if result:
