@@ -24,7 +24,7 @@ logger.setLevel(logging.DEBUG)
 
 WAIT_CHILD = 30
 WAIT_START = 60
-
+acc_done = 0
 from const import json
 from const import db_instance
 from const import datetime, timedelta
@@ -251,7 +251,8 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         delete_message_func(driver, data)
         
     db_instance.result_acc_getindex(username, "done")
-    driver.quit()
+    global acc_done
+    acc_done = 1
 
 def input_phone_func(input_phone, data):
     time.sleep(1)
@@ -431,9 +432,13 @@ def login(change_password = False, send_message = False, delete_message = False,
             return
         if send_message:
             send_message_func(driver, username, data)
+            driver.quit()     
+            return
         
     except Exception as e:
-        if not change_password:
-            db_instance.update_rerun_acc_get_index(username)
-        else:
-            db_instance.update_rerun_acc_get_index_change_password(username)
+        global acc_done
+        if acc_done == 0:
+            if not change_password:
+                db_instance.update_rerun_acc_get_index(username)
+            else:
+                db_instance.update_rerun_acc_get_index_change_password(username)
