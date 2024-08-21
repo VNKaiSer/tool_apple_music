@@ -409,7 +409,7 @@ class MySQLDatabase:
 ## 
 ##
     def change_password_get_index(self, username, password):
-        query = "UPDATE IndexChangePass SET password = %s WHERE user_name = %s"
+        query = "UPDATE IndexChangePass SET password = %s, ex = 'done' WHERE user_name = %s"
         self.cursor.execute(query, (password, username))
         self.connection.commit()
     
