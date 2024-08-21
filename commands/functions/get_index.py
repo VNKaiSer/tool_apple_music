@@ -135,6 +135,8 @@ def change_password_func(driver: webdriver, data):
         print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
     db_instance.change_password_get_index(data['username'], new_pass)
+    global acc_done
+    acc_done = 1
     
 def generate_phone_number():
     area_codes = [
