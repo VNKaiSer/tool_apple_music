@@ -200,22 +200,22 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         return
     
     # Kiểm tra số điện thoại có đúng k
-    while True:
-        try:
-            time.sleep(1)
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-            input_message = driver.find_element(By.TAG_NAME, "textarea")
-            time.sleep(1)
-            input_message.clear()
-            input_message.send_keys(' ')
-            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
-            sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-            input_phone = driver.find_element(By.TAG_NAME, "input") 
-            time.sleep(1) 
-            input_phone_func(input_phone, data)
-        except:
-            break
+    # while True:
+    #     try:
+    #         time.sleep(1)
+    #         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+    #         input_message = driver.find_element(By.TAG_NAME, "textarea")
+    #         time.sleep(1)
+    #         input_message.clear()
+    #         input_message.send_keys(' ')
+    #         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
+    #         sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
+    #         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+    #         input_phone = driver.find_element(By.TAG_NAME, "input") 
+    #         time.sleep(1) 
+    #         input_phone_func(input_phone, data)
+    #     except:
+    #         break
     
     # Kiểm tra lỗi Nosub 
     try:
