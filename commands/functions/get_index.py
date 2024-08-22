@@ -24,7 +24,6 @@ logger.setLevel(logging.DEBUG)
 
 WAIT_CHILD = 30
 WAIT_START = 60
-acc_done = 0
 from const import json
 from const import db_instance
 from const import datetime, timedelta
@@ -135,9 +134,8 @@ def change_password_func(driver: webdriver, data):
         print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
     db_instance.change_password_get_index(data['username'], new_pass)
-    global acc_done
-    acc_done = 1
-    
+    driver.quit()
+    return
 def generate_phone_number():
     area_codes = [
         205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
@@ -256,8 +254,8 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         delete_message_func(driver, data)
         
     db_instance.result_acc_getindex(username, "done")
-    global acc_done
-    acc_done = 1
+    driver.quit()
+    return
 
 def input_phone_func(input_phone, data):
     time.sleep(1)
@@ -426,24 +424,16 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.quit()
             return        
         if change_password:
-            change_password_func(driver, data) 
-            driver.quit()      
-            return
+            change_password_func(driver, data)
         if delete_message:
             delete_message_func(driver,data)
         if send_and_delete:
             send_message_func(driver, username, data, send_and_delete)
-            driver.quit()     
-            return
         if send_message:
             send_message_func(driver, username, data)
-            driver.quit()     
-            return
         
     except Exception as e:
-        global acc_done
-        if acc_done == 0:
-            if not change_password:
-                db_instance.update_rerun_acc_get_index(username)
-            else:
-                db_instance.update_rerun_acc_get_index_change_password(username)
+        if not change_password:
+            db_instance.update_rerun_acc_get_index(username)
+        else:
+            db_instance.update_rerun_acc_get_index_change_password(username)
