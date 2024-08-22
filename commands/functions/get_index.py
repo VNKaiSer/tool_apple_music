@@ -431,7 +431,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         if send_message:
             send_message_func(driver, username, data)
         if send_delete_change_pass:
-            send_message_func(driver, username, data, send_delete_change_pass=True)
+            send_message_func(driver, username, data, send_and_delete=True)
             change_password_func(driver, data, send_delete_change_pass=True)
         
     except Exception as e:
