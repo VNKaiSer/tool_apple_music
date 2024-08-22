@@ -52,32 +52,29 @@ LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
 ERR_RENEW = "Subscription has expired"
 ERR_NOSUB = "Subscription Required"
 def delete_message_func(driver : webdriver, data):
-    # Mở dòng 35 - 36 và 56-59 nhaaa
-    # time_retry = 0
-    # while True:
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'conversation-list')))
         conversation_list = driver.find_element(By.TAG_NAME, 'conversation-list')
-        # delete message
         try:
             while len(conversation_list.find_elements(By.TAG_NAME, 'ion-item-sliding')) > 0:
                 WebDriverWait(conversation_list, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'ion-item-sliding')))
                 conversation = conversation_list.find_element(By.TAG_NAME, 'ion-item-sliding')
-                action_hover = ActionChains(driver).move_to_element(conversation).perform()
-                WebDriverWait(conversation, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'icon-delete')))
-                btn_delete = conversation.find_element(By.CLASS_NAME, 'icon-delete')
-                btn_delete.click()
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'bulkEditButton')))
+                btn_edit = driver.find_element(By.ID, 'bulkEditButton')
+                btn_edit.click()
                 time.sleep(1)
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
+                btns = driver.find_elements(By.TAG_NAME, 'sc-button')
+                btns[2].click()
+                time.sleep(1)
+                btns[1].click()
                 WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
                 sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
                 WebDriverWait(sc_modal, 10).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-button')))
                 btns = sc_modal.find_elements(By.TAG_NAME, 'sc-button')
                 btns[1].click()
                 time.sleep(5)
+                
         except Exception as e:
-            # time_retry = time_retry + 1
-            # if time_retry == 3:
-            #     break
-            # driver.refresh()
             print() 
 
 def generate_random_password_index():
