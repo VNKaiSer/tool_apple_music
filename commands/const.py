@@ -380,9 +380,9 @@ class MySQLDatabase:
         except Exception as e:
             self.connection.rollback()
 
-        finally:
-            self.cursor.close()
-            self.connection.close()
+        # finally:
+        #     self.cursor.close()
+        #     self.connection.close()
     
     def update_rerun_acc_get_index(self, username):
         query = "UPDATE get_index_tool SET is_running = 'N' WHERE user_name = %s"
@@ -464,9 +464,9 @@ class MySQLDatabase:
         except Exception as e:
             self.connection.rollback()
 
-        finally:
-            self.cursor.close()
-            self.connection.close()
+        # finally:
+        #     self.cursor.close()
+        #     self.connection.close()
     
     def update_rerun_acc_get_index_change_password(self, username):
         query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
