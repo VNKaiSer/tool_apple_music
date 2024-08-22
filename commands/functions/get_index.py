@@ -319,7 +319,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
-            # options=chrome_options,
+            options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
