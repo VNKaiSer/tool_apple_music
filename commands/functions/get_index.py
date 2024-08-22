@@ -124,15 +124,17 @@ def change_password_func(driver: webdriver, data, send_delete_change_pass = Fals
         modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
         print(modal_title.text)
         if modal_title.text == "Well, That Didn't Work...":
-            if send_delete_change_pass == True:
+            if send_delete_change_pass == False:
                 db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
             driver.quit()
             return
     except Exception as e:
         print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
-    
-    db_instance.change_password_get_index(data['username'], new_pass)
+    if send_delete_change_pass == False:
+        db_instance.change_password_get_index(data['username'], new_pass)
+    else: 
+        db_instance.change_password_get_index_i(data['username'], new_pass)
     driver.quit()
     return
 def generate_phone_number():
