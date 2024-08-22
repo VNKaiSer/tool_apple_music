@@ -164,7 +164,7 @@ def getData(change_pass):
     username = acc_get[1]
     password = acc_get[2]
     return username, password
-def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_pass = False):
+def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
     try:
@@ -252,7 +252,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
     if send_and_delete:
         delete_message_func(driver, data)
     db_instance.result_acc_getindex(username, "done")
-    if change_pass:
+    if change_password:
         change_password_func(driver, data, True)
     else:
         driver.quit()
@@ -433,7 +433,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         if send_message:
             send_message_func(driver, username, data)
         if send_delete_change_pass:
-            send_message_func(driver, username, data, send_and_delete=True)
+            send_message_func(driver, username, data, send_and_delete=True, change_password=True)
         
     except Exception as e:
         if not change_password:
