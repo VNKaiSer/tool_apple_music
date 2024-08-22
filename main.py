@@ -833,7 +833,9 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
         elif delete_message_var.get():
             print("delete message")
             subprocess.Popen("py ./commands/login_getindex.py --actions delete_message")
-            
+        elif send_and_delete_var.get() and change_password_var.get():
+            print("send and delete and change password")
+            subprocess.Popen("py ./commands/login_getindex.py --actions send_delete_change_pass")
         elif change_password_var.get():
             print("change password")
             subprocess.Popen("py ./commands/login_getindex.py --actions change_password")

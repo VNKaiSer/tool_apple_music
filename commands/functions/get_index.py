@@ -80,7 +80,7 @@ def delete_message_func(driver : webdriver, data):
 def generate_random_password_index():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
 
-def change_password_func(driver: webdriver, data):
+def change_password_func(driver: webdriver, data, send_delete_change_pass = False):
     driver.get("https://app.getindex.com/accountSettings") 
     actions = ActionChains(driver)
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
@@ -124,12 +124,14 @@ def change_password_func(driver: webdriver, data):
         modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
         print(modal_title.text)
         if modal_title.text == "Well, That Didn't Work...":
-            db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
+            if send_delete_change_pass == True:
+                db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
             driver.quit()
             return
     except Exception as e:
         print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
+    
     db_instance.change_password_get_index(data['username'], new_pass)
     driver.quit()
     return
@@ -261,7 +263,7 @@ def input_phone_func(input_phone, data):
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
     
-def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False):
+def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
         tmp = getData(change_password)
@@ -317,7 +319,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
-            options=chrome_options,
+            # options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
@@ -428,6 +430,9 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data, send_and_delete)
         if send_message:
             send_message_func(driver, username, data)
+        if send_delete_change_pass:
+            send_message_func(driver, username, data, send_delete_change_pass=True)
+            change_password_func(driver, data, send_delete_change_pass=True)
         
     except Exception as e:
         if not change_password:
