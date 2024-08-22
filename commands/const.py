@@ -445,7 +445,8 @@ class MySQLDatabase:
 
     def get_acc_get_index_change_password(self):
         try:
-            self.connection.start_transaction()
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
 
             query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
             self.cursor.execute(query)
@@ -463,10 +464,7 @@ class MySQLDatabase:
 
         except Exception as e:
             self.connection.rollback()
-
-        # finally:
-        #     self.cursor.close()
-        #     self.connection.close()
+            return ''
     
     def update_rerun_acc_get_index_change_password(self, username):
         query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
