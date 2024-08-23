@@ -432,6 +432,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             delete_message_func(driver,data)
         if send_and_delete:
             send_message_func(driver, username, data, send_and_delete)
+            return
         if send_message:
             send_message_func(driver, username, data)
         if send_delete_change_pass:
