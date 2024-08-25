@@ -223,8 +223,8 @@ def run(run_check = False, run_delete = False):
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
         iframe_payment = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_payment)
-        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/cwc-app/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/cwc-app/div/div/div/div/div[2]/camk-section/camk-section-grid/camk-banner-card/div[2]/div/div[2]/button').click()
         browser.switch_to.default_content()
         iframe_add_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_add_payment)
@@ -336,6 +336,7 @@ def run(run_check = False, run_delete = False):
                         continue
                     case _:
                         logging.error("Error Card: Lỗi không xác định - %s", str(add_payment_result.text))
+                        db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": str(add_payment_result.text)}, condition=f"id = {data_card[0][0]}")
                         wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                         browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                         continue
