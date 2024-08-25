@@ -125,7 +125,7 @@ def run(run_check = False, run_delete = False):
     # Nhấn vào form privacy
     try:
         browser.switch_to.default_content()
-        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe:nth-child(1)")))
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe:nth-child(1)")))
         iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe)
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
