@@ -273,10 +273,10 @@ def run(run_check = False, run_delete = False):
                 time.sleep(0.1)
                 
             browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[2]/div/button').click()
-
+            time.sleep(2)
             try:
                 wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal")))
-                add_payment_result = browser.find_element(By.CSS_SELECTOR, ".camk-modal-description")
+                add_payment_result = browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-content/camk-modal-header/camk-modal-description")
                 match add_payment_result.text:
                     case tool_exception.DISSABLE:
                         logging.error("Error Account: Id - %s", str(data[0][1] +" - "+"Account is disable"))
