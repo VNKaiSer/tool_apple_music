@@ -110,8 +110,6 @@ def run(run_check = False, run_delete = False):
             db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "SaiPass"}, condition=f"id = {data[0][0]}")
             browser.quit()
             return
-    
-        time.sleep(5)
         # Kiểm tra acc có otp 
         if check_account_has_otp(browser):
             logging.error("Error Account: Id - %s", str(data[0][1] +"-"+"2FA"))
@@ -196,7 +194,7 @@ def run(run_check = False, run_delete = False):
         browser.quit()
         return
 
-    try: 
+    try:  # Xoá thẻ 
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'payment-method-module-card')))
         browser.find_element(By.CLASS_NAME, 'payment-method-module-card').click()
         time.sleep(5)
@@ -204,8 +202,8 @@ def run(run_check = False, run_delete = False):
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")))
         iframe_payment = browser.find_element(By.CSS_SELECTOR, "#ck-container > iframe:nth-child(1)")
         browser.switch_to.frame(iframe_payment)
-        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div[1]/div/div[5]/csk-button/button')))
-        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[1]/div/div[5]/csk-button/button').click()
+        WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/div/div/div[1]/cwc-app/div/div[3]/csk-button/button')))
+        browser.find_element(By.XPATH,'/html/body/div[1]/div/div/div[1]/cwc-app/div/div[3]/csk-button/button').click()
         time.sleep(5)
         WebDriverWait(browser, 15).until(EC.visibility_of_element_located((By.XPATH,'/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button')))
         browser.find_element(By.XPATH,'/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button').click()
