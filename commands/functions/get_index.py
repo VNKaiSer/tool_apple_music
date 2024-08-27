@@ -1,4 +1,5 @@
 import datetime
+import re
 from selenium import webdriver
 
 from selenium.webdriver.chrome.service import Service
@@ -154,6 +155,15 @@ def generate_phone_number():
     return f"{area_code}{central_office_code}{line_number}"
 def random_message():
     return 'ALiCheck' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True)
+
+def extract_date(text):
+    match = re.search(r"\b\w+ \d{1,2}, \d{4} \d{1,2}:\d{2} \wM\b", text)
+    if match:
+        date_str = match.group(0)
+        date_obj = datetime.strptime(date_str, "%b %d, %Y %I:%M %p")
+        return date_obj.strftime("%d/%m/%Y")
+    return None
+
 def getData(change_pass):
     if not change_pass:
         acc_get = db_instance.get_acc_get_index()
@@ -392,6 +402,17 @@ def login(change_password = False, send_message = False, delete_message = False,
                         db_instance.result_acc_getindex(username, "no sub")
                     else:
                         db_instance.result_acc_getindex_change_password(username, "no sub")
+                    driver.quit()
+                    return
+                if ex == "Subscription Required":
+                    print("no sub")
+                    WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
+                    sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
+                    print(extract_date(sub_text))
+                    if not change_password:
+                        db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
+                    else:
+                        db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
                     driver.quit()
                     return
             except Exception as e:
