@@ -405,10 +405,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                     driver.quit()
                     return
                 if ex == "Subscription Required":
-                    print("no sub")
                     WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
                     sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
-                    print(extract_date(sub_text))
                     if not change_password:
                         db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
                     else:
