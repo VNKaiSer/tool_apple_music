@@ -269,7 +269,7 @@ class MySQLDatabase:
         return result
 
     def analysis_acc_getindex_change_password(self):
-        query = "SELECT user_name, password,ex FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
+        query = "SELECT user_name, password,ex, phone FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
@@ -659,7 +659,7 @@ def export_acc_getindex(change_password):
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_acc_getindex() if change_password == False else db_instance.analysis_acc_getindex_change_password ():
                     ex = "Unknown" if data[2] is None else  data[2] 
-                    file.write(data[0] + '|' + data[1] + '|' + ex + '\n')
+                    file.write(data[0] + '|' + data[1] + '|' + str(data[3]) + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
