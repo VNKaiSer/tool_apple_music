@@ -179,13 +179,19 @@ def getData(change_pass):
 def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
-    try:
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
-        assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
-        print(assigned_number)
-    except:
-        print()
+    time_reload = 0
+    while assigned_number == "":
+        try:
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
+            assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
+            print(assigned_number)
+        except:
+            time_reload += 1
+            driver.refresh()
+            if time_reload == 2:
+                break
+           
         
     try:
         # Gửi tin nhắn
