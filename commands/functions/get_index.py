@@ -179,7 +179,7 @@ def getData(change_pass):
 def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
-    time_reload = 0
+    time_reload = 1
     while assigned_number == "":
         try:
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
@@ -259,9 +259,21 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
         print(modal_title.text)
         if modal_title.text == "Well, That Didn't Work...":
-            db_instance.result_acc_getindex(username, "Didnt Work")
-            driver.quit()
-            return
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p')))
+            sc_chat_error_message = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p')
+            if sc_chat_error_message.text == "Sorry, something didn't go through. If the problem persists, please contact support.":
+                db_instance.result_acc_getindex(username, "Didnt Work")
+                driver.quit()
+                return
+            else:
+                if change_password:
+                    db_instance.update_rerun_acc_get_index_change_password(username)
+                    driver.quit()
+                    return
+                else :
+                    db_instance.update_rerun_acc_get_index(username)
+                    driver.quit()
+                    return
         
         db_instance.result_acc_getindex(username, modal_title.text)
         driver.quit()
