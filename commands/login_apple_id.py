@@ -104,6 +104,7 @@ def main():
                         login_apple_id.change_security_question(data, driver)
                     if action == "add_card":
                         login_apple_id.add_card(data, driver)
+                    db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "done"}, where_values={"email" : acc})
             except Exception as e:
                 db_instance.update_rerun_acc_apple_id(acc)
                 driver.quit()
