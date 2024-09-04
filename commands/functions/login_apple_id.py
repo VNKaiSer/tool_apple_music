@@ -61,9 +61,7 @@ BTN_CHANGE_PASS = '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
-driver = None
-def login_apple_id(data):
-    global driver
+def login_apple_id(data, driver):
     # global data
     
     # tmp = getData()
@@ -85,46 +83,46 @@ def login_apple_id(data):
     
     # except:
     #     print("error")
-    random_port = random.randint(9000, 9050)
-    random_proxy = [
-    {
-        'proxy':  
-            {
-                'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
-                'no_proxy': 'localhost,127.0.0.1'
-            },
-        'port': generate_random_port()
-    
-    },
+    # random_port = random.randint(9000, 9050)
+    # random_proxy = [
     # {
     #     'proxy':  
     #         {
-    #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-    #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-    #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    #             'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
+    #             'http': 'http://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225',
     #             'no_proxy': 'localhost,127.0.0.1'
     #         },
     #     'port': generate_random_port()
-    # }
-    ]
-    proxy = random.choice(random_proxy)
+    
+    # },
+    # # {
+    # #     'proxy':  
+    # #         {
+    # #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    # #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
+    # #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
+    # #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
+    # #             'no_proxy': 'localhost,127.0.0.1'
+    # #         },
+    # #     'port': generate_random_port()
+    # # }
+    # ]
+    # proxy = random.choice(random_proxy)
     
     
     
-    chrome_options = Options()
-    chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.add_argument('--allow-insecure-localhost')
-    chrome_options.add_argument('--ignore-ssl-errors=yes')
-    chrome_options.add_argument('--log-level=3')  # Selenium log level
+    # chrome_options = Options()
+    # chrome_options.add_argument('--ignore-certificate-errors')
+    # chrome_options.add_argument('--allow-insecure-localhost')
+    # chrome_options.add_argument('--ignore-ssl-errors=yes')
+    # chrome_options.add_argument('--log-level=3')  # Selenium log level
     
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=chrome_options,
-        seleniumwire_options=proxy,
-        # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
-    )
+    # driver = webdriver.Chrome(
+    #     service=Service(ChromeDriverManager().install()),
+    #     options=chrome_options,
+    #     seleniumwire_options=proxy,
+    #     # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+    # )
     try: 
         
         
@@ -201,8 +199,7 @@ def login_apple_id(data):
         # làm lại
         return
 
-def change_password(data):
-    global driver
+def change_password(data, driver):
     driver.get("https://appleid.apple.com/account/manage")
     # Mở modal thay đổi mật khẩu
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, BTN_CHANGE_PASS)))
@@ -232,8 +229,7 @@ def change_password(data):
     time.sleep(1)
     active_element.send_keys(Keys.ENTER)
 
-def change_region():
-    global driver
+def change_region(driver):
     driver.get("https://appleid.apple.com/account/manage?mode=standalone&section=payment")
     address1, address2, city, state, postalCode = random_address()
     firstName, lastName = generate_name()
@@ -268,8 +264,7 @@ def change_region():
     btns[1].click()
     time.sleep(5)
     
-def change_security_question(data):
-    global driver
+def change_security_question(data, driver):
     driver.get("https://appleid.apple.com/account/manage")
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
     driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button').click()
@@ -309,8 +304,7 @@ def change_security_question(data):
     btns = modal_dialogs[len(modal_dialogs) - 1].find_elements(By.TAG_NAME,value= "button")
     btns[1].click()
 
-def add_card(data):
-    global driver
+def add_card(data, driver):
     wait_60_second = 0
     driver.get("https://appleid.apple.com/account/manage/section/payment")
     WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
