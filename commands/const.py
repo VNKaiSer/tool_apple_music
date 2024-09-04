@@ -491,6 +491,11 @@ class MySQLDatabase:
         self.cursor.execute(query)
         self.connection.commit()
     
+    def insert_account_apple_id(self, acc, password, q1, q2, q3):
+        query = "INSERT INTO apple_id_login (acc, password, q1, q2, q3) VALUES (%s, %s, %s, %s, %s)"
+        self.cursor.execute(query, (acc, password, q1, q2, q3))
+        self.connection.commit()
+    
 
     
         

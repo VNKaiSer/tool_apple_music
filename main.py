@@ -330,6 +330,7 @@ sys.path.append('./')
 from utils import import_id 
 from utils import import_card
 from utils import import_acc_getindex
+from utils import import_apple_id
 import threading
 from PIL import Image, ImageTk
 import os
@@ -352,6 +353,22 @@ def add_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+        
+def add_apple_id():
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_apple_id.process_data(content)
+                messagebox.showinfo("Thành công", "Thêm id thành công")
+        
+         
+        
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+
 def add_card():
     try:
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
@@ -1092,6 +1109,7 @@ add_data_menu = Menu(menu)
 menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
 add_data_menu.add_command(label='Thêm id', command=add_id)
 add_data_menu.add_command(label='Thêm thẻ', command=add_card)
+add_data_menu.add_command(label='Thêm acc apple id', command=add_apple_id)
 add_data_menu.add_separator()
 add_data_menu.add_command(label='Thêm acc getindex', command=lambda:add_getindex(change_password=False))
 add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda:add_getindex(change_password=True))
