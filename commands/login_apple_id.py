@@ -88,7 +88,6 @@ def main():
         chrome_options.add_argument('--log-level=3')  # Selenium log level
         
         driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()),
             options=chrome_options,
             seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
