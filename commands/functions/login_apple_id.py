@@ -147,22 +147,22 @@ def login_apple_id(data, driver):
         # làm lại
         return
     
+    # Tìm frame login
+    WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IFRAME_AUTH)))
+    ifreame_auth = driver.find_element(By.CSS_SELECTOR, value= IFRAME_AUTH)
+    driver.switch_to.frame(ifreame_auth)
+    # Nhập tài khoản
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_USERNAME )))
+    username = driver.find_element(By.ID,value= ID_USERNAME)
+    username.send_keys(data['email'])
+    username.send_keys(Keys.ENTER)
+    # Nhập mật khẩu 
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_PASSWORD)))
+    password = driver.find_element(By.ID,value= ID_PASSWORD)
+    password.send_keys(data['password'])
+    password.send_keys(Keys.ENTER)
+    
     try:
-        # Tìm frame login
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IFRAME_AUTH)))
-        ifreame_auth = driver.find_element(By.CSS_SELECTOR, value= IFRAME_AUTH)
-        driver.switch_to.frame(ifreame_auth)
-        # Nhập tài khoản
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_USERNAME )))
-        username = driver.find_element(By.ID,value= ID_USERNAME)
-        username.send_keys(data['email'])
-        username.send_keys(Keys.ENTER)
-        # Nhập mật khẩu 
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_PASSWORD)))
-        password = driver.find_element(By.ID,value= ID_PASSWORD)
-        password.send_keys(data['password'])
-        password.send_keys(Keys.ENTER)
-        # Kiểm tra 
         # Câu hỏi 1
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_1)))
         question_1 = driver.find_element(By.ID,value= ID_QUESTION_1).text
@@ -196,24 +196,34 @@ def login_apple_id(data, driver):
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, BTN_CONTINUTE_AT_QUESTION)))
         btns = driver.find_elements(By.TAG_NAME,value= BTN_CONTINUTE_AT_QUESTION)
         btns[1].click()
-        
-        # Nhấn các nút rồi tới frame chính
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
-        repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
-        driver.switch_to.frame(repairFrame)
-        # Nhấn nút continute
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-        btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[1].click()
-        time.sleep(5)
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-        btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[1].click()
-        time.sleep(5)
-        
     except Exception as e:
-        # làm lại
-        return
+        print()
+    
+    # Nhấn các nút rồi tới frame chính
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
+    repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
+    driver.switch_to.frame(repairFrame)
+    
+    # Chưa có câu hỏi bảo mật
+    try:
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2")))
+        set_question = driver.find_element(By.XPATH,value= "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2").text
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'select')))
+        select_element = driver.find_elements(By.TAG_NAME,value= 'select')
+        print(len(select_element))
+    except Exception as e:
+        print()
+    # Nhấn nút continute
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+    btns = driver.find_elements(By.TAG_NAME,value= "button")
+    btns[1].click()
+    time.sleep(5)
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+    btns = driver.find_elements(By.TAG_NAME,value= "button")
+    btns[1].click()
+    time.sleep(5)
+        
+    
 
 def change_password(data, driver):
     time.sleep(5)
