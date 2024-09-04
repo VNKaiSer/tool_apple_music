@@ -29,7 +29,7 @@ def main():
                 if action == "change_password":
                     login_apple_id.change_password()
                 if action == "change_country":
-                    login_apple_id.change_country()
+                    login_apple_id.change_region()
                 if action == "change_question":
                     login_apple_id.change_question()
                 if action == "add_card":
