@@ -44,6 +44,21 @@ def random_address():
 
     return random_address['address1'], random_address['address2'], random_address['city'], random_address['state'], random_address['postalCode']
 
+def generate_phone_number():
+    area_codes = [
+        205, 251, 256, 334, 659, 938, 907, 480, 520, 602, 623, 928,
+        479, 501, 870, 209, 213, 279, 310, 341, 350, 408, 415,
+        424, 442, 510, 530, 559, 562, 619, 626, 628, 650, 657, 661,
+        669, 707, 714, 747, 760, 805, 818, 820, 831, 840, 858, 909,
+        916, 925, 949, 951, 303, 719, 720, 970, 983, 203, 475, 860,
+        959, 239, 305, 321, 352, 386, 407, 448, 561, 656, 689, 727,
+        754, 772, 786, 813, 850, 863, 904, 941, 954, 229, 404, 470,
+        478, 678, 706, 762, 770, 912, 943
+    ]
+    area_code = random.choice(area_codes)
+    central_office_code = random.randint(200, 999)
+    line_number = random.randint(1000, 9999)
+    return f"{area_code}{central_office_code}{line_number}"
 def generate_anwser():
     return fake.password(length=5,special_chars=False, digits=False,upper_case=True, lower_case=True)
 def generate_name():
@@ -258,7 +273,7 @@ def change_region(driver):
     inputs[5].send_keys(postalCode)
     inputs[6].clear()
     time.sleep(1)
-    inputs[6].send_keys(fake.phone_number())
+    inputs[6].send_keys(generate_phone_number())
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[2])
     select.select_by_value(state)
     time.sleep(1)
