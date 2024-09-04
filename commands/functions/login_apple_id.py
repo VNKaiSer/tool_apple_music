@@ -147,6 +147,7 @@ def login_apple_id(data, driver):
         password = driver.find_element(By.ID,value= ID_PASSWORD)
         password.send_keys(data['password'])
         password.send_keys(Keys.ENTER)
+        # Kiểm tra 
         # Câu hỏi 1
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_1)))
         question_1 = driver.find_element(By.ID,value= ID_QUESTION_1).text
@@ -200,6 +201,7 @@ def login_apple_id(data, driver):
         return
 
 def change_password(data, driver):
+    time.sleep(5)
     driver.get("https://appleid.apple.com/account/manage")
     # Mở modal thay đổi mật khẩu
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, BTN_CHANGE_PASS)))
@@ -230,6 +232,7 @@ def change_password(data, driver):
     active_element.send_keys(Keys.ENTER)
 
 def change_region(driver):
+    time.sleep(5)
     driver.get("https://appleid.apple.com/account/manage?mode=standalone&section=payment")
     address1, address2, city, state, postalCode = random_address()
     firstName, lastName = generate_name()
@@ -239,22 +242,22 @@ def change_region(driver):
     select.select_by_value("USA")
     inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
     inputs[0].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[0].send_keys(firstName)
     inputs[1].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[1].send_keys(lastName)
     inputs[2].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[2].send_keys(address1)
     inputs[4].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[4].send_keys(city)
     inputs[5].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[5].send_keys(postalCode)
     inputs[6].clear()
-    time.sleep(0.5)
+    time.sleep(1)
     inputs[6].send_keys(fake.phone_number())
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[2])
     select.select_by_value(state)
@@ -265,6 +268,7 @@ def change_region(driver):
     time.sleep(5)
     
 def change_security_question(data, driver):
+    time.sleep(5)
     driver.get("https://appleid.apple.com/account/manage")
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
     driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button').click()

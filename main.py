@@ -509,7 +509,7 @@ def apple_id_tool():
     add_payment_checkbox = ttk.Checkbutton(dialog, text="Add thẻ", variable=add_payment_var)
     add_payment_checkbox.pack(anchor='w', padx=10, pady=5)
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: get_index(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var))
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var))
     confirm_button.pack(anchor='w', padx=10, pady=10)
     
 def run_app_delete():
@@ -873,6 +873,30 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
             executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var))
             time.sleep(10)
     root.deiconify()
+    
+def apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):
+    def run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):
+        change_region_str = "change_country" if change_region_var.get() else ""
+        change_password_str = "change_password" if change_password_var.get() else ""
+        add_payment_str = "add_card" if add_payment_var.get() else ""
+        change_secury_question_str = "change_question" if change_secury_question_var.get() else ""
+        
+        subprocess.Popen("py ./commands/login_getindex.py --actions " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
+        
+        
+          
+        
+            
+            
+            
+    
+    time_run = int(combo.get())
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run(change_secury_question_var, change_region_var, change_password_var, add_payment_var))
+            time.sleep(10)
+    root.deiconify()
+    
     
     
 def reg_apple_tv():

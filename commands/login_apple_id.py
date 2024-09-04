@@ -99,9 +99,9 @@ def main():
                     if action == "change_password":
                         login_apple_id.change_password(data, driver)
                     if action == "change_country":
-                        login_apple_id.change_region()
+                        login_apple_id.change_region(driver)
                     if action == "change_question":
-                        login_apple_id.change_question(data, driver)
+                        login_apple_id.change_security_question(data, driver)
                     if action == "add_card":
                         login_apple_id.add_card(data, driver)
             except Exception as e:
