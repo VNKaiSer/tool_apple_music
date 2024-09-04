@@ -882,7 +882,7 @@ def apple_id_tool_run(combo, change_secury_question_var, change_region_var, chan
         change_secury_question_str = "change_question" if change_secury_question_var.get() else ""
         
         print("Run Apple ID: " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
-        subprocess.Popen("py ./commands/login_getindex.py --actions " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
+        subprocess.Popen("py ./commands/login_apple_id.py --actions " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
         
         
           
