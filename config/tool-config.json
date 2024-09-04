@@ -1,5 +1,5 @@
 {
-    "RUN": false,
+    "RUN": true,
     "TIME_ADD_CARD": 2,
     "GET_INDEX_TRICK": true
 }

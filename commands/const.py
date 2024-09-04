@@ -416,6 +416,13 @@ class MySQLDatabase:
         self.connection.commit()
         return result
     
+    def count_account_apple_id(self):
+        query = "SELECT COUNT(*) FROM apple_id_login WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
+    
     def count_account_music_store(self):
         query = "SELECT COUNT(*) FROM mail WHERE isRunning = 'N' and count_run <= 3"
         self.cursor.execute(query)

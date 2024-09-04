@@ -464,9 +464,9 @@ def add_card():
             break
     print("Hoàn thành")
     
-login_apple_id() 
+# login_apple_id() 
 # change_password()
 # change_region()
 # change_security_question()
-add_card()
-time.sleep(500)
+# add_card()
+# time.sleep(500)
