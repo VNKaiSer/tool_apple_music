@@ -48,6 +48,15 @@ def generate_anwser():
     return fake.password(length=5,special_chars=False, digits=False,upper_case=True, lower_case=True)
 def generate_name():
     return fake.first_name(), fake.last_name()
+
+def getData():
+    acc_get = db_instance.get_acc_apple_id()
+    time.sleep(2)
+    if acc_get == '':
+        return None
+    acc, password, q1, q2, q3 = acc_get[1], acc_get[2], acc_get[3], acc_get[4], acc_get[5]
+    
+    return acc, password, q1, q2, q3
 # Định nghĩa các element cho dễ bảo trì 
 IFRAME_AUTH = '#aid-auth-widget-iFrame'
 ID_USERNAME = 'account_name_text_field'
@@ -66,14 +75,20 @@ driver = None
 def login_apple_id():
     global driver
     global data
+    
+    tmp = getData()
+    if tmp is None:
+        print("No acc! Input more acc.")
+        return
+    acc, password, q1, q2, q3 = tmp
     try:
         data = {
-            "email" : "wendtbartez@hotmail.com",
-            "password" : "AqyNIJyq62O@",
+            "email" : acc,
+            "password" : password,
             "question" : {
-                "school" : "BhWns",
-                "dream" : "FCucf",
-                "parent" : "XHpBs"
+                "school" : q1,
+                "dream" : q2,
+                "parent" : q3
             }
         }
         print(data)

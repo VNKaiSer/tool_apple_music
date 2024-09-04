@@ -482,6 +482,33 @@ class MySQLDatabase:
         except Exception as e:
             self.connection.rollback()
             return ''
+    def get_acc_apple_id(self):
+        try:
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            query = "SELECT * FROM apple_id_login WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE apple_id_login SET is_running = 'Y', count_run = count_run + 1 WHERE acc = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+            return ''
+        
+    def update_rerun_acc_apple_id(self, username):
+        query = "UPDATE apple_id_login SET is_running = 'N' WHERE acc = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
     
     def update_rerun_acc_get_index_change_password(self, username):
         query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
