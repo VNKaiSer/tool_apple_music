@@ -875,7 +875,7 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
     root.deiconify()
     
 def apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):
-    def run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):
+    def run(change_secury_question_var, change_region_var, change_password_var, add_payment_var):
         change_region_str = "change_country" if change_region_var.get() else ""
         change_password_str = "change_password" if change_password_var.get() else ""
         add_payment_str = "add_card" if add_payment_var.get() else ""
