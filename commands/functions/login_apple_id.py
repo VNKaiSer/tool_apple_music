@@ -48,15 +48,6 @@ def generate_anwser():
     return fake.password(length=5,special_chars=False, digits=False,upper_case=True, lower_case=True)
 def generate_name():
     return fake.first_name(), fake.last_name()
-
-def getData():
-    acc_get = db_instance.get_acc_apple_id()
-    time.sleep(2)
-    if acc_get == '':
-        return None
-    acc, password, q1, q2, q3 = acc_get[1], acc_get[2], acc_get[3], acc_get[4], acc_get[5]
-    
-    return acc, password, q1, q2, q3
 # Định nghĩa các element cho dễ bảo trì 
 IFRAME_AUTH = '#aid-auth-widget-iFrame'
 ID_USERNAME = 'account_name_text_field'
@@ -70,31 +61,30 @@ BTN_CHANGE_PASS = '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div
 class Question:
     SCHOOL = 'What is the first name of your best friend in high school?'
     PARENT = 'In what city did your parents meet?'
-data = None
 driver = None
-def login_apple_id():
+def login_apple_id(data):
     global driver
-    global data
+    # global data
     
-    tmp = getData()
-    if tmp is None:
-        print("No acc! Input more acc.")
-        return
-    acc, password, q1, q2, q3 = tmp
-    try:
-        data = {
-            "email" : acc,
-            "password" : password,
-            "question" : {
-                "school" : q1,
-                "dream" : q2,
-                "parent" : q3
-            }
-        }
-        print(data)
+    # tmp = getData()
+    # if tmp is None:
+    #     print("No acc! Input more acc.")
+    #     return
+    # acc, password, q1, q2, q3 = tmp
+    # try:
+    #     data = {
+    #         "email" : acc,
+    #         "password" : password,
+    #         "question" : {
+    #             "school" : q1,
+    #             "dream" : q2,
+    #             "parent" : q3
+    #         }
+    #     }
+    #     print(data)
     
-    except:
-        print("error")
+    # except:
+    #     print("error")
     random_port = random.randint(9000, 9050)
     random_proxy = [
     {
@@ -211,9 +201,8 @@ def login_apple_id():
         # làm lại
         return
 
-def change_password():
+def change_password(data):
     global driver
-    global data
     driver.get("https://appleid.apple.com/account/manage")
     # Mở modal thay đổi mật khẩu
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, BTN_CHANGE_PASS)))
@@ -225,9 +214,16 @@ def change_password():
     ipunts = modal_change_pass.find_elements(By.TAG_NAME,value= "input")
     newPass = generate_random_password()
     print(newPass)
-    ipunts[0].send_keys(data['password'])
-    ipunts[1].send_keys(newPass)
-    ipunts[2].send_keys(newPass)
+    for i in data['password']:
+        ipunts[0].send_keys(i)
+        time.sleep(0.2)
+    for i in newPass:
+        ipunts[1].send_keys(i)
+        time.sleep(0.2)
+    for i in newPass:
+        ipunts[2].send_keys(i)
+        time.sleep(0.2)
+    
     
     active_element = driver.switch_to.active_element
     active_element.send_keys(Keys.TAB)
@@ -238,7 +234,6 @@ def change_password():
 
 def change_region():
     global driver
-    global data
     driver.get("https://appleid.apple.com/account/manage?mode=standalone&section=payment")
     address1, address2, city, state, postalCode = random_address()
     firstName, lastName = generate_name()
@@ -273,9 +268,8 @@ def change_region():
     btns[1].click()
     time.sleep(5)
     
-def change_security_question():
+def change_security_question(data):
     global driver
-    global data
     driver.get("https://appleid.apple.com/account/manage")
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button')))
     driver.find_element(By.XPATH,value= '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[3]/div/button').click()
@@ -315,9 +309,8 @@ def change_security_question():
     btns = modal_dialogs[len(modal_dialogs) - 1].find_elements(By.TAG_NAME,value= "button")
     btns[1].click()
 
-def add_card():
+def add_card(data):
     global driver
-    global data
     wait_60_second = 0
     driver.get("https://appleid.apple.com/account/manage/section/payment")
     WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'iframe')))
@@ -474,7 +467,6 @@ def add_card():
             db_instance.insert_mail_reg_apple_tv(
                 [data['account'], data['password'], data['card_number'], data['month_exp'], data['year_exp'], data['ccv'], data['date_of_birth']]
             )
-            
             driver.quit()
             break
     print("Hoàn thành")
