@@ -163,11 +163,12 @@ def login_apple_id(data, driver):
     password.send_keys(Keys.ENTER)
     
     # Sai mật khẩu 
-    try:    
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[3]/apple-auth/div/div[1]/div/sign-in/div/div[1]/div[2]/div/p")))
-        err = driver.find_element(By.XPATH,value= "/html/body/div[3]/apple-auth/div/div[1]/div/sign-in/div/div[1]/div[2]/div/p").text
-    except Exception as e:
+    try:  
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'p.fat#errMsg')))
+        err = driver.find_element(By.CSS_SELECTOR, 'p.fat#errMsg')
         raise InvalidPasswordError(data['password'])
+    except Exception as e:
+        print()
         
     
     
