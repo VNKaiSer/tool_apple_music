@@ -326,10 +326,11 @@ def change_region(driver):
     inputs[6].send_keys(generate_phone_number())
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[2])
     select.select_by_value(state)
-    time.sleep(1)
+    time.sleep(2)
     # Nhấn nút 
-    btns = payment_content.find_elements(By.TAG_NAME,value= "button")
-    btns[1].click()
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/manage/app-container/div/main/div/aid-payment/section/div/div/div/accordion/div/div/div[3]/button[2]")))
+    btn = payment_content.find_element(By.XPATH,value= "/html/body/div[1]/manage/app-container/div/main/div/aid-payment/section/div/div/div/accordion/div/div/div[3]/button[2]")
+    btn.click()
     time.sleep(5)
     
 def change_security_question(data, driver):
