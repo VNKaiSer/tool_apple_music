@@ -205,11 +205,13 @@ def login_apple_id(data, driver):
     driver.switch_to.frame(repairFrame)
     
     # Chưa có câu hỏi bảo mật
+    no_secure_question = False
     try:
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2")))
         set_question = driver.find_element(By.XPATH,value= "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2").text
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'select')))
         select_element = driver.find_elements(By.TAG_NAME,value= 'select')
+        no_secure_question = True
         select_q1 = Select(select_element[0])
         select_q1.select_by_index(0)
         time.sleep(1)
@@ -233,15 +235,16 @@ def login_apple_id(data, driver):
         btns[0].click()
         time.sleep(5)
     except Exception as e:
+        if no_secure_question == False:
         # Nhấn tiếp tục 
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-        btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[1].click()
-        time.sleep(5)
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-        btns = driver.find_elements(By.TAG_NAME,value= "button")
-        btns[1].click()
-        time.sleep(5)
+            WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+            btns = driver.find_elements(By.TAG_NAME,value= "button")
+            btns[1].click()
+            time.sleep(5)
+            WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+            btns = driver.find_elements(By.TAG_NAME,value= "button")
+            btns[1].click()
+            time.sleep(5)
     # Nhấn nút continute
     
         
