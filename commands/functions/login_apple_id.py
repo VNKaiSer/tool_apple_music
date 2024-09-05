@@ -302,7 +302,7 @@ def change_region(driver):
     payment_content = driver.find_element(By.ID,value= "payment-content")
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
     select.select_by_value("USA")
-    WebDriverWait(driver, WAIT_CHILD).until(EC.element_to_be_clickable((By.TAG_NAME, "input")))
+    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "input")))
     inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
     time.sleep(5)
     inputs[0].clear()
