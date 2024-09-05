@@ -653,3 +653,8 @@ USE_PROXY = True
 RUN_APP = True
 WAIT_START = 60
 WAIT_CHILD = 15
+
+class InvalidPasswordError(Exception):
+    def __init__(self, message="Invalid Password"):
+        self.message = message
+        super().__init__(self.message)
