@@ -240,11 +240,6 @@ def login_apple_id(data, driver):
         btn_oke.click()
         time.sleep(1)
         
-        # Nhấn nút chấp nhận policy
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/privacy-consent/div/idms-step/div/div/div/div[3]/idms-toolbar/div/div/div/button")))
-        btn_continute = driver.find_element(By.XPATH,value= "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/privacy-consent/div/idms-step/div/div/div/div[3]/idms-toolbar/div/div/div/button")
-        btn_continute.click()
-        time.sleep(5)
     except Exception as e:
         if no_secure_question == False:
         # Nhấn tiếp tục 
@@ -256,8 +251,14 @@ def login_apple_id(data, driver):
             btns = driver.find_elements(By.TAG_NAME,value= "button")
             btns[1].click()
             time.sleep(5)
-    # Nhấn nút continute
-    
+    # Nhấn nút chấp nhận policy
+    try: 
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/privacy-consent/div/idms-step/div/div/div/div[3]/idms-toolbar/div/div/div/button")))
+        btn_continute = driver.find_element(By.XPATH,value= "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/privacy-consent/div/idms-step/div/div/div/div[3]/idms-toolbar/div/div/div/button")
+        btn_continute.click()
+        time.sleep(5)
+    except Exception as e:
+        print()
         
     
 
