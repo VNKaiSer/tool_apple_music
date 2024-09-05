@@ -651,5 +651,5 @@ logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%
 #State
 USE_PROXY = True
 RUN_APP = True
-WAIT_START = 30
-WAIT_CHILD = 10
+WAIT_START = 60
+WAIT_CHILD = 15

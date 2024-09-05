@@ -108,7 +108,8 @@ def main():
             except Exception as e:
                 db_instance.update_rerun_acc_apple_id(acc)
                 driver.quit()
-                return
+    
+    print("STOP APPLE ID tool")
                 
                 
 
