@@ -303,6 +303,8 @@ def change_region(driver):
     select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
     select.select_by_value("USA")
     time.sleep(5)
+    select_payment = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[1])
+    select_payment.select_by_index(0)
     inputs = payment_content.find_elements(By.TAG_NAME,value= "input")
     inputs[0].clear()
     time.sleep(1)
