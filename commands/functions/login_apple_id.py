@@ -162,15 +162,17 @@ def login_apple_id(data, driver):
     password.send_keys(data['password'])
     password.send_keys(Keys.ENTER)
     
+    check_invalid_password = False
     # Sai mật khẩu 
     try:  
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'p.fat#errMsg')))
         err = driver.find_element(By.CSS_SELECTOR, 'p.fat#errMsg')
-        raise InvalidPasswordError(data['password'])
+        check_invalid_password = True
     except Exception as e:
-        print()
-        
+        check_invalid_password = False
     
+    if check_invalid_password == True:        
+        raise InvalidPasswordError('Invalid password!')
     
     try:
         # Câu hỏi 1
