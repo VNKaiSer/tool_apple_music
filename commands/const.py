@@ -658,3 +658,8 @@ class InvalidPasswordError(Exception):
     def __init__(self, message="Invalid Password"):
         self.message = message
         super().__init__(self.message)
+
+class InvalidSecureQuestionError(Exception):
+    def __init__(self, message="Invalid Secure Question"):
+        self.message = message
+        super().__init__(self.message)

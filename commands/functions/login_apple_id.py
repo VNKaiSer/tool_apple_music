@@ -211,6 +211,17 @@ def login_apple_id(data, driver):
     except Exception as e:
         print()
     
+    # Kiểm tra sai câu hỏi bảo mậts
+    check_invalid_secure_question = True
+    try:
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[3]/apple-auth/div/div[1]/div/div/sa-sk7/div/div/div[2]/div/div[1]/div[1]/div[2]/div/span[2]')))
+        err = driver.find_element(By.XPATH,value= '/html/body/div[3]/apple-auth/div/div[1]/div/div/sa-sk7/div/div/div[2]/div/div[1]/div[1]/div[2]/div/span[2]')
+        check_invalid_secure_question = True
+    except Exception as e:
+        check_invalid_secure_question = False
+    
+    if check_invalid_secure_question == True:
+        raise InvalidSecureQuestionError('Invalid secure question!') 
     # Nhấn các nút rồi tới frame chính
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
     repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
