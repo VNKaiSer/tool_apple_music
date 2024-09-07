@@ -191,22 +191,37 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             driver.refresh()
             if time_reload == 2:
                 break
-           
+    
+    driver.switch_to.default_content()
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+    driver.get("https://app.getindex.com/conversation/empty") 
+    
+    time_reload = 1
+    after_assigned_number = ""
+    while after_assigned_number == "":
+        try:
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
+            after_assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
+            phone = re.sub(r'\D', '', after_assigned_number)
+            db_instance.update_phone_acc_getindex(username, phone);
+            assigned_number = re.sub(r'\D', '', assigned_number)    
+            print(assigned_number)
+            after_assigned_number = re.sub(r'\D', '', after_assigned_number)
+            print(after_assigned_number)
+            if assigned_number != after_assigned_number:
+                db_instance.result_acc_getindex(username, "no sent text")
+                driver.quit()
+                return
+        except:
+            time_reload += 1
+            driver.refresh()
+            if time_reload == 2:
+                break
+        
         
     try:
         # Gửi tin nhắn
-        driver.switch_to.default_content()
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        driver.get("https://app.getindex.com/conversation/empty") 
-        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
-        after_assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
-        phone = re.sub(r'\D', '', after_assigned_number)
-        db_instance.update_phone_acc_getindex(username, phone);
-        if assigned_number != after_assigned_number:
-            db_instance.result_acc_getindex(username, "no sent text")
-            driver.quit()
-            return
         
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_phone = driver.find_element(By.TAG_NAME, "input")    
