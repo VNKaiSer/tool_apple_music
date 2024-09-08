@@ -174,6 +174,18 @@ def login_apple_id(data, driver):
     if check_invalid_password == True:        
         raise InvalidPasswordError('Invalid password!')
     
+    # Check account lock 
+    check_account_lock = False
+    try:
+        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#alertInfo')))
+        err = driver.find_element(By.CSS_SELECTOR, '#alertInfo')
+        check_account_lock = True
+    except Exception as e:
+        check_account_lock = False
+    
+    if check_account_lock == True:        
+        raise AccountLockedError('Account lock!')
+    
     try:
         # Câu hỏi 1
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_1)))

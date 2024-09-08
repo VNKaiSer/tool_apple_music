@@ -663,3 +663,13 @@ class InvalidSecureQuestionError(Exception):
     def __init__(self, message="Invalid Secure Question"):
         self.message = message
         super().__init__(self.message)
+
+class AccountLockedError(Exception):
+    def __init__(self, message="Account Locked"):
+        self.message = message
+        super().__init__(self.message)
+
+class AccountDisabledError(Exception):
+    def __init__(self, message="Account Disabled"):
+        self.message = message
+        super().__init__(self.message)

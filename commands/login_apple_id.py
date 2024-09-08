@@ -111,6 +111,9 @@ def main():
             except InvalidSecureQuestionError as e:
                 db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "sai CHBM"}, condition=f"acc = '{acc}'")
                 driver.quit()
+            except AccountLockedError as e:
+                db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "lock"}, condition=f"acc = '{acc}'")
+                driver.quit()
             except Exception as e:
                 db_instance.update_rerun_acc_apple_id(acc)
                 driver.quit()
