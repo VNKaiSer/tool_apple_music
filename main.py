@@ -696,7 +696,7 @@ def export_apple_id():
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_acc_apple_id():
                     ex = "Unknown" if data[5] is None else  data[5] 
-                    file.write(data[0] + '|' + data[1] + '|' + data[3]+ '|' + data[4]  + '|' + ex + '\n')
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]+ '|' + data[4]  + '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
