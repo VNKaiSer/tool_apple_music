@@ -267,6 +267,12 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
+    
+    def analysis_acc_apple_id(self):
+        query = "SELECT acc, password,q1, q2, q3, ex FROM apple_id_login WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
 
     def analysis_acc_getindex_change_password(self):
         query = "SELECT user_name, password,ex FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
@@ -682,7 +688,20 @@ def export_acc_getindex(change_password):
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
-        
+
+def export_apple_id():
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_apple_id():
+                    ex = "Unknown" if data[5] is None else  data[5] 
+                    file.write(data[0] + '|' + data[1] + '|' + data[3]+ '|' + data[4]  + '|' + ex + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
 import json
 def handle_onpen_tool():
     with open('./config/tool-config.json', 'r+') as f:
@@ -1160,6 +1179,7 @@ analysis_menu.add_command(label='Xuất thẻ thành công', command=export_succ
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+analysis_menu.add_command(label='Xuất Acc Apple ID', command=export_apple_id)
 analysis_menu.add_separator()
 
 analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
