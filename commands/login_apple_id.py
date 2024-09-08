@@ -114,6 +114,12 @@ def main():
             except AccountLockedError as e:
                 db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "lock"}, condition=f"acc = '{acc}'")
                 driver.quit()
+            except AccountDisabledError as e:
+                db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "disable"}, condition=f"acc = '{acc}'")
+                driver.quit()
+            except AccountDone as e:
+                db_instance.update_data(table_name="apple_id_login", set_values={"ex" : "done"}, condition=f"acc = '{acc}'")
+                driver.quit()
             except Exception as e:
                 db_instance.update_rerun_acc_apple_id(acc)
                 driver.quit()

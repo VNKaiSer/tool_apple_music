@@ -673,3 +673,8 @@ class AccountDisabledError(Exception):
     def __init__(self, message="Account Disabled"):
         self.message = message
         super().__init__(self.message)
+
+class AccountDone(Exception):
+    def __init__(self, message="Account Done"):
+        self.message = message
+        super().__init__(self.message)

@@ -335,8 +335,19 @@ def change_region(driver):
     firstName, lastName = generate_name()
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, "payment-content")))
     payment_content = driver.find_element(By.ID,value= "payment-content")
-    select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
-    select.select_by_value("USA")
+    check_account_disable = False
+    check_country = ""
+    try:
+        select = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[0])
+        check_country = select.first_selected_option.text
+        select.select_by_value("USA")
+    except Exception as e:
+        check_account_disable = True
+        
+    if check_account_disable == True:
+        raise AccountDisabledError("Account Disabled")
+    if check_country == "USA":
+        raise AccountDone("Account Done")
     time.sleep(5)
     select_payment = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[1])
     select_payment.select_by_index(0)
