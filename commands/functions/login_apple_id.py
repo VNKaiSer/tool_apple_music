@@ -70,7 +70,7 @@ ID_PASSWORD = 'password_text_field'
 ID_QUESTION_1 = 'question-1'
 ANSWER1 = 'input'
 ID_QUESTION_2 = 'question-2'
-BTN_CONTINUTE_AT_QUESTION = 'button'
+BTN_CONTINUTE_AT_QUESTION = '/html/body/div[3]/apple-auth/div/div[1]/div/div/sa-sk7/div/fieldset/div/button[2]'
 IF_REPAIR = "#repairFrame"
 BTN_CHANGE_PASS = '//*[@id="root"]/div[3]/main/div/div[2]/div[1]/div/div/div/div[2]/div/button'
 class Question:
@@ -223,9 +223,9 @@ def login_apple_id(data, driver):
         # Nhấn nút continute
         time.sleep(1)
         
-        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, BTN_CONTINUTE_AT_QUESTION)))
-        btns = driver.find_elements(By.TAG_NAME,value= BTN_CONTINUTE_AT_QUESTION)
-        btns[1].click()
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, BTN_CONTINUTE_AT_QUESTION)))
+        btn = driver.find_element(By.XPATH,value= BTN_CONTINUTE_AT_QUESTION)
+        btn.click()
     except Exception as e:
         print()
     
