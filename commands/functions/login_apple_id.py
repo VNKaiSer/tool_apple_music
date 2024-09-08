@@ -346,7 +346,7 @@ def change_region(driver):
         
     if check_account_disable == True:
         raise AccountDisabledError("Account Disabled")
-    if check_country == "USA":
+    if check_country == "United States":
         raise AccountDone("Account Done")
     time.sleep(5)
     select_payment = Select(payment_content.find_elements(By.TAG_NAME,value= "select")[1])
