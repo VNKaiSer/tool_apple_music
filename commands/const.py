@@ -168,6 +168,38 @@ class MySQLDatabase:
         result = self.cursor.fetchall()
         print(result)
         return result
+    
+    def get_acc_apple_music(self):
+        try:
+            # Kiểm tra xem transaction đã bắt đầu chưa, nếu chưa thì bắt đầu một transaction mới
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            # Câu lệnh SELECT để lấy dữ liệu từ bảng mail
+            query = "SELECT * FROM mail WHERE isRunning = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            # Kiểm tra kết quả truy vấn
+            if result:
+                # Tăng giá trị count_run và cập nhật isRunning thành 'Y'
+                update_query = "UPDATE mail SET isRunning = 'Y', count_run = count_run + 1 WHERE id = %s"
+                self.cursor.execute(update_query, (result[0][0],))
+
+                # Xác nhận transaction
+                self.connection.commit()
+
+                # Trả về kết quả đầu tiên từ truy vấn
+                return result
+            else:
+                # Không có kết quả, rollback transaction
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            # Xảy ra lỗi, rollback lại transaction
+            self.connection.rollback()
+            return ''
 
     def export_error_id(self, error):
         query = None

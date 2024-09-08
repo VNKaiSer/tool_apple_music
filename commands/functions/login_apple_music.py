@@ -12,10 +12,14 @@ db_instance = MySQLDatabase()
 logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%(asctime)s - %(message)s',encoding='utf-8')
 def run(run_check = False, run_delete = False):
     try: 
-        data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
+        data = db_instance.get_acc_apple_music()
         print(data)
-        db_instance.increment_count_run(table_name="mail", id= data[0][0])
-        db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
+        
+        if data == '': raise Exception('Khong tim thay acc')
+        # data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
+        # print(data)
+        # db_instance.increment_count_run(table_name="mail", id= data[0][0])
+        # db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
     except Exception as e:
         print('Có lỗi khi lấy data')
         return
@@ -66,7 +70,6 @@ def run(run_check = False, run_delete = False):
         logging.error("Error Tool: %s", str("Lỗi proxy"))
         browser.quit()
         return
-
     account = Account(data[0][1], data[0][2])
     try:
         WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
