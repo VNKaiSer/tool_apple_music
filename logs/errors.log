@@ -5406,3 +5406,39 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-08-23 01:09:45,923 - {'username': '3034724355', 'password': 'ALi06Xg@'}
 2024-08-23 01:10:45,293 - {'username': '3034724355', 'password': 'ALi06Xg@'}
 2024-08-23 01:11:45,406 - {'username': '3034724355', 'password': 'ALi06Xg@'}
+2024-09-07 23:03:47,670 - 127.0.0.1:65011: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 94, in write
+    r = self.o.write(v)
+        ^^^^^^^^^^^^^^^
+  File "C:\Users\Kaiser-DEV\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 725, in write
+    return self._sock.send(b)
+           ^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 251, in handle_upstream_connect
+    self.send_response(f.response)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 53, in send_response
+    self.send_response_headers(response)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 67, in send_response_headers
+    self.client_conn.wfile.write(raw)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 98, in write
+    raise exceptions.TcpDisconnect(str(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpDisconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
+

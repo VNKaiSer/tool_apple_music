@@ -179,7 +179,7 @@ def getData(change_pass):
 def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
-    time_reload = 1
+    time_reload = 0
     while assigned_number == "":
         try:
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
@@ -190,13 +190,15 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             time_reload += 1
             driver.refresh()
             if time_reload == 2:
-                break
+                db_instance.update_rerun_acc_get_index(username)
+                driver.quit()
+                return
     
     driver.switch_to.default_content()
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
     driver.get("https://app.getindex.com/conversation/empty") 
     
-    time_reload = 1
+    time_reload = 0
     after_assigned_number = ""
     while after_assigned_number == "":
         try:
@@ -217,7 +219,9 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             time_reload += 1
             driver.refresh()
             if time_reload == 2:
-                break
+                db_instance.update_rerun_acc_get_index(username)
+                driver.quit()
+                return
         
         
     try:
