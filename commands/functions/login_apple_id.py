@@ -155,11 +155,13 @@ def login_apple_id(data, driver):
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_USERNAME )))
     username = driver.find_element(By.ID,value= ID_USERNAME)
     username.send_keys(data['email'])
+    time.sleep(1)
     username.send_keys(Keys.ENTER)
     # Nhập mật khẩu 
     WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_PASSWORD)))
     password = driver.find_element(By.ID,value= ID_PASSWORD)
     password.send_keys(data['password'])
+    time.sleep(1)
     password.send_keys(Keys.ENTER)
     
     check_invalid_password = False
@@ -201,6 +203,7 @@ def login_apple_id(data, driver):
         # Trả lời 
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, ANSWER1)))
         answeres = driver.find_elements(By.TAG_NAME,value= ANSWER1)
+        time.sleep(1)
         answeres[0].send_keys(ansewer_1)
         # Câu hỏi 2
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.ID, ID_QUESTION_2)))
@@ -212,11 +215,14 @@ def login_apple_id(data, driver):
             ansewer_2 = data['question']['parent']
         else:
             ansewer_2 = data['question']['dream']
+        time.sleep(1)
         
         # Trả lời câu hỏi 2
         answeres[1].send_keys(ansewer_2)
         
         # Nhấn nút continute
+        time.sleep(1)
+        
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, BTN_CONTINUTE_AT_QUESTION)))
         btns = driver.find_elements(By.TAG_NAME,value= BTN_CONTINUTE_AT_QUESTION)
         btns[1].click()
@@ -405,7 +411,9 @@ def change_security_question(data, driver):
     print(ans1, ans2, ans3)
     inputs = modals[1].find_elements(By.TAG_NAME,value= "input")
     inputs[0].send_keys(ans1)
+    time.sleep(1)
     inputs[1].send_keys(ans2)
+    time.sleep(1)
     inputs[2].send_keys(ans3)
     time.sleep(1)
     # Nhấn nút update
