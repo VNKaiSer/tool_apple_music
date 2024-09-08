@@ -5442,3 +5442,5 @@ Traceback (most recent call last):
     raise exceptions.TcpDisconnect(str(e))
 seleniumwire.thirdparty.mitmproxy.exceptions.TcpDisconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
 
+2024-09-08 23:17:51,618 - Error Card: Id - manlokyacson@hotmail.com - Card DEC
+2024-09-08 23:17:58,046 - Error Card: Id - manlokyacson@hotmail.com - Card DEC

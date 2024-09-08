@@ -241,13 +241,14 @@ def login_apple_id(data, driver):
     if check_invalid_secure_question == True:
         raise InvalidSecureQuestionError('Invalid secure question!') 
     # Nhấn các nút rồi tới frame chính
-    WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
-    repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
-    driver.switch_to.frame(repairFrame)
+    
     
     # Chưa có câu hỏi bảo mật
     no_secure_question = False
     try:
+        WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.CSS_SELECTOR, IF_REPAIR)))
+        repairFrame = driver.find_element(By.CSS_SELECTOR,value=IF_REPAIR)
+        driver.switch_to.frame(repairFrame)
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2")))
         set_question = driver.find_element(By.XPATH,value= "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/repair-missing-items/div/step-missing-items/idms-step/div/div/div/div[2]/h2").text
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, 'select')))
@@ -281,17 +282,20 @@ def login_apple_id(data, driver):
         btn_oke.click()
         time.sleep(1)
         
-    except Exception as e:
+    except Exception as e: # Đoạn nhấn 2FA từ chối thêm số điện thoại
         if no_secure_question == False:
         # Nhấn tiếp tục 
-            WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-            btns = driver.find_elements(By.TAG_NAME,value= "button")
-            btns[1].click()
-            time.sleep(5)
-            WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
-            btns = driver.find_elements(By.TAG_NAME,value= "button")
-            btns[1].click()
-            time.sleep(5)
+            try:
+                WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+                btns = driver.find_elements(By.TAG_NAME,value= "button")
+                btns[1].click()
+                time.sleep(5)
+                WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.TAG_NAME, "button")))
+                btns = driver.find_elements(By.TAG_NAME,value= "button")
+                btns[1].click()
+                time.sleep(5)
+            except Exception as e:
+                print()
     # Nhấn nút chấp nhận policy
     try: 
         WebDriverWait(driver, WAIT_CHILD).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/appleid-repair/idms-widget/div/div/div/privacy-consent/div/idms-step/div/div/div/div[3]/idms-toolbar/div/div/div/button")))
