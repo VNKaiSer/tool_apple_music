@@ -442,6 +442,11 @@ class MySQLDatabase:
         self.cursor.execute(query, (username,))
         self.connection.commit()
     
+    def update_rerun_acc_sideline(self, username):
+        query = "UPDATE sideline_tool SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+        
     def insert_acc_getindex(self, username, password):
         query = "INSERT INTO get_index_tool(user_name, password) VALUES (%s, %s)"
         self.cursor.execute(query, (username, password))
@@ -457,10 +462,27 @@ class MySQLDatabase:
         self.cursor.execute(query, (ex, username))
         self.connection.commit()
     
+    def result_acc_sideline(self, username, ex):
+        query = "UPDATE sideline_tool SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+    
     def update_phone_acc_getindex(self, username, phone):
         query = "UPDATE get_index_tool SET phone = %s WHERE user_name = %s"
         self.cursor.execute(query, (phone, username))
         self.connection.commit()
+    
+    def update_phone_acc_sideline(self, username, phone):
+        query = "UPDATE sideline_tool SET phone = %s WHERE user_name = %s"
+        self.cursor.execute(query, (phone, username))
+        self.connection.commit()
+    
+    def count_account_sideline_store(self):
+        query = "SELECT COUNT(*) FROM sideline_tool WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
     
     def count_account_getindex_store(self):
         query = "SELECT COUNT(*) FROM get_index_tool WHERE is_running = 'N' and count_run <= 3"
@@ -509,6 +531,12 @@ class MySQLDatabase:
     
     def count_account_getindex_change_password(self):
         query = "SELECT COUNT(*) FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def count_account_sideline_change_password(self):
+        query = "SELECT COUNT(*) FROM SidelineChangePass WHERE is_running = 'N' and count_run <= 3"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
@@ -568,8 +596,18 @@ class MySQLDatabase:
         self.cursor.execute(query, (username,))
         self.connection.commit()
     
+    def update_rerun_acc_sideline_change_password(self, username):
+        query = "UPDATE SidelineChangePass SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
     def result_acc_getindex_change_password(self, username, ex):
         query = "UPDATE IndexChangePass SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+        
+    def result_acc_sideline_change_password(self, username, ex):
+        query = "UPDATE SidelineChangePass SET ex = %s WHERE user_name = %s" 
         self.cursor.execute(query, (ex, username))
         self.connection.commit()
     

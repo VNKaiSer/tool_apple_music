@@ -82,7 +82,7 @@ def generate_random_password_index():
     return 'ALi' + fake.password(length=4, special_chars=False, digits=True, upper_case=True, lower_case=True) + '@';
 
 def change_password_func(driver: webdriver, data, send_delete_change_pass = False):
-    driver.get("https://app.getindex.com/accountSettings") 
+    driver.get("https://messages.sideline.com/accountSettings") 
     actions = ActionChains(driver)
     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, "ion-item-group")))
     form_update_pass = driver.find_elements(By.TAG_NAME, "ion-item-group")
@@ -126,7 +126,7 @@ def change_password_func(driver: webdriver, data, send_delete_change_pass = Fals
         print(modal_title.text)
         if modal_title.text == "Well, That Didn't Work...":
             if send_delete_change_pass == False:
-                db_instance.result_acc_getindex_change_password(data['username'], "Didnt Work")
+                db_instance.result_acc_sideline_change_password(data['username'], "Didnt Work")
             driver.quit()
             return
     except Exception as e:
@@ -190,13 +190,13 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             time_reload += 1
             driver.refresh()
             if time_reload == 2:
-                db_instance.update_rerun_acc_get_index(username)
+                db_instance.update_rerun_acc_sideline(username)
                 driver.quit()
                 return
     
     driver.switch_to.default_content()
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-    driver.get("https://app.getindex.com/conversation/empty") 
+    driver.get("https://messages.sideline.com/conversation/empty") 
     
     time_reload = 0
     after_assigned_number = ""
@@ -212,53 +212,33 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             after_assigned_number = re.sub(r'\D', '', after_assigned_number)
             print(after_assigned_number)
             if assigned_number != after_assigned_number:
-                db_instance.result_acc_getindex(username, "no sent text")
+                db_instance.result_acc_sideline(username, "no sent text")
                 driver.quit()
                 return
         except:
             time_reload += 1
             driver.refresh()
             if time_reload == 2:
-                db_instance.update_rerun_acc_get_index(username)
+                db_instance.update_rerun_acc_sideline(username)
                 driver.quit()
                 return
         
         
     try:
         # Gửi tin nhắn
-        
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_phone = driver.find_element(By.TAG_NAME, "input")    
         input_phone_func(input_phone, data)
     except Exception as e:
         current_url = driver.current_url
         if current_url == LINK_ERR_NO_TRIAL:
-            db_instance.result_acc_getindex(username, "NoTrial")
+            db_instance.result_acc_sideline(username, "NoTrial")
             driver.quit()
             return
-        db_instance.result_acc_getindex(username, current_url)
+        db_instance.result_acc_sideline(username, current_url)
         driver.quit()
         return
     
-    # Kiểm tra số điện thoại có đúng k
-    # while True:
-    #     try:
-    #         time.sleep(1)
-    #         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
-    #         input_message = driver.find_element(By.TAG_NAME, "textarea")
-    #         time.sleep(1)
-    #         input_message.clear()
-    #         input_message.send_keys(' ')
-    #         WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
-    #         sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
-    #         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
-    #         input_phone = driver.find_element(By.TAG_NAME, "input") 
-    #         time.sleep(1) 
-    #         input_phone_func(input_phone, data)
-    #     except:
-    #         break
-    
-    # Kiểm tra lỗi Nosub 
     try:
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
         input_message = driver.find_element(By.TAG_NAME, "textarea")
@@ -268,7 +248,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         time.sleep(0.5)
         input_message.send_keys(Keys.ENTER)
     except:
-        db_instance.update_rerun_acc_get_index(username)
+        db_instance.update_rerun_acc_sideline(username)
     
     # Kiểm tra trường hợp hỗ trợ
     try:
@@ -281,20 +261,20 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p')))
             sc_chat_error_message = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p')
             if sc_chat_error_message.text == "Sorry, something didn't go through. If the problem persists, please contact support.":
-                db_instance.result_acc_getindex(username, "Didnt Work")
+                db_instance.result_acc_sideline(username, "Didnt Work")
                 driver.quit()
                 return
             else:
                 if change_password:
-                    db_instance.update_rerun_acc_get_index_change_password(username)
+                    db_instance.update_rerun_acc_sideline_change_password(username)
                     driver.quit()
                     return
                 else :
-                    db_instance.update_rerun_acc_get_index(username)
+                    db_instance.update_rerun_acc_sideline(username)
                     driver.quit()
                     return
         
-        db_instance.result_acc_getindex(username, modal_title.text)
+        db_instance.result_acc_sideline(username, modal_title.text)
         driver.quit()
         return
     except:
@@ -302,7 +282,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
     
     if send_and_delete:
         delete_message_func(driver, data)
-    db_instance.result_acc_getindex(username, "done")
+    db_instance.result_acc_sideline(username, "done")
     if change_password:
         change_password_func(driver, data, True)
     else:
@@ -334,47 +314,11 @@ def login(change_password = False, send_message = False, delete_message = False,
         print(data)
         
         random_port = random.randint(20620,20644)
-        #random_proxy = [
-        #     {
-        #     'proxy': {
-        #         'https': 'https://adz56789:Zxcv123123=5@gate.dc.smartproxy.com:20000',
-        #         'http': 'http://adz56789@Zxcv123123=5@gate.dc.smartproxy.com:20000',
-        #         'no_proxy': 'localhost,127.0.0.1'
-        #     },
-        #     'mitm_http2': False
-        # },
-        # {'proxy': {'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'}, 'mitm_http2': False}
-        # {
-        #     'proxy':  
-        #         {
-        #             'http': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        #             'https': f'socks5://usa.rotating.proxyrack.net:{random_port}',
-        #             'https': f'https://usa.rotating.proxyrack.net:{random_port}',
-        #             'http': f'http://usa.rotating.proxyrack.net:{random_port}',
-        #             'no_proxy': 'localhost,127.0.0.1'
-        #         },
-        #     'port': generate_random_port()
-        # }
-        # {'proxy': {'https': 'https://zteam6789:Zxcv123123=5@gate.dc.smartproxy.com:20000'}, 'mitm_http2': False},
-        # {'proxy': {
-        #             'https': f'https://hermes.p.shifter.io:{random_port}',
-        #             'http': f'http://hermes.p.shifter.io:{random_port}',
-        #             'no_proxy': 'localhost,127.0.0.1'
-        #         }, 'mitm_http2': False}
-        # ]
-        # proxy = random.choice(random_proxy)
         proxy = f'pallas.p.shifter.io:{random_port}'
         chrome_options = Options()
-        # chrome_options.add_argument('--ignore-certificate-errors')
-        # chrome_options.add_argument('--allow-insecure-localhost')
-        # chrome_options.add_argument('--ignore-ssl-errors=yes')
-        # chrome_options.add_argument('--log-level=3')  # Selenium log level
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
-            
             options=chrome_options,
-            #seleniumwire_options=proxy,
-            # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         
         driver.get("https://messages.sideline.com/login")
@@ -388,11 +332,11 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.switch_to.window(root_tab)
         except Exception as e:
             if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
+                db_instance.update_rerun_acc_sideline_change_password(username)
                 driver.quit()
                 return
             else :
-                db_instance.update_rerun_acc_get_index(username)
+                db_instance.update_rerun_acc_sideline(username)
                 driver.quit()
                 return
         
@@ -412,11 +356,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
                     if not change_password:
-                        # db_instance.result_acc_getindex(username, "sai pass")
-                        print(wrong_password)
+                        db_instance.result_acc_sideline(username, "sai pass")
                     else:
-                        print(wrong_password)
-                        # db_instance.result_acc_getindex_change_password(username, "sai pass")
+                        db_instance.result_acc_sideline_change_password(username, "sai pass")
                     driver.quit()
                     return
             except Exception as e:
@@ -434,34 +376,36 @@ def login(change_password = False, send_message = False, delete_message = False,
                         driver.execute_script("location.reload();")
                     else:
                         if not change_password:
-                            print("rerun")
-                            # db_instance.update_rerun_acc_get_index(username)
+                            db_instance.update_rerun_acc_sideline(username)
                         else:
-                            print("rerun")
-                            # db_instance.update_rerun_acc_get_index_change_password(username)
+                            db_instance.update_rerun_acc_sideline_change_password(username)
                 if ex == "Business Registration Incomplete":
                     print("no sub")
                     if not change_password:
-                        print("no sub")
-                        # db_instance.result_acc_getindex(username, "no sub")
+                        db_instance.result_acc_sideline(username, "no sub")
                     else:
-                        print("no sub")
-                        # db_instance.result_acc_getindex_change_password(username, "no sub")
+                        db_instance.result_acc_sideline_change_password(username, "no sub")
                     driver.quit()
                     return
                 if ex == "Subscription Required":
                     WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
                     sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
                     if not change_password:
-                        print("no sub " + extract_date(sub_text))
-                        # db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
+                        db_instance.result_acc_sideline(username, "suspended " + extract_date(sub_text))
                     else:
-                        print("no sub " + extract_date(sub_text))
-                        # db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
+                        db_instance.result_acc_sideline_change_password(username, "no sub " + extract_date(sub_text))
                     driver.quit()
                     return
             except Exception as e:
                 break
+        
+        # Tắt modal sync 
+        try: 
+            WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'SyncContactsXDismissPopup')))
+            btn_close = driver.find_element(By.ID, 'SyncContactsXDismissPopup')
+            btn_close.click()
+        except Exception as e:
+            print()
         
         try:
             action = ActionChains(driver)
@@ -489,7 +433,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             print()
             
         if check_live:
-            db_instance.result_acc_getindex(username, "live")
+            db_instance.result_acc_sideline(username, "live")
             driver.quit()
             return        
         if change_password:
@@ -506,8 +450,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         
     except Exception as e:
         if not change_password:
-            db_instance.update_rerun_acc_get_index(username)
+            db_instance.update_rerun_acc_sideline(username)
         else:
-            db_instance.update_rerun_acc_get_index_change_password(username)
+            db_instance.update_rerun_acc_sideline_change_password(username)
 
 login(send_message=True)
