@@ -529,7 +529,7 @@ class MySQLDatabase:
         self.connection.commit()
     
     def change_password_sideline_base(self, username, password):
-        query = "UPDATE get_index_tool SET password = %s, ex = 'done' WHERE user_name = %s"
+        query = "UPDATE sideline_tool SET password = %s, ex = 'done' WHERE user_name = %s"
         self.cursor.execute(query, (password, username))
         self.connection.commit()
     

@@ -317,7 +317,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
-            options=chrome_options,
+            # options=chrome_options,
         )
         
         driver.get("https://messages.sideline.com/login")

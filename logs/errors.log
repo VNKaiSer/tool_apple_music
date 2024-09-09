@@ -5444,3 +5444,5 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpDisconnect: [WinError 10054] An 
 
 2024-09-08 23:17:51,618 - Error Card: Id - manlokyacson@hotmail.com - Card DEC
 2024-09-08 23:17:58,046 - Error Card: Id - manlokyacson@hotmail.com - Card DEC
+2024-09-09 20:28:52,626 - {'username': '2103509823', 'password': 'ALi@2Dwm2'}
+2024-09-09 20:31:07,786 - {'username': '2103509823', 'password': 'ALi@2Dwm2'}
