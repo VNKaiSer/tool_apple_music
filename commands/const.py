@@ -452,6 +452,16 @@ class MySQLDatabase:
         self.cursor.execute(query, (username, password))
         self.connection.commit()
     
+    def insert_acc_sideline(self, username, password):
+        query = "INSERT INTO sideline_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def insert_acc_sideline_change_password(self, username, password):
+        query = "INSERT INTO SidelineChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
     def insert_acc_getindex_change_password(self, username, password):
         query = "INSERT INTO IndexChangePass(user_name, password) VALUES (%s, %s)"
         self.cursor.execute(query, (username, password))

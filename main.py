@@ -268,6 +268,12 @@ class MySQLDatabase:
         result = self.cursor.fetchall()
         return result
     
+    def analysis_acc_sideline(self):
+        query = "SELECT user_name, password,ex, phone FROM sideline_tool WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
     def analysis_acc_apple_id(self):
         query = "SELECT acc, password,q1, q2, q3, ex FROM apple_id_login WHERE is_running = 'Y' order by ex desc"
         self.cursor.execute(query)
@@ -276,6 +282,12 @@ class MySQLDatabase:
 
     def analysis_acc_getindex_change_password(self):
         query = "SELECT user_name, password,ex FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def analysis_acc_sideline_change_password(self):
+        query = "SELECT user_name, password,ex FROM SidelineChangePass WHERE is_running = 'Y' order by ex desc"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
@@ -388,6 +400,19 @@ def add_card():
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
 def add_getindex(change_password = False):
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_acc_getindex.process_data(change_password ,content)
+                messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
+                
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+
+def add_sideline(change_password = False):
     try:
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
@@ -688,6 +713,20 @@ def export_acc_getindex(change_password):
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
+
+def export_acc_sideline(change_password):
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_sideline() if change_password == False else db_instance.analysis_acc_sideline_change_password ():
+                    ex = "Unknown" if data[2] is None else  data[2] 
+                    file.write(data[0] + '|' + data[1] + '|' + str(data[3])+ '|' + ex + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror(" 😀 báo", "Error: Xuất dữ liệu thát bị")
 
 def export_apple_id():
     try:
@@ -1169,6 +1208,9 @@ add_data_menu.add_command(label='Thêm acc apple id', command=add_apple_id)
 add_data_menu.add_separator()
 add_data_menu.add_command(label='Thêm acc getindex', command=lambda:add_getindex(change_password=False))
 add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda:add_getindex(change_password=True))
+add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm acc sideline', command=lambda:add_sideline(change_password=False))
+add_data_menu.add_command(label='Thêm acc sideline change_pass', command=lambda:add_sideline(change_password=True))
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)
@@ -1196,6 +1238,9 @@ analysis_menu.add_separator()
 
 analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
 analysis_menu.add_command(label='Xuất acc getindex change_pass', command=lambda:export_acc_getindex(change_password=True))
+analysis_menu.add_separator()
+analysis_menu.add_command(label='Xuất acc sideline', command=lambda:export_acc_sideline(change_password=False))
+analysis_menu.add_command(label='Xuất acc sideline change_pass', command=lambda:export_acc_sideline(change_password=True))
 
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
