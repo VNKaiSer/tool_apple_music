@@ -349,6 +349,7 @@ from utils import import_id
 from utils import import_card
 from utils import import_acc_getindex
 from utils import import_apple_id
+from utils import import_acc_sideline
 import threading
 from PIL import Image, ImageTk
 import os
@@ -418,7 +419,7 @@ def add_sideline(change_password = False):
         if file_path:
             with open(file_path, 'r') as file:
                 content = file.read()
-                import_acc_getindex.process_data(change_password ,content)
+                import_acc_sideline.process_data(change_password ,content)
                 messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
                 
     except Exception as e:
