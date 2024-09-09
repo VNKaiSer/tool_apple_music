@@ -858,7 +858,7 @@ def run_app_tv():
     submit_btn.pack(pady=10)
 def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var, app_choice_var):
     def run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var):
-        app_choice = "login_getindex" if app_choice_var.get() == 1 else "sideline_tool"
+        app_choice = "login_getindex" if app_choice_var.get() == "GetIndex" else "sideline_tool"
         if send_message_var.get() and delete_message_var.get() :
             print("send and delete")
             subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_and_delete")
@@ -1070,11 +1070,10 @@ def show_dialog():
     send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
     send_and_delete_checkbox.pack(anchor='w',padx=10, pady=5)
     
-    app_choice_var
     app_choice_var = tk.StringVar(value="GetIndex")  # Set default to "GetIndex"
 
-    sideline_radiobutton = ttk.Radiobutton(dialog, text="Sideline", variable=app_choice_var, value=1)
-    getindex_radiobutton = ttk.Radiobutton(dialog, text="GetIndex", variable=app_choice_var, value=2)
+    getindex_radiobutton = ttk.Radiobutton(dialog, text="GetIndex", variable=app_choice_var, value="GetIndex")
+    sideline_radiobutton = ttk.Radiobutton(dialog, text="Sideline", variable=app_choice_var, value="Sideline")
 
     label_radio = ttk.Label(dialog, text="Chọn ứng dụng chạy:")
     label_radio.pack(anchor='w', padx=10, pady=5)
@@ -1082,7 +1081,7 @@ def show_dialog():
     sideline_radiobutton.pack(anchor='w', padx=10, pady=5)
     getindex_radiobutton.pack(anchor='w', padx=10, pady=5)
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var))
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
     confirm_button.pack(padx=10, pady=10)
 
 
