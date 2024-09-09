@@ -856,31 +856,32 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
-def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var):
-    def run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var):
+def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var, app_choice_var):
+    def run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var):
+        app_choice = "login_getindex" if app_choice_var.get() == 1 else "sideline_tool"
         if send_message_var.get() and delete_message_var.get() :
             print("send and delete")
-            subprocess.Popen("py ./commands/login_getindex.py --actions send_and_delete")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_and_delete")
             
         elif send_message_var.get():
             print("send message")
-            subprocess.Popen("py ./commands/login_getindex.py --actions send_message")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_message")
             
         elif delete_message_var.get():
             print("delete message")
-            subprocess.Popen("py ./commands/login_getindex.py --actions delete_message")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions delete_message")
         elif send_and_delete_var.get() and change_password_var.get():
             print("send and delete and change password")
-            subprocess.Popen("py ./commands/login_getindex.py --actions send_delete_change_pass")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_delete_change_pass")
         elif change_password_var.get():
             print("change password")
-            subprocess.Popen("py ./commands/login_getindex.py --actions change_password")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions change_password")
         elif check_live_var.get():
             print("check live")
-            subprocess.Popen("py ./commands/login_getindex.py --actions check_live")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions check_live")
         elif send_and_delete_var.get():
             print("send and delete")
-            subprocess.Popen("py ./commands/login_getindex.py --actions delete_after_send")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions delete_after_send")
         else:
             return
             
@@ -889,7 +890,7 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
     time_run = int(combo.get())
     with ThreadPoolExecutor(max_workers=time_run) as executor:
         for i in range(time_run):
-            executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var))
+            executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
             time.sleep(10)
     root.deiconify()
     
@@ -1068,6 +1069,18 @@ def show_dialog():
     send_and_delete_var = tk.BooleanVar()
     send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
     send_and_delete_checkbox.pack(anchor='w',padx=10, pady=5)
+    
+    app_choice_var
+    app_choice_var = tk.StringVar(value="GetIndex")  # Set default to "GetIndex"
+
+    sideline_radiobutton = ttk.Radiobutton(dialog, text="Sideline", variable=app_choice_var, value=1)
+    getindex_radiobutton = ttk.Radiobutton(dialog, text="GetIndex", variable=app_choice_var, value=2)
+
+    label_radio = ttk.Label(dialog, text="Chọn ứng dụng chạy:")
+    label_radio.pack(anchor='w', padx=10, pady=5)
+    
+    sideline_radiobutton.pack(anchor='w', padx=10, pady=5)
+    getindex_radiobutton.pack(anchor='w', padx=10, pady=5)
 
     confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var))
     confirm_button.pack(padx=10, pady=10)
@@ -1168,7 +1181,7 @@ featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
 featuremenu.add_separator()
-featuremenu.add_command(label='Get index tool', command=show_dialog)
+featuremenu.add_command(label='Get index/Sideline tool', command=show_dialog)
 featuremenu.add_separator()
 featuremenu.add_command(label='Apple id tool', command=apple_id_tool)
 
