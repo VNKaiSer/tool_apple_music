@@ -206,7 +206,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
             after_assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
             phone = re.sub(r'\D', '', after_assigned_number)
-            db_instance.update_phone_acc_getindex(username, phone);
+            db_instance.update_phone_acc_sideline(username, phone);
             assigned_number = re.sub(r'\D', '', assigned_number)    
             print(assigned_number)
             after_assigned_number = re.sub(r'\D', '', after_assigned_number)

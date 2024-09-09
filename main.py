@@ -719,14 +719,14 @@ def export_acc_sideline(change_password):
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
             with open(file_path, 'w') as file:
-                for data in db_instance.analysis_acc_sideline() if change_password == False else db_instance.analysis_acc_sideline_change_password ():
+                for data in db_instance.analysis_acc_sideline() if change_password == False else db_instance.analysis_acc_sideline_change_password():
                     ex = "Unknown" if data[2] is None else  data[2] 
                     file.write(data[0] + '|' + data[1] + '|' + str(data[3])+ '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
         print(e)
-        messagebox.showerror(" 😀 báo", "Error: Xuất dữ liệu thát bị")
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
 
 def export_apple_id():
     try:
