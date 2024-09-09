@@ -333,7 +333,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(13270, 13294)
+        random_port = random.randint(20620,20644)
         #random_proxy = [
         #     {
         #     'proxy': {
@@ -363,7 +363,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy = f'dionysus.p.shifter.io:{random_port}'
+        proxy = f'pallas.p.shifter.io:{random_port}'
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -377,7 +377,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         
-        driver.get("https://app.getindex.com/login")
+        driver.get("https://messages.sideline.com/login")
         
         # Mở tab mới
         try:
@@ -412,9 +412,11 @@ def login(change_password = False, send_message = False, delete_message = False,
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
                     if not change_password:
-                        db_instance.result_acc_getindex(username, "sai pass")
+                        # db_instance.result_acc_getindex(username, "sai pass")
+                        print(wrong_password)
                     else:
-                        db_instance.result_acc_getindex_change_password(username, "sai pass")
+                        print(wrong_password)
+                        # db_instance.result_acc_getindex_change_password(username, "sai pass")
                     driver.quit()
                     return
             except Exception as e:
@@ -432,24 +434,30 @@ def login(change_password = False, send_message = False, delete_message = False,
                         driver.execute_script("location.reload();")
                     else:
                         if not change_password:
-                            db_instance.update_rerun_acc_get_index(username)
+                            print("rerun")
+                            # db_instance.update_rerun_acc_get_index(username)
                         else:
-                            db_instance.update_rerun_acc_get_index_change_password(username)
+                            print("rerun")
+                            # db_instance.update_rerun_acc_get_index_change_password(username)
                 if ex == "Business Registration Incomplete":
                     print("no sub")
                     if not change_password:
-                        db_instance.result_acc_getindex(username, "no sub")
+                        print("no sub")
+                        # db_instance.result_acc_getindex(username, "no sub")
                     else:
-                        db_instance.result_acc_getindex_change_password(username, "no sub")
+                        print("no sub")
+                        # db_instance.result_acc_getindex_change_password(username, "no sub")
                     driver.quit()
                     return
                 if ex == "Subscription Required":
                     WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
                     sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
                     if not change_password:
-                        db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
+                        print("no sub " + extract_date(sub_text))
+                        # db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
                     else:
-                        db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
+                        print("no sub " + extract_date(sub_text))
+                        # db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
                     driver.quit()
                     return
             except Exception as e:
@@ -501,3 +509,5 @@ def login(change_password = False, send_message = False, delete_message = False,
             db_instance.update_rerun_acc_get_index(username)
         else:
             db_instance.update_rerun_acc_get_index_change_password(username)
+
+login(send_message=True)
