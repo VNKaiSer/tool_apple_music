@@ -133,9 +133,9 @@ def change_password_func(driver: webdriver, data, send_delete_change_pass = Fals
         print()
     logger.info(f'Change password: SUCCESS {new_pass} for user: {data["username"]}')
     if send_delete_change_pass == False:
-        db_instance.change_password_get_index(data['username'], new_pass)
+        db_instance.change_password_sideline(data['username'], new_pass)
     else: 
-        db_instance.change_password_get_index_i(data['username'], new_pass)
+        db_instance.change_password_sideline_base(data['username'], new_pass)
     driver.quit()
     return
 def generate_phone_number():
