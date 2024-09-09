@@ -563,6 +563,29 @@ class MySQLDatabase:
         except Exception as e:
             self.connection.rollback()
             return ''
+    def get_acc_sideline_change_password(self):
+        try:
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            query = "SELECT * FROM SidelineChangePass WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE SidelineChangePass SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+            return ''
+        
     def get_acc_apple_id(self):
         try:
             if not self.connection.in_transaction:

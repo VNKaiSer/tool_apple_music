@@ -49,7 +49,7 @@ errHandler.setFormatter(fmt)
 logger.addHandler(stdoutHandler)
 logger.addHandler(errHandler)
 
-LINK_ERR_NO_TRIAL = "https://app.getindex.com/error-status/2201"
+LINK_ERR_NO_TRIAL = "https://messenger.sideline.com/error-status/2201"
 ERR_RENEW = "Subscription has expired"
 ERR_NOSUB = "Subscription Required"
 def delete_message_func(driver : webdriver, data):
@@ -169,7 +169,7 @@ def getData(change_pass):
         acc_get = db_instance.get_acc_sideline()
         time.sleep(2)
     else:
-        acc_get = db_instance.get_acc_get_index_change_password()
+        acc_get = db_instance.get_acc_sideline_change_password()
         time.sleep(2)
     if acc_get == '':
         return None
@@ -453,5 +453,3 @@ def login(change_password = False, send_message = False, delete_message = False,
             db_instance.update_rerun_acc_sideline(username)
         else:
             db_instance.update_rerun_acc_sideline_change_password(username)
-
-login(send_message=True)
