@@ -185,7 +185,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
             assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
-            print(assigned_number)
         except:
             time_reload += 1
             driver.refresh()
