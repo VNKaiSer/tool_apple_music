@@ -411,6 +411,27 @@ class MySQLDatabase:
 
         except Exception as e:
             self.connection.rollback()
+    
+    def get_acc_sideline(self):
+        try:
+            self.connection.start_transaction()
+
+            query = "SELECT * FROM sideline_tool WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE sideline_tool SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
 
         # finally:
         #     self.cursor.close()
