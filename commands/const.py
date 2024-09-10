@@ -524,7 +524,7 @@ class MySQLDatabase:
         self.connection.commit()
         
     def change_password_sideline(self, username, password):
-        query = "UPDATE sideline_tool_change_pass SET password = %s, ex = 'done' WHERE user_name = %s"
+        query = "UPDATE SidelineChangePass SET password = %s, ex = 'done' WHERE user_name = %s"
         self.cursor.execute(query, (password, username))
         self.connection.commit()
     
