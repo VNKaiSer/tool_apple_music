@@ -722,7 +722,7 @@ def export_acc_sideline(change_password):
             with open(file_path, 'w') as file:
                 for data in db_instance.analysis_acc_sideline() if change_password == False else db_instance.analysis_acc_sideline_change_password():
                     ex = "Unknown" if data[2] is None else  data[2] 
-                    file.write(data[0] + '|' + data[1] + '|' + ("" if change_password == True else data[3])+ '|' + ex + '\n')
+                    file.write(data[0] + '|' + data[1] + '|' + "" if change_password == True else data[3]+ '|' + ex + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
