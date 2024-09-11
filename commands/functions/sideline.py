@@ -119,9 +119,9 @@ def change_password_func(driver: webdriver, data, send_delete_change_pass = Fals
     btns[1].click()
     
     try: 
-        WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+        WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
         sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
-        WebDriverWait(sc_modal, 60).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+        WebDriverWait(sc_modal, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
         modal_title = sc_modal.find_element(By.CLASS_NAME, "modal-title")
         print(modal_title.text)
         if modal_title.text == "Well, That Didn't Work...":
