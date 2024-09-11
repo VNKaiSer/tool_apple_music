@@ -301,6 +301,7 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         print('')
     
     if send_and_delete:
+        time.sleep(10)
         delete_message_func(driver, data)
     db_instance.result_acc_getindex(username, "done")
     if change_password:
@@ -488,6 +489,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         if change_password:
             change_password_func(driver, data)
         if delete_message:
+            time.sleep(10)
             delete_message_func(driver,data)
         if send_and_delete:
             send_message_func(driver, username, data, send_and_delete)
