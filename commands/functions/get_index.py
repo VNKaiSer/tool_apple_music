@@ -241,6 +241,8 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_phone = driver.find_element(By.TAG_NAME, "input")    
         input_phone_func(input_phone, data)
+        input_phone_func(input_phone, data)
+        input_phone_func(input_phone, data)
     except Exception as e:
         current_url = driver.current_url
         if current_url == LINK_ERR_NO_TRIAL:
@@ -384,7 +386,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
-            options=chrome_options,
+            # options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
