@@ -317,12 +317,12 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(20620,20644)
-        proxy = f'pallas.p.shifter.io:{random_port}'
+        random_port = random.randint(12765,12789)
+        proxy = f'zeus.p.shifter.io:{random_port}'
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
-            # options=chrome_options,
+            options=chrome_options,
         )
         
         driver.get("https://messages.sideline.com/login")
