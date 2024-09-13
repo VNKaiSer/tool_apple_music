@@ -350,7 +350,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(13270, 13294)
+        random_port = random.randint(12765,12789)
         #random_proxy = [
         #     {
         #     'proxy': {
@@ -380,7 +380,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy = f'dionysus.p.shifter.io:{random_port}'
+        proxy = f'zeus.p.shifter.io:{random_port}'
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -389,7 +389,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             
-            # options=chrome_options,
+            options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
