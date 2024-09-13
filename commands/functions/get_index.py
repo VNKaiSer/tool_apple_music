@@ -241,8 +241,6 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
         input_phone = driver.find_element(By.TAG_NAME, "input")    
         input_phone_func(input_phone, data)
-        input_phone_func(input_phone, data)
-        input_phone_func(input_phone, data)
     except Exception as e:
         current_url = driver.current_url
         if current_url == LINK_ERR_NO_TRIAL:
@@ -323,9 +321,14 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         driver.quit()
     return
 
+def get_phone_from_file():
+    with open('./assets/data/phone-index.txt', 'r') as f:
+        lines = f.readlines()
+        return lines[random.randint(0, len(lines) - 1)].strip()
+
 def input_phone_func(input_phone, data):
     time.sleep(1)
-    input_phone.send_keys(generate_phone_number())
+    input_phone.send_keys(get_phone_from_file())
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
