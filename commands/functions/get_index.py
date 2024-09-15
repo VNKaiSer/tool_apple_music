@@ -429,6 +429,21 @@ def login(change_password = False, send_message = False, delete_message = False,
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
                     err = "invalid phone" if wrong_password == "Please enter a valid phone number." else "sai pass"
+                    if err == "sai pass":
+                        try: 
+                            WebDriverWait(app_root, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a')))
+                            driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a').click()
+                            WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5')))
+                            title = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5').text
+                            if title == "Reset Password":
+                                err = "sai pass"
+                            else:
+                                err = "sai passs"
+                        except:
+                            if not change_password:
+                                db_instance.update_rerun_acc_get_index(username)
+                            else:
+                                db_instance.update_rerun_acc_get_index_change_password(username)
                     if not change_password:
                         db_instance.result_acc_getindex(username, err)
                     else:
