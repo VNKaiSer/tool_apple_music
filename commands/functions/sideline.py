@@ -238,6 +238,24 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         driver.quit()
         return
     
+    # Kiểm tra invalid phone
+    while True:
+        try:
+            time.sleep(1)
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
+            input_message = driver.find_element(By.TAG_NAME, "textarea")
+            time.sleep(1)
+            input_message.clear()
+            input_message.send_keys(' ')
+            WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-chat-error-message')))
+            sc_chat_error_message = driver.find_element(By.TAG_NAME, "sc-chat-error-message")
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'input')))
+            input_phone = driver.find_element(By.TAG_NAME, "input") 
+            time.sleep(1) 
+            input_phone_func(input_phone, data)
+        except:
+            break
+    
     try:
         WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'textarea')))
         input_message = driver.find_element(By.TAG_NAME, "textarea")
@@ -248,6 +266,8 @@ def send_message_func(driver: webdriver, username, data, send_and_delete = False
         input_message.send_keys(Keys.ENTER)
     except:
         db_instance.update_rerun_acc_sideline(username)
+        driver.quit()
+        return
     
     # Kiểm tra trường hợp hỗ trợ
     try:
@@ -366,15 +386,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                             driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a').click()
                             WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5')))
                             title = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5').text
-                            if title == "Reset Password":
-                                err = "sai pass"
-                            else:
-                                err = "sai passs"
+                            err = "sai pass"
                         except:
-                            if not change_password:
-                                db_instance.update_rerun_acc_sideline(username)
-                            else:
-                                db_instance.update_rerun_acc_sideline_change_password(username)
+                            err = "invalid phone"
                     if not change_password:
                         db_instance.result_acc_sideline(username, err)
                     else:
