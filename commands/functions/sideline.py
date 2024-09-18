@@ -422,12 +422,15 @@ def login(change_password = False, send_message = False, delete_message = False,
                     driver.quit()
                     return
                 if ex == "Subscription Required":
-                    WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
-                    sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
-                    if not change_password:
-                        db_instance.result_acc_sideline(username, "suspended " + extract_date(sub_text))
-                    else:
-                        db_instance.result_acc_sideline_change_password(username, "no sub " + extract_date(sub_text))
+                    WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p')))
+                    sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[2]/p').text
+                    print(sub_text)
+                    if sub_text == "You need an active subscription to use Sideline Web Messaging.\n\nGo to the mobile app and upgrade your account to continue.":
+                        print("no sub")
+                        if not change_password:
+                            db_instance.result_acc_sideline(username,"no sub")
+                        else:
+                            db_instance.result_acc_sideline_change_password(username,"no sub")
                     driver.quit()
                     return
             except Exception as e:
