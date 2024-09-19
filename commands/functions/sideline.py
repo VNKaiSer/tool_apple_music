@@ -337,7 +337,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(12765,12789)
+        random_port = random.randint(1415,14174)
         proxy = f'zeus.p.shifter.io:{random_port}'
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
@@ -346,6 +346,9 @@ def login(change_password = False, send_message = False, delete_message = False,
         )
         
         driver.get("https://messages.sideline.com/login")
+        time.sleep(2)
+        webdriver.ActionChains(driver).send_keys(Keys.F12).perform()
+        time.sleep(2)
         
         # Mở tab mới
         try:
@@ -397,6 +400,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                     return
             except Exception as e:
                 print()
+            time.sleep(2)
+            webdriver.ActionChains(driver).send_keys(Keys.F12).perform()
+            time.sleep(2)
             try:    
                 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
                 sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
