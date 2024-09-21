@@ -465,22 +465,33 @@ def login(change_password = False, send_message = False, delete_message = False,
                         else:
                             db_instance.update_rerun_acc_get_index_change_password(username)
                 if ex == "Business Registration Incomplete":
-                    print("no sub")
+                    if not change_password:
+                        db_instance.result_acc_getindex(username, "complete bussiness")
+                    else:
+                        db_instance.result_acc_getindex_change_password(username, "complete bussiness")
+                    driver.quit()
+                    return
+                if ex == "Subscription Required":
                     if not change_password:
                         db_instance.result_acc_getindex(username, "no sub")
                     else:
                         db_instance.result_acc_getindex_change_password(username, "no sub")
                     driver.quit()
-                    return
-                if ex == "Subscription Required":
-                    WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
-                    sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
-                    if not change_password:
-                        db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
-                    else:
-                        db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
-                    driver.quit()
-                    return
+                    return                    
+                    # WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
+                    # sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
+                    # if not change_password:
+                    #     db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
+                    # else:
+                    #     db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
+                    # driver.quit()
+                    # return
+                if change_password:
+                    db_instance.result_acc_getindex_change_password(username, ex)
+                else:
+                    db_instance.result_acc_getindex(username, ex)
+                driver.quit()
+                return
             except Exception as e:
                 break
         
