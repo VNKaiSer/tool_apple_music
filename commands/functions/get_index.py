@@ -464,14 +464,14 @@ def login(change_password = False, send_message = False, delete_message = False,
                             db_instance.update_rerun_acc_get_index(username)
                         else:
                             db_instance.update_rerun_acc_get_index_change_password(username)
-                if ex == "Business Registration Incomplete":
+                elif ex == "Business Registration Incomplete":
                     if not change_password:
                         db_instance.result_acc_getindex(username, "complete bussiness")
                     else:
                         db_instance.result_acc_getindex_change_password(username, "complete bussiness")
                     driver.quit()
                     return
-                if ex == "Subscription Required":
+                elif ex == "Subscription Required":
                     if not change_password:
                         db_instance.result_acc_getindex(username, "no sub")
                     else:
@@ -486,11 +486,12 @@ def login(change_password = False, send_message = False, delete_message = False,
                     #     db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
                     # driver.quit()
                     # return
-                if change_password:
-                    db_instance.result_acc_getindex_change_password(username, ex)
                 else:
-                    db_instance.result_acc_getindex(username, ex)
-                driver.quit()
+                    if change_password:
+                        db_instance.result_acc_getindex_change_password(username, ex)
+                    else:
+                        db_instance.result_acc_getindex(username, ex)
+                    driver.quit()
                 return
             except Exception as e:
                 break
