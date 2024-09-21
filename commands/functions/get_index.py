@@ -459,6 +459,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                     if time_reload == 0:
                         time_reload = time_reload + 1
                         driver.execute_script("location.reload();")
+                        time.sleep(5)
+                        continue
                     else:
                         if not change_password:
                             db_instance.update_rerun_acc_get_index(username)
