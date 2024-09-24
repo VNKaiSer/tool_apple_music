@@ -37,7 +37,7 @@ logging.getLogger('seleniumwire').setLevel(logging.ERROR)
 class Tool_Exception:
     DONE = "done"
     DISSABLE = "Your account has been disabled. Contact Apple Support for more details."
-    INVALID_PASSWORD = "Your Apple ID or password was incorrect."
+    INVALID_PASSWORD = "Enter the email or phone number and password for your Apple Account."
     LOCK = "This Apple ID has been locked for security reasons."
     SUPPORT = "Contact Apple Support for more information."
     MANY = "This payment method is associated with too many Apple IDs. To continue, choose another payment method."
