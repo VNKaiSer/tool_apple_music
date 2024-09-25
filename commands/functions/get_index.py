@@ -176,17 +176,23 @@ def extract_date(text):
     return None
 
 def getData(change_pass):
-    if not change_pass:
-        acc_get = db_instance.get_acc_get_index()
-        time.sleep(2)
-    else:
-        acc_get = db_instance.get_acc_get_index_change_password()
-        time.sleep(2)
-    if acc_get == '':
-        return None
-    username = acc_get[1]
-    password = acc_get[2]
-    return username, password
+    
+    while True:
+        try:
+            if not change_pass:
+                acc_get = db_instance.get_acc_get_index()
+                time.sleep(2)
+            else:
+                acc_get = db_instance.get_acc_get_index_change_password()
+                time.sleep(2)
+            if acc_get == '':
+                return None
+            username = acc_get[1]
+            password = acc_get[2]
+            return username, password
+        except:
+            continue
+    
 def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
