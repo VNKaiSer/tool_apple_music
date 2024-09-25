@@ -165,17 +165,22 @@ def extract_date(text):
     return None
 
 def getData(change_pass):
-    if not change_pass:
-        acc_get = db_instance.get_acc_sideline()
-        time.sleep(2)
-    else:
-        acc_get = db_instance.get_acc_sideline_change_password()
-        time.sleep(2)
-    if acc_get == '':
-        return None
-    username = acc_get[1]
-    password = acc_get[2]
-    return username, password
+    while True:
+        try:
+            if not change_pass:
+                acc_get = db_instance.get_acc_sideline()
+                time.sleep(2)
+            else:
+                acc_get = db_instance.get_acc_sideline_change_password()
+                time.sleep(2)
+            if acc_get == '':
+                return None
+            username = acc_get[1]
+            password = acc_get[2]
+            return username, password
+        except:
+            continue
+    
 def send_message_func(driver: webdriver, username, data, send_and_delete = False, change_password = False):
     assigned_number = ""
     # Kiểm tra no sent text
@@ -382,7 +387,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
-                    if check_live == False:
+                    if check_live == True:
                         err = "invalid phone" if wrong_password == "Please enter a valid phone number." else "sai pass"
                         if err == "sai pass":
                             try: 
