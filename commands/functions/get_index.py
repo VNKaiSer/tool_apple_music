@@ -420,6 +420,25 @@ def login(change_password = False, send_message = False, delete_message = False,
                 db_instance.update_rerun_acc_get_index(username)
                 driver.quit()
                 return
+        # Nhấn vào logo
+        try: 
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]')))
+            logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]')
+            action = ActionChains(driver)
+            action.move_to_element(logo).perform()
+            action.click(logo).perform()
+            time.sleep(1)
+            driver.switch_to.window(root_tab)
+        except:
+            if change_password:
+                db_instance.update_rerun_acc_get_index_change_password(username)
+                driver.quit()
+                return
+            else :
+                db_instance.update_rerun_acc_get_index(username)
+                driver.quit()
+                return
         
         
         time_reload = 0
