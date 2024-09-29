@@ -410,7 +410,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.execute_script("window.open('https://www.google.com', '_blank');")
             driver.switch_to.window(driver.window_handles[1])
             time.sleep(5)
-            driver.close()
+            # driver.close()
             driver.switch_to.window(root_tab)
         except Exception as e:
             if change_password:
@@ -437,6 +437,8 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.switch_to.window(new_tab)
 
             # Đóng tab mới
+            driver.close()
+            driver.switch_to.window(driver.window_handles[1])
             driver.close()
             driver.switch_to.window(root_tab)
         except:
