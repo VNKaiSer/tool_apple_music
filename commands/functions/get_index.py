@@ -358,7 +358,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(14150,14174)
+        random_port = random.randint(16405,16429)
         #random_proxy = [
         #     {
         #     'proxy': {
@@ -388,7 +388,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy = f'zeus.p.shifter.io:{random_port}'
+        proxy = f'ares.p.shifter.io:{random_port}'
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
