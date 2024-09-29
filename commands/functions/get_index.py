@@ -431,7 +431,15 @@ def login(change_password = False, send_message = False, delete_message = False,
             action.click(logo).perform()
             # Chờ tab mới mở ra
             driver.implicitly_wait(5)
-            
+
+            # Chuyển qua tab mới
+            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            driver.switch_to.window(new_tab)
+
+            # Đóng tab mới
+            driver.close()
+            driver.switch_to.window(driver.window_handles[1])
+            driver.close()
             driver.switch_to.window(root_tab)
         except:
             if change_password:
@@ -454,14 +462,6 @@ def login(change_password = False, send_message = False, delete_message = False,
             inputs[1].send_keys(data["password"])
             time.sleep(1)
             inputs[1].send_keys(Keys.ENTER)
-            
-            for tab in driver.window_handles:
-                if tab != root_tab:
-                    driver.switch_to.window(tab)
-                    driver.close()
-                    time.sleep(2)
-
-            driver.switch_to.window(root_tab)
             try:
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
