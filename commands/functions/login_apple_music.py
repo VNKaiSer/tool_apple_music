@@ -85,7 +85,7 @@ def run(run_check = False, run_delete = False):
         time.sleep(3)
         browser.switch_to.active_element.send_keys(Keys.ENTER)
         time.sleep(2)
-        # browser.switch_to.active_element.send_keys(Keys.ENTER) # Nhấn nút login lần 2 
+        browser.switch_to.active_element.send_keys(Keys.ENTER) # Nhấn nút login lần 2 
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
         iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
         browser.switch_to.frame(iframe_auth)
