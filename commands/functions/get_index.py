@@ -455,15 +455,12 @@ def login(change_password = False, send_message = False, delete_message = False,
             time.sleep(1)
             inputs[1].send_keys(Keys.ENTER)
             
-            # Chuyển qua tab mới
-            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            driver.switch_to.window(new_tab)
+            for tab in driver.window_handles:
+                if tab != root_tab:
+                    driver.switch_to.window(tab)
+                    driver.close()
+                    time.sleep(2)
 
-            # Đóng tab mới
-            driver.close()
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(2)
-            driver.close()
             driver.switch_to.window(root_tab)
             try:
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
