@@ -428,8 +428,15 @@ def login(change_password = False, send_message = False, delete_message = False,
             action = ActionChains(driver)
             action.move_to_element(logo).perform()
             action.click(logo).perform()
-            time.sleep(1)
-            driver.switch_to.window(root_tab)
+            # Chờ tab mới mở ra
+            driver.implicitly_wait(5)
+
+            # Chuyển qua tab mới
+            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            driver.switch_to.window(new_tab)
+
+            # Đóng tab mới
+            driver.close()
         except:
             if change_password:
                 db_instance.update_rerun_acc_get_index_change_password(username)
