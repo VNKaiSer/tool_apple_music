@@ -342,8 +342,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(14150,14174)
-        proxy = f'zeus.p.shifter.io:{random_port}'
+        random_port = random.randint(16405,16429)
+        proxy = f'ares.p.shifter.io:{random_port}'
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
@@ -387,7 +387,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
-                    if check_live == True:
+                    err = ""
+                    if check_live == False:
                         err = "invalid phone" if wrong_password == "Please enter a valid phone number." else "sai pass"
                         if err == "sai pass":
                             try: 
@@ -400,6 +401,9 @@ def login(change_password = False, send_message = False, delete_message = False,
                                 err = "invalid phone"
                         else:
                             err = "sai pass"
+                    else:
+                        err = "sai pass"
+                    print(err)
                     if not change_password:
                         db_instance.result_acc_sideline(username, err)
                     else:
