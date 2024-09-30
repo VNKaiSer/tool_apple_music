@@ -344,12 +344,12 @@ def input_phone_func(input_phone, data):
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        tmp = getData(change_password)
-        if tmp is None:
-            print("No acc! Input more acc.")
-            return
+        # tmp = getData(change_password)
+        # if tmp is None:
+        #     print("No acc! Input more acc.")
+        #     return
         
-        username, password = tmp
+        username, password = "3104335990","ALipm25@"
         data = {
             "username": username,
             "password": password,
@@ -521,20 +521,48 @@ def login(change_password = False, send_message = False, delete_message = False,
                     driver.quit()
                     return
                 elif ex == "Subscription Required":
-                    if not change_password:
-                        db_instance.result_acc_getindex(username, "no sub")
-                    else:
-                        db_instance.result_acc_getindex_change_password(username, "no sub")
-                    driver.quit()
-                    return                    
-                    # WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span')))
-                    # sub_text = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/top-bar/sc-info-bar/div/div/span').text
-                    # if not change_password:
-                    #     db_instance.result_acc_getindex(username, "suspended " + extract_date(sub_text))
-                    # else:
-                    #     db_instance.result_acc_getindex_change_password(username, "no sub " + extract_date(sub_text))
-                    # driver.quit()
-                    # return
+                    try:
+                        if check_live == False:
+                            # Tắt model
+                            WebDriverWait(app_root, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/sc-icon/button')))
+                            driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/sc-icon/button').click()
+                            time.sleep(5)
+                            # Điền tk mk 
+                            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+                            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+                            inputs = app_root.find_elements(By.TAG_NAME, "input")
+                            inputs[0].send_keys(data["username"])
+                            time.sleep(0.5)
+                            inputs[1].send_keys(data["password"])
+                            time.sleep(1)     
+                            # Nhấn nút quên mk
+                            WebDriverWait(app_root, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a')))
+                            driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a').click()
+                            WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5')))
+                            title = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5').text
+                            if title == "Well, That Didn't Work...":
+                                if not change_password:
+                                    db_instance.result_acc_getindex(username, "Nosub-sent ok")
+                                else:
+                                    db_instance.result_acc_getindex_change_password(username, "Nosub-sent ok")
+                                driver.quit()
+                                return
+                            else:
+                                if not change_password:
+                                    db_instance.result_acc_getindex(username, "no sent")
+                                else:
+                                    db_instance.result_acc_getindex_change_password(username, "no sent")
+                                driver.quit()
+                                return
+                        else:
+                            if not change_password:
+                                db_instance.result_acc_getindex(username, "no sub")
+                            else:
+                                db_instance.result_acc_getindex_change_password(username, "no sub")
+                            driver.quit()
+                            return
+                    except:
+                        print("no sub")  
                 else:
                     if change_password:
                         db_instance.result_acc_getindex_change_password(username, ex)
