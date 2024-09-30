@@ -388,7 +388,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
                     err = ""
-                    if check_live == True:
+                    if check_live == False:
                         err = "invalid phone" if wrong_password == "Please enter a valid phone number." else "sai pass"
                         if err == "sai pass":
                             try: 
@@ -401,6 +401,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                                 err = "invalid phone"
                         else:
                             err = "sai pass"
+                    else:
+                        err = "sai pass"
                     print(err)
                     if not change_password:
                         db_instance.result_acc_sideline(username, err)
