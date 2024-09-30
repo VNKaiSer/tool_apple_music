@@ -344,12 +344,12 @@ def input_phone_func(input_phone, data):
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        # tmp = getData(change_password)
-        # if tmp is None:
-        #     print("No acc! Input more acc.")
-        #     return
+        tmp = getData(change_password)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
         
-        username, password = "3104335990","ALipm25@"
+        username, password = tmps
         data = {
             "username": username,
             "password": password,
