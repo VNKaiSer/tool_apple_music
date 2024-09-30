@@ -342,8 +342,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(14150,14174)
-        proxy = f'zeus.p.shifter.io:{random_port}'
+        random_port = random.randint(16405,16429)
+        proxy = f'ares.p.shifter.io:{random_port}'
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
