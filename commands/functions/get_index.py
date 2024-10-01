@@ -349,7 +349,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             print("No acc! Input more acc.")
             return
         
-        username, password = tmps
+        username, password = tmp
         data = {
             "username": username,
             "password": password,
@@ -522,7 +522,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                     return
                 elif ex == "Subscription Required":
                     try:
-                        if check_live == False:
+                        if check_live == True:
                             # Tắt model
                             WebDriverWait(app_root, 5).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/sc-icon/button')))
                             driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/sc-icon/button').click()
