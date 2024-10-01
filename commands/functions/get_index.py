@@ -388,7 +388,9 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy = f'ares.p.shifter.io:{random_port}'
+        proxy1 = f'ares.p.shifter.io:{random.randint(16405,16429)}'
+        proxy2= f'epimetheus.p.shifter.io:{random.randint(16830,16854)}'
+        proxy = random.choice([proxy1, proxy2])
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -464,12 +466,12 @@ def login(change_password = False, send_message = False, delete_message = False,
             time.sleep(1)
             inputs[1].send_keys(Keys.ENTER)
             
-            for tab in driver.window_handles:
-                if tab != root_tab:
-                    driver.switch_to.window(tab)
-                    driver.close()
-                    driver.switch_to.window(root_tab)
-                    time.sleep(2)
+            # for tab in driver.window_handles:
+            #     if tab != root_tab:
+            #         driver.switch_to.window(tab)
+            #         driver.close()
+            #         driver.switch_to.window(root_tab)
+            #         time.sleep(2)
             try:
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
