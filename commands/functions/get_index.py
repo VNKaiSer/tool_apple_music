@@ -540,7 +540,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                             driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/div/ion-router-outlet/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a').click()
                             WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5')))
                             title = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/ion-modal/sc-modal/div/div/div/div/div[1]/h5').text
-                            if title == "Well, That Didn't Work...":
+                            if title != "Well, That Didn't Work...":
                                 if not change_password:
                                     db_instance.result_acc_getindex(username, "Nosub-sent ok")
                                 else:
