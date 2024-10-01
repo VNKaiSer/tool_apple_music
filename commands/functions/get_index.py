@@ -604,9 +604,21 @@ def login(change_password = False, send_message = False, delete_message = False,
             print()
             
         if check_live:
-            db_instance.result_acc_getindex(username, "live")
-            driver.quit()
-            return        
+            try:
+                WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+                WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
+                assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
+                print(assigned_number)
+                db_instance.result_acc_getindex(username, "live")
+                driver.quit()
+                return 
+            except:
+                if not change_password:
+                    db_instance.update_rerun_acc_get_index(username)
+                else:
+                    db_instance.update_rerun_acc_get_index_change_password(username)
+                driver.quit()
+                return       
         if change_password:
             change_password_func(driver, data)
         if delete_message:
