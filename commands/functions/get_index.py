@@ -437,7 +437,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             # Chờ tab mới mở ra
             driver.implicitly_wait(5)
             time.sleep(5)
-
+            driver.switch_to.window(root_tab)
             # # Chuyển qua tab mới
             # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
             # driver.switch_to.window(new_tab)
