@@ -474,7 +474,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
                 if wrong_password != "":
-                    if check_live == True:
+                    if check_live == False:
                         err = "invalid phone" if wrong_password == "Please enter a valid phone number." else "sai pass"
                         if err == "sai pass":
                             try: 
