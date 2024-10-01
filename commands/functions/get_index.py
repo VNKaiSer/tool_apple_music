@@ -609,7 +609,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                 WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
                 WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'assigned-number')))
                 assigned_number = driver.find_element(By.CLASS_NAME, 'assigned-number').text
-                print(assigned_number)
+                phone = re.sub(r'\D', '', assigned_number)
+                db_instance.update_phone_acc_getindex(username, phone);
                 db_instance.result_acc_getindex(username, "live")
                 driver.quit()
                 return 
