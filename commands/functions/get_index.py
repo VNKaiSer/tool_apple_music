@@ -461,6 +461,11 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         time_reload = 0
         while True:
+            if time_reload == 1:
+                logo.click()
+                time.sleep(2)
+                driver.switch_to.window(root_tab)
+                time.sleep(2)
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
