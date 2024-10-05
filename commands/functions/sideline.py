@@ -342,13 +342,48 @@ def login(change_password = False, send_message = False, delete_message = False,
         logger.info(data)
         print(data)
         
-        random_port = random.randint(16405,16429)
-        proxy = f'ares.p.shifter.io:{random_port}'
+        proxy1 = f'atlas.p.shifter.io'
+        proxy2= f'hades.p.shifter.io'
+        proxy = random.choice([proxy1, proxy2])
+        port = db_instance.get_port_proxy(proxy)
+        
+        if port == 0:
+            if not change_password:
+                db_instance.update_rerun_acc_sideline(username)
+                return
+            else:
+                db_instance.update_rerun_acc_sideline_change_password(username)
+                return    
+        proxy = f'{proxy}:{port}'
+        
         chrome_options = Options()
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             options=chrome_options,
         )
+        
+        try:
+            driver.get("https://api.ipify.org/?format=json")
+
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+            body_text = driver.find_element("tag name", "body").text
+
+            ip_data = json.loads(body_text)
+            current_ip = ip_data['ip']
+            
+            # Kiểm tra ip hiện tại trên db 
+            ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
+            if ip_is_exist == False:
+                if change_password:
+                    db_instance.update_rerun_acc_sideline_change_password(username)
+                    driver.quit()
+                    return
+                else :
+                    db_instance.update_rerun_acc_sideline(username)
+                    driver.quit()
+                    return
+        except Exception as e:
+            print()
         
         driver.get("https://messages.sideline.com/login")
         time.sleep(2)
