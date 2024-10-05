@@ -388,8 +388,8 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy1 = f'atlas.p.shifter.io:'
-        proxy2= f'hades.p.shifter.io:'
+        proxy1 = f'atlas.p.shifter.io'
+        proxy2= f'hades.p.shifter.io'
         proxy = random.choice([proxy1, proxy2])
         port = db_instance.get_port_proxy(proxy)
         
