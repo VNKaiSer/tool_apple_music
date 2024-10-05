@@ -14,3 +14,4 @@ myenv/
 logs/
 
 myenv1/
+.env
