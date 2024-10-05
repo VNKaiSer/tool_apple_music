@@ -403,7 +403,30 @@ def login(change_password = False, send_message = False, delete_message = False,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
-        
+        # kiểm tra ip 
+        try:
+            driver.get("https://api.ipify.org/?format=json")
+
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+            body_text = driver.find_element("tag name", "body").text
+
+            ip_data = json.loads(body_text)
+            current_ip = ip_data['ip']
+            
+            # Kiểm tra ip hiện tại trên db 
+            ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
+            if ip_is_exist == False:
+                if change_password:
+                    db_instance.update_rerun_acc_get_index_change_password(username)
+                    driver.quit()
+                    return
+                else :
+                    db_instance.update_rerun_acc_get_index(username)
+                    driver.quit()
+                    return
+        except Exception as e:
+            print()
+            
         driver.get("https://app.getindex.com/login")
         
         # Mở tab mới

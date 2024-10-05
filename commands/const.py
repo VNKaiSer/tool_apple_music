@@ -664,7 +664,19 @@ class MySQLDatabase:
         query = "INSERT INTO apple_id_login (acc, password, q1, q2, q3) VALUES (%s, %s, %s, %s, %s)"
         self.cursor.execute(query, (acc, password, q1, q2, q3))
         self.connection.commit()
-    
+
+    # Query về proxy
+    def check_and_insert_proxy(self, ip):
+        query = "SELECT * FROM proxy_ip WHERE ip = %s"
+        self.cursor.execute(query, (ip,))
+        result = self.cursor.fetchall()
+        if not result:
+            query = "INSERT INTO proxy_ip (ip) VALUES (%s)"
+            self.cursor.execute(query, (ip,))
+            self.connection.commit()
+            return True
+        return False
+
 
     
         
