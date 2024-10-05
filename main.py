@@ -349,6 +349,7 @@ from utils import import_id
 from utils import import_card
 from utils import import_acc_getindex
 from utils import import_apple_id
+from utils import import_proxy
 from utils import import_acc_sideline
 import threading
 from PIL import Image, ImageTk
@@ -387,6 +388,22 @@ def add_apple_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+
+def add_proxy():
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_proxy.process_data(content)
+                messagebox.showinfo("Thành công", "Thêm proxy thành công")
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+        
+def delete_proxy():
+    db_instance.delete_data(table_name='port_proxy', condition='port != 0')
+    messagebox.showinfo("Thành công", "Đã xoá proxy thành công")
 
 def add_card():
     try:
@@ -1213,6 +1230,9 @@ add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda
 add_data_menu.add_separator()
 add_data_menu.add_command(label='Thêm acc sideline', command=lambda:add_sideline(change_password=False))
 add_data_menu.add_command(label='Thêm acc sideline change_pass', command=lambda:add_sideline(change_password=True))
+add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm proxy', command=add_proxy)
+add_data_menu.add_command(label='Xóa proxy', command=delete_proxy)
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)
