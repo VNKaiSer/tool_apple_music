@@ -712,7 +712,7 @@ class MySQLDatabase:
             # Rollback nếu có lỗi
             self.connection.rollback()
             print(f"Error: {e}")
-            return None
+            return 0
 
     def get_account_login_apple_tv(self):
         pass
