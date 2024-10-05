@@ -677,9 +677,43 @@ class MySQLDatabase:
             return True
         return False
 
+    def get_port_proxy(self, name):
+        try:
+            # Bắt đầu transaction
+            self.connection.start_transaction()
 
-    
-        
+            # Lấy port đầu tiên theo id tăng dần
+            query = "SELECT id, port, proxy_name FROM port_proxy WHERE proxy_name = %s ORDER BY id ASC LIMIT 1"
+            self.cursor.execute(query, (name,))
+            result = self.cursor.fetchone()
+
+            if result:
+                id_proxy = result[0]
+                port = result[1]
+                proxy_name = result[2]
+
+                # Xóa port đã lấy
+                delete_query = "DELETE FROM port_proxy WHERE id = %s"
+                self.cursor.execute(delete_query, (id_proxy,))
+
+                # Chèn lại port
+                insert_query = "INSERT INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
+                self.cursor.execute(insert_query, (port, proxy_name))
+
+                # Commit transaction
+                self.connection.commit()
+
+                return port
+            else:
+                # Trả về 0 nếu không có kết quả
+                return 0
+
+        except Exception as e:
+            # Rollback nếu có lỗi
+            self.connection.rollback()
+            print(f"Error: {e}")
+            return None
+
     def get_account_login_apple_tv(self):
         pass
        

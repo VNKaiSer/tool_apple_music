@@ -388,9 +388,19 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy1 = f'ares.p.shifter.io:{random.randint(16405,16429)}'
-        proxy2= f'epimetheus.p.shifter.io:{random.randint(16830,16854)}'
+        proxy1 = f'atlas.p.shifter.io:'
+        proxy2= f'hades.p.shifter.io:'
         proxy = random.choice([proxy1, proxy2])
+        port = db_instance.get_port_proxy(proxy)
+        
+        if port == 0:
+            if not change_password:
+                db_instance.update_rerun_acc_get_index(username)
+                return
+            else:
+                db_instance.update_rerun_acc_get_index_change_password(username)
+                return    
+        proxy = f'{proxy}:{port}'
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
