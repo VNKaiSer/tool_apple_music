@@ -697,7 +697,7 @@ class MySQLDatabase:
                 self.cursor.execute(delete_query, (id_proxy,))
 
                 # Chèn lại port
-                insert_query = "INSERT INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
+                insert_query = "INSERT IGNORE INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
                 self.cursor.execute(insert_query, (port, proxy_name))
 
                 # Commit transaction
