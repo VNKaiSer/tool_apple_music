@@ -47,7 +47,7 @@ def main():
                     get_index.login(send_delete_change_pass=True)  
                 
 
-        time.sleep(3)
+        time.sleep(10)
     print("STOP")
 if __name__ == "__main__":
     main()
