@@ -2,7 +2,7 @@ from functions import get_index
 import json
 import time
 import sys
-from const import db_instance
+from const import db_instance, unset_proxy
 import argparse
 
 def check_run_app():
@@ -21,10 +21,12 @@ def main():
         if "change_password" not in args.actions:    
             if db_instance.count_account_getindex_store()[0][0] == 0:
                 print("Has no account")
+                unset_proxy()
                 sys.exit()
         else:
             if db_instance.count_account_getindex_change_password()[0][0] == 0:
                 print("Has no account")
+                unset_proxy()
                 sys.exit()
 
         if args.actions:
