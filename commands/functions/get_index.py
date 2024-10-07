@@ -28,6 +28,7 @@ WAIT_START = 60
 from const import json
 from const import db_instance
 from const import datetime, timedelta
+from const import *
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
@@ -401,18 +402,30 @@ def login(change_password = False, send_message = False, delete_message = False,
                 db_instance.update_rerun_acc_get_index_change_password(username)
                 return    
         proxy = f'{proxy}:{port}'
+        set_proxy(proxy)
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
         # chrome_options.add_argument('--ignore-ssl-errors=yes')
         # chrome_options.add_argument('--log-level=3')  # Selenium log level
-        chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+        # chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        chrome_options.add_experimental_option('useAutomationExtension', False)
         driver = webdriver.Chrome(
-            
+            service=Service(),
             options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
+        
+        driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
+            'source': '''
+                Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+                })
+            '''
+        })
         # kiểm tra ip 
         try:
             driver.get("https://api.ipify.org/?format=json")
