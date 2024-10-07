@@ -28,7 +28,7 @@ WAIT_START = 60
 from const import json
 from const import db_instance
 from const import datetime, timedelta
-from const import *
+from const import set_proxy
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
@@ -408,24 +408,16 @@ def login(change_password = False, send_message = False, delete_message = False,
         # chrome_options.add_argument('--allow-insecure-localhost')
         # chrome_options.add_argument('--ignore-ssl-errors=yes')
         # chrome_options.add_argument('--log-level=3')  # Selenium log level
-        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-        # chrome_options.add_argument(f'--proxy-server={proxy}')
-        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
+        chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36')
         driver = webdriver.Chrome(
-            service=Service(),
             options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
-        
-        driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {
-            'source': '''
-                Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined
-                })
-            '''
-        })
+        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         # kiểm tra ip 
         try:
             driver.get("https://api.ipify.org/?format=json")
@@ -449,8 +441,10 @@ def login(change_password = False, send_message = False, delete_message = False,
                     return
         except Exception as e:
             print()
-            
         driver.get("https://app.getindex.com/login")
+        for i in range(0, 1000, 50):
+            driver.execute_script(f"window.scrollTo(0, {i});")
+
         
         # Mở tab mới
         try:
