@@ -969,7 +969,7 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
     with ThreadPoolExecutor(max_workers=time_run) as executor:
         for i in range(time_run):
             executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
-            time.sleep(10)
+            time.sleep(15)
     root.deiconify()
     
 def apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):

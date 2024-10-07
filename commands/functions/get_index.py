@@ -389,7 +389,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                 return    
         proxy = f'{proxy}:{port}'
         set_proxy(proxy)
-        time.sleep(5)
+        time.sleep(10)
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
