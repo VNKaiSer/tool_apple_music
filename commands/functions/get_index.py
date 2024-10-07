@@ -495,14 +495,14 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         time_reload = 0
         while True:
-            if time_reload == 1:
-                WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-                WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
-                logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
-                logo.click()
-                time.sleep(2)
-                driver.switch_to.window(root_tab)
-                time.sleep(2)
+            # if time_reload == 1:
+            #     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            #     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
+            #     logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
+            #     logo.click()
+            #     time.sleep(2)
+            #     driver.switch_to.window(root_tab)
+            #     time.sleep(2)
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
