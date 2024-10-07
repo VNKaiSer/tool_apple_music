@@ -345,20 +345,6 @@ def input_phone_func(input_phone, data):
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        tmp = getData(change_password)
-        if tmp is None:
-            print("No acc! Input more acc.")
-            return
-        
-        username, password = tmp
-        data = {
-            "username": username,
-            "password": password,
-            # "phone_send": generate_phone_number(),
-        }
-        logger.info(data)
-        print(data)
-        
         random_port = random.randint(16405,16429)
         #random_proxy = [
         #     {
@@ -403,6 +389,7 @@ def login(change_password = False, send_message = False, delete_message = False,
                 return    
         proxy = f'{proxy}:{port}'
         set_proxy(proxy)
+        time.sleep(5)
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -431,72 +418,79 @@ def login(change_password = False, send_message = False, delete_message = False,
             # Kiểm tra ip hiện tại trên db 
             ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
             if ip_is_exist == False:
-                if change_password:
-                    db_instance.update_rerun_acc_get_index_change_password(username)
-                    driver.quit()
-                    return
-                else :
-                    db_instance.update_rerun_acc_get_index(username)
-                    driver.quit()
-                    return
+                driver.quit()
+                return
         except Exception as e:
-            print()
+            driver.quit()
+            return
+        time.sleep(2)
+        
         driver.get("https://app.getindex.com/login")
-        for i in range(0, 1000, 50):
-            driver.execute_script(f"window.scrollTo(0, {i});")
-
+        tmp = getData(change_password)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
+        
+        username, password = tmp
+        data = {
+            "username": username,
+            "password": password,
+            # "phone_send": generate_phone_number(),
+        }
+        logger.info(data)
+        print(data)
         
         # Mở tab mới
-        try:
-            root_tab = driver.current_window_handle
-            driver.execute_script("window.open('https://www.google.com', '_blank');")
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(3)
-            # driver.close()
-            driver.switch_to.window(root_tab)
-        except Exception as e:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return
+        # try:
+        #     root_tab = driver.current_window_handle
+        #     driver.execute_script("window.open('https://www.google.com', '_blank');")
+        #     driver.switch_to.window(driver.window_handles[1])
+        #     time.sleep(3)
+        #     # driver.close()
+        #     driver.switch_to.window(root_tab)
+        # except Exception as e:
+        #     if change_password:
+        #         db_instance.update_rerun_acc_get_index_change_password(username)
+        #         driver.quit()
+        #         return
+        #     else :
+        #         db_instance.update_rerun_acc_get_index(username)
+        #         driver.quit()
+        #         return
         time.sleep(2)
         # Nhấn vào logo
-        try: 
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
-            logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
-            action = ActionChains(driver)
-            action.move_to_element(logo).perform()
-            action.click(logo).perform()
+        # try: 
+        #     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        #     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
+        #     logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
+        #     action = ActionChains(driver)
+        #     action.move_to_element(logo).perform()
+        #     action.click(logo).perform()
             
-            print('Đã click')
-            # Chờ tab mới mở ra
-            driver.implicitly_wait(5)
-            time.sleep(5)
-            driver.switch_to.window(root_tab)
-            time.sleep(2)
-            # # Chuyển qua tab mới
-            # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            # driver.switch_to.window(new_tab)
+        #     print('Đã click')
+        #     # Chờ tab mới mở ra
+        #     driver.implicitly_wait(5)
+        #     time.sleep(5)
+        #     driver.switch_to.window(root_tab)
+        #     time.sleep(2)
+        #     # # Chuyển qua tab mới
+        #     # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+        #     # driver.switch_to.window(new_tab)
 
-            # # Đóng tab mới
-            # driver.close()
-            # driver.switch_to.window(driver.window_handles[1])
-            # driver.close()
-            # driver.switch_to.window(root_tab)
-        except:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return
+        #     # # Đóng tab mới
+        #     # driver.close()
+        #     # driver.switch_to.window(driver.window_handles[1])
+        #     # driver.close()
+        #     # driver.switch_to.window(root_tab)
+        # except:
+        #     if change_password:
+        #         db_instance.update_rerun_acc_get_index_change_password(username)
+        #         driver.quit()
+        #         return
+        #     else :
+        #         db_instance.update_rerun_acc_get_index(username)
+        #         driver.quit()
+        #         return
         
         
         time_reload = 0
