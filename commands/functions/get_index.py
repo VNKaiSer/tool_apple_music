@@ -561,6 +561,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                             db_instance.update_rerun_acc_get_index(username)
                         else:
                             db_instance.update_rerun_acc_get_index_change_password(username)
+                        driver.quit()
+                        return
                 elif ex == "Business Registration Incomplete":
                     if not change_password:
                         db_instance.result_acc_getindex(username, "complete bussiness")
@@ -683,7 +685,4 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data, send_and_delete=True, change_password=True)
         
     except Exception as e:
-        if not change_password:
-            db_instance.update_rerun_acc_get_index(username)
-        else:
-            db_instance.update_rerun_acc_get_index_change_password(username)
+        print(e)
