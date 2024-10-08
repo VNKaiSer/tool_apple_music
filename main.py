@@ -779,11 +779,31 @@ def handle_onpen_tool():
             f.seek(0)  # Đặt con trỏ tệp về đầu
             f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
             f.truncate()  # Xóa nội dung còn lại nếu có
+            unset_proxy()
             messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
 
 def close_tool():
     db_instance.close_tool()
-    
+
+def unset_proxy():
+    """Tắt proxy."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Tắt proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 0)  # Tắt proxy
+        reg.DeleteValue(registry, "ProxyServer")  # Xóa địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print("Proxy đã được tắt.")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi tắt proxy: {e}")
+        
 def open_error_pay():
     def selected_option(value):
         return value
@@ -949,7 +969,7 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
     with ThreadPoolExecutor(max_workers=time_run) as executor:
         for i in range(time_run):
             executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
-            time.sleep(10)
+            time.sleep(15)
     root.deiconify()
     
 def apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):

@@ -697,7 +697,7 @@ class MySQLDatabase:
                 self.cursor.execute(delete_query, (id_proxy,))
 
                 # Chèn lại port
-                insert_query = "INSERT INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
+                insert_query = "INSERT IGNORE INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
                 self.cursor.execute(insert_query, (port, proxy_name))
 
                 # Commit transaction
@@ -859,3 +859,63 @@ class AccountDone(Exception):
     def __init__(self, message="Account Done"):
         self.message = message
         super().__init__(self.message)
+        
+import winreg as reg
+
+def set_proxy(proxy_address):
+    """Bật proxy với địa chỉ đã cho."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Thiết lập proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 1)  # Bật proxy
+        reg.SetValueEx(registry, "ProxyServer", 0, reg.REG_SZ, proxy_address)  # Địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print(f"Proxy đã được thiết lập: {proxy_address}")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi thiết lập proxy: {e}")
+
+import winreg as reg
+def unset_proxy():
+    """Tắt proxy."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Tắt proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 0)  # Tắt proxy
+        reg.DeleteValue(registry, "ProxyServer")  # Xóa địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print("Proxy đã được tắt.")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi tắt proxy: {e}")
+
+def get_proxy():
+    """Lấy địa chỉ proxy hiện tại."""
+    try:
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path)
+        
+        proxy_enable = reg.QueryValueEx(registry, "ProxyEnable")[0]
+        proxy_server = reg.QueryValueEx(registry, "ProxyServer")[0] if proxy_enable else None
+        
+        reg.CloseKey(registry)
+        
+        if proxy_enable:
+            return proxy_server  # Trả về địa chỉ proxy
+        else:
+            return None  # Không bật proxy
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi lấy địa chỉ proxy: {e}")
+        return None

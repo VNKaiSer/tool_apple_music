@@ -486,30 +486,30 @@ def login(change_password = False, send_message = False, delete_message = False,
             action.move_to_element(logo).perform()
             action.click(logo).perform()
             
-            print('Đã click')
-            # Chờ tab mới mở ra
-            driver.implicitly_wait(5)
-            time.sleep(5)
-            driver.switch_to.window(root_tab)
-            time.sleep(2)
-            # # Chuyển qua tab mới
-            # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            # driver.switch_to.window(new_tab)
+        #     print('Đã click')
+        #     # Chờ tab mới mở ra
+        #     driver.implicitly_wait(5)
+        #     time.sleep(5)
+        #     driver.switch_to.window(root_tab)
+        #     time.sleep(2)
+        #     # # Chuyển qua tab mới
+        #     # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+        #     # driver.switch_to.window(new_tab)
 
-            # # Đóng tab mới
-            # driver.close()
-            # driver.switch_to.window(driver.window_handles[1])
-            # driver.close()
-            # driver.switch_to.window(root_tab)
-        except:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return
+        #     # # Đóng tab mới
+        #     # driver.close()
+        #     # driver.switch_to.window(driver.window_handles[1])
+        #     # driver.close()
+        #     # driver.switch_to.window(root_tab)
+        # except:
+        #     if change_password:
+        #         db_instance.update_rerun_acc_get_index_change_password(username)
+        #         driver.quit()
+        #         return
+        #     else :
+        #         db_instance.update_rerun_acc_get_index(username)
+        #         driver.quit()
+        #         return
         
         
         time_reload = 0
@@ -580,6 +580,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                             db_instance.update_rerun_acc_get_index(username)
                         else:
                             db_instance.update_rerun_acc_get_index_change_password(username)
+                        driver.quit()
+                        return
                 elif ex == "Business Registration Incomplete":
                     if not change_password:
                         db_instance.result_acc_getindex(username, "complete bussiness")
@@ -702,7 +704,4 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data, send_and_delete=True, change_password=True)
         
     except Exception as e:
-        if not change_password:
-            db_instance.update_rerun_acc_get_index(username)
-        else:
-            db_instance.update_rerun_acc_get_index_change_password(username)
+        print(e)
