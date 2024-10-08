@@ -384,10 +384,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy1 = f'atlas.p.shifter.io'
-        proxy2= f'hades.p.shifter.io'
-        proxy = random.choice([proxy1, proxy2])
-        port = db_instance.get_port_proxy(proxy)
+        proxy_name, port = db_instance.get_proxy()
         
         if port == 0:
             if not change_password:
@@ -395,9 +392,8 @@ def login(change_password = False, send_message = False, delete_message = False,
                 return
             else:
                 db_instance.update_rerun_acc_get_index_change_password(username)
-                return    
-        proxy = f'{proxy}:{port}'
-        time.sleep(5)
+                return   
+        proxy = f'{proxy_name}:{port}' 
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -454,7 +450,6 @@ def login(change_password = False, send_message = False, delete_message = False,
         data = {
             "username": username,
             "password": password,
-            # "phone_send": generate_phone_number(),
         }
         logger.info(data)
         print(data)
@@ -486,39 +481,25 @@ def login(change_password = False, send_message = False, delete_message = False,
             action.move_to_element(logo).perform()
             action.click(logo).perform()
             time.sleep(2)
+            # Chờ tab mới mở ra
             driver.implicitly_wait(5)
-            time.sleep(5)
             driver.switch_to.window(root_tab)
             time.sleep(2)
+            # Chuyển qua tab mới
+            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            driver.switch_to.window(new_tab)
+            # Đóng tab mới
+            driver.close()
+            driver.switch_to.window(root_tab)
         except:
-            pass
-            
-        #     print('Đã click')
-        #     # Chờ tab mới mở ra
-        #     driver.implicitly_wait(5)
-        #     time.sleep(5)
-        #     driver.switch_to.window(root_tab)
-        #     time.sleep(2)
-        #     # # Chuyển qua tab mới
-        #     # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-        #     # driver.switch_to.window(new_tab)
-
-        #     # # Đóng tab mới
-        #     # driver.close()
-        #     # driver.switch_to.window(driver.window_handles[1])
-        #     # driver.close()
-        #     # driver.switch_to.window(root_tab)
-        # except:
-        #     if change_password:
-        #         db_instance.update_rerun_acc_get_index_change_password(username)
-        #         driver.quit()
-        #         return
-        #     else :
-        #         db_instance.update_rerun_acc_get_index(username)
-        #         driver.quit()
-        #         return
-        
-        
+            if change_password:
+                db_instance.update_rerun_acc_get_index_change_password(username)
+                driver.quit()
+                return
+            else :
+                db_instance.update_rerun_acc_get_index(username)
+                driver.quit()
+                return 
         time_reload = 0
         while True:
             # if time_reload == 1:

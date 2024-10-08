@@ -677,14 +677,14 @@ class MySQLDatabase:
             return True
         return False
 
-    def get_port_proxy(self, name):
+    def get_proxy(self):
         try:
             # Bắt đầu transaction
             self.connection.start_transaction()
 
             # Lấy port đầu tiên theo id tăng dần
-            query = "SELECT id, port, proxy_name FROM port_proxy WHERE proxy_name = %s ORDER BY id ASC LIMIT 1"
-            self.cursor.execute(query, (name,))
+            query = "SELECT id, port, proxy_name FROM port_proxy ORDER BY id ASC LIMIT 1"
+            self.cursor.execute(query)
             result = self.cursor.fetchone()
 
             if result:
@@ -703,16 +703,16 @@ class MySQLDatabase:
                 # Commit transaction
                 self.connection.commit()
 
-                return port
+                return proxy_name, port
             else:
                 # Trả về 0 nếu không có kết quả
-                return 0
+                return "",0
 
         except Exception as e:
             # Rollback nếu có lỗi
             self.connection.rollback()
             print(f"Error: {e}")
-            return 0
+            return "",0
 
     def get_account_login_apple_tv(self):
         pass
