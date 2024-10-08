@@ -485,6 +485,13 @@ def login(change_password = False, send_message = False, delete_message = False,
             action = ActionChains(driver)
             action.move_to_element(logo).perform()
             action.click(logo).perform()
+            time.sleep(2)
+            driver.implicitly_wait(5)
+            time.sleep(5)
+            driver.switch_to.window(root_tab)
+            time.sleep(2)
+        except:
+            pass
             
         #     print('Đã click')
         #     # Chờ tab mới mở ra
@@ -525,10 +532,17 @@ def login(change_password = False, send_message = False, delete_message = False,
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
-            inputs[0].send_keys(data["username"])
-            time.sleep(0.5)
-            inputs[1].send_keys(data["password"])
-            time.sleep(1)
+            actions = ActionChains(driver)
+            actions.move_to_element(inputs[0]).perform()
+            time.sleep(random.uniform(2, 5))
+            for key in data["username"]:
+                inputs[0].send_keys(key)
+                time.sleep(0.3)
+            time.sleep(random.uniform(2, 5))
+            for key in data["password"]:
+                inputs[1].send_keys(key)
+                time.sleep(0.3)
+            time.sleep(random.uniform(2, 5))
             inputs[1].send_keys(Keys.ENTER)
             
             # for tab in driver.window_handles:
