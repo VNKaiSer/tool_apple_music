@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
+from selenium_stealth import stealth
 import sys
 import time 
 import random
@@ -28,6 +29,7 @@ WAIT_START = 60
 from const import json
 from const import db_instance
 from const import datetime, timedelta
+from const import set_proxy
 # Create handlers for logging to the standard output and a file
 stdoutHandler = logging.StreamHandler(stream=sys.stdout)
 errHandler = logging.FileHandler("./logs/change-pass.log")
@@ -340,24 +342,18 @@ def input_phone_func(input_phone, data):
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
-    
+def choice_user_agents():
+    user_agents = [
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+    ]
+    return random.choice(user_agents)
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        tmp = getData(change_password)
-        if tmp is None:
-            print("No acc! Input more acc.")
-            return
-        
-        username, password = tmp
-        data = {
-            "username": username,
-            "password": password,
-            # "phone_send": generate_phone_number(),
-        }
-        logger.info(data)
-        print(data)
-        
         random_port = random.randint(16405,16429)
         #random_proxy = [
         #     {
@@ -401,18 +397,32 @@ def login(change_password = False, send_message = False, delete_message = False,
                 db_instance.update_rerun_acc_get_index_change_password(username)
                 return    
         proxy = f'{proxy}:{port}'
+        time.sleep(5)
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
         # chrome_options.add_argument('--ignore-ssl-errors=yes')
         # chrome_options.add_argument('--log-level=3')  # Selenium log level
+        user_agent = choice_user_agents()
         chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument('--disable-webrtc')
+        chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        chrome_options.add_experimental_option('useAutomationExtension', False)
+        chrome_options.add_argument(f'user-agent={user_agent}')
         driver = webdriver.Chrome(
-            
             options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
+        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        stealth(driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True)
         # kiểm tra ip 
         try:
             driver.get("https://api.ipify.org/?format=json")
@@ -426,38 +436,48 @@ def login(change_password = False, send_message = False, delete_message = False,
             # Kiểm tra ip hiện tại trên db 
             ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
             if ip_is_exist == False:
-                if change_password:
-                    db_instance.update_rerun_acc_get_index_change_password(username)
-                    driver.quit()
-                    return
-                else :
-                    db_instance.update_rerun_acc_get_index(username)
-                    driver.quit()
-                    return
+                driver.quit()
+                return
         except Exception as e:
-            print()
-            
+            driver.quit()
+            return
+        time.sleep(2)
+        
         driver.get("https://app.getindex.com/login")
+        root_tab = driver.current_window_handle
+        tmp = getData(change_password)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
+        
+        username, password = tmp
+        data = {
+            "username": username,
+            "password": password,
+            # "phone_send": generate_phone_number(),
+        }
+        logger.info(data)
+        print(data)
         
         # Mở tab mới
-        try:
-            root_tab = driver.current_window_handle
-            driver.execute_script("window.open('https://www.google.com', '_blank');")
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(3)
-            # driver.close()
-            driver.switch_to.window(root_tab)
-        except Exception as e:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return
+        # try:
+        #     root_tab = driver.current_window_handle
+        #     driver.execute_script("window.open('https://www.google.com', '_blank');")
+        #     driver.switch_to.window(driver.window_handles[1])
+        #     time.sleep(3)
+        #     # driver.close()
+        #     driver.switch_to.window(root_tab)
+        # except Exception as e:
+        #     if change_password:
+        #         db_instance.update_rerun_acc_get_index_change_password(username)
+        #         driver.quit()
+        #         return
+        #     else :
+        #         db_instance.update_rerun_acc_get_index(username)
+        #         driver.quit()
+        #         return
         time.sleep(2)
-        # Nhấn vào logo
+        #Nhấn vào logo
         try: 
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
@@ -494,14 +514,14 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         time_reload = 0
         while True:
-            if time_reload == 1:
-                WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-                WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
-                logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
-                logo.click()
-                time.sleep(2)
-                driver.switch_to.window(root_tab)
-                time.sleep(2)
+            # if time_reload == 1:
+            #     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            #     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
+            #     logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
+            #     logo.click()
+            #     time.sleep(2)
+            #     driver.switch_to.window(root_tab)
+            #     time.sleep(2)
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
