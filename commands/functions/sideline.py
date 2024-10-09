@@ -348,7 +348,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument(f'user-agent={user_agent}')
-        # chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             options=chrome_options,
         )
