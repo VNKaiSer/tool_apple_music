@@ -476,12 +476,12 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.implicitly_wait(5)
             driver.switch_to.window(root_tab)
             time.sleep(2)
-            # Chuyển qua tab mới
-            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            driver.switch_to.window(new_tab)
-            # Đóng tab mới
-            driver.close()
-            driver.switch_to.window(root_tab)
+            # # Chuyển qua tab mới
+            # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            # driver.switch_to.window(new_tab)
+            # # Đóng tab mới
+            # driver.close()
+            # driver.switch_to.window(root_tab)
         except:
             if change_password:
                 db_instance.update_rerun_acc_get_index_change_password(username)
