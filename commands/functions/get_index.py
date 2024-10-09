@@ -342,7 +342,7 @@ def input_phone_func(input_phone, data):
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
-def choice_user_agents(file_path):
+def choice_user_agents():
     file_path = "./assets/data/user-agent.txt"
     with open(file_path, 'r') as file:
         user_agents = file.readlines()

@@ -317,7 +317,7 @@ def get_phone_from_file():
     with open('./assets/data/phone-sideline.txt', 'r') as f:
         lines = f.readlines()
         return lines[random.randint(0, len(lines) - 1)].strip()
-def choice_user_agents(file_path):
+def choice_user_agents():
     file_path = "./assets/data/user-agent.txt"
     with open(file_path, 'r') as file:
         user_agents = file.readlines()
