@@ -342,15 +342,11 @@ def input_phone_func(input_phone, data):
     time.sleep(0.3)
     input_phone.send_keys(Keys.ENTER)
     time.sleep(1)
-def choice_user_agents():
-    user_agents = [
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
-    ]
-    return random.choice(user_agents)
+def choice_user_agents(file_path):
+    file_path = "./assets/data/user-agent.txt"
+    with open(file_path, 'r') as file:
+        user_agents = file.readlines()
+    return random.choice(user_agents).strip()
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
@@ -387,12 +383,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         proxy_name, port = db_instance.get_proxy()
         
         if port == 0:
-            if not change_password:
-                db_instance.update_rerun_acc_get_index(username)
-                return
-            else:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                return   
+            return
         proxy = f'{proxy_name}:{port}' 
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')

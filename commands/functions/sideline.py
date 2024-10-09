@@ -317,7 +317,11 @@ def get_phone_from_file():
     with open('./assets/data/phone-sideline.txt', 'r') as f:
         lines = f.readlines()
         return lines[random.randint(0, len(lines) - 1)].strip()
-    
+def choice_user_agents(file_path):
+    file_path = "./assets/data/user-agent.txt"
+    with open(file_path, 'r') as file:
+        user_agents = file.readlines()
+    return random.choice(user_agents).strip()  
 def input_phone_func(input_phone, data):
     time.sleep(1)
     input_phone.send_keys(get_phone_from_file())
@@ -328,35 +332,22 @@ def input_phone_func(input_phone, data):
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        tmp = getData(change_password)
-        if tmp is None:
-            print("No acc! Input more acc.")
-            return
         
-        username, password = tmp
-        data = {
-            "username": username,
-            "password": password,
-            # "phone_send": generate_phone_number(),
-        }
-        logger.info(data)
-        print(data)
         
-        proxy1 = f'atlas.p.shifter.io'
-        proxy2= f'hades.p.shifter.io'
-        proxy = random.choice([proxy1, proxy2])
-        port = db_instance.get_port_proxy(proxy)
+        proxy_name, port = db_instance.get_proxy()
         
         if port == 0:
-            if not change_password:
-                db_instance.update_rerun_acc_sideline(username)
-                return
-            else:
-                db_instance.update_rerun_acc_sideline_change_password(username)
-                return    
-        proxy = f'{proxy}:{port}'
+            return
+        
+        proxy = f'{proxy_name}:{port}'
         
         chrome_options = Options()
+        user_agent = choice_user_agents()
+        chrome_options.add_argument('--disable-webrtc')
+        chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        chrome_options.add_experimental_option('useAutomationExtension', False)
+        chrome_options.add_argument(f'user-agent={user_agent}')
         chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             options=chrome_options,
@@ -374,30 +365,52 @@ def login(change_password = False, send_message = False, delete_message = False,
             # Kiểm tra ip hiện tại trên db 
             ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
             if ip_is_exist == False:
-                if change_password:
-                    db_instance.update_rerun_acc_sideline_change_password(username)
-                    driver.quit()
-                    return
-                else :
-                    db_instance.update_rerun_acc_sideline(username)
-                    driver.quit()
-                    return
+                driver.quit()
+                return
         except Exception as e:
-            print()
+            driver.quit()
+            return
+        
+        tmp = getData(change_password)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
+        
+        username, password = tmp
+        data = {
+            "username": username,
+            "password": password,
+            # "phone_send": generate_phone_number(),
+        }
+        logger.info(data)
+        print(data)
         
         driver.get("https://messages.sideline.com/login")
+        root_tab = driver.current_window_handle
         time.sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.F12).perform()
         time.sleep(2)
         
         # Mở tab mới
-        try:
-            root_tab = driver.current_window_handle
-            driver.execute_script("window.open('https://www.google.com', '_blank');")
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(5)
+        try: 
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
+            logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
+            action = ActionChains(driver)
+            action.move_to_element(logo).perform()
+            action.click(logo).perform()
+            time.sleep(2)
+            # Chờ tab mới mở ra
+            driver.implicitly_wait(5)
             driver.switch_to.window(root_tab)
-        except Exception as e:
+            time.sleep(2)
+            # Chuyển qua tab mới
+            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            driver.switch_to.window(new_tab)
+            # Đóng tab mới
+            driver.close()
+            driver.switch_to.window(root_tab)
+        except:
             if change_password:
                 db_instance.update_rerun_acc_sideline_change_password(username)
                 driver.quit()
@@ -405,9 +418,8 @@ def login(change_password = False, send_message = False, delete_message = False,
             else :
                 db_instance.update_rerun_acc_sideline(username)
                 driver.quit()
-                return
-        
-        
+                return 
+            
         time_reload = 0
         while True:
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
