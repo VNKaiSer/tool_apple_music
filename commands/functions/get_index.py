@@ -509,11 +509,11 @@ def login(change_password = False, send_message = False, delete_message = False,
             time.sleep(random.uniform(2, 5))
             for key in data["username"]:
                 inputs[0].send_keys(key)
-                time.sleep(0.3)
+                time.sleep(0.15)
             time.sleep(random.uniform(2, 5))
             for key in data["password"]:
                 inputs[1].send_keys(key)
-                time.sleep(0.3)
+                time.sleep(0.15)
             time.sleep(random.uniform(2, 5))
             WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.ID, 'submitButton')))
             submit_button = driver.find_element(By.ID, 'submitButton')

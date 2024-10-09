@@ -348,7 +348,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument(f'user-agent={user_agent}')
-        chrome_options.add_argument(f'--proxy-server={proxy}')
+        # chrome_options.add_argument(f'--proxy-server={proxy}')
         driver = webdriver.Chrome(
             options=chrome_options,
         )
@@ -405,11 +405,11 @@ def login(change_password = False, send_message = False, delete_message = False,
             driver.switch_to.window(root_tab)
             time.sleep(2)
             # Chuyển qua tab mới
-            new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            driver.switch_to.window(new_tab)
-            # Đóng tab mới
-            driver.close()
-            driver.switch_to.window(root_tab)
+            # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+            # driver.switch_to.window(new_tab)
+            # # Đóng tab mới
+            # driver.close()
+            # driver.switch_to.window(root_tab)
         except:
             if change_password:
                 db_instance.update_rerun_acc_sideline_change_password(username)
@@ -425,11 +425,21 @@ def login(change_password = False, send_message = False, delete_message = False,
             WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
             app_root = driver.find_element(By.TAG_NAME, 'app-root')
             inputs = app_root.find_elements(By.TAG_NAME, "input")
-            inputs[0].send_keys(data["username"])
-            time.sleep(0.5)
-            inputs[1].send_keys(data["password"])
-            time.sleep(1)
-            inputs[1].send_keys(Keys.ENTER)
+            actions = ActionChains(driver)
+            actions.move_to_element(inputs[0]).perform()
+            time.sleep(random.uniform(2, 5))
+            for key in data["username"]:
+                inputs[0].send_keys(key)
+                time.sleep(0.15)
+            time.sleep(random.uniform(2, 5))
+            for key in data["password"]:
+                inputs[1].send_keys(key)
+                time.sleep(0.15)
+            time.sleep(random.uniform(2, 5))
+            WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.ID, 'submitButton')))
+            submit_button = driver.find_element(By.ID, 'submitButton')
+            actions.move_to_element(submit_button).click().perform()
+            
             try:
                 WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, 'error-message')))
                 wrong_password = driver.find_element(By.CLASS_NAME, 'error-message').text
