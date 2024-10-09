@@ -381,7 +381,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         # ]
         # proxy = random.choice(random_proxy)
         proxy_name, port = db_instance.get_proxy()
-        
+        logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
         if port == 0:
             return
         proxy = f'{proxy_name}:{port}' 
