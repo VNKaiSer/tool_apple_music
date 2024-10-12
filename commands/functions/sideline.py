@@ -340,6 +340,7 @@ def login(change_password = False, send_message = False, delete_message = False,
             return
         
         proxy = f'{proxy_name}:{port}'
+        logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
         
         chrome_options = Options()
         user_agent = choice_user_agents()
@@ -350,30 +351,23 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_argument(f'user-agent={user_agent}')
         chrome_options.add_argument(f'--proxy-server={proxy}')
         # disable webRTC
-        chrome_options.add_argument('--disable-webrtc')
-        chrome_options.add_argument('--disable-webrtc-hw-encoding')
-        chrome_options.add_argument('--disable-webrtc-hw-decoding')
-        chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
-        chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
+        # chrome_options.add_argument('--disable-webrtc')
+        # chrome_options.add_argument('--disable-webrtc-hw-encoding')
+        # chrome_options.add_argument('--disable-webrtc-hw-decoding')
+        # chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
+        # chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
         driver = webdriver.Chrome(
             options=chrome_options,
         )
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        stealth(driver,
-            languages=["en-US", "en"],
-            vendor="Google Inc.",
-            platform="Win32",
-            webgl_vendor="Intel Inc.",
-            renderer="Intel Iris OpenGL Engine",
-            fix_hairline=True)
-        script = """
-        Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
-            value: () => new Promise((resolve, reject) => {
-                reject(new Error('getUserMedia is disabled'));
-            })
-        });
-        """
-        driver.execute_script(script)
+        # stealth(driver,
+        #     languages=["en-US", "en"],
+        #     vendor="Google Inc.",
+        #     platform="Win32",
+        #     webgl_vendor="Intel Inc.",
+        #     renderer="Intel Iris OpenGL Engine",
+        #     fix_hairline=True)
+        
         
         try:
             driver.get("https://api.ipify.org/?format=json")
@@ -583,7 +577,4 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data, send_and_delete=True, change_password=True)
         
     except Exception as e:
-        if not change_password:
-            db_instance.update_rerun_acc_sideline(username)
-        else:
-            db_instance.update_rerun_acc_sideline_change_password(username)
+        print(e)

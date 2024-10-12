@@ -390,40 +390,41 @@ def login(change_password = False, send_message = False, delete_message = False,
         # chrome_options.add_argument('--allow-insecure-localhost')
         # chrome_options.add_argument('--ignore-ssl-errors=yes')
         # chrome_options.add_argument('--log-level=3')  # Selenium log level
+        chrome_options = Options()
         user_agent = choice_user_agents()
-        chrome_options.add_argument(f'--proxy-server={proxy}')
         chrome_options.add_argument('--disable-webrtc')
         chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
         chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument(f'user-agent={user_agent}')
+        chrome_options.add_argument(f'--proxy-server={proxy}')
         # disable webRTC
-        chrome_options.add_argument('--disable-webrtc')
-        chrome_options.add_argument('--disable-webrtc-hw-encoding')
-        chrome_options.add_argument('--disable-webrtc-hw-decoding')
-        chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
-        chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
+        # chrome_options.add_argument('--disable-webrtc')
+        # chrome_options.add_argument('--disable-webrtc-hw-encoding')
+        # chrome_options.add_argument('--disable-webrtc-hw-decoding')
+        # chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
+        # chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
         driver = webdriver.Chrome(
             options=chrome_options,
             #seleniumwire_options=proxy,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        stealth(driver,
-            languages=["en-US", "en"],
-            vendor="Google Inc.",
-            platform="Win32",
-            webgl_vendor="Intel Inc.",
-            renderer="Intel Iris OpenGL Engine",
-            fix_hairline=True)
-        script = """
-        Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
-            value: () => new Promise((resolve, reject) => {
-                reject(new Error('getUserMedia is disabled'));
-            })
-        });
-        """
-        driver.execute_script(script)
+        # stealth(driver,
+        #     languages=["en-US", "en"],
+        #     vendor="Google Inc.",
+        #     platform="Win32",
+        #     webgl_vendor="Intel Inc.",
+        #     renderer="Intel Iris OpenGL Engine",
+        #     fix_hairline=True)
+        # script = """
+        # Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        #     value: () => new Promise((resolve, reject) => {
+        #         reject(new Error('getUserMedia is disabled'));
+        #     })
+        # });
+        # """
+        # driver.execute_script(script)
         # kiểm tra ip 
         try:
             driver.get("https://api.ipify.org/?format=json")
