@@ -583,7 +583,4 @@ def login(change_password = False, send_message = False, delete_message = False,
             send_message_func(driver, username, data, send_and_delete=True, change_password=True)
         
     except Exception as e:
-        if not change_password:
-            db_instance.update_rerun_acc_sideline(username)
-        else:
-            db_instance.update_rerun_acc_sideline_change_password(username)
+        print(e)
