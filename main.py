@@ -9,9 +9,14 @@ import logging
 import sys
 import mysql.connector
 from concurrent.futures import ThreadPoolExecutor
+from enums.apple_music_login_enum import AppleMusicLogin
 sys.path.append('./commands')
 from commands.const import *
-
+# DEFINE 
+send_message_var = None
+delete_message_var = None
+change_password_var = None
+send_and_delete_var = None
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -138,37 +143,37 @@ class MySQLDatabase:
         self.connection.commit()
         pass
     def analysis_id_scusess(self):
-        query = "SELECT m.user , m.password, p.card_number, p.`day`, p.`year`, p.ccv FROM mail m INNER JOIN pay p ON m.card_add = p.card_number"
+        query = "SELECT user, password, card_add FROM mail WHERE exception = 'Done'"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
-        print(result)
         return result
 
     def export_error_id(self, error):
         query = None
         if error == 'country':
-            query = "SELECT user, password, country FROM mail WHERE country IS NOT NULL"
+            query = "SELECT user, password, card_add,country FROM mail WHERE country IS NOT NULL"
             self.cursor.execute(query)
+        elif error == 'all':
+            query = "SELECT user, password,card_add, exception FROM mail"
+            self.cursor.execute(query) 
         else:
-            query = "SELECT user, password FROM mail WHERE exception = %s"
+            query = "SELECT user, password,card_add FROM mail WHERE exception = %s"
             self.cursor.execute(query, (error,))
 
         result = self.cursor.fetchall()
-        print(result)
+        self.connection.commit()
         return result
 
     def export_pay_success(self):
         query = "SELECT card_number, day, year, ccv FROM pay"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
-        print(result)
         return result
     
     def analysis_pay_scusess(self):
         query = "SELECT card_number, `day`,`year`, ccv, number_use FROM pay WHERE number_use >= 1"
         self.cursor.execute(query)
         result = self.cursor.fetchall()
-        print(result)
         return result
 
     def export_error_pay(self, error):
@@ -176,7 +181,6 @@ class MySQLDatabase:
         self.cursor.execute(query, (error,))
 
         result = self.cursor.fetchall()
-        print(result)
         return result
     
     def insert_mail_check(self, mail_check):
@@ -258,6 +262,36 @@ class MySQLDatabase:
         self.cursor.execute(query, (mail[0], mail[1], mail[2]))
         self.connection.commit()
         
+    def analysis_acc_getindex(self):
+        query = "SELECT user_name, password,ex, phone FROM get_index_tool WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def analysis_acc_sideline(self):
+        query = "SELECT user_name, password,ex, phone FROM sideline_tool WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def analysis_acc_apple_id(self):
+        query = "SELECT acc, password,q1, q2, q3, ex FROM apple_id_login WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def analysis_acc_getindex_change_password(self):
+        query = "SELECT user_name, password,ex FROM IndexChangePass WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def analysis_acc_sideline_change_password(self):
+        query = "SELECT user_name, password,ex FROM SidelineChangePass WHERE is_running = 'Y' order by ex desc"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+        
     def close(self):
         self.connection.close()
         
@@ -313,6 +347,10 @@ sys.path.append('./utils')
 sys.path.append('./')
 from utils import import_id 
 from utils import import_card
+from utils import import_acc_getindex
+from utils import import_apple_id
+from utils import import_proxy
+from utils import import_acc_sideline
 import threading
 from PIL import Image, ImageTk
 import os
@@ -335,6 +373,38 @@ def add_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+        
+def add_apple_id():
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_apple_id.process_data(content)
+                messagebox.showinfo("Thành công", "Thêm id thành công")
+        
+         
+        
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+
+def add_proxy():
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_proxy.process_data(content)
+                messagebox.showinfo("Thành công", "Thêm proxy thành công")
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+        
+def delete_proxy():
+    db_instance.delete_data(table_name='port_proxy', condition='port != 0')
+    messagebox.showinfo("Thành công", "Đã xoá proxy thành công")
+
 def add_card():
     try:
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
@@ -347,7 +417,31 @@ def add_card():
     except Exception as e:
         print(e)
         messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
-        
+def add_getindex(change_password = False):
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_acc_getindex.process_data(change_password ,content)
+                messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
+                
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
+
+def add_sideline(change_password = False):
+    try:
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            with open(file_path, 'r') as file:
+                content = file.read()
+                import_acc_sideline.process_data(change_password ,content)
+                messagebox.showinfo("Thành công", "Thêm dữ liệu thành công")
+                
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thất bại", "Error: Thêm thất bại vui lòng kiểm tra định dạng file hoặc network" )
 def clear_frame(frame):
     for widget in frame.winfo_children():
         widget.destroy()
@@ -386,43 +480,86 @@ def run_app():
     # tool_thread = threading.Thread(target=run_tool)
     # tool_thread.start()
     # all_thread.append(tool_thread)
-def run_app_check():
-    def run_tool():
-        while True: # Call the main tool function
-            os.system('py ./commands/run_check.py') 
-        # After the tool finishes execution, show the main window again
-    root.deiconify()
-    def on_spin_change():
-        value = spinbox.get()
-        
-        try:
-            value = int(value)
-            for i in range(1, value + 1):
-                time.sleep(10)
-                threading.Thread(target=run_tool).start()
-                # Kiểm tra xem luồng đã được khởi động chưa trước khi tạo luồng mới
-                # if len(all_thread) < value or not all_thread[i-1].is_alive():
-                #     all_thread.append(threading.Thread(target=run_tool))
-                #     all_thread[i-1].start()
-                # else:
-                #     messagebox.showwarning("Error", "Cần mở lại ứng dụng để chạy chức năng này")
-        except ValueError:
-            messagebox.showerror("Error", "Nhập số tab không hợp lệ")
-    # root.withdraw()
-    image_label.place_forget()
-    analysis_frame.place_forget()
-    clear_frame(frame_app)
-    frame_app.place(relx=0.5, rely=0.5, anchor="center")
+def login_apple_music_run(combo , option: StringVar):
+    def run(option):
+        if option == AppleMusicLogin.CHECK.value:
+            print("Login check")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_check")
+            
+        elif option == AppleMusicLogin.DELETE.value:
+            print("Login delete")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_delete")
+            
+        elif option == AppleMusicLogin.ADD.value:
+            print("Login add")
+            subprocess.Popen("py ./commands/run_apple_music_login.py --actions login_add")
+        else:
+            return
+            
+            
     
-    label_title = Label(frame_app, text="Số tab cần chạy", font=("Arial", 20), bg="white")
-    label_title.pack(pady=10)
-    # Tạo một Spinbox với các giá trị từ 1 đến 10
-    spinbox = Spinbox(frame_app, from_=1, to=20)
-    spinbox.pack(pady=10)
+    time_run = int(combo.get())
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run(option.get()))
+            time.sleep(10)
+    root.deiconify()
+    
+def run_apple_music_login():
+    dialog = tk.Toplevel(root)
+    dialog.title("Nhập số lượng tab")
 
-    # Button để lấy giá trị hiện tại của Spinbox
-    btn_get_value = Button(frame_app, text="Get Value", command=on_spin_change)
-    btn_get_value.pack(pady=5)
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(padx=10, pady=10)
+
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(padx=10, pady=10)
+    combo.current(0)
+
+    option_var = tk.StringVar(value="Login check")
+    
+    run_check_option = ttk.Radiobutton(dialog, text="Login check", variable=option_var, value=AppleMusicLogin.CHECK.value)
+    run_check_option.pack(anchor='w',padx=10, pady=5)
+    
+    run_delete_option = ttk.Radiobutton(dialog, text="Login delete", variable=option_var, value=AppleMusicLogin.DELETE.value)
+    run_delete_option.pack(anchor='w',padx=10, pady=5)
+
+    run_add_option = ttk.Radiobutton(dialog, text="Login add", variable=option_var, value=AppleMusicLogin.ADD.value)
+    run_add_option.pack(anchor='w',padx=10, pady=5)
+    
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:login_apple_music_run(combo, option_var))
+    confirm_button.pack(anchor='w',padx=10, pady=10)
+
+def apple_id_tool():
+    dialog = tk.Toplevel(root)
+    dialog.title("Nhập số lượng tab")
+
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(anchor='w', padx=10, pady=5)
+
+    global combo
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(anchor='w', padx=10, pady=5)
+    combo.current(0)
+
+    change_secury_question_var = tk.BooleanVar()
+    change_secury_question_checkbox = ttk.Checkbutton(dialog, text="Đổi câu hỏi bảo mật", variable=change_secury_question_var)
+    change_secury_question_checkbox.pack(anchor='w', padx=10, pady=5)
+    
+    change_region_var = tk.BooleanVar()
+    change_region_checkbox = ttk.Checkbutton(dialog, text="Đổi quốc gia", variable=change_region_var)
+    change_region_checkbox.pack(anchor='w', padx=10, pady=5)
+
+    change_password_var = tk.BooleanVar()
+    change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
+    change_password_checkbox.pack(anchor='w', padx=10, pady=5)
+    
+    add_payment_var = tk.BooleanVar()
+    add_payment_checkbox = ttk.Checkbutton(dialog, text="Add thẻ", variable=add_payment_var)
+    add_payment_checkbox.pack(anchor='w', padx=10, pady=5)
+
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda: apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var))
+    confirm_button.pack(anchor='w', padx=10, pady=10)
     
 def run_app_delete():
     def run_tool():
@@ -490,13 +627,14 @@ def open_analysis():
         try:
             file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
             err = selected_value.get()
+            data_export = db_instance.export_error_id(err) if err != "done" else db_instance.analysis_id_scusess()
             if file_path:
                 with open(file_path, 'w') as file:
-                    for data in db_instance.export_error_id(err):
-                        if len(data) >= 3:
-                            file.write(data[0] + '|' + data[1] + '|' + data[2] + '\n')
+                    for data in data_export:
+                        if len(data) >= 4:
+                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_add') +'|' +(data[3] if data[3] != None else 'non_nuse') + '\n')
                         else:
-                            file.write(data[0] + '|' + data[1] + '|' + err + '\n')
+                            file.write(data[0] + '|' + data[1] + '|' + (data[2] if data[2] != None else 'non_add') +'|' + err + '\n')
                     messagebox.showinfo("Thông báo", "Xuất thành công") 
                     subprocess.Popen(['notepad.exe', file_path])
             
@@ -511,9 +649,9 @@ def open_analysis():
     
     # Tạo một Frame với chiều rộng bằng với root
     analysis_frame.place(relx=0.5, rely=0.5, anchor="center")
-    label = Label(analysis_frame, text="Chọn lỗi muốn xuất:", font=("Arial", 20), bg="white")
+    label = Label(analysis_frame, text="Chọn keyword muốn xuất:", font=("Arial", 20), bg="white")
     label.pack(pady=5)
-    options = ["Diss", "UnLock", "add sup", "2FA", "SaiPass","country"]
+    options = ["Diss", "UnLock", "add sup", "2FA", "SaiPass","country","all","done"]
 
     # Biến để lưu trữ giá trị được chọn
     selected_value = StringVar(analysis_frame)
@@ -580,7 +718,48 @@ def export_login_delete_id():
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất thất bại kiểm tra lại tên, đường dẫn hoăc không đủ quyền")
+def export_acc_getindex(change_password):
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_getindex() if change_password == False else db_instance.analysis_acc_getindex_change_password ():
+                    ex = "Unknown" if data[2] is None else  data[2] 
+                    file.write(data[0] + '|' + data[1] + '|' + ("" if change_password == True else data[3])+ '|' + ex + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
 
+def export_acc_sideline(change_password):
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_sideline() if change_password == False else db_instance.analysis_acc_sideline_change_password():
+                    phone = "" if data[3] is None else data[3]
+                    ex = "Unknown" if data[2] is None else  data[2] 
+                    file.write(data[0] + '|' + data[1] + '|' + ("" if change_password == True else phone)+ '|' + ex + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
+
+def export_apple_id():
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.analysis_acc_apple_id():
+                    ex = "Unknown" if data[5] is None else  data[5] 
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + data[3]+ '|' + data[4]  + '|' + ex + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
 import json
 def handle_onpen_tool():
     with open('./config/tool-config.json', 'r+') as f:
@@ -600,11 +779,31 @@ def handle_onpen_tool():
             f.seek(0)  # Đặt con trỏ tệp về đầu
             f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
             f.truncate()  # Xóa nội dung còn lại nếu có
+            # unset_proxy()
             messagebox.showinfo("Thông báo", "Tool đóng thành công vui lòng đợi các id khác thực hiện xong")
 
 def close_tool():
     db_instance.close_tool()
-    
+
+def unset_proxy():
+    """Tắt proxy."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Tắt proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 0)  # Tắt proxy
+        reg.DeleteValue(registry, "ProxyServer")  # Xóa địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print("Proxy đã được tắt.")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi tắt proxy: {e}")
+        
 def open_error_pay():
     def selected_option(value):
         return value
@@ -735,6 +934,70 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
+def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var, app_choice_var):
+    def run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var):
+        app_choice = "login_getindex" if app_choice_var.get() == "GetIndex" else "sideline_tool"
+        if send_message_var.get() and delete_message_var.get() :
+            print("send and delete")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_and_delete")
+            
+        elif send_message_var.get():
+            print("send message")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_message")
+            
+        elif delete_message_var.get():
+            print("delete message")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions delete_message")
+        elif send_and_delete_var.get() and change_password_var.get():
+            print("send and delete and change password")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions send_delete_change_pass")
+        elif change_password_var.get():
+            print("change password")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions change_password")
+        elif check_live_var.get():
+            print("check live")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions check_live")
+        elif send_and_delete_var.get():
+            print("send and delete")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions delete_after_send")
+        else:
+            return
+            
+            
+    
+    time_run = int(combo.get())
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
+            time.sleep(10)
+    root.deiconify()
+    
+def apple_id_tool_run(combo, change_secury_question_var, change_region_var, change_password_var, add_payment_var):
+    def run(change_secury_question_var, change_region_var, change_password_var, add_payment_var):
+        change_region_str = "change_country" if change_region_var.get() else ""
+        change_password_str = "change_password" if change_password_var.get() else ""
+        add_payment_str = "add_card" if add_payment_var.get() else ""
+        change_secury_question_str = "change_question" if change_secury_question_var.get() else ""
+        
+        print("Run Apple ID: " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
+        subprocess.Popen("py ./commands/login_apple_id.py --actions " + change_region_str + " " + change_password_str + " " + change_secury_question_str + " " + add_payment_str)
+        
+        
+          
+        
+            
+            
+            
+    
+    time_run = int(combo.get())
+    with ThreadPoolExecutor(max_workers=time_run) as executor:
+        for i in range(time_run):
+            executor.submit(run(change_secury_question_var, change_region_var, change_password_var, add_payment_var))
+            time.sleep(10)
+    root.deiconify()
+    
+    
+    
 def reg_apple_tv():
     def run():
         subprocess.Popen("py ./commands/reg_apple_tv_add.py")
@@ -773,6 +1036,8 @@ def reg_apple_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_tv)
     submit_btn.pack(pady=10)
+
+# def 
 
 def clear_frame(frame):
     for widget in frame.winfo_children():
@@ -841,6 +1106,103 @@ def handle_add_card():
     # Tạo nút xác nhận
     button = tk.Button(add_card_window, text="Xác nhận", command=on_confirm)
     button.pack(pady=20)
+    
+from tkinter import ttk
+def show_dialog():
+    dialog = tk.Toplevel(root)  
+    dialog.title("Nhập số lượng tab")
+
+    label = ttk.Label(dialog, text="Chọn số lượng tab cần chạy:")
+    label.pack(padx=10, pady=10)
+
+    # Combobox cho phép chọn số từ 10-30
+    global combo
+    combo = ttk.Combobox(dialog, values=list(range(10, 31)))
+    combo.pack(padx=10, pady=10)
+    combo.current(0)
+
+    # Checkbox for "Xoá tin nhắn"
+    global delete_message_var
+    delete_message_var = tk.BooleanVar()
+    delete_message_checkbox = ttk.Checkbutton(dialog, text="Xoá tin nhắn", variable=delete_message_var)
+    delete_message_checkbox.pack(anchor='w',padx=10, pady=5)
+    
+    global send_message_var
+    send_message_var = tk.BooleanVar()
+    send_message_checkbox = ttk.Checkbutton(dialog, text="Gửi tin nhắn", variable=send_message_var)
+    send_message_checkbox.pack(anchor='w',padx=10, pady=5)
+
+    # Checkbox for "Đổi mật khẩu"
+    global change_password_var
+    change_password_var = tk.BooleanVar()
+    change_password_checkbox = ttk.Checkbutton(dialog, text="Đổi mật khẩu", variable=change_password_var)
+    change_password_checkbox.pack(anchor='w',padx=10, pady=5)
+    
+    global check_live_var
+    check_live_var = tk.BooleanVar()
+    check_live_checkbox = ttk.Checkbutton(dialog, text="Check live", variable=check_live_var)
+    check_live_checkbox.pack(anchor='w',padx=10, pady=5)
+    
+    global send_and_delete_var 
+    send_and_delete_var = tk.BooleanVar()
+    send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
+    send_and_delete_checkbox.pack(anchor='w',padx=10, pady=5)
+    
+    app_choice_var = tk.StringVar(value="GetIndex")  # Set default to "GetIndex"
+
+    getindex_radiobutton = ttk.Radiobutton(dialog, text="GetIndex", variable=app_choice_var, value="GetIndex")
+    sideline_radiobutton = ttk.Radiobutton(dialog, text="Sideline", variable=app_choice_var, value="Sideline")
+
+    label_radio = ttk.Label(dialog, text="Chọn ứng dụng chạy:")
+    label_radio.pack(anchor='w', padx=10, pady=5)
+    
+    sideline_radiobutton.pack(anchor='w', padx=10, pady=5)
+    getindex_radiobutton.pack(anchor='w', padx=10, pady=5)
+
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
+    confirm_button.pack(padx=10, pady=10)
+
+
+def handle_user_trick_get_index():
+    def confirm_choice(choice):
+        with open('./config/tool-config.json', 'r+') as f:
+            data = json.load(f)
+            print(choice)
+            if choice == "1":
+                data['GET_INDEX_TRICK'] = True
+                f.seek(0)  # Đặt con trỏ tệp về đầu
+                f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+                f.truncate()  # Xóa nội dung còn lại nếu có
+                messagebox.showinfo("Thông báo", "Đã cấu hình sử dụng trick")
+            else: 
+                data['GET_INDEX_TRICK'] = False
+                f.seek(0)  # Đặt con trỏ tệp về đầu
+                f.write(json.dumps(data, indent=4))  # Ghi dữ liệu mới
+                f.truncate()  # Xóa nội dung còn lại nếu có
+                messagebox.showinfo("Thông báo", "Huỷ cấu hình sử dụng trick")
+                
+    dialog = tk.Toplevel(root)  
+    dialog.title("Cài đặt trick cho getindex")
+    
+    # Tạo biến để lưu giá trị lựa chọn
+    choice_var = tk.StringVar(value="Option1")
+    
+    # Tạo Radiobuttons
+    radio1 = tk.Radiobutton(dialog, text="Dùng trick", variable=choice_var, value="1")
+    radio2 = tk.Radiobutton(dialog, text="Không", variable=choice_var, value="2")
+    
+    # Đặt vị trí cho các Radiobuttons
+    radio1.pack(anchor=tk.W, padx=10, pady=5)
+    radio2.pack(anchor=tk.W, padx=10, pady=5)
+    
+    # Tạo nút xác nhận
+    confirm_button = tk.Button(dialog, text="Xác nhận", command=lambda: confirm_choice(choice_var.get()))
+    confirm_button.pack(pady=10)
+
+    
+
+    # dialog.destroy()
+
 #===================================GUI END FUCITON======================================
   
 #===================================GUI=========================================
@@ -881,28 +1243,46 @@ add_data_menu = Menu(menu)
 menu.add_cascade(label='Thêm dữ liệu', menu=add_data_menu)
 add_data_menu.add_command(label='Thêm id', command=add_id)
 add_data_menu.add_command(label='Thêm thẻ', command=add_card)
+add_data_menu.add_command(label='Thêm acc apple id', command=add_apple_id)
 add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm acc getindex', command=lambda:add_getindex(change_password=False))
+add_data_menu.add_command(label='Thêm acc getindex change_pass', command=lambda:add_getindex(change_password=True))
+add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm acc sideline', command=lambda:add_sideline(change_password=False))
+add_data_menu.add_command(label='Thêm acc sideline change_pass', command=lambda:add_sideline(change_password=True))
+add_data_menu.add_separator()
+add_data_menu.add_command(label='Thêm proxy', command=add_proxy)
+add_data_menu.add_command(label='Xóa proxy', command=delete_proxy)
 
 featuremenu = Menu(menu)
 menu.add_cascade(label='Chức năng', menu=featuremenu)
-featuremenu.add_command(label='Login check', command=run_app_check)
-featuremenu.add_command(label='Login check xoá thẻ', command=run_app_delete)
-featuremenu.add_command(label='Login add', command=run_app)
+featuremenu.add_command(label='Tool login apple music', command=run_apple_music_login)
 featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple music', command=reg_apple_music)
 featuremenu.add_separator()
 featuremenu.add_command(label='Reg apple tv', command=reg_apple_tv)
 featuremenu.add_separator()
 featuremenu.add_command(label='Tv login', command=run_app_tv)
+featuremenu.add_separator()
+featuremenu.add_command(label='Get index/Sideline tool', command=show_dialog)
+featuremenu.add_separator()
+featuremenu.add_command(label='Apple id tool', command=apple_id_tool)
 
 analysis_menu = Menu(menu)
 menu.add_cascade(label='Thống kê', menu=analysis_menu)
-analysis_menu.add_command(label='Xuất id thành công', command=export_success_id)
-analysis_menu.add_command(label='Xuất id không thành công', command=open_analysis)
+analysis_menu.add_command(label='Xuất id theo keyword', command=open_analysis)
 analysis_menu.add_command(label='Xuất thẻ thành công', command=export_success_pay)
 analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_pay)
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
+analysis_menu.add_command(label='Xuất Acc Apple ID', command=export_apple_id)
+analysis_menu.add_separator()
+
+analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
+analysis_menu.add_command(label='Xuất acc getindex change_pass', command=lambda:export_acc_getindex(change_password=True))
+analysis_menu.add_separator()
+analysis_menu.add_command(label='Xuất acc sideline', command=lambda:export_acc_sideline(change_password=False))
+analysis_menu.add_command(label='Xuất acc sideline change_pass', command=lambda:export_acc_sideline(change_password=True))
 
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
@@ -910,6 +1290,7 @@ setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
 setting_menu.add_separator()
 setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
 setting_menu.add_command(label='Số lần add thẻ', command=handle_add_card)
+setting_menu.add_command(label='Trick GetIndex', command=handle_user_trick_get_index)
 
 
 exit_menu = Menu(menu)
@@ -918,26 +1299,4 @@ exit_menu.add_command(label='Exit', command=close_app)
 
 mainloop()
 
-# option = {
-#         'proxy':  
-#             {
-#                 'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
-#             }
-    
-#     }
-    
-# browser = webdriver.Firefox(
-#     seleniumwire_options=option
-# )
-
-# browser.get('https://music.apple.com/us/account/settings')
-# apple_id_done(browser,{'first_name': 'Nsysf', 'account': 'tandatvo91@gmail.com', 'type': 'rent', 'password': 'Zxcv123123', 'last_name': 'Zaesa', 'date_of_birth': '07051969', 'address1': '2034 Fairfax Road', 'address2': '', 'city': 'Annapolis', 'state': 'MD', 'postalCode': '21401', 'card_number': '4403938038007684', 'month_exp': '10', 'year_exp': '2024', 'ccv': '187'})
-
-# reg_apple_music()
-# click_first_login(browser)
-# add_payment(browser,{'first_name': 'Clvof', 'account': 'leblancmylie373@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Pnrme', 'date_of_birth': '08151999', 'address1': '12245 West 71st Place', 'address2': '', 'city': 'Arvada', 'state': 'CO', 'postalCode': '80004'} )
-# time.sleep(40)
-# add_payment(browser,{'first_name': 'Jveuw', 'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123', 'last_name': 'Evnea', 'date_of_birth': '08221974', 'address1': '8 Village Circle', 'address2': '', 'city': 'Randolph', 'state': 'VT', 'postalCode': '05060'} )
-# reg_apple_music()
-# process_login(browser, {'account': 'proctorbyron7@gmail.com', 'password': 'Zxcv123123'})
 
