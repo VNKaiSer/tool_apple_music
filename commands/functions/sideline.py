@@ -1,7 +1,7 @@
 import datetime
 import re
 from selenium import webdriver
-
+import tempfile
 from selenium.webdriver.chrome.service import Service
 
 from webdriver_manager.chrome import ChromeDriverManager
@@ -163,6 +163,41 @@ def extract_date(text):
         date_obj = datetime.strptime(date_str, "%b %d, %Y %I:%M %p")
         return date_obj.strftime("%d/%m/%Y")
     return None
+def random_stealth():
+    # Các ngôn ngữ phổ biến để giả lập
+    languages_list = [
+        ["en-US", "en"],
+        ["fr-FR", "fr"],
+        ["de-DE", "de"],
+        ["es-ES", "es"],
+        ["zh-CN", "zh"],
+        ["ja-JP", "ja"]
+    ]
+    
+    # Nhà cung cấp trình duyệt phổ biến
+    vendors = ["Google Inc.", "Apple Inc.", "Microsoft Corporation", "Mozilla Foundation"]
+    
+    # Các nền tảng (hệ điều hành)
+    platforms = ["Win32", "Win64", "MacIntel", "Linux x86_64", "iPhone"]
+    
+    # Các nhà sản xuất phần cứng WebGL phổ biến
+    webgl_vendors = ["Intel Inc.", "NVIDIA Corporation", "AMD", "Apple Inc."]
+    
+    # Các renderer engine phổ biến
+    renderers = [
+        "Intel Iris OpenGL Engine",
+        "NVIDIA GeForce GTX 1050 Ti OpenGL Engine",
+        "AMD Radeon Pro 580 OpenGL Engine",
+        "Apple A12 GPU OpenGL Engine"
+    ]
+    
+    # Chọn ngẫu nhiên một giá trị từ mỗi danh sách
+    languages = random.choice(languages_list)
+    vendor = random.choice(vendors)
+    platform = random.choice(platforms)
+    webgl_vendor = random.choice(webgl_vendors)
+    renderer = random.choice(renderers)
+    return languages, vendor, platform, webgl_vendor, renderer
 
 def getData(change_pass):
     while True:
@@ -338,7 +373,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         if port == 0:
             return
-        
+        temp_dir = tempfile.gettempdir()
         proxy = f'{proxy_name}:{port}'
         logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
         
@@ -350,6 +385,9 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument(f'user-agent={user_agent}')
         chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument(f'user-data-dir={temp_dir}')
+        chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
+        chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
         # disable webRTC
         # chrome_options.add_argument('--disable-webrtc')
         # chrome_options.add_argument('--disable-webrtc-hw-encoding')
@@ -360,6 +398,14 @@ def login(change_password = False, send_message = False, delete_message = False,
             options=chrome_options,
         )
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        languages, vendor, platform, webgl_vendor, renderer = random_stealth()
+        stealth(driver,
+            languages=languages,
+            vendor=vendor,
+            platform=platform,
+            webgl_vendor=webgl_vendor,
+            renderer=renderer,
+            fix_hairline=True)
         # stealth(driver,
         #     languages=["en-US", "en"],
         #     vendor="Google Inc.",

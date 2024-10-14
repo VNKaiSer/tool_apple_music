@@ -1,7 +1,7 @@
 import datetime
 import re
 from selenium import webdriver
-
+import tempfile
 from selenium.webdriver.chrome.service import Service
 
 from webdriver_manager.chrome import ChromeDriverManager
@@ -347,6 +347,42 @@ def choice_user_agents():
     with open(file_path, 'r') as file:
         user_agents = file.readlines()
     return random.choice(user_agents).strip()
+
+def random_stealth():
+    # Các ngôn ngữ phổ biến để giả lập
+    languages_list = [
+        ["en-US", "en"],
+        ["fr-FR", "fr"],
+        ["de-DE", "de"],
+        ["es-ES", "es"],
+        ["zh-CN", "zh"],
+        ["ja-JP", "ja"]
+    ]
+    
+    # Nhà cung cấp trình duyệt phổ biến
+    vendors = ["Google Inc.", "Apple Inc.", "Microsoft Corporation", "Mozilla Foundation"]
+    
+    # Các nền tảng (hệ điều hành)
+    platforms = ["Win32", "Win64", "MacIntel", "Linux x86_64", "iPhone"]
+    
+    # Các nhà sản xuất phần cứng WebGL phổ biến
+    webgl_vendors = ["Intel Inc.", "NVIDIA Corporation", "AMD", "Apple Inc."]
+    
+    # Các renderer engine phổ biến
+    renderers = [
+        "Intel Iris OpenGL Engine",
+        "NVIDIA GeForce GTX 1050 Ti OpenGL Engine",
+        "AMD Radeon Pro 580 OpenGL Engine",
+        "Apple A12 GPU OpenGL Engine"
+    ]
+    
+    # Chọn ngẫu nhiên một giá trị từ mỗi danh sách
+    languages = random.choice(languages_list)
+    vendor = random.choice(vendors)
+    platform = random.choice(platforms)
+    webgl_vendor = random.choice(webgl_vendors)
+    renderer = random.choice(renderers)
+    return languages, vendor, platform, webgl_vendor, renderer
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
@@ -385,6 +421,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         if port == 0:
             return
         proxy = f'{proxy_name}:{port}' 
+        temp_dir = tempfile.mkdtemp()
         chrome_options = Options()
         # chrome_options.add_argument('--ignore-certificate-errors')
         # chrome_options.add_argument('--allow-insecure-localhost')
@@ -398,6 +435,9 @@ def login(change_password = False, send_message = False, delete_message = False,
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument(f'user-agent={user_agent}')
         chrome_options.add_argument(f'--proxy-server={proxy}')
+        chrome_options.add_argument(f'user-data-dir={temp_dir}')
+        chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
+        chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
         # disable webRTC
         # chrome_options.add_argument('--disable-webrtc')
         # chrome_options.add_argument('--disable-webrtc-hw-encoding')
@@ -410,13 +450,14 @@ def login(change_password = False, send_message = False, delete_message = False,
             # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
         )
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        # stealth(driver,
-        #     languages=["en-US", "en"],
-        #     vendor="Google Inc.",
-        #     platform="Win32",
-        #     webgl_vendor="Intel Inc.",
-        #     renderer="Intel Iris OpenGL Engine",
-        #     fix_hairline=True)
+        languages, vendor, platform, webgl_vendor, renderer = random_stealth()
+        stealth(driver,
+            languages=languages,
+            vendor=vendor,
+            platform=platform,
+            webgl_vendor=webgl_vendor,
+            renderer=renderer,
+            fix_hairline=True)
         # script = """
         # Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
         #     value: () => new Promise((resolve, reject) => {
