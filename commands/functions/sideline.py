@@ -373,7 +373,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         
         if port == 0:
             return
-        temp_dir = tempfile.gettempdir()
+        temp_dir = tempfile.mkdtemp()
         proxy = f'{proxy_name}:{port}'
         logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
         
