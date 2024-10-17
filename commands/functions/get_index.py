@@ -682,6 +682,19 @@ def login(change_password = False, send_message = False, delete_message = False,
                             return
                     except:
                         print("no sub")  
+                elif ex == "Error Processing Request":
+                    if time_reload == 0:
+                        time_reload = time_reload + 1
+                        driver.execute_script("location.reload();")
+                        time.sleep(5)
+                        continue 
+                    else:
+                        if change_password:
+                            db_instance.result_acc_getindex_change_password(username, ex)
+                        else:
+                            db_instance.result_acc_getindex(username, ex)
+                        driver.quit()
+                        return
                 else:
                     if change_password:
                         db_instance.result_acc_getindex_change_password(username, ex)
