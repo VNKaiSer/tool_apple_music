@@ -26,15 +26,18 @@ import string
 import datetime
 import requests
 import json
-from const import *
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from faker import Faker
+from datetime import datetime, timedelta
+fake = Faker(locale='en_US')
 logging.getLogger('seleniumwire').setLevel(logging.ERROR)
+
 # Class
 class Tool_Exception:
     DONE = "done"
     DISSABLE = "Your account has been disabled. Contact Apple Support for more details."
-    INVALID_PASSWORD = "Your Apple ID or password was incorrect."
+    INVALID_PASSWORD = "Enter the email or phone number and password for your Apple Account."
     LOCK = "This Apple ID has been locked for security reasons."
     SUPPORT = "Contact Apple Support for more information."
     MANY = "This payment method is associated with too many Apple IDs. To continue, choose another payment method."
@@ -45,7 +48,8 @@ class Tool_Exception:
     ISSUE_METHOD = "There is an issue with your payment method. Update your payment information to correct the problem and try again."
     DEC = "Your payment method was declined. Please enter valid payment method information."
     DECLINED = "Payment Method Declined"
-
+    PAYMENT_ERR= "This payment method is associated with too many Apple Accounts. To continue, choose another payment method."
+    DISSABLE_PURCHASE = "Tap Continue to request re-enablement."
 class Config:
     #web
     WEB_URL = "https://music.apple.com/us/login"
@@ -111,6 +115,10 @@ class MySQLDatabase:
             database="apple_music"
         )
         self.cursor = self.connection.cursor()
+        self.set_isolation_level()
+        
+    def set_isolation_level(self):
+        self.cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
 
     def create_table(self, table_name, columns):
         column_str = ', '.join(columns)
@@ -161,6 +169,38 @@ class MySQLDatabase:
         result = self.cursor.fetchall()
         print(result)
         return result
+    
+    def get_acc_apple_music(self):
+        try:
+            # Kiểm tra xem transaction đã bắt đầu chưa, nếu chưa thì bắt đầu một transaction mới
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            # Câu lệnh SELECT để lấy dữ liệu từ bảng mail
+            query = "SELECT * FROM mail WHERE isRunning = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            # Kiểm tra kết quả truy vấn
+            if result:
+                # Tăng giá trị count_run và cập nhật isRunning thành 'Y'
+                update_query = "UPDATE mail SET isRunning = 'Y', count_run = count_run + 1 WHERE id = %s"
+                self.cursor.execute(update_query, (result[0][0],))
+
+                # Xác nhận transaction
+                self.connection.commit()
+
+                # Trả về kết quả đầu tiên từ truy vấn
+                return result
+            else:
+                # Không có kết quả, rollback transaction
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            # Xảy ra lỗi, rollback lại transaction
+            self.connection.rollback()
+            return ''
 
     def export_error_id(self, error):
         query = None
@@ -352,6 +392,328 @@ class MySQLDatabase:
             self.cursor.execute(query_insert, (mail_wait, password, code_old))
             self.connection.commit()
     
+    def get_acc_get_index(self):
+        try:
+            self.connection.start_transaction()
+
+            query = "SELECT * FROM get_index_tool WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE get_index_tool SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+    
+    def get_acc_sideline(self):
+        try:
+            self.connection.start_transaction()
+
+            query = "SELECT * FROM sideline_tool WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE sideline_tool SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+
+        # finally:
+        #     self.cursor.close()
+        #     self.connection.close()
+    
+    def update_rerun_acc_get_index(self, username):
+        query = "UPDATE get_index_tool SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def update_rerun_acc_sideline(self, username):
+        query = "UPDATE sideline_tool SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+        
+    def insert_acc_getindex(self, username, password):
+        query = "INSERT INTO get_index_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def insert_acc_sideline(self, username, password):
+        query = "INSERT INTO sideline_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def insert_acc_sideline_change_password(self, username, password):
+        query = "INSERT INTO SidelineChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def insert_acc_getindex_change_password(self, username, password):
+        query = "INSERT INTO IndexChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+    
+    def result_acc_getindex(self, username, ex):
+        query = "UPDATE get_index_tool SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+    
+    def result_acc_sideline(self, username, ex):
+        query = "UPDATE sideline_tool SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+    
+    def update_phone_acc_getindex(self, username, phone):
+        query = "UPDATE get_index_tool SET phone = %s WHERE user_name = %s"
+        self.cursor.execute(query, (phone, username))
+        self.connection.commit()
+    
+    def update_phone_acc_sideline(self, username, phone):
+        query = "UPDATE sideline_tool SET phone = %s WHERE user_name = %s"
+        self.cursor.execute(query, (phone, username))
+        self.connection.commit()
+    
+    def count_account_sideline_store(self):
+        query = "SELECT COUNT(*) FROM sideline_tool WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
+    
+    def count_account_getindex_store(self):
+        query = "SELECT COUNT(*) FROM get_index_tool WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
+    
+    def count_account_apple_id(self):
+        query = "SELECT COUNT(*) FROM apple_id_login WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
+    
+    def count_account_music_store(self):
+        query = "SELECT COUNT(*) FROM mail WHERE isRunning = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        self.connection.commit()
+        return result
+
+# Change password get index tool
+## 
+##
+    def change_password_get_index(self, username, password):
+        query = "UPDATE IndexChangePass SET password = %s, ex = 'done' WHERE user_name = %s"
+        self.cursor.execute(query, (password, username))
+        self.connection.commit()
+        
+    def change_password_sideline(self, username, password):
+        query = "UPDATE SidelineChangePass SET password = %s, ex = 'done' WHERE user_name = %s"
+        self.cursor.execute(query, (password, username))
+        self.connection.commit()
+    
+    def change_password_sideline_base(self, username, password):
+        query = "UPDATE sideline_tool SET password = %s, ex = 'done' WHERE user_name = %s"
+        self.cursor.execute(query, (password, username))
+        self.connection.commit()
+    
+    def change_password_get_index_i(self, username, password):
+        query = "UPDATE get_index_tool SET password = %s, ex = 'done' WHERE user_name = %s"
+        self.cursor.execute(query, (password, username))
+        self.connection.commit()
+    
+    def insert_acc_index_change_password(self, username, password):
+        query = "INSERT INTO IndexChangePass(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
+        
+    def export_acc_index_change_password(self):
+        query = "SELECT * FROM IndexChangePass WHERE is_running = 'Y'"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
+    def count_account_getindex_change_password(self):
+        query = "SELECT COUNT(*) FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def count_account_sideline_change_password(self):
+        query = "SELECT COUNT(*) FROM SidelineChangePass WHERE is_running = 'N' and count_run <= 3"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+
+    def get_acc_get_index_change_password(self):
+        try:
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            query = "SELECT * FROM IndexChangePass WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE IndexChangePass SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+            return ''
+    def get_acc_sideline_change_password(self):
+        try:
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            query = "SELECT * FROM SidelineChangePass WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE SidelineChangePass SET is_running = 'Y', count_run = count_run + 1 WHERE user_name = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+            return ''
+        
+    def get_acc_apple_id(self):
+        try:
+            if not self.connection.in_transaction:
+                self.connection.start_transaction()
+
+            query = "SELECT * FROM apple_id_login WHERE is_running = 'N' and count_run <= 3 LIMIT 1 FOR UPDATE"
+            self.cursor.execute(query)
+            result = self.cursor.fetchall()
+
+            if result:
+                update_running = "UPDATE apple_id_login SET is_running = 'Y', count_run = count_run + 1 WHERE acc = %s"
+                self.cursor.execute(update_running, (result[0][1],))
+
+                self.connection.commit()
+                return result[0]
+            else:
+                self.connection.rollback()
+                return ''
+
+        except Exception as e:
+            self.connection.rollback()
+            return ''
+        
+    def update_rerun_acc_apple_id(self, username):
+        query = "UPDATE apple_id_login SET is_running = 'N' WHERE acc = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def update_rerun_acc_get_index_change_password(self, username):
+        query = "UPDATE IndexChangePass SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def update_rerun_acc_sideline_change_password(self, username):
+        query = "UPDATE SidelineChangePass SET is_running = 'N' WHERE user_name = %s"
+        self.cursor.execute(query, (username,))
+        self.connection.commit()
+    
+    def result_acc_getindex_change_password(self, username, ex):
+        query = "UPDATE IndexChangePass SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+        
+    def result_acc_sideline_change_password(self, username, ex):
+        query = "UPDATE SidelineChangePass SET ex = %s WHERE user_name = %s" 
+        self.cursor.execute(query, (ex, username))
+        self.connection.commit()
+    
+    def increment_count_run(self, table_name, id):
+        query = f"UPDATE {table_name} SET count_run = count_run + 1 WHERE id = '{id}'"
+        self.cursor.execute(query)
+        self.connection.commit()
+    
+    def insert_account_apple_id(self, acc, password, q1, q2, q3):
+        query = "INSERT INTO apple_id_login (acc, password, q1, q2, q3) VALUES (%s, %s, %s, %s, %s)"
+        self.cursor.execute(query, (acc, password, q1, q2, q3))
+        self.connection.commit()
+
+    # Query về proxy
+    def check_and_insert_proxy(self, ip):
+        query = "SELECT * FROM proxy_ip WHERE ip = %s"
+        self.cursor.execute(query, (ip,))
+        result = self.cursor.fetchall()
+        if not result:
+            query = "INSERT INTO proxy_ip (ip) VALUES (%s)"
+            self.cursor.execute(query, (ip,))
+            self.connection.commit()
+            return True
+        return False
+
+    def get_proxy(self):
+        try:
+            # Bắt đầu transaction
+            self.connection.start_transaction()
+
+            # Lấy port đầu tiên theo id tăng dần
+            query = "SELECT id, port, proxy_name FROM port_proxy ORDER BY id ASC LIMIT 1"
+            self.cursor.execute(query)
+            result = self.cursor.fetchone()
+
+            if result:
+                id_proxy = result[0]
+                port = result[1]
+                proxy_name = result[2]
+
+                # Xóa port đã lấy
+                delete_query = "DELETE FROM port_proxy WHERE id = %s"
+                self.cursor.execute(delete_query, (id_proxy,))
+
+                # Chèn lại port
+                insert_query = "INSERT IGNORE INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
+                self.cursor.execute(insert_query, (port, proxy_name))
+
+                # Commit transaction
+                self.connection.commit()
+
+                return proxy_name, port
+            else:
+                # Trả về 0 nếu không có kết quả
+                return "",0
+
+        except Exception as e:
+            # Rollback nếu có lỗi
+            self.connection.rollback()
+            print(f"Error: {e}")
+            return "",0
+
     def get_account_login_apple_tv(self):
         pass
        
@@ -423,7 +785,6 @@ def check_account_is_block(browser):
         else:
             return False    
     except Exception as e:
-            print(e)
             return False
 def check_account_login_invalid_password(browser):
     try:
@@ -441,8 +802,24 @@ def check_account_has_otp(browser):
         print("Has OTP")
         return True    
     except Exception as e:
-            print(e)
             return False
+        
+def generate_random_password():
+    while True:
+        password = fake.password(length=10, special_chars=False, upper_case=True, lower_case=True)
+        # Kiểm tra xem có 3 ký tự giống nhau không phân biệt hoa thường
+        if has_three_consecutive_characters(password):
+            continue  # Tạo mật khẩu mới nếu có
+        else:
+            return 'A' + password + '@'
+        
+def has_three_consecutive_characters(password):
+    # Chuyển đổi mật khẩu thành chữ thường để so sánh không phân biệt hoa thường
+    password = password.lower()
+    for i in range(len(password) - 2):
+        if password[i] == password[i+1] == password[i+2]:
+            return True
+    return False
 option = {
     'proxy': 
         config.PROXY_URL
@@ -455,5 +832,90 @@ logging.basicConfig(filename='./logs/errors.log', level=logging.ERROR, format='%
 #State
 USE_PROXY = True
 RUN_APP = True
-WAIT_START = 30
-WAIT_CHILD = 10
+WAIT_START = 60
+WAIT_CHILD = 15
+
+class InvalidPasswordError(Exception):
+    def __init__(self, message="Invalid Password"):
+        self.message = message
+        super().__init__(self.message)
+
+class InvalidSecureQuestionError(Exception):
+    def __init__(self, message="Invalid Secure Question"):
+        self.message = message
+        super().__init__(self.message)
+
+class AccountLockedError(Exception):
+    def __init__(self, message="Account Locked"):
+        self.message = message
+        super().__init__(self.message)
+
+class AccountDisabledError(Exception):
+    def __init__(self, message="Account Disabled"):
+        self.message = message
+        super().__init__(self.message)
+
+class AccountDone(Exception):
+    def __init__(self, message="Account Done"):
+        self.message = message
+        super().__init__(self.message)
+        
+import winreg as reg
+
+def set_proxy(proxy_address):
+    """Bật proxy với địa chỉ đã cho."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Thiết lập proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 1)  # Bật proxy
+        reg.SetValueEx(registry, "ProxyServer", 0, reg.REG_SZ, proxy_address)  # Địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print(f"Proxy đã được thiết lập: {proxy_address}")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi thiết lập proxy: {e}")
+
+import winreg as reg
+def unset_proxy():
+    """Tắt proxy."""
+    try:
+        # Đường dẫn đến registry cho cài đặt proxy
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        
+        # Mở registry
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path, 0, reg.KEY_SET_VALUE)
+        
+        # Tắt proxy
+        reg.SetValueEx(registry, "ProxyEnable", 0, reg.REG_DWORD, 0)  # Tắt proxy
+        reg.DeleteValue(registry, "ProxyServer")  # Xóa địa chỉ proxy
+        
+        # Đóng registry
+        reg.CloseKey(registry)
+        print("Proxy đã được tắt.")
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi tắt proxy: {e}")
+
+def get_proxy():
+    """Lấy địa chỉ proxy hiện tại."""
+    try:
+        registry_path = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        registry = reg.OpenKey(reg.HKEY_CURRENT_USER, registry_path)
+        
+        proxy_enable = reg.QueryValueEx(registry, "ProxyEnable")[0]
+        proxy_server = reg.QueryValueEx(registry, "ProxyServer")[0] if proxy_enable else None
+        
+        reg.CloseKey(registry)
+        
+        if proxy_enable:
+            return proxy_server  # Trả về địa chỉ proxy
+        else:
+            return None  # Không bật proxy
+    except Exception as e:
+        print(f"Đã xảy ra lỗi khi lấy địa chỉ proxy: {e}")
+        return None
