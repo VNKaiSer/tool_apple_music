@@ -72,13 +72,16 @@ def run(run_check = False, run_delete = False):
         return
     account = Account(data[0][1], data[0][2])
     try:
-        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe")))
-        iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe")
-        browser.switch_to.frame(iframe)
-    
+        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR,  "#ck-container > iframe:nth-child(1)")))
+        iframe = browser.find_element(By.CSS_SELECTOR, value= "#ck-container > iframe:nth-child(1)")
+        browser.switch_to.frame(iframe) 
+        WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.ID, "aid-auth-widget-iFrame")))
+        iframe_auth = browser.find_element(By.ID, value= "aid-auth-widget-iFrame")
+        browser.switch_to.frame(iframe_auth)
+        
         #Nhập account name
-        wait.until(EC.visibility_of_element_located((By.ID, "accountName")))
-        inputAccount = browser.find_element(By.ID, "accountName")
+        wait.until(EC.visibility_of_element_located((By.ID, "account_name_text_field")))
+        inputAccount = browser.find_element(By.ID, "account_name_text_field")
         time.sleep(2)
         inputAccount.send_keys(account.get_account())
         # Nhấn nút login
@@ -86,9 +89,6 @@ def run(run_check = False, run_delete = False):
         browser.switch_to.active_element.send_keys(Keys.ENTER)
         time.sleep(2)
         browser.switch_to.active_element.send_keys(Keys.ENTER) # Nhấn nút login lần 2 
-        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#aid-auth-widget-iFrame")))
-        iframe_auth = browser.find_element(By.CSS_SELECTOR, "#aid-auth-widget-iFrame")
-        browser.switch_to.frame(iframe_auth)
     except Exception as e:
         logging.error("Error Tool: %s", str("Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy"))
         db_instance.update_data(table_name="mail", set_values={"isRunning": "N"}, condition="id = %s" % data[0][0])
