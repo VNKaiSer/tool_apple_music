@@ -486,7 +486,10 @@ def login(change_password = False, send_message = False, delete_message = False,
             return
         time.sleep(2)
         
-        driver.get("https://app.getindex.com/login")
+        driver.get("https://getindex.com/")
+        WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/div/header/div/div[2]/div/div/div/div/div[2]/div[1]/nav/ul/li[4]/a')))
+        time.sleep(random.randint(2, 3))
+        driver.find_element(By.XPATH, '/html/body/div[2]/div/header/div/div[2]/div/div/div/div/div[2]/div[1]/nav/ul/li[4]/a').click()
         root_tab = driver.current_window_handle
         tmp = getData(change_password)
         if tmp is None:
@@ -520,33 +523,34 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         return
         time.sleep(2)
         #Nhấn vào logo
-        try: 
-            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
-            WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
-            logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
-            action = ActionChains(driver)
-            action.move_to_element(logo).perform()
-            action.click(logo).perform()
-            time.sleep(2)
-            # Chờ tab mới mở ra
-            driver.implicitly_wait(5)
-            driver.switch_to.window(root_tab)
-            time.sleep(2)
-            # # Chuyển qua tab mới
-            # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
-            # driver.switch_to.window(new_tab)
-            # # Đóng tab mới
-            # driver.close()
-            # driver.switch_to.window(root_tab)
-        except:
-            if change_password:
-                db_instance.update_rerun_acc_get_index_change_password(username)
-                driver.quit()
-                return
-            else :
-                db_instance.update_rerun_acc_get_index(username)
-                driver.quit()
-                return 
+        # try: 
+        #     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+        #     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')))
+        #     logo = driver.find_element(By.XPATH, '/html/body/app-root/ion-app/main/app-header/sc-header/ion-header/ion-toolbar/ion-grid/ion-row/ion-col[1]/ion-item/ion-img')
+        #     action = ActionChains(driver)
+        #     action.move_to_element(logo).perform()
+        #     action.click(logo).perform()
+        #     time.sleep(2)
+        #     # Chờ tab mới mở ra
+        #     driver.implicitly_wait(5)
+        #     driver.switch_to.window(root_tab)
+        #     time.sleep(2)
+        #     # # Chuyển qua tab mới
+        #     # new_tab = [tab for tab in driver.window_handles if tab != root_tab][0]
+        #     # driver.switch_to.window(new_tab)
+        #     # # Đóng tab mới
+        #     # driver.close()
+        #     # driver.switch_to.window(root_tab)
+        # except:
+        #     if change_password:
+        #         db_instance.update_rerun_acc_get_index_change_password(username)
+        #         driver.quit()
+        #         return
+        #     else :
+        #         db_instance.update_rerun_acc_get_index(username)
+        #         driver.quit()
+        #         return 
+        
         time_reload = 0
         while True:
             # if time_reload == 1:
