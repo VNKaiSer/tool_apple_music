@@ -851,7 +851,7 @@ def open_error_pay():
     submit_btn = Button(analysis_frame, text="Xuất", command=export_error_data_pay)
     submit_btn.pack(pady=10)
 
-def export_full_pay(change_password):
+def export_full_pay():
     try:
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
