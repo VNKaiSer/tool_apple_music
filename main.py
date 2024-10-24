@@ -291,7 +291,13 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
-        
+    
+    def export_full_pay(self):
+        query = "SELECT card_number, `day`, `year`, ccv, exception, number_use from pay"
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
+    
     def close(self):
         self.connection.close()
         
@@ -845,7 +851,20 @@ def open_error_pay():
     submit_btn = Button(analysis_frame, text="Xuất", command=export_error_data_pay)
     submit_btn.pack(pady=10)
 
-
+def export_full_pay(change_password):
+    try:
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.export_full_pay():
+                    ex = "" if data[4] == None else data[4]
+                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + str(data[3]) + '|' + ex + '|' +  data[5] + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
+        
 def reg_apple_music():
     def run(choice):
         # while True:
@@ -1276,6 +1295,7 @@ analysis_menu.add_command(label='Xuất thẻ thất bại', command=open_error_
 analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export_login_check_id)
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 analysis_menu.add_command(label='Xuất Acc Apple ID', command=export_apple_id)
+analysis_menu.add_command(label='Xuất all Pay', command=export_full_pay)
 analysis_menu.add_separator()
 
 analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
@@ -1283,7 +1303,6 @@ analysis_menu.add_command(label='Xuất acc getindex change_pass', command=lambd
 analysis_menu.add_separator()
 analysis_menu.add_command(label='Xuất acc sideline', command=lambda:export_acc_sideline(change_password=False))
 analysis_menu.add_command(label='Xuất acc sideline change_pass', command=lambda:export_acc_sideline(change_password=True))
-
 setting_menu = Menu(menu)
 menu.add_cascade(label='Cài đặt', menu=setting_menu)
 setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
