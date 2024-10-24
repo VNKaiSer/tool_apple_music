@@ -16,7 +16,7 @@ def run(run_check = False, run_delete = False):
         print(data)
         
         if data == '': raise Exception('Khong tim thay acc')
-        # data = db_instance.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
+        # data = db_instanSUPPORTSUPPORTce.fetch_data(table_name="mail", columns=["*"], condition="isRunning = 'N' and count_run <= 3 limit 1") 
         # print(data)
         # db_instance.increment_count_run(table_name="mail", id= data[0][0])
         # db_instance.update_data(table_name="mail", set_values={"isRunning": "Y"}, condition="id = %s" % data[0][0])
@@ -301,8 +301,9 @@ def run(run_check = False, run_delete = False):
                     case tool_exception.SUPPORT:
                         logging.error("Error Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is support"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "contact suport"}, condition=f"id = {data_card[0][0]}")
-                        wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
-                        browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
+                        db_instance.update_data(table_name="mail", set_values={"status": 0, "exception": "add sup"}, condition=f"id = {data[0][0]}")
+                        run_add_card = False
+                        browser.quit()
                     case tool_exception.DIE:
                         logging.error("Die Card: Cardnumber - %s", str(data_card[0][1] +" - "+"Card is die"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
