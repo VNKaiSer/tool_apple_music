@@ -858,7 +858,7 @@ def export_full_pay():
             with open(file_path, 'w') as file:
                 for data in db_instance.export_full_pay():
                     ex = "" if data[4] == None else data[4]
-                    file.write(data[0] + '|' + data[1] + '|' + data[2] + '|' + str(data[3]) + '|' + ex + '|' +  data[5] + '\n')
+                    file.write(str(data[0]) + '|' + str(data[1]) + '|' + str(data[2]) + '|' + str(data[3]) + '|' + ex + '|' +  str(data[5]) + '\n')
                 messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
                 subprocess.Popen(['notepad.exe', file_path])
     except Exception as e:
