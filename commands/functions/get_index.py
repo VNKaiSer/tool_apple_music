@@ -487,6 +487,7 @@ def login(change_password = False, send_message = False, delete_message = False,
         time.sleep(2)
         
         driver.get("https://app.getindex.com/login")
+        # driver.get("https://app.getindex.com")
         driver.set_window_size(1024, 640)
         # WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/div/header/div/div[2]/div/div/div/div/div[2]/div[1]/nav/ul/li[4]/a')))
         # time.sleep(random.randint(2, 3))
