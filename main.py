@@ -1221,6 +1221,7 @@ def handle_user_trick_get_index():
     
 
     # dialog.destroy()
+import shutil
 def clear_temp_folder():
     temp_folder = os.getenv('TEMP')
     print(f"Đang xóa tất cả các tệp và thư mục trong thư mục tạm thời: {temp_folder}")
