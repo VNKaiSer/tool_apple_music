@@ -1200,6 +1200,25 @@ def handle_user_trick_get_index():
                 f.truncate()  # Xóa nội dung còn lại nếu có
                 messagebox.showinfo("Thông báo", "Huỷ cấu hình sử dụng trick")
                 
+def clear_temp_folder():
+    temp_folder = os.getenv('TEMP')
+    print(f"Đang xóa tất cả các tệp và thư mục trong thư mục tạm thời: {temp_folder}")
+    for root, dirs, files in os.walk(temp_folder):
+        for file in files:
+            try:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+                print(f"Đã xóa tệp: {file_path}")
+            except Exception as e:
+                print(f"Không thể xóa tệp {file_path}: {e}")
+        for dir in dirs:
+            try:
+                dir_path = os.path.join(root, dir)
+                shutil.rmtree(dir_path)
+                print(f"Đã xóa thư mục: {dir_path}")
+            except Exception as e:
+                print(f"Không thể xóa thư mục {dir_path}: {e}")
+                
     dialog = tk.Toplevel(root)  
     dialog.title("Cài đặt trick cho getindex")
     
@@ -1309,7 +1328,7 @@ setting_menu.add_command(label='Mở/Đóng tool', command=handle_onpen_tool)
 setting_menu.add_separator()
 setting_menu.add_command(label='Bật/Tắt proxy', command=handle_proxy)
 setting_menu.add_command(label='Số lần add thẻ', command=handle_add_card)
-setting_menu.add_command(label='Trick GetIndex', command=handle_user_trick_get_index)
+setting_menu.add_command(label='Clear temp', command=clear_temp_folder)
 
 
 exit_menu = Menu(menu)
