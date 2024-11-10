@@ -169,10 +169,10 @@ def run(run_check = False, run_delete = False):
             browser.get("https://music.apple.com/us/account/settings")
             time_reload = time_reload + 1
             try: 
-                WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")))
-                iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+                WebDriverWait(browser, 60).until(EC.visibility_of_element_located((By.XPATH, "/html/body/div/div/div[4]/main/div/div/iframe")))
+                iframe_setting = browser.find_element(By.XPATH, "/html/body/div/div/div[4]/main/div/div/iframe")
 
-                iframe_setting = browser.find_element(By.CSS_SELECTOR, ".commerce-modal-embedded > iframe:nth-child(1)")
+                iframe_setting = browser.find_element(By.XPATH, "/html/body/div/div/div[4]/main/div/div/iframe")
                 browser.switch_to.frame(iframe_setting)
 
                 WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.TAG_NAME, 'li')))
