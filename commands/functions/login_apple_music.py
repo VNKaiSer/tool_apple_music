@@ -317,7 +317,7 @@ def run(run_check = False, run_delete = False):
                         run_add_card = False
                         browser.quit()
                     case tool_exception.ISSUE_METHOD:
-                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card Die"))
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Die"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Die"}, condition=f"id = {data_card[0][0]}")
                         wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                         browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
@@ -329,13 +329,13 @@ def run(run_check = False, run_delete = False):
                         browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                         continue
                     case tool_exception.DECLINED:
-                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Declined"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "DEC"}, condition=f"id = {data_card[0][0]}")
                         wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                         browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
                         continue
                     case tool_exception.PAYMENT_ERR:
-                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Card DEC"))
+                        logging.error("Error Card: Id - %s", str(data[0][1] +" - "+"Payment Error"))
                         db_instance.update_data(table_name="pay", set_values={"status": 0, "exception": "Many add"}, condition=f"id = {data_card[0][0]}")
                         wait.until(EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button")))
                         browser.find_element(By.XPATH, "/html/body/div[1]/camk-modal/div/camk-modal-button-bar/camk-button-bar/div/div[2]/button").click()
