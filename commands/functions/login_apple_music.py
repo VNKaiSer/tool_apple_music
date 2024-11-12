@@ -240,7 +240,7 @@ def run(run_check = False, run_delete = False):
     try:
         run_add_card = True
         while run_add_card:
-            data_card = db_instance.fetch_data(table_name="pay", columns=["*"], condition="status = 1 limit 1")
+            data_card = db_instance.get_data_card()
             try:
                 if data_card[0] is None:
                     logging.error("Error: %s", str("Hết thẻ"))
