@@ -38,7 +38,7 @@ class Tool_Exception:
     DONE = "done"
     DISSABLE = "Your account has been disabled. Contact Apple Support for more details."
     INVALID_PASSWORD = "Enter the email or phone number and password for your Apple Account."
-    LOCK = "This Apple ID has been locked for security reasons."
+    LOCK = "This Apple Account has been locked for security reasons."
     SUPPORT = "Contact Apple Support for more information."
     MANY = "This payment method is associated with too many Apple IDs. To continue, choose another payment method."
     INVALID_CARD = "Your credit card was declined. Please enter a valid credit card information."
