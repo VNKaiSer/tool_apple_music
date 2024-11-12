@@ -183,6 +183,7 @@ class MySQLDatabase:
 
             # Kiểm tra kết quả truy vấn
             if result:
+                time.sleep(5)
                 # Tăng giá trị count_run và cập nhật isRunning thành 'Y'
                 update_query = "UPDATE mail SET isRunning = 'Y', count_run = count_run + 1 WHERE id = %s"
                 self.cursor.execute(update_query, (result[0][0],))
