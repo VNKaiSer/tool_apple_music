@@ -297,6 +297,12 @@ class MySQLDatabase:
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
+
+    def export_full_mail(self):
+        query = "SELECT SELECT id, password, card_add, exception, country FROM mail "
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        return result
     
     def close(self):
         self.connection.close()
@@ -864,6 +870,23 @@ def export_full_pay():
     except Exception as e:
         print(e)
         messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
+
+def export_full_mail():
+    try:
+        # id, password, card_add, exception, country
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        if file_path:
+            with open(file_path, 'w') as file:
+                for data in db_instance.export_full_mail():
+                    ex = "" if data[3] == None else data[3]
+                    card_add = "" if data[2] == None else data[2]
+                    country = "" if data[4] == None else data[4]
+                    file.write(str(data[0]) + '|' + str(data[1]) + '|' + card_add + '|' + ex + '|' + country + '\n')
+                messagebox.showinfo("Thông báo", "Xuất dữ liệu thành công")
+                subprocess.Popen(['notepad.exe', file_path])
+    except Exception as e:
+        print(e)
+        messagebox.showerror("Thông báo", "Error: Xuất dữ liệu thất bại")
         
 def reg_apple_music():
     def run(choice):
@@ -1314,6 +1337,7 @@ analysis_menu.add_command(label='Xuất thẻ thẻ login check', command=export
 analysis_menu.add_command(label='Xuất thẻ thẻ login delete', command=export_login_delete_id)
 analysis_menu.add_command(label='Xuất Acc Apple ID', command=export_apple_id)
 analysis_menu.add_command(label='Xuất all Pay', command=export_full_pay)
+analysis_menu.add_command(label='Xuất all Mail', command=export_full_mail)
 analysis_menu.add_separator()
 
 analysis_menu.add_command(label='Xuất acc getindex', command=lambda:export_acc_getindex(change_password=False))
