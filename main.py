@@ -299,7 +299,7 @@ class MySQLDatabase:
         return result
 
     def export_full_mail(self):
-        query = "SELECT id, password, card_add, exception, country FROM mail "
+        query = "SELECT user, password, card_add, exception, country FROM mail "
         self.cursor.execute(query)
         result = self.cursor.fetchall()
         return result
