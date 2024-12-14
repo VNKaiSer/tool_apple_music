@@ -17,6 +17,7 @@ send_message_var = None
 delete_message_var = None
 change_password_var = None
 send_and_delete_var = None
+check_mutitab_var = None
 # Class
 class Tool_Exception:
     DONE = "done"
@@ -976,7 +977,7 @@ def run_app_tv():
 
     submit_btn = Button(analysis_frame, text="Chạy", command=on_click_reg_apple_music)
     submit_btn.pack(pady=10)
-def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var, app_choice_var):
+def get_index(send_message_var, delete_message_var, change_password_var, check_live_var, send_and_delete_var, check_mutiple_var,app_choice_var):
     def run(send_message_var, delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var):
         app_choice = "login_getindex" if app_choice_var.get() == "GetIndex" else "sideline_tool"
         if send_message_var.get() and delete_message_var.get() :
@@ -1002,6 +1003,9 @@ def get_index(send_message_var, delete_message_var, change_password_var, check_l
         elif send_and_delete_var.get():
             print("send and delete")
             subprocess.Popen(f"py ./commands/{app_choice}.py --actions delete_after_send")
+        elif check_mutiple_var.get():
+            print("check mutiple")
+            subprocess.Popen(f"py ./commands/{app_choice}.py --actions check_muti_tab")
         else:
             return
             
@@ -1190,6 +1194,11 @@ def show_dialog():
     send_and_delete_checkbox = ttk.Checkbutton(dialog, text="Gửi xong xoá", variable=send_and_delete_var)
     send_and_delete_checkbox.pack(anchor='w',padx=10, pady=5)
     
+    global check_mutitab_var 
+    check_mutitab_var = tk.BooleanVar()
+    check_mutitab_checkbox = ttk.Checkbutton(dialog, text="Check multi tab", variable=check_mutitab_var)
+    check_mutitab_checkbox.pack(anchor='w',padx=10, pady=5)
+    
     app_choice_var = tk.StringVar(value="GetIndex")  # Set default to "GetIndex"
 
     getindex_radiobutton = ttk.Radiobutton(dialog, text="GetIndex", variable=app_choice_var, value="GetIndex")
@@ -1201,7 +1210,7 @@ def show_dialog():
     sideline_radiobutton.pack(anchor='w', padx=10, pady=5)
     getindex_radiobutton.pack(anchor='w', padx=10, pady=5)
 
-    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var, app_choice_var))
+    confirm_button = ttk.Button(dialog, text="Xác nhận", command=lambda:get_index(send_message_var,delete_message_var, change_password_var, check_live_var,send_and_delete_var, check_mutitab_var,app_choice_var))
     confirm_button.pack(padx=10, pady=10)
 
 

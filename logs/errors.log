@@ -5451,3 +5451,41 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpDisconnect: [WinError 10054] An 
 2024-10-10 03:14:15,727 - {'username': '5124207276', 'password': 'AnyJNhF5@'}
 2024-10-10 03:17:04,584 - {'username': '5155202680', 'password': 'AnyEzcG1@'}
 2024-10-10 03:18:09,861 - {'username': '5184093186', 'password': 'Any39fK7@'}
+2024-12-14 09:25:28,919 - Proxy use: proxy name: apollo.p.shifter.io, port: 15403
+2024-12-14 10:15:05,867 - Proxy use: proxy name: apollo.p.shifter.io, port: 15404
+2024-12-14 10:15:38,942 - Proxy use: proxy name: apollo.p.shifter.io, port: 15405
+2024-12-14 10:17:59,822 - Proxy use: proxy name: apollo.p.shifter.io, port: 15406
+2024-12-14 10:18:13,658 - {'username': '3213894839', 'password': 'ALimBV7@'}
+2024-12-14 10:18:18,615 - {'username': '3214640760', 'password': 'ALi08j0@'}
+2024-12-14 10:24:11,045 - Proxy use: proxy name: apollo.p.shifter.io, port: 15407
+2024-12-14 10:24:23,780 - {'username': '3215179075', 'password': 'ALiMDZ9@'}
+2024-12-14 10:25:06,692 - Proxy use: proxy name: apollo.p.shifter.io, port: 15408
+2024-12-14 10:25:19,818 - {'username': '3232709787', 'password': 'ALiZnf0@'}
+2024-12-14 10:36:06,566 - Proxy use: proxy name: apollo.p.shifter.io, port: 15409
+2024-12-14 10:36:21,690 - {'username': '3258998312', 'password': 'ALiYqB8@'}
+2024-12-14 10:42:12,329 - Proxy use: proxy name: apollo.p.shifter.io, port: 15410
+2024-12-14 10:42:30,247 - {'username': '3258998757', 'password': 'ALiNKm8@'}
+2024-12-14 10:43:00,929 - Proxy use: proxy name: apollo.p.shifter.io, port: 15411
+2024-12-14 10:43:15,412 - {'username': '3302684156', 'password': 'ALiHqh9@'}
+2024-12-14 10:44:57,332 - Proxy use: proxy name: apollo.p.shifter.io, port: 15412
+2024-12-14 10:45:12,898 - {'username': '3306196222', 'password': 'ALi4Mr1@'}
+2024-12-14 10:45:38,964 - {'username': '3312463449', 'password': 'ALi66M9@'}
+2024-12-14 10:46:02,514 - {'username': '3344135110', 'password': 'ALiJ9H4@'}
+2024-12-14 10:46:25,177 - {'username': '3344136908', 'password': 'ALiYFw4@'}
+2024-12-14 10:47:31,036 - Proxy use: proxy name: apollo.p.shifter.io, port: 15413
+2024-12-14 10:47:45,534 - {'username': '3213894839', 'password': 'ALimBV7@'}
+2024-12-14 10:48:11,486 - {'username': '3214640760', 'password': 'ALi08j0@'}
+2024-12-14 10:48:38,289 - {'username': '3215179075', 'password': 'ALiMDZ9@'}
+2024-12-14 10:49:01,154 - {'username': '3232709787', 'password': 'ALiZnf0@'}
+2024-12-14 10:49:23,550 - {'username': '3258998312', 'password': 'ALiYqB8@'}
+2024-12-14 10:49:48,999 - {'username': '3258998757', 'password': 'ALiNKm8@'}
+2024-12-14 10:50:12,041 - {'username': '3302684156', 'password': 'ALiHqh9@'}
+2024-12-14 10:50:38,127 - {'username': '3306196222', 'password': 'ALi4Mr1@'}
+2024-12-14 10:51:01,962 - {'username': '3312463449', 'password': 'ALi66M9@'}
+2024-12-14 10:51:24,143 - {'username': '3344135110', 'password': 'ALiJ9H4@'}
+2024-12-14 11:03:08,662 - Proxy use: proxy name: apollo.p.shifter.io, port: 15414
+2024-12-14 11:03:18,514 - Proxy use: proxy name: apollo.p.shifter.io, port: 15415
+2024-12-14 11:03:26,634 - {'username': '3344136908', 'password': 'ALiYFw4@'}
+2024-12-14 11:03:34,310 - {'username': '6613371352', 'password': 'ALiiZ50@'}
+2024-12-14 11:03:56,969 - {'username': '8607160472', 'password': 'ALiqHb9@'}
+2024-12-14 11:04:00,896 - {'username': '4843538668', 'password': 'ALiXi34@'}
