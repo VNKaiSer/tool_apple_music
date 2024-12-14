@@ -849,9 +849,9 @@ def check_account(driver):
                     driver.close()
                     return
             except Exception as e:
+                db_instance.result_acc_getindex(username, "account error")
                 break
     except Exception as e:
-        print(e)
         driver.close()
 def login_check_mutiple():
     number_tab_check = random.randint(10, 20)

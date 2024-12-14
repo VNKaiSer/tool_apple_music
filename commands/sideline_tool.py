@@ -13,7 +13,7 @@ def check_run_app():
 
 def main():
     parser = argparse.ArgumentParser(description="Sideline tool")
-    parser.add_argument("--actions", nargs='+', choices=["send_message", "delete_message", "change_password","send_and_delete", "check_live", "delete_after_send","send_delete_change_pass"], help="Choice action")
+    parser.add_argument("--actions", nargs='+', choices=["send_message", "delete_message", "change_password","send_and_delete", "check_live", "delete_after_send","send_delete_change_pass","check_muti_tab"], help="Choice action")
 
     args = parser.parse_args()
     while check_run_app():
@@ -43,6 +43,8 @@ def main():
                     sideline.login(send_message=True, send_and_delete=True) 
                 elif action == "send_delete_change_pass":
                     sideline.login(send_delete_change_pass=True)  
+                elif action == "check_muti_tab":
+                    sideline.login_check_mutiple()
                 
 
         time.sleep(3)

@@ -637,3 +637,130 @@ def login(change_password = False, send_message = False, delete_message = False,
         
     except Exception as e:
         print(e)
+
+def check_account(driver):
+    try:
+        driver.switch_to.window(driver.window_handles[1])
+        # try:
+        #     driver.get("https://api.ipify.org/?format=json")
+
+        #     WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+        #     body_text = driver.find_element("tag name", "body").text
+
+        #     ip_data = json.loads(body_text)
+        #     current_ip = ip_data['ip']
+            
+        #     # Kiểm tra ip hiện tại trên db 
+        #     ip_is_exist = db_instance.check_and_insert_proxy(current_ip)
+        #     if ip_is_exist == False:
+        #         driver.close()
+        #         return
+        # except Exception as e:
+        #     driver.close()
+        #     return
+        # time.sleep(2)
+        
+        driver.get("https://messages.sideline.com/login")
+        driver.set_window_size(1024, 640)
+        tmp = getData(False)
+        if tmp is None:
+            print("No acc! Input more acc.")
+            return
+        
+        username, password = tmp
+        data = {
+            "username": username,
+            "password": password,
+        }
+        logger.info(data)
+        print(data)
+        time.sleep(2)
+
+        while True:
+            WebDriverWait(driver, WAIT_START).until(EC.visibility_of_element_located((By.TAG_NAME, 'app-root')))
+            app_root = driver.find_element(By.TAG_NAME, 'app-root')
+            inputs = app_root.find_elements(By.TAG_NAME, "input")
+            actions = ActionChains(driver)
+            actions.move_to_element(inputs[0]).perform()
+            time.sleep(random.uniform(2, 5))
+            for key in data["username"]:
+                inputs[0].send_keys(key)
+                time.sleep(0.15)
+            time.sleep(random.uniform(2, 5))
+            for key in data["password"]:
+                inputs[1].send_keys(key)
+                time.sleep(0.15)
+            time.sleep(random.uniform(2, 5))
+            WebDriverWait(app_root, 15).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="main-content"]/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a/ion-text')))
+            submit_button = driver.find_element(By.XPATH, '//*[@id="main-content"]/app-login/ion-content/div/form/ion-grid/ion-row[3]/ion-col[2]/ion-item/a/ion-text')
+            actions.move_to_element(submit_button).click().perform()
+
+            try:    
+                WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.TAG_NAME, 'sc-modal')))
+                sc_modal = driver.find_element(By.TAG_NAME, "sc-modal")
+                WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.CLASS_NAME, 'modal-title')))
+                modal_title = driver.find_element(By.CLASS_NAME, "modal-title")
+                print(modal_title.text)
+                ex = modal_title.text
+                if ex == "Well, That Didn't Work...":
+                    db_instance.result_acc_sideline(username, "account error")
+                    driver.close()
+                    return
+                elif ex == "Reset Password":
+                    db_instance.result_acc_sideline(username, "account live")
+                    driver.close()
+                    return
+                else:
+                    db_instance.result_acc_sideline(username, ex)
+                    driver.close()
+                    return
+            except Exception as e:
+                db_instance.result_acc_sideline(username, "account error")
+                driver.close()
+                break
+    except Exception as e:
+        print(e)
+        driver.close()
+def login_check_mutiple():
+    number_tab_check = random.randint(10, 20)
+    proxy_name, port = db_instance.get_proxy()
+    logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
+    if port == 0:
+        return
+    proxy = f'{proxy_name}:{port}' 
+    temp_dir = tempfile.mkdtemp()
+    chrome_options = Options()
+    chrome_options = Options()
+    user_agent = choice_user_agents()
+    chrome_options.add_argument('--disable-webrtc')
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
+    chrome_options.add_argument(f'user-agent={user_agent}')
+    # chrome_options.add_argument(f'--proxy-server={proxy}')
+    chrome_options.add_argument(f'user-data-dir={temp_dir}')
+    chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
+    chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
+    driver = webdriver.Chrome(
+        options=chrome_options,
+    )
+    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    languages, vendor, platform, webgl_vendor, renderer = random_stealth()
+    stealth(driver,
+        languages=languages,
+        vendor=vendor,
+        platform=platform,
+        webgl_vendor=webgl_vendor,
+        renderer=renderer,
+        fix_hairline=True
+    )
+    
+    driver.get("https://messages.sideline.com/login")
+    root = driver.current_window_handle
+    print(number_tab_check)
+    for _ in range(1, number_tab_check):
+        driver.switch_to.window(root)
+        driver.execute_script("window.open('https://messages.sideline.com/login');")
+        check_account(driver)
+    
+    driver.quit()
