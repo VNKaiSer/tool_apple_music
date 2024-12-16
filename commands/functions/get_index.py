@@ -869,7 +869,7 @@ def login_check_mutiple():
     chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
     chrome_options.add_experimental_option('useAutomationExtension', False)
     chrome_options.add_argument(f'user-agent={user_agent}')
-    # chrome_options.add_argument(f'--proxy-server={proxy}')
+    chrome_options.add_argument(f'--proxy-server={proxy}')
     chrome_options.add_argument(f'user-data-dir={temp_dir}')
     chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
     chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
