@@ -1,6 +1,7 @@
 import datetime
 import re
-from selenium import webdriver
+# from selenium import webdriver
+from seleniumwire import webdriver
 import tempfile
 from selenium.webdriver.chrome.service import Service
 
@@ -369,43 +370,43 @@ def login(change_password = False, send_message = False, delete_message = False,
     try:
         
         
-        proxy_name, port = db_instance.get_proxy()
+        # proxy_name, port = db_instance.get_proxy()
         
-        if port == 0:
-            return
-        temp_dir = tempfile.mkdtemp()
-        proxy = f'{proxy_name}:{port}'
-        logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
+        # if port == 0:
+        #     return
+        # temp_dir = tempfile.mkdtemp()
+        # proxy = f'{proxy_name}:{port}'
+        # logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
         
-        chrome_options = Options()
-        user_agent = choice_user_agents()
-        chrome_options.add_argument('--disable-webrtc')
-        chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
-        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
-        chrome_options.add_experimental_option('useAutomationExtension', False)
-        chrome_options.add_argument(f'user-agent={user_agent}')
-        chrome_options.add_argument(f'--proxy-server={proxy}')
-        chrome_options.add_argument(f'user-data-dir={temp_dir}')
-        chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
-        chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
-        # disable webRTC
+        # chrome_options = Options()
+        # user_agent = choice_user_agents()
         # chrome_options.add_argument('--disable-webrtc')
-        # chrome_options.add_argument('--disable-webrtc-hw-encoding')
-        # chrome_options.add_argument('--disable-webrtc-hw-decoding')
-        # chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
-        # chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
-        driver = webdriver.Chrome(
-            options=chrome_options,
-        )
-        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        languages, vendor, platform, webgl_vendor, renderer = random_stealth()
-        stealth(driver,
-            languages=languages,
-            vendor=vendor,
-            platform=platform,
-            webgl_vendor=webgl_vendor,
-            renderer=renderer,
-            fix_hairline=True)
+        # chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+        # chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        # chrome_options.add_experimental_option('useAutomationExtension', False)
+        # chrome_options.add_argument(f'user-agent={user_agent}')
+        # chrome_options.add_argument(f'--proxy-server={proxy}')
+        # chrome_options.add_argument(f'user-data-dir={temp_dir}')
+        # chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
+        # chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
+        # # disable webRTC
+        # # chrome_options.add_argument('--disable-webrtc')
+        # # chrome_options.add_argument('--disable-webrtc-hw-encoding')
+        # # chrome_options.add_argument('--disable-webrtc-hw-decoding')
+        # # chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
+        # # chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
+        # driver = webdriver.Chrome(
+        #     options=chrome_options,
+        # )
+        # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        # languages, vendor, platform, webgl_vendor, renderer = random_stealth()
+        # stealth(driver,
+        #     languages=languages,
+        #     vendor=vendor,
+        #     platform=platform,
+        #     webgl_vendor=webgl_vendor,
+        #     renderer=renderer,
+        #     fix_hairline=True)
         # stealth(driver,
         #     languages=["en-US", "en"],
         #     vendor="Google Inc.",
@@ -414,6 +415,17 @@ def login(change_password = False, send_message = False, delete_message = False,
         #     renderer="Intel Iris OpenGL Engine",
         #     fix_hairline=True)
         
+        # proxy v2
+        proxy = {
+        'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
+        }
+        options = {
+        'proxy': {
+            'https': proxy['https'],
+            },
+        'mitm_http2': False
+        }
+        driver = webdriver.Chrome(seleniumwire_options=options)
         
         try:
             driver.get("https://api.ipify.org/?format=json")
@@ -722,7 +734,7 @@ def check_account(driver):
         print(e)
         driver.close()
 
-from seleniumwire import webdriver
+
 def login_check_mutiple():
     number_tab_check = random.randint(10, 20)
     # proxy_name, port = db_instance.get_proxy()

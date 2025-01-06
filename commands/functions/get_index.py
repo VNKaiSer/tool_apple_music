@@ -387,7 +387,7 @@ def random_stealth():
 def login(change_password = False, send_message = False, delete_message = False, check_live = False, send_and_delete = False, send_delete_change_pass = False):
     data = None
     try:
-        random_port = random.randint(16405,16429)
+        # random_port = random.randint(16405,16429)
         #random_proxy = [
         #     {
         #     'proxy': {
@@ -417,48 +417,48 @@ def login(change_password = False, send_message = False, delete_message = False,
         #         }, 'mitm_http2': False}
         # ]
         # proxy = random.choice(random_proxy)
-        proxy_name, port = db_instance.get_proxy()
-        logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
-        if port == 0:
-            return
-        proxy = f'{proxy_name}:{port}' 
-        temp_dir = tempfile.mkdtemp()
-        chrome_options = Options()
-        # chrome_options.add_argument('--ignore-certificate-errors')
-        # chrome_options.add_argument('--allow-insecure-localhost')
-        # chrome_options.add_argument('--ignore-ssl-errors=yes')
-        # chrome_options.add_argument('--log-level=3')  # Selenium log level
-        chrome_options = Options()
-        user_agent = choice_user_agents()
-        chrome_options.add_argument('--disable-webrtc')
-        chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
-        chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
-        chrome_options.add_experimental_option('useAutomationExtension', False)
-        chrome_options.add_argument(f'user-agent={user_agent}')
-        # chrome_options.add_argument(f'--proxy-server={proxy}')
-        chrome_options.add_argument(f'user-data-dir={temp_dir}')
-        chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
-        chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
+        # proxy_name, port = db_instance.get_proxy()
+        # logger.info(f'Proxy use: proxy name: {proxy_name}, port: {port}')
+        # if port == 0:
+        #     return
+        # proxy = f'{proxy_name}:{port}' 
+        # temp_dir = tempfile.mkdtemp()
+        # chrome_options = Options()
+        # # chrome_options.add_argument('--ignore-certificate-errors')
+        # # chrome_options.add_argument('--allow-insecure-localhost')
+        # # chrome_options.add_argument('--ignore-ssl-errors=yes')
+        # # chrome_options.add_argument('--log-level=3')  # Selenium log level
+        # chrome_options = Options()
+        # user_agent = choice_user_agents()
+        # chrome_options.add_argument('--disable-webrtc')
+        # chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Tắt phát hiện Selenium
+        # chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+        # chrome_options.add_experimental_option('useAutomationExtension', False)
+        # chrome_options.add_argument(f'user-agent={user_agent}')
+        # # chrome_options.add_argument(f'--proxy-server={proxy}')
+        # chrome_options.add_argument(f'user-data-dir={temp_dir}')
+        # chrome_options.add_argument("--disable-features=SameSiteByDefaultCookies")
+        # chrome_options.add_argument("--disable-features=CookiesWithoutSameSiteMustBeSecure")
         # disable webRTC
         # chrome_options.add_argument('--disable-webrtc')
         # chrome_options.add_argument('--disable-webrtc-hw-encoding')
         # chrome_options.add_argument('--disable-webrtc-hw-decoding')
         # chrome_options.add_argument('--webrtc-ip-handling-policy=disable_non_proxied_udp')
         # chrome_options.add_argument('--disable-features=WebRTCHideLocalIpsWithMdns')
-        driver = webdriver.Chrome(
-            options=chrome_options,
-            #seleniumwire_options=proxy,
-            # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
-        )
-        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        languages, vendor, platform, webgl_vendor, renderer = random_stealth()
-        stealth(driver,
-            languages=languages,
-            vendor=vendor,
-            platform=platform,
-            webgl_vendor=webgl_vendor,
-            renderer=renderer,
-            fix_hairline=True)
+        # driver = webdriver.Chrome(
+        #     options=chrome_options,
+        #     #seleniumwire_options=proxy,
+        #     # service_log_path=os.path.devnull  # Chuyển hướng log của ChromeDriver
+        # )
+        # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        # languages, vendor, platform, webgl_vendor, renderer = random_stealth()
+        # stealth(driver,
+        #     languages=languages,
+        #     vendor=vendor,
+        #     platform=platform,
+        #     webgl_vendor=webgl_vendor,
+        #     renderer=renderer,
+        #     fix_hairline=True)
         # script = """
         # Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
         #     value: () => new Promise((resolve, reject) => {
@@ -468,6 +468,16 @@ def login(change_password = False, send_message = False, delete_message = False,
         # """
         # driver.execute_script(script)
         # kiểm tra ip 
+        proxy = {
+        'https': 'https://brd-customer-hl_d346dd25-zone-static-country-us:jmkokxul20oa@brd.superproxy.io:22225'
+        }
+        options = {
+        'proxy': {
+            'https': proxy['https'],
+            },
+        'mitm_http2': False
+        }
+        driver = webdriver.Chrome(seleniumwire_options=options)
         try:
             driver.get("https://api.ipify.org/?format=json")
 
