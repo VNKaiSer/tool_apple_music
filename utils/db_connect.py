@@ -22,11 +22,16 @@ class MySQLDatabase:
         query = "INSERT INTO pay (card_number, day, year, ccv) VALUES (%s, %s, %s, %s)"
         self.cursor.execute(query, (card_number, expiration_month, expiration_year, cvv))
         self.connection.commit()
+    
+    def insert_proxy_data(self, proxy_data):
+        port, name = proxy_data.strip().split('|')
+        query = "INSERT INTO port_proxy (port, proxy_name) VALUES (%s, %s)"
+        self.cursor.execute(query, (port, name))
+        self.connection.commit()
 
     def insert_apple_music_id(self, id_data):
-        parts = id_data.strip().split('-')
-        account = '-'.join(parts[:-1])
-        password = parts[-1]
+        parts = id_data.strip().split('|')
+        account, password = parts[0], parts[1]
         query = "INSERT INTO mail (user, password) VALUES (%s, %s)"
         self.cursor.execute(query, (account, password))
         self.connection.commit()
@@ -50,6 +55,11 @@ class MySQLDatabase:
         result = self.cursor.fetchall()
         print(result)
         return result
+    
+    def insert_acc_getindex(self, username, password):
+        query = "INSERT IGNORE INTO get_index_tool(user_name, password) VALUES (%s, %s)"
+        self.cursor.execute(query, (username, password))
+        self.connection.commit()
     
 
     def close(self):

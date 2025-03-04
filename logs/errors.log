@@ -5382,3 +5382,150 @@ seleniumwire.thirdparty.mitmproxy.exceptions.TcpException: ConnectionResetError(
 2024-05-28 13:22:11,060 - Error: Không bắt kịp request! Vui lòng kiểm tra mạng hoặc proxy
 2024-05-28 13:25:08,118 - Error Card: Id - 5mmrzohwa4v@gmail.com - Card DEC
 2024-05-28 13:25:14,508 - Error Card: Id - 5mmrzohwa4v@gmail.com - Card DEC
+2024-07-11 12:24:28,135 - {'username': '2198694501', 'password': 'ALi7F2g@', 'phone_send': '6562117046'}
+2024-07-11 12:25:26,581 - Change password: ALi1JfA@ for user: 2198694501, old_pass: ALi7F2g@
+2024-07-11 12:27:55,914 - This is a DEBUG message.
+2024-07-11 12:27:55,914 - This is an INFO message.
+2024-07-11 12:27:55,915 - This is a WARNING message.
+2024-07-11 12:27:55,915 - This is an ERROR message.
+2024-07-11 12:27:55,916 - This is a CRITICAL message.
+2024-07-11 12:28:43,246 - {'username': '2198694501', 'password': 'ALi1JfA@', 'phone_send': '4756795786'}
+2024-07-11 12:30:16,882 - Change password: ALih9Ri@ for user: 2198694501, old_pass: ALi1JfA@
+2024-07-14 22:50:39,758 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '6693158114'}
+2024-07-14 22:51:42,860 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '3037106497'}
+2024-07-14 23:02:08,939 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '4798886298'}
+2024-07-14 23:03:21,014 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9548675340'}
+2024-07-14 23:04:46,693 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '5629895612'}
+2024-07-14 23:06:13,637 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '5206465359'}
+2024-07-14 23:14:50,696 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9708752164'}
+2024-07-14 23:18:25,598 - {'username': '2012819495', 'password': 'ALibMc3@', 'phone_send': '9123743547'}
+2024-08-23 01:01:53,398 - {'username': '3093862386', 'password': 'ALi6Ye9@'}
+2024-08-23 01:06:12,753 - {'username': '3034724355', 'password': 'ALi3Y8l@'}
+2024-08-23 01:07:08,379 - Change password: ALi06Xg@ for user: 3034724355, old_pass: ALi3Y8l@
+2024-08-23 01:07:27,042 - Change password: SUCCESS ALi06Xg@ for user: 3034724355
+2024-08-23 01:09:45,923 - {'username': '3034724355', 'password': 'ALi06Xg@'}
+2024-08-23 01:10:45,293 - {'username': '3034724355', 'password': 'ALi06Xg@'}
+2024-08-23 01:11:45,406 - {'username': '3034724355', 'password': 'ALi06Xg@'}
+2024-09-07 23:03:47,670 - 127.0.0.1:65011: Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 94, in write
+    r = self.o.write(v)
+        ^^^^^^^^^^^^^^^
+  File "C:\Users\Kaiser-DEV\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 725, in write
+    return self._sock.send(b)
+           ^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\server.py", line 113, in handle
+    root_layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\modes\http_proxy.py", line 23, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\tls.py", line 285, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 100, in __call__
+    layer()
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 206, in __call__
+    if not self._process_flow(flow):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 288, in _process_flow
+    return self.handle_upstream_connect(f)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 251, in handle_upstream_connect
+    self.send_response(f.response)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http.py", line 53, in send_response
+    self.send_response_headers(response)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\server\protocol\http1.py", line 67, in send_response_headers
+    self.client_conn.wfile.write(raw)
+  File "D:\KhachHang\Tool\tool_find_ads_post\env\Lib\site-packages\seleniumwire\thirdparty\mitmproxy\net\tcp.py", line 98, in write
+    raise exceptions.TcpDisconnect(str(e))
+seleniumwire.thirdparty.mitmproxy.exceptions.TcpDisconnect: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+2024-09-08 23:17:51,618 - Error Card: Id - manlokyacson@hotmail.com - Card DEC
+2024-09-08 23:17:58,046 - Error Card: Id - manlokyacson@hotmail.com - Card DEC
+2024-09-09 20:28:52,626 - {'username': '2103509823', 'password': 'ALi@2Dwm2'}
+2024-09-09 20:31:07,786 - {'username': '2103509823', 'password': 'ALi@2Dwm2'}
+2024-10-10 03:06:12,045 - {'username': '5122871698', 'password': 'AnyjVYy7@'}
+2024-10-10 03:13:25,703 - Proxy use: proxy name: hades.p.shifter.io, port: 19809
+2024-10-10 03:14:15,727 - {'username': '5124207276', 'password': 'AnyJNhF5@'}
+2024-10-10 03:17:04,584 - {'username': '5155202680', 'password': 'AnyEzcG1@'}
+2024-10-10 03:18:09,861 - {'username': '5184093186', 'password': 'Any39fK7@'}
+2024-12-14 09:25:28,919 - Proxy use: proxy name: apollo.p.shifter.io, port: 15403
+2024-12-14 10:15:05,867 - Proxy use: proxy name: apollo.p.shifter.io, port: 15404
+2024-12-14 10:15:38,942 - Proxy use: proxy name: apollo.p.shifter.io, port: 15405
+2024-12-14 10:17:59,822 - Proxy use: proxy name: apollo.p.shifter.io, port: 15406
+2024-12-14 10:18:13,658 - {'username': '3213894839', 'password': 'ALimBV7@'}
+2024-12-14 10:18:18,615 - {'username': '3214640760', 'password': 'ALi08j0@'}
+2024-12-14 10:24:11,045 - Proxy use: proxy name: apollo.p.shifter.io, port: 15407
+2024-12-14 10:24:23,780 - {'username': '3215179075', 'password': 'ALiMDZ9@'}
+2024-12-14 10:25:06,692 - Proxy use: proxy name: apollo.p.shifter.io, port: 15408
+2024-12-14 10:25:19,818 - {'username': '3232709787', 'password': 'ALiZnf0@'}
+2024-12-14 10:36:06,566 - Proxy use: proxy name: apollo.p.shifter.io, port: 15409
+2024-12-14 10:36:21,690 - {'username': '3258998312', 'password': 'ALiYqB8@'}
+2024-12-14 10:42:12,329 - Proxy use: proxy name: apollo.p.shifter.io, port: 15410
+2024-12-14 10:42:30,247 - {'username': '3258998757', 'password': 'ALiNKm8@'}
+2024-12-14 10:43:00,929 - Proxy use: proxy name: apollo.p.shifter.io, port: 15411
+2024-12-14 10:43:15,412 - {'username': '3302684156', 'password': 'ALiHqh9@'}
+2024-12-14 10:44:57,332 - Proxy use: proxy name: apollo.p.shifter.io, port: 15412
+2024-12-14 10:45:12,898 - {'username': '3306196222', 'password': 'ALi4Mr1@'}
+2024-12-14 10:45:38,964 - {'username': '3312463449', 'password': 'ALi66M9@'}
+2024-12-14 10:46:02,514 - {'username': '3344135110', 'password': 'ALiJ9H4@'}
+2024-12-14 10:46:25,177 - {'username': '3344136908', 'password': 'ALiYFw4@'}
+2024-12-14 10:47:31,036 - Proxy use: proxy name: apollo.p.shifter.io, port: 15413
+2024-12-14 10:47:45,534 - {'username': '3213894839', 'password': 'ALimBV7@'}
+2024-12-14 10:48:11,486 - {'username': '3214640760', 'password': 'ALi08j0@'}
+2024-12-14 10:48:38,289 - {'username': '3215179075', 'password': 'ALiMDZ9@'}
+2024-12-14 10:49:01,154 - {'username': '3232709787', 'password': 'ALiZnf0@'}
+2024-12-14 10:49:23,550 - {'username': '3258998312', 'password': 'ALiYqB8@'}
+2024-12-14 10:49:48,999 - {'username': '3258998757', 'password': 'ALiNKm8@'}
+2024-12-14 10:50:12,041 - {'username': '3302684156', 'password': 'ALiHqh9@'}
+2024-12-14 10:50:38,127 - {'username': '3306196222', 'password': 'ALi4Mr1@'}
+2024-12-14 10:51:01,962 - {'username': '3312463449', 'password': 'ALi66M9@'}
+2024-12-14 10:51:24,143 - {'username': '3344135110', 'password': 'ALiJ9H4@'}
+2024-12-14 11:03:08,662 - Proxy use: proxy name: apollo.p.shifter.io, port: 15414
+2024-12-14 11:03:18,514 - Proxy use: proxy name: apollo.p.shifter.io, port: 15415
+2024-12-14 11:03:26,634 - {'username': '3344136908', 'password': 'ALiYFw4@'}
+2024-12-14 11:03:34,310 - {'username': '6613371352', 'password': 'ALiiZ50@'}
+2024-12-14 11:03:56,969 - {'username': '8607160472', 'password': 'ALiqHb9@'}
+2024-12-14 11:04:00,896 - {'username': '4843538668', 'password': 'ALiXi34@'}
+2024-12-14 11:12:38,556 - Proxy use: proxy name: apollo.p.shifter.io, port: 15416
+2024-12-14 11:12:50,847 - {'username': '4792123738', 'password': 'AnyTrdG0@'}
+2024-12-14 11:13:14,979 - {'username': '2272502171', 'password': 'Anyf93x9@'}
+2024-12-14 11:13:49,938 - {'username': '6574819891', 'password': 'AnyUmmX8@'}
+2024-12-14 11:14:12,002 - {'username': '6097077947', 'password': 'Anyf4qd9@'}
+2024-12-14 11:14:35,792 - {'username': '7792216096', 'password': 'Any3ztZ6@'}
+2024-12-14 11:14:54,562 - {'username': '2072729166', 'password': 'AnyxUxj4@'}
+2024-12-14 11:15:17,867 - {'username': '5307151646', 'password': 'Any7R3w5@'}
+2024-12-14 11:15:41,775 - {'username': '4784424714', 'password': 'AnyCxpX6@'}
+2024-12-14 11:16:03,285 - {'username': '6629051279', 'password': 'AnywJ0y0@'}
+2024-12-14 11:16:24,858 - {'username': '5757408634', 'password': 'AnyGjRw1@'}
+2024-12-14 11:16:48,479 - {'username': '4154702412', 'password': 'AnyajnV0@'}
+2024-12-14 11:17:09,478 - {'username': '6153180058', 'password': 'AnyY4zQ4@'}
+2024-12-14 11:17:34,066 - {'username': '5306837691', 'password': 'AnyURCp7@'}
+2024-12-14 11:17:56,885 - {'username': '3035239256', 'password': 'AnynGY48@'}
+2024-12-14 11:18:17,777 - {'username': '3466910998', 'password': 'Any558E7@'}
+2024-12-14 11:18:40,254 - {'username': '7244873810', 'password': 'AnyhFcP8@'}
+2024-12-14 11:19:07,207 - {'username': '8283421226', 'password': 'AnyZSEG4@'}
+2024-12-14 11:19:31,458 - {'username': '8782437048', 'password': 'AnykwMk3@'}
+2024-12-14 11:19:55,090 - {'username': '8506536539', 'password': 'Any0Mua4@'}
+2024-12-26 19:50:34,135 - {'username': '9702745605', 'password': 'ALizD80@'}
+2024-12-26 19:51:11,105 - {'username': '8509652048', 'password': 'ALiCfh9@'}
+2024-12-26 19:51:38,207 - {'username': '8042372739', 'password': 'ALihT25@'}
+2024-12-26 19:52:01,903 - {'username': '6623709423', 'password': 'ALir4U5@'}
+2024-12-26 19:52:24,787 - {'username': '6179061024', 'password': 'ALibEp1@'}
+2024-12-26 19:52:50,113 - {'username': '9707935878', 'password': 'ALitxr6@'}
+2024-12-26 19:53:12,550 - {'username': '6072969231', 'password': 'ALiTWN5@'}
+2024-12-26 19:53:37,158 - {'username': '2073324382', 'password': 'ALiTXo9@'}
+2024-12-26 19:54:02,886 - {'username': '6577093844', 'password': 'ALiAHx8@'}
+2024-12-26 19:54:27,352 - {'username': '2183986676', 'password': 'ALiZA47@'}
+2024-12-26 19:54:52,890 - {'username': '9707109625', 'password': 'ALiao78@'}
+2024-12-26 19:55:15,800 - {'username': '9452179286', 'password': 'ALiF1d7@'}
+2024-12-26 19:55:39,618 - {'username': '2702062707', 'password': 'ALiVRu5@'}
+2024-12-26 19:56:08,372 - {'username': '2063726024', 'password': 'ALiLek6@'}
+2024-12-26 19:56:29,986 - {'username': '9257449660', 'password': 'ALicz02@'}
+2024-12-26 19:56:59,919 - {'username': '4053957518', 'password': 'ALixMc0@'}
+2024-12-26 19:57:24,055 - {'username': '2185370603', 'password': 'ALiepO5@'}
+2024-12-26 20:06:42,774 - {'username': '3364914069', 'password': 'ALiJ7Ac4rF4@'}
+2024-12-26 20:07:13,119 - {'username': '8562141619', 'password': 'ALi04@RNH'}
+2024-12-26 20:07:41,062 - {'username': '2232398371', 'password': 'ALiE1AQJoqX@'}
